@@ -1,4 +1,4 @@
-
-public class Missle implements Runnable{
+public class Missle implements Runnable {
+	private Position pos;
 
 }
