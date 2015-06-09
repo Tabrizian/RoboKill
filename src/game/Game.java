@@ -1,3 +1,6 @@
+package game;
+import game.objects.Robot;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;

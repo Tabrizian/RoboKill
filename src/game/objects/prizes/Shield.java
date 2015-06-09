@@ -1,3 +1,6 @@
+package game.objects.prizes;
+
+
 
 public class Shield extends Plunder {
 

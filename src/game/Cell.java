@@ -1,3 +1,6 @@
+package game;
+import game.objects.Thing;
+
 
 public class Cell {
 

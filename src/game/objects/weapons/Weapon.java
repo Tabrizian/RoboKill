@@ -1,3 +1,4 @@
+package game.objects.weapons;
 
 public class Weapon {
 	protected int power ;

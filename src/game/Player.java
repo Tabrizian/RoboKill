@@ -1,3 +1,6 @@
+package game;
+import game.objects.Robot;
+
 public class Player {
 	private int cash;
 	private String name;

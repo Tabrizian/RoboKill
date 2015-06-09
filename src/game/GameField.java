@@ -1,3 +1,4 @@
+package game;
 import javax.swing.JPanel;
 
 public class GameField extends JPanel {

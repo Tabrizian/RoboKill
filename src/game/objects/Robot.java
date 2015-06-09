@@ -1,3 +1,7 @@
+package game.objects;
+import game.Position;
+import game.objects.weapons.Weapon;
+
 import java.util.ArrayList;
 
 import javax.swing.JComponent;
