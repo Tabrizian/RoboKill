@@ -29,15 +29,15 @@ public class Position {
 	 * Decrease X position if X be greater than zero
 	 */
 	public void decX() {
-		if (x > 6)
-			x -= 5;
+		if (x > 4)
+			x -= 3;
 	}
 
 	/**
 	 * Increase X position without condition
 	 */
 	public void incX() {
-		x += 5;
+		x += 3;
 	}
 
 	/**
@@ -46,23 +46,23 @@ public class Position {
 	 * @param limit
 	 */
 	public void incX(int limit) {
-		if (x < limit - 5)
-			x += 5;
+		if (x < limit - 3)
+			x += 3;
 	}
 
 	/**
 	 * Decrease Y position if Y be greater than zero
 	 */
 	public void decY() {
-		if (y > 5)
-			y -= 5;
+		if (y > 3)
+			y -= 3;
 	}
 
 	/**
 	 * Increase Y position without condition
 	 */
 	public void incY() {
-		y += 5;
+		y += 3;
 	}
 
 	/**
@@ -71,8 +71,8 @@ public class Position {
 	 * @param limit
 	 */
 	public void incY(int limit) {
-		if (y < limit - 5)
-			y += 5;
+		if (y < limit - 3)
+			y += 3;
 	}
 
 	/**
