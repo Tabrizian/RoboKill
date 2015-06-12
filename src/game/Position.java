@@ -1,5 +1,4 @@
-package game;
-
+package game ;
 /**
  * This is position class that contain position of component in a frame
  * 
@@ -30,15 +29,15 @@ public class Position {
 	 * Decrease X position if X be greater than zero
 	 */
 	public void decX() {
-		if (x > 1)
-			x--;
+		if (x > 6)
+			x -= 5;
 	}
 
 	/**
 	 * Increase X position without condition
 	 */
 	public void incX() {
-		x++;
+		x += 5;
 	}
 
 	/**
@@ -47,23 +46,23 @@ public class Position {
 	 * @param limit
 	 */
 	public void incX(int limit) {
-		if (x < limit)
-			x++;
+		if (x < limit - 5)
+			x += 5;
 	}
 
 	/**
 	 * Decrease Y position if Y be greater than zero
 	 */
 	public void decY() {
-		if (y > 1)
-			y--;
+		if (y > 5)
+			y -= 5;
 	}
 
 	/**
 	 * Increase Y position without condition
 	 */
 	public void incY() {
-		y++;
+		y += 5;
 	}
 
 	/**
@@ -72,12 +71,13 @@ public class Position {
 	 * @param limit
 	 */
 	public void incY(int limit) {
-		if (y < limit)
-			y++;
+		if (y < limit - 5)
+			y += 5;
 	}
 
 	/**
 	 * Getter of X
+	 * 
 	 * @return x
 	 */
 	public int getX() {
@@ -86,7 +86,8 @@ public class Position {
 
 	/**
 	 * Getter of Y
-	 * @return	Y
+	 * 
+	 * @return Y
 	 */
 	public int getY() {
 		return y;
@@ -94,6 +95,7 @@ public class Position {
 
 	/**
 	 * Setter of X
+	 * 
 	 * @param x
 	 */
 	public void setX(int x) {
@@ -102,6 +104,7 @@ public class Position {
 
 	/**
 	 * Setter of Y
+	 * 
 	 * @param y
 	 */
 	public void setY(int y) {
