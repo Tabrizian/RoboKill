@@ -54,16 +54,16 @@ public class Robot extends JComponent {
 	 */
 	private Point mousePoint;
 
-	//Screen size
-	private int width = (int) getToolkit().getScreenSize().getWidth() ;
-	private int height = (int) getToolkit().getScreenSize().getHeight() ;
-	
+	// Screen size
+	private int width = (int) getToolkit().getScreenSize().getWidth();
+	private int height = (int) getToolkit().getScreenSize().getHeight();
+
 	public Robot() {
 		super();
 
 		// Because of null layout of GameField.
 		setLocation(0, 0);
-		setSize(width*59/100, height*78/100);
+		setSize(width * 59 / 100, height * 78 / 100);
 
 		pos = new Position(0, 0);
 		// weapons = new ArrayList<Weapon>();
@@ -94,23 +94,23 @@ public class Robot extends JComponent {
 						pos.decY();
 					}
 					if (s == 's') {
-						//limited to size of Game frame
-						pos.incY(height*78/100);
+						// limited to size of Game frame
+						pos.incY(height * 78 / 100);
 					}
 					if (s == 'd') {
-						//limited to size of Game frame
-						pos.incX(width*59/100);
+						// limited to size of Game frame
+						pos.incX(width * 59 / 100);
 					}
 					if (s == 'a') {
 						pos.decX();
 					}
-					//Don't remove this line of code!!
-					//Updates robot position.
-					setLocation(pos.getX(),pos.getY());
-					
+					// Don't remove this line of code!!
+					// Updates robot position.
+					setLocation(pos.getX(), pos.getY());
+
 					double dx = mousePoint.getX() - pos.getX();
 					double dy = mousePoint.getY() - pos.getY();
-					imageAngleRad = Math.atan2(dy, dx) - Math.PI/2;
+					imageAngleRad = Math.atan2(dy, dx) - Math.PI / 2;
 				}
 			}
 
@@ -130,7 +130,7 @@ public class Robot extends JComponent {
 				mousePoint = e.getPoint();
 				double dx = e.getX() - pos.getX();
 				double dy = e.getY() - pos.getY();
-				imageAngleRad = Math.atan2(dy, dx) - Math.PI/2;
+				imageAngleRad = Math.atan2(dy, dx) - Math.PI / 2;
 
 			}
 
@@ -145,12 +145,20 @@ public class Robot extends JComponent {
 
 	@Override
 	public void paintComponent(Graphics g) {
-		BufferedImage image = null;
+		BufferedImage body = null;
 
 		Graphics2D g2d = (Graphics2D) g;
 		try {
-			image = ImageIO
+			body = ImageIO
 					.read(new File("src/game/images/robot/image 286.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		BufferedImage leg = null;
+		try {
+			leg = ImageIO.read(new File("src/game/images/robot/image 123.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -159,13 +167,16 @@ public class Robot extends JComponent {
 		g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
 				RenderingHints.VALUE_RENDER_QUALITY);
 
-		int cx = image.getWidth() / 2;
-		int cy = image.getHeight() / 2;
+		g2d.drawImage(leg, pos.getX(), pos.getY(), null);
+
+		// Rotate robot
+		int cx = body.getWidth() / 2;
+		int cy = body.getHeight() / 2;
 		AffineTransform oldAT = g2d.getTransform();
 		g2d.translate(cx + pos.getX(), cy + pos.getY());
 		g2d.rotate(imageAngleRad);
 		g2d.translate(-cx, -cy);
-		g2d.drawImage(image, 0, 0, null);
+		g2d.drawImage(body, 0, 0, null);
 		g2d.setTransform(oldAT);
 	}
 }
