@@ -53,13 +53,10 @@ public class Game extends JFrame {
 
 		setVisible(true);
 		// Exact size of game field.
-<<<<<<< HEAD
-		setSize(800, 600);
 
-=======
 		setSize(width*59/100, height*78/100);
 		setLocation(width/4, height/9);
->>>>>>> 7cfda6669909c58f359aeb74d94f92a339379cfd
+
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 }
