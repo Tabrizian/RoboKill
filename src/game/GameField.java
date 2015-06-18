@@ -33,7 +33,7 @@ public class GameField extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		g.drawImage(img, 0, 0, null);
+		g.drawImage(img, 0, 0, this.getWidth() , this.getHeight() , null);
 
 	}
 

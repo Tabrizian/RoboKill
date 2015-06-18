@@ -94,10 +94,12 @@ public class Robot extends JComponent {
 						pos.decY();
 					}
 					if (s == 's') {
-						pos.incY((int) getToolkit().getScreenSize().getHeight());
+						//limited to size of Game frame
+						pos.incY(height*78/100);
 					}
 					if (s == 'd') {
-						pos.incX((int) getToolkit().getScreenSize().getWidth());
+						//limited to size of Game frame
+						pos.incX(width*59/100);
 					}
 					if (s == 'a') {
 						pos.decX();
