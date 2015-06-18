@@ -3,6 +3,7 @@ package game;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 import game.objects.Robot;
 
@@ -23,22 +24,15 @@ public class Game extends JFrame {
 	private JButton menu;
 	private JLabel cash;
 	private JLabel shield;
-	private int width = (int) getToolkit().getScreenSize().getWidth() ;
-	private int height = (int) getToolkit().getScreenSize().getHeight() ;
+	private int width = (int) getToolkit().getScreenSize().getWidth();
+	private int height = (int) getToolkit().getScreenSize().getHeight();
+
 	/**
 	 * Creates new Game with sample gamefield.
 	 */
 	public Game() {
 		super("RoboKill");
-
-		Timer timer = new Timer(15, new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				repaint();
-			}
-		});
-		timer.start();
-
+		
 		// Default gamefield.
 		field = new GameField();
 		setLayout(new BorderLayout());
@@ -54,8 +48,8 @@ public class Game extends JFrame {
 		setVisible(true);
 		// Exact size of game field.
 
-		setSize(width*59/100, height*78/100);
-		setLocation(width/4, height/9);
+		setSize(width * 59 / 100, height * 78 / 100);
+		setLocation(width / 4, height / 9);
 
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
