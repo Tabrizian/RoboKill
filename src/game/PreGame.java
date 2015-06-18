@@ -8,7 +8,7 @@ public class PreGame extends JFrame {
 	private JPanel profile;
 	
 	public PreGame(){
-		setLayout
+		
 	}
 	
 	private class MainPanel extends JPanel{
