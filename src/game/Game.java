@@ -31,12 +31,19 @@ public class Game extends JFrame {
 		field = new GameField();
 		setLayout(new BorderLayout());
 		
+		robot = new Robot();
+		field.add(robot);
+		
 		//TODO will be changed to null layout later.
 		add(field, BorderLayout.CENTER);
+		
+		setUndecorated(true);
 		
 		setVisible(true);
 		//Exact size of game field.
 		setSize(816, 639);
+		
+		
 		
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}

@@ -16,7 +16,7 @@ public class GameField extends JPanel {
 
 	public GameField() {
 		super();
-		
+		setLayout(null);
 	}
 
 	@Override
