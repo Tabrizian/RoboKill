@@ -141,6 +141,7 @@ public class Robot extends JComponent {
 			}
 		});
 
+
 	}
 
 	@Override
@@ -179,4 +180,5 @@ public class Robot extends JComponent {
 		g2d.drawImage(body, 0, 0, null);
 		g2d.setTransform(oldAT);
 	}
+	
 }

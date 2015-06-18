@@ -71,4 +71,8 @@ public class GameField extends JPanel {
 		g2d.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), null);
 
 	}
+	
+	public void update(Graphics g) {
+		paintComponent(g);
+	}
 }

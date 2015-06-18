@@ -32,7 +32,7 @@ public class Game extends JFrame {
 	 */
 	public Game() {
 		super("RoboKill");
-		
+
 		// Default gamefield.
 		field = new GameField();
 		setLayout(new BorderLayout());
