@@ -54,12 +54,16 @@ public class Robot extends JComponent {
 	 */
 	private Point mousePoint;
 
+	//Screen size
+	private int width = (int) getToolkit().getScreenSize().getWidth() ;
+	private int height = (int) getToolkit().getScreenSize().getHeight() ;
+	
 	public Robot() {
 		super();
 
 		// Because of null layout of GameField.
 		setLocation(0, 0);
-		setSize(80, 80);
+		setSize(width*59/100, height*78/100);
 
 		pos = new Position(0, 0);
 		// weapons = new ArrayList<Weapon>();
@@ -146,6 +150,8 @@ public class Robot extends JComponent {
 
 		g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
 				RenderingHints.VALUE_RENDER_QUALITY);
+
+		// g2d.drawImage(image, pos.getX() , pos.getY() , null);
 
 		int cx = image.getWidth() / 2;
 		int cy = image.getHeight() / 2;

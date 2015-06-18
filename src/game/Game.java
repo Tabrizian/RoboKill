@@ -23,7 +23,8 @@ public class Game extends JFrame {
 	private JButton menu;
 	private JLabel cash;
 	private JLabel shield;
-
+	private int width = (int) getToolkit().getScreenSize().getWidth() ;
+	private int height = (int) getToolkit().getScreenSize().getHeight() ;
 	/**
 	 * Creates new Game with sample gamefield.
 	 */
@@ -52,8 +53,8 @@ public class Game extends JFrame {
 
 		setVisible(true);
 		// Exact size of game field.
-		setSize(816, 639);
-
+		setSize(width*59/100, height*78/100);
+		setLocation(width/4, height/9);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 }
