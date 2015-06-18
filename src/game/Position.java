@@ -30,14 +30,14 @@ public class Position {
 	 */
 	public void decX() {
 		if (x > 4)
-			x -= 3;
+			x -= 2;
 	}
 
 	/**
 	 * Increase X position without condition
 	 */
 	public void incX() {
-		x += 3;
+		x += 2;
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class Position {
 	 */
 	public void incX(int limit) {
 		if (x < limit - 3)
-			x += 3;
+			x += 2;
 	}
 
 	/**
@@ -55,14 +55,14 @@ public class Position {
 	 */
 	public void decY() {
 		if (y > 3)
-			y -= 3;
+			y -= 2;
 	}
 
 	/**
 	 * Increase Y position without condition
 	 */
 	public void incY() {
-		y += 3;
+		y += 2;
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class Position {
 	 */
 	public void incY(int limit) {
 		if (y < limit - 3)
-			y += 3;
+			y += 2;
 	}
 
 	/**

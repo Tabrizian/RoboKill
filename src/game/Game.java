@@ -31,7 +31,7 @@ public class Game extends JFrame {
 	public Game() {
 		super("RoboKill");
 
-		Timer timer = new Timer(20, new ActionListener() {
+		Timer timer = new Timer(15, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				repaint();

@@ -108,6 +108,9 @@ public class Robot extends JComponent {
 					//Updates robot position.
 					setLocation(pos.getX(),pos.getY());
 					
+					double dx = mousePoint.getX() - pos.getX();
+					double dy = mousePoint.getY() - pos.getY();
+					imageAngleRad = Math.atan2(dy, dx) - Math.PI/2;
 				}
 			}
 
@@ -127,7 +130,7 @@ public class Robot extends JComponent {
 				mousePoint = e.getPoint();
 				double dx = e.getX() - pos.getX();
 				double dy = e.getY() - pos.getY();
-				imageAngleRad = Math.atan2(dy, dx);
+				imageAngleRad = Math.atan2(dy, dx) - Math.PI/2;
 
 			}
 
@@ -155,8 +158,6 @@ public class Robot extends JComponent {
 
 		g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
 				RenderingHints.VALUE_RENDER_QUALITY);
-
-		// g2d.drawImage(image, pos.getX() , pos.getY() , null);
 
 		int cx = image.getWidth() / 2;
 		int cy = image.getHeight() / 2;
