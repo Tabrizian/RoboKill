@@ -104,7 +104,10 @@ public class Robot extends JComponent {
 					if (s == 'a') {
 						pos.decX();
 					}
-
+					//Don't remove this line of code!!
+					//Updates robot position.
+					setLocation(pos.getX(),pos.getY());
+					
 				}
 			}
 
