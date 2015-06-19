@@ -30,7 +30,7 @@ public class Game extends JFrame {
 	private int height = (int) getToolkit().getScreenSize().getHeight();
 
 	/**
-	 * Creates new Game with sample gamefield.
+	 * Create new Game with sample gamefield.
 	 */
 	public Game() {
 		super("RoboKill");
