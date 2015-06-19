@@ -61,15 +61,16 @@ public class Robot extends JComponent {
 	public Robot() {
 		super();
 
+		//salam
 		// Because of null layout of GameField.
-		setLocation(0, 0);
-		setSize(50,50) ;
-		
-		pos = new Position(0, 0);
+		setLocation(70, 70);
+		setSize(50, 50);
+
+		pos = new Position(70, 70);
 		// weapons = new ArrayList<Weapon>();
 		health = 100;
-		mousePoint = new Point() ;
-		
+		mousePoint = new Point();
+
 		this.requestFocusInWindow();
 		this.setFocusable(true);
 
@@ -126,11 +127,13 @@ public class Robot extends JComponent {
 
 	@Override
 	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		
+		Graphics2D g2d = (Graphics2D) g;
+
+		super.paintComponent(g2d);
+
 		BufferedImage body = null;
 
-		Graphics2D g2d = (Graphics2D) g;
+		// Graphics2D g2d = (Graphics2D) g;
 		try {
 			body = ImageIO
 					.read(new File("src/game/images/robot/image 286.png"));
@@ -150,8 +153,8 @@ public class Robot extends JComponent {
 		g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
 				RenderingHints.VALUE_RENDER_QUALITY);
 
-		g2d.drawImage(leg, 0 , 0 , null);
-		
+		g2d.drawImage(leg, 0, 0, null);
+
 		// Rotate robot
 		int cx = body.getWidth() / 2;
 		int cy = body.getHeight() / 2;
@@ -162,28 +165,31 @@ public class Robot extends JComponent {
 		g2d.drawImage(body, 0, 0, null);
 		g2d.setTransform(oldAT);
 	}
-	
+
 	/**
-	 * set mouse point 
+	 * set mouse point
+	 * 
 	 * @param p
 	 */
-	public void setMousePoint( Point p ){
-		mousePoint = p ;
+	public void setMousePoint(Point p) {
+		mousePoint = p;
 	}
-	
+
 	/**
 	 * get robot position
+	 * 
 	 * @return
 	 */
-	public Position getPos(){
-		return pos ;
+	public Position getPos() {
+		return pos;
 	}
-	
+
 	/**
 	 * Set an angle for robot rotating
+	 * 
 	 * @param r
 	 */
-	public void setImageAngle( double r ){
-		imageAngleRad = r ;
+	public void setImageAngle(double r) {
+		imageAngleRad = r;
 	}
 }

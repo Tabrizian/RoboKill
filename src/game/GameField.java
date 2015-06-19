@@ -31,7 +31,7 @@ public class GameField extends JPanel {
 	public GameField() {
 		super();
 
-		Timer timer = new Timer(15, new ActionListener() {
+		Timer timer = new Timer( 15 , new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				repaint();
@@ -53,7 +53,8 @@ public class GameField extends JPanel {
 
 	@Override
 	protected void paintComponent(Graphics g) {
-
+		
+		
 		render(bufferedGraphics);
 
 		g.drawImage(bufferedScreen, 0, 0, this);
