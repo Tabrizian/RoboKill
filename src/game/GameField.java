@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -46,6 +48,7 @@ public class GameField extends JPanel {
 		bufferedGraphics = (Graphics2D) bufferedScreen.createGraphics();
 
 		setLayout(null);
+		
 	}
 
 	@Override
