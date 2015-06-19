@@ -63,7 +63,6 @@ public class Robot extends JComponent {
 
 		// Because of null layout of GameField.
 		setLocation(0, 0);
-	//	setSize(width * 59 / 100, height * 78 / 100);
 		setSize(50,50) ;
 		
 		pos = new Position(0, 0);
@@ -123,27 +122,6 @@ public class Robot extends JComponent {
 			}
 		});
 
-		// Add mouse motion listener
-		/*this.addMouseMotionListener(new MouseMotionListener() {
-
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				// TODO Auto-generated method stub
-				mousePoint = e.getPoint();
-				double dx = e.getX() - pos.getX();
-				double dy = e.getY() - pos.getY();
-				imageAngleRad = Math.atan2(dy, dx) - Math.PI / 2;
-
-			}
-
-			@Override
-			public void mouseDragged(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-*/
-
 	}
 
 	@Override
@@ -172,14 +150,12 @@ public class Robot extends JComponent {
 		g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
 				RenderingHints.VALUE_RENDER_QUALITY);
 
-		//g2d.drawImage(leg, pos.getX(), pos.getY(), null);
 		g2d.drawImage(leg, 0 , 0 , null);
 		
 		// Rotate robot
 		int cx = body.getWidth() / 2;
 		int cy = body.getHeight() / 2;
 		AffineTransform oldAT = g2d.getTransform();
-		//g2d.translate(cx + pos.getX(), cy + pos.getY());
 		g2d.translate(cx, cy);
 		g2d.rotate(imageAngleRad);
 		g2d.translate(-cx, -cy);
@@ -187,14 +163,26 @@ public class Robot extends JComponent {
 		g2d.setTransform(oldAT);
 	}
 	
+	/**
+	 * set mouse point 
+	 * @param p
+	 */
 	public void setMousePoint( Point p ){
 		mousePoint = p ;
 	}
 	
+	/**
+	 * get robot position
+	 * @return
+	 */
 	public Position getPos(){
 		return pos ;
 	}
 	
+	/**
+	 * Set an angle for robot rotating
+	 * @param r
+	 */
 	public void setImageAngle( double r ){
 		imageAngleRad = r ;
 	}

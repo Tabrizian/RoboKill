@@ -23,8 +23,8 @@ public class GameField extends JPanel {
 	// for double buffering
 	private BufferedImage bufferedScreen;
 	private Graphics2D bufferedGraphics;
-	
-	//Screen size
+
+	// Screen size
 	private int width = (int) getToolkit().getScreenSize().getWidth();
 	private int height = (int) getToolkit().getScreenSize().getHeight();
 
@@ -48,7 +48,7 @@ public class GameField extends JPanel {
 		bufferedGraphics = (Graphics2D) bufferedScreen.createGraphics();
 
 		setLayout(null);
-		
+
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class GameField extends JPanel {
 		g2d.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), null);
 
 	}
-	
+
 	public void update(Graphics g) {
 		paintComponent(g);
 	}

@@ -63,7 +63,7 @@ public class Game extends JFrame {
 
 			}
 		});
-		
+
 		setUndecorated(true);
 
 		setVisible(true);
