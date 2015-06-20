@@ -68,14 +68,14 @@ public class Weapon {
 	}
 	/**
 	 * Getter for image of weapon in inventory
-	 * @return
+	 * @return	Image address that is in inventory
 	 */
 	public String getImageInInventory(){
 		return imageInInventory ;
 	}
 	/**
 	 * Getter for image of weapon in game field
-	 * @return
+	 * @return	Image address that is in game field
 	 */
 	public String getImageInField(){
 		return imageInField ;
