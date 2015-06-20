@@ -122,6 +122,7 @@ public class Robot extends JComponent {
 				pressed.remove(event.getKeyChar());
 			}
 		});
+		
 
 	}
 

@@ -31,7 +31,7 @@ public class GameField extends JPanel {
 	public GameField() {
 		super();
 
-		Timer timer = new Timer( 15 , new ActionListener() {
+		Timer timer = new Timer( 50 , new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				repaint();
