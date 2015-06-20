@@ -10,19 +10,19 @@ public class Position {
 	/**
 	 * X Position
 	 */
-	private int x;
+	private float x;
 	/**
 	 * Y Position
 	 */
-	private int y;
+	private float y;
 
 	public Position() {
 
 	}
 
-	public Position(int x, int y) {
-		this.x = x;
-		this.y = y;
+	public Position(float xPos, float yPos) {
+		this.x = xPos;
+		this.y = yPos;
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class Position {
 	 * 
 	 * @return x
 	 */
-	public int getX() {
+	public float getX() {
 		return x;
 	}
 
@@ -89,7 +89,7 @@ public class Position {
 	 * 
 	 * @return Y
 	 */
-	public int getY() {
+	public float getY() {
 		return y;
 	}
 
@@ -98,7 +98,7 @@ public class Position {
 	 * 
 	 * @param x
 	 */
-	public void setX(int x) {
+	public void setX(float x) {
 		this.x = x;
 	}
 
@@ -107,7 +107,7 @@ public class Position {
 	 * 
 	 * @param y
 	 */
-	public void setY(int y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 }

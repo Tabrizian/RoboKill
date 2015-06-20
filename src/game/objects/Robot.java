@@ -7,12 +7,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -22,8 +18,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.imageio.ImageIO;
-import javax.swing.JComponent;
-import javax.swing.Timer;
+
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
 /**
  * This is a Robot!
@@ -31,7 +28,7 @@ import javax.swing.Timer;
  * @author mahdi
  *
  */
-public class Robot extends JComponent {
+public class Robot {
 
 	/**
 	 * Position of robot
@@ -54,116 +51,72 @@ public class Robot extends JComponent {
 	 */
 	private Point mousePoint;
 
+	private String imageOfBody;
+	private String imageOfLeg;
+
 	// Screen size
-	private int width = (int) getToolkit().getScreenSize().getWidth();
-	private int height = (int) getToolkit().getScreenSize().getHeight();
+	// private int width = (int) getToolkit().getScreenSize().getWidth();
+	// private int height = (int) getToolkit().getScreenSize().getHeight();
 
 	public Robot() {
 		super();
 
-		//salam
-		// Because of null layout of GameField.
-		setLocation(70, 70);
-		setSize(50, 50);
-
 		pos = new Position(70, 70);
 		// weapons = new ArrayList<Weapon>();
 		health = 100;
-		mousePoint = new Point();
 
-		this.requestFocusInWindow();
-		this.setFocusable(true);
+		imageOfBody = ("src/game/images/robot/image 286.png");
+		imageOfLeg = ("src/game/images/robot/image 123.png");
 
 		// Add multiple key listener
-		this.addKeyListener(new KeyListener() {
+		// this.addKeyListener(new KeyListener() {
+		//
+		// private final Set<Character> pressed = new HashSet<Character>();
+		//
+		// @Override
+		// public void keyTyped(KeyEvent arg0) {
+		// // TODO Auto-generated method stub
+		//
+		// }
 
-			private final Set<Character> pressed = new HashSet<Character>();
+		// @Override
+		// public synchronized void keyPressed(KeyEvent event) {
+		// // TODO Auto-generated method stub
+		// pressed.add(event.getKeyChar());
+		// java.util.Iterator<Character> iter = pressed.iterator();
+		// while (iter.hasNext()) {
+		// char s = iter.next();
+		// if (s == 'w') {
+		// pos.decY();
+		// }
+		// if (s == 's') {
+		// // limited to size of Game frame
+		// pos.incY(height * 78 / 100);
+		// }
+		// if (s == 'd') {
+		// // limited to size of Game frame
+		// pos.incX(width * 59 / 100);
+		// }
+		// if (s == 'a') {
+		// pos.decX();
+		// }
+		// // Don't remove this line of code!!
+		// // Updates robot position.
+		// setLocation(pos.getX(), pos.getY());
+		//
+		// double dx = mousePoint.getX() - pos.getX();
+		// double dy = mousePoint.getY() - pos.getY();
+		// imageAngleRad = Math.atan2(dy, dx) - Math.PI / 2;
+		// }
+		// }
+		//
+		// @Override
+		// public synchronized void keyReleased(KeyEvent event) {
+		// // TODO Auto-generated method stub
+		// pressed.remove(event.getKeyChar());
+		// }
+		// });
 
-			@Override
-			public void keyTyped(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public synchronized void keyPressed(KeyEvent event) {
-				// TODO Auto-generated method stub
-				pressed.add(event.getKeyChar());
-				java.util.Iterator<Character> iter = pressed.iterator();
-				while (iter.hasNext()) {
-					char s = iter.next();
-					if (s == 'w') {
-						pos.decY();
-					}
-					if (s == 's') {
-						// limited to size of Game frame
-						pos.incY(height * 78 / 100);
-					}
-					if (s == 'd') {
-						// limited to size of Game frame
-						pos.incX(width * 59 / 100);
-					}
-					if (s == 'a') {
-						pos.decX();
-					}
-					// Don't remove this line of code!!
-					// Updates robot position.
-					setLocation(pos.getX(), pos.getY());
-
-					double dx = mousePoint.getX() - pos.getX();
-					double dy = mousePoint.getY() - pos.getY();
-					imageAngleRad = Math.atan2(dy, dx) - Math.PI / 2;
-				}
-			}
-
-			@Override
-			public synchronized void keyReleased(KeyEvent event) {
-				// TODO Auto-generated method stub
-				pressed.remove(event.getKeyChar());
-			}
-		});
-
-	}
-
-	@Override
-	public void paintComponent(Graphics g) {
-		Graphics2D g2d = (Graphics2D) g;
-
-		super.paintComponent(g2d);
-
-		BufferedImage body = null;
-
-		// Graphics2D g2d = (Graphics2D) g;
-		try {
-			body = ImageIO
-					.read(new File("src/game/images/robot/image 286.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		BufferedImage leg = null;
-		try {
-			leg = ImageIO.read(new File("src/game/images/robot/image 123.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
-				RenderingHints.VALUE_RENDER_QUALITY);
-
-		g2d.drawImage(leg, 0, 0, null);
-
-		// Rotate robot
-		int cx = body.getWidth() / 2;
-		int cy = body.getHeight() / 2;
-		AffineTransform oldAT = g2d.getTransform();
-		g2d.translate(cx, cy);
-		g2d.rotate(imageAngleRad);
-		g2d.translate(-cx, -cy);
-		g2d.drawImage(body, 0, 0, null);
-		g2d.setTransform(oldAT);
 	}
 
 	/**
@@ -192,4 +145,17 @@ public class Robot extends JComponent {
 	public void setImageAngle(double r) {
 		imageAngleRad = r;
 	}
+
+	public String getImageOfBody() {
+		return imageOfBody;
+	}
+
+	public String getImageOfLeg() {
+		return imageOfLeg;
+	}
+	
+	public void setPos(Position pos){
+		this.pos = pos;
+	}
+
 }

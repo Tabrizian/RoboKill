@@ -7,10 +7,17 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class Game extends JFrame {
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
+
+public class Game extends BasicGameState {
 
 	/**
 	 * Current working gamefield.
@@ -22,52 +29,76 @@ public class Game extends JFrame {
 	private JButton menu;
 	private JLabel cash;
 	private JLabel shield;
-	private int width = (int) getToolkit().getScreenSize().getWidth();
-	private int height = (int) getToolkit().getScreenSize().getHeight();
+
+	private Image fieldImage;
+	private Image legOfRobot;
+	private Image headOfRobot;
+	private float current;
+
+	// private int width = (int) getToolkit().getScreenSize().getWidth();
+	// private int height = (int) getToolkit().getScreenSize().getHeight();
 
 	/**
 	 * Creates new Game with sample gamefield.
 	 */
 	public Game() {
-		super("RoboKill");
-
-		// Default gamefield.
-		field = new GameField();
-		setLayout(new BorderLayout());
-
 		robot = new Robot();
-		field.add(robot);
+		field = new GameField();
+	}
 
-		// TODO will be changed to null layout later.
-		add(field, BorderLayout.CENTER);
+	@Override
+	public void init(GameContainer arg0, StateBasedGame arg1)
+			throws SlickException {
+		fieldImage = new Image(field.getImage());
+		legOfRobot = new Image(robot.getImageOfLeg());
+		headOfRobot = new Image(robot.getImageOfBody());
+	}
 
-		this.addMouseMotionListener(new MouseMotionListener() {
+	@Override
+	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2)
+			throws SlickException {
 
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				// TODO Auto-generated method stub
-				robot.setMousePoint(e.getPoint());
-				double dx = e.getX() - robot.getPos().getX();
-				double dy = e.getY() - robot.getPos().getY();
-				robot.setImageAngle(Math.atan2(dy, dx) - Math.PI / 2);
+		fieldImage.draw(0, 0);
 
-			}
+		legOfRobot.draw(robot.getPos().getX(), robot.getPos().getY());
+		headOfRobot.setRotation(current);
+		headOfRobot.draw(robot.getPos().getX(), robot.getPos().getY());
 
-			@Override
-			public void mouseDragged(MouseEvent e) {
-				// TODO Auto-generated method stub
+	}
 
-			}
-		});
+	@Override
+	public void update(GameContainer gc, StateBasedGame arg1, int arg2)
+			throws SlickException {
 
-		setUndecorated(true);
+		float xPos = robot.getPos().getX();
+		float yPos = robot.getPos().getY();
 
-		setVisible(true);
-		// Exact size of game field.
+		Input input = gc.getInput();
+		if (input.isKeyDown(Input.KEY_UP)) {
+			yPos -= 0.25;
+		}
+		if (input.isKeyDown(Input.KEY_DOWN)) {
+			yPos += 0.25;
+		}
+		if (input.isKeyDown(Input.KEY_RIGHT)) {
+			xPos += 0.25;
+		}
+		if (input.isKeyDown(Input.KEY_LEFT)) {
+			xPos -= 0.25;
+		}
 
-		setSize(width * 59 / 100, height * 78 / 100);
-		setLocation(width / 4, height / 9);
+		robot.setPos(new Position(xPos, yPos));
 
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		double dx = input.getMouseX() - robot.getPos().getX();
+		double dy = input.getMouseY() - robot.getPos().getY();
+		current = (float) (Math.atan2(dy, dx) - Math.PI / 2);
+		current = (float) (current * 180 / Math.PI);
+
+	}
+
+	@Override
+	public int getID() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
