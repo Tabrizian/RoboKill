@@ -6,10 +6,10 @@ public class Weapon {
 	/**
 	 * Properties
 	 */
-	protected int power ;
-	protected int speed ;
-	protected int price ;
-	protected String name ;
+	protected int power;
+	protected int speed;
+	protected int price;
+	protected String name;
 	/**
 	 * Mouse Point
 	 */
@@ -19,65 +19,80 @@ public class Weapon {
 	 */
 	protected String imageInInventory;
 	protected String imageInField;
-	
-	public Weapon(){
-		
+
+	public Weapon() {
+
 	}
-	
+
 	/**
 	 * Getter for power
-	 * @return	power of weapon
+	 * 
+	 * @return power of weapon
 	 */
-	public int getPower(){
-		return power ;
+	public int getPower() {
+		return power;
 	}
+
 	/**
 	 * Getter for speed
-	 * @return	speed of weapon
+	 * 
+	 * @return speed of weapon
 	 */
-	public int getSpeed(){
-		return speed ;
+	public int getSpeed() {
+		return speed;
 	}
+
 	/**
 	 * Getter for price
-	 * @return	price of weapon
+	 * 
+	 * @return price of weapon
 	 */
-	public int getPrice(){
+	public int getPrice() {
 		return price;
 	}
+
 	/**
 	 * Getter for name
-	 * @return	name of weapon
+	 * 
+	 * @return name of weapon
 	 */
-	public String getName(){
-		return name ;
+	public String getName() {
+		return name;
 	}
+
 	/**
 	 * Setter for mouse point
+	 * 
 	 * @param p
 	 */
-	public void setMousePoint( Point p ){
-		mousePoint = p ;
+	public void setMousePoint(Point p) {
+		mousePoint = p;
 	}
+
 	/**
 	 * Getter for mouse point
-	 * @return	Mouse point
+	 * 
+	 * @return Mouse point
 	 */
-	public Point getMousePoint(){
-		return mousePoint ;
+	public Point getMousePoint() {
+		return mousePoint;
 	}
+
 	/**
 	 * Getter for image of weapon in inventory
-	 * @return	Image address that is in inventory
+	 * 
+	 * @return Image address that is in inventory
 	 */
-	public String getImageInInventory(){
-		return imageInInventory ;
+	public String getImageInInventory() {
+		return imageInInventory;
 	}
+
 	/**
 	 * Getter for image of weapon in game field
-	 * @return	Image address that is in game field
+	 * 
+	 * @return Image address that is in game field
 	 */
-	public String getImageInField(){
-		return imageInField ;
+	public String getImageInField() {
+		return imageInField;
 	}
 }

@@ -9,8 +9,8 @@ public class GameField {
 	private boolean isCleaned;
 	private boolean isActivate;
 	private String image;
-	private Image fieldImage ;
-	
+	private Image fieldImage;
+
 	public GameField() {
 
 		image = ("src/game/images/fields/image 187.png");
@@ -20,10 +20,11 @@ public class GameField {
 	public String getImage() {
 		return image;
 	}
+
 	/**
 	 * Loads image
 	 */
-	public void init(){
+	public void init() {
 		try {
 			fieldImage = new Image(this.getImage());
 		} catch (SlickException e) {
@@ -31,11 +32,12 @@ public class GameField {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * Draw image
 	 */
-	public void draw(){
-		fieldImage.draw(0,0);
+	public void draw() {
+		fieldImage.draw(0, 0);
 	}
 
 }

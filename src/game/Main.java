@@ -24,7 +24,7 @@ public class Main extends StateBasedGame {
 	}
 
 	public static void main(String[] args) {
-		
+
 		AppGameContainer appgc;
 		try {
 			appgc = new AppGameContainer(new Main());
@@ -35,6 +35,5 @@ public class Main extends StateBasedGame {
 			e.printStackTrace();
 		}
 	}
-	
 
 }

@@ -131,14 +131,16 @@ public class Robot {
 		imageOfBody.setRotation(imageAngleRad);
 		imageOfBody.draw(this.getPos().getX(), this.getPos().getY());
 	}
+
 	/**
 	 * Updates robot state in GameContainer gc
+	 * 
 	 * @param gc
 	 */
-	public void update(GameContainer gc){
+	public void update(GameContainer gc) {
 		float xPos = this.getPos().getX();
 		float yPos = this.getPos().getY();
-		
+
 		Input input = gc.getInput();
 		if (input.isKeyDown(Input.KEY_UP)) {
 			yPos -= 0.25;
@@ -152,9 +154,9 @@ public class Robot {
 		if (input.isKeyDown(Input.KEY_LEFT)) {
 			xPos -= 0.25;
 		}
-		
+
 		this.setPos(new Position(xPos, yPos));
-		
+
 		double dx = input.getMouseX() - this.getPos().getX();
 		double dy = input.getMouseY() - this.getPos().getY();
 		imageAngleRad = (float) (Math.atan2(dy, dx) - Math.PI / 2);

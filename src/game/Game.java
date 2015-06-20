@@ -1,6 +1,5 @@
 package game;
 
-
 import game.objects.Robot;
 
 import java.awt.BorderLayout;
@@ -42,7 +41,7 @@ public class Game extends BasicGameState {
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1)
 			throws SlickException {
-		field.init();	
+		field.init();
 		robot.init();
 	}
 

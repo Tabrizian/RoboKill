@@ -1,4 +1,5 @@
-package game ;
+package game;
+
 /**
  * This is position class that contain position of component in a frame
  * 
