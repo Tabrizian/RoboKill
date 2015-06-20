@@ -103,7 +103,7 @@ public class Robot {
 	}
 
 	/**
-	 * Load image of robot
+	 * Loads image of robot
 	 */
 	public void init() {
 		try {
