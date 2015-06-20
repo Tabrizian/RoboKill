@@ -12,5 +12,6 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="robokill/lib/native/windows"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib/jars/commons-io-2.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
