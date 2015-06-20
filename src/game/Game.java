@@ -32,8 +32,6 @@ public class Game extends BasicGameState {
 	private JLabel shield;
 
 	private Image fieldImage;
-	private Image legOfRobot;
-	private Image headOfRobot;
 	private float current;
 
 	// private int width = (int) getToolkit().getScreenSize().getWidth();
@@ -50,9 +48,8 @@ public class Game extends BasicGameState {
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1)
 			throws SlickException {
-		fieldImage = new Image(field.getImage());
-		legOfRobot = new Image(robot.getImageOfLeg());
-		headOfRobot = new Image(robot.getImageOfBody());
+		fieldImage = new Image(field.getImage());		
+		robot.init() ;
 	}
 
 	@Override
@@ -60,10 +57,7 @@ public class Game extends BasicGameState {
 			throws SlickException {
 
 		fieldImage.draw(0, 0);
-
-		legOfRobot.draw(robot.getPos().getX(), robot.getPos().getY());
-		headOfRobot.setRotation(current);
-		headOfRobot.draw(robot.getPos().getX(), robot.getPos().getY());
+		robot.draw() ;
 
 	}
 
@@ -71,29 +65,7 @@ public class Game extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame arg1, int arg2)
 			throws SlickException {
 
-		float xPos = robot.getPos().getX();
-		float yPos = robot.getPos().getY();
-
-		Input input = gc.getInput();
-		if (input.isKeyDown(Input.KEY_UP)) {
-			yPos -= 0.25;
-		}
-		if (input.isKeyDown(Input.KEY_DOWN)) {
-			yPos += 0.25;
-		}
-		if (input.isKeyDown(Input.KEY_RIGHT)) {
-			xPos += 0.25;
-		}
-		if (input.isKeyDown(Input.KEY_LEFT)) {
-			xPos -= 0.25;
-		}
-
-		robot.setPos(new Position(xPos, yPos));
-
-		double dx = input.getMouseX() - robot.getPos().getX();
-		double dy = input.getMouseY() - robot.getPos().getY();
-		current = (float) (Math.atan2(dy, dx) - Math.PI / 2);
-		current = (float) (current * 180 / Math.PI);
+		robot.update(gc);
 
 	}
 
