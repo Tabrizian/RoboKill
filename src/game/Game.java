@@ -31,12 +31,6 @@ public class Game extends BasicGameState {
 	private JLabel cash;
 	private JLabel shield;
 
-	private Image fieldImage;
-	private float current;
-
-	// private int width = (int) getToolkit().getScreenSize().getWidth();
-	// private int height = (int) getToolkit().getScreenSize().getHeight();
-
 	/**
 	 * Creates new Game with sample gamefield.
 	 */
@@ -48,16 +42,16 @@ public class Game extends BasicGameState {
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1)
 			throws SlickException {
-		fieldImage = new Image(field.getImage());		
-		robot.init() ;
+		field.init();	
+		robot.init();
 	}
 
 	@Override
 	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2)
 			throws SlickException {
 
-		fieldImage.draw(0, 0);
-		robot.draw() ;
+		field.draw();
+		robot.draw();
 
 	}
 
