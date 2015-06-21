@@ -1,6 +1,7 @@
 package game.objects.weapons;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
 public class Weapon {
 	/**
@@ -20,6 +21,8 @@ public class Weapon {
 	protected String imageInInventory;
 	protected String imageInField;
 
+	protected ArrayList<Missile> missiles;
+	
 	public Weapon() {
 
 	}

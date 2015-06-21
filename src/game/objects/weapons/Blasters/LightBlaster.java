@@ -1,4 +1,4 @@
-package game.objects.weapons;
+package game.objects.weapons.Blasters;
 
 public class LightBlaster extends Blaster {
 
