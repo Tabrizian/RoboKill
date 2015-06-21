@@ -27,7 +27,7 @@ public class HeavyBlaster extends Blaster {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
+	
 	public void init() {
 		// TODO Auto-generated method stub
 		

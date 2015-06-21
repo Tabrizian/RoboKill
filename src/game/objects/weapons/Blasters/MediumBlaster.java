@@ -31,7 +31,7 @@ public class MediumBlaster extends Blaster {
 		
 	}
 
-	@Override
+	
 	public void init() {
 		// TODO Auto-generated method stub
 		

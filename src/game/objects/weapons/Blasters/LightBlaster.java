@@ -2,7 +2,6 @@ package game.objects.weapons.Blasters;
 
 import game.Position;
 import game.objects.weapons.BlasterMissile;
-import game.objects.weapons.Missile;
 
 import java.util.ArrayList;
 
@@ -17,6 +16,9 @@ public class LightBlaster extends Blaster {
 	
 	private ArrayList<BlasterMissile> missiles ;
 	
+	private Image imageInInventory;
+	private Image imageInField;
+	
 	public LightBlaster() {
 		super();
 
@@ -30,7 +32,7 @@ public class LightBlaster extends Blaster {
 		imageInFieldAddress = ("src/game/images/weapons/image 403.png") ;
 		imageInInventoryAddress = ("src/game/images/weapons/image 385.png") ;
 		
-		//init() ;
+		//this.init() ;
 	}
 
 	@Override
@@ -72,18 +74,17 @@ public class LightBlaster extends Blaster {
 	/**
 	 * Loads image
 	 */
-	@Override
 	public void init() {
 		// TODO Auto-generated method stub
 		try {
-			imageInField = new Image(this.getImageInFieldAddress()) ;
+			imageInField = new Image("src/game/images/weapons/image 403.png") ;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		try {
-			imageInInventory = new Image(this.getImageInInventoryAddress()) ;
+			imageInInventory = new Image("src/game/images/weapons/image 385.png") ;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

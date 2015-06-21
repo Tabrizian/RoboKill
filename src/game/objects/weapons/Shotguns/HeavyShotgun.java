@@ -18,7 +18,7 @@ public class HeavyShotgun extends Shotgun {
 		
 	}
 
-	@Override
+	
 	public void init() {
 		// TODO Auto-generated method stub
 		
