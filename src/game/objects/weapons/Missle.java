@@ -21,7 +21,7 @@ public class Missle {
 	}
 
 	/**
-	 * Initialize missle
+	 * Initialize missile
 	 */
 	public void init() {
 		try {
@@ -37,12 +37,12 @@ public class Missle {
 	}
 
 	/**
-	 * Updates position of missle.
+	 * Updates position of missile.
 	 * @param gc
 	 */
 	public void update(GameContainer gc){
-		pos.setX(pos.getX() + (float) Math.cos(angle));
-		pos.setY(pos.getY() + (float) Math.sin(angle));
+		pos.setX(pos.getX() + (float) Math.sin(-Math.toRadians(angle)));
+		pos.setY(pos.getY() + (float) Math.cos(-Math.toRadians(angle)));
 	}
 	
 	public Position getPos(){
