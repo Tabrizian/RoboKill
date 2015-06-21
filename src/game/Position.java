@@ -17,8 +17,9 @@ public class Position {
 	 */
 	private float y;
 
-	public Position() {
-
+	public Position(Position pos) {
+		x = pos.getX();
+		y = pos.getY();
 	}
 
 	public Position(float xPos, float yPos) {

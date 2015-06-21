@@ -29,6 +29,7 @@ public class Main extends StateBasedGame {
 		try {
 			appgc = new AppGameContainer(new Main());
 			appgc.setDisplayMode(800, 600, false);
+			appgc.setShowFPS(false);
 			appgc.start();
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
