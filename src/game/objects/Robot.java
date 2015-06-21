@@ -52,8 +52,8 @@ public class Robot {
 	private Image imageOfBody;
 	private Image imageOfLeg;
 
-	//Controls rendering for missiles
-	private long renderControler = 0 ;
+	// Controls rendering for missiles
+	private long renderControler = 0;
 
 	public Robot() {
 		super();
@@ -151,16 +151,16 @@ public class Robot {
 		float yPos = this.getPos().getY();
 
 		Input input = gc.getInput();
-		if (input.isKeyDown(Input.KEY_UP)) {
+		if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(input.KEY_W)) {
 			yPos -= 0.25;
 		}
-		if (input.isKeyDown(Input.KEY_DOWN)) {
+		if (input.isKeyDown(Input.KEY_DOWN) || input.isKeyDown(input.KEY_S)) {
 			yPos += 0.25;
 		}
-		if (input.isKeyDown(Input.KEY_RIGHT)) {
+		if (input.isKeyDown(Input.KEY_RIGHT) || input.isKeyDown(input.KEY_D)) {
 			xPos += 0.25;
 		}
-		if (input.isKeyDown(Input.KEY_LEFT)) {
+		if (input.isKeyDown(Input.KEY_LEFT) || input.isKeyDown(input.KEY_A)) {
 			xPos -= 0.25;
 		}
 
@@ -172,10 +172,9 @@ public class Robot {
 
 		imageAngleDeg = (float) (imageAngleRad * 180 / Math.PI);
 
-		
 		if (input.isMouseButtonDown(0)) {
 			renderControler++;
-			if (renderControler == 150) {
+			if (renderControler == 110) {
 				renderControler = 0;
 				fire();
 			}
