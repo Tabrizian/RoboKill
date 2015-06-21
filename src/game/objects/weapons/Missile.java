@@ -6,22 +6,22 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-public class Missle {
+public class Missile {
 	private Position pos;
 	private Image img;
 	/**
-	 * Angle at which missle is shooted.
+	 * Angle at which missile is shooted.
 	 */
 	private float angle;
 
-	public Missle(float angle,Position pos) {
+	public Missile(float angle,Position pos) {
 		this.angle = angle;
 		this.pos = new Position(pos);
 		init();
 	}
 
 	/**
-	 * Initialize missle
+	 * Initialize missile
 	 */
 	public void init() {
 		try {
@@ -37,7 +37,7 @@ public class Missle {
 	}
 
 	/**
-	 * Updates position of missle.
+	 * Updates position of missile.
 	 * @param gc
 	 */
 	public void update(GameContainer gc){
