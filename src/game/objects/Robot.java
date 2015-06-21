@@ -52,15 +52,12 @@ public class Robot {
 	private Image imageOfBody;
 	private Image imageOfLeg;
 
-	// Controls rendering for missiles
-	private long renderControler = 0;
-
 	public Robot() {
 		super();
 
 		missiles = new ArrayList<Missile>();
 		pos = new Position(70, 70);
-		// weapons = new ArrayList<Weapon>();
+		weapons = new ArrayList<Weapon>();
 		health = 100;
 
 		imageOfBodyAddress = ("src/game/images/robot/image 286.png");
@@ -135,10 +132,11 @@ public class Robot {
 		imageOfLeg.draw(this.getPos().getX(), this.getPos().getY());
 		imageOfBody.setRotation(imageAngleDeg);
 		imageOfBody.draw(this.getPos().getX(), this.getPos().getY());
-		for (Missile missile2 : missiles) {
-			if (missile2 != null)
-				missile2.draw();
+		
+		for( Weapon gun : weapons ){
+			gun.draw() ;
 		}
+		
 	}
 
 	/**
@@ -172,31 +170,32 @@ public class Robot {
 
 		imageAngleDeg = (float) (imageAngleRad * 180 / Math.PI);
 
-		if (input.isMouseButtonDown(0)) {
-			renderControler++;
-			if (renderControler == 110) {
-				renderControler = 0;
+		if (input.isMouseButtonDown(0))
 				fire();
-			}
+		
+		for( Weapon gun : weapons ){
+			gun.update(gc) ;
 		}
 
-		for (int i = 0; i < missiles.size(); i++) {
-			Missile missile2 = missiles.get(i);
-			if (missile2.getPos().getX() < 800 && missile2.getPos().getX() > 0
-					&& missile2.getPos().getY() > 0
-					&& missile2.getPos().getY() < 600) {
-				missile2.update(gc);
-			} else {
-				missiles.remove(i);
-			}
-		}
 	}
 
 	/**
 	 * Fires missiles
 	 */
 	public void fire() {
-		missiles.add(new Missile((float) (imageAngleRad + Math.PI / 2), pos));
-
+		
+		for ( Weapon gun : weapons ){
+			gun.shot( imageAngleRad , pos );
+		}
+	}
+	/**
+	 * Add a gun to robot
+	 * @param gun
+	 */
+	public void addGun( Weapon gun ){
+		weapons.add(gun) ;
+	}
+	
+	public void remGun(){
 	}
 }

@@ -1,5 +1,9 @@
 package game.objects.weapons.Blasters;
 
+import game.Position;
+
+import org.newdawn.slick.GameContainer;
+
 public class HeavyBlaster extends Blaster {
 
 	public HeavyBlaster(){
@@ -8,8 +12,23 @@ public class HeavyBlaster extends Blaster {
 		power = 3 ;
 		price = 3500 ;
 	}
+	
+	public void shot(float angleRad, Position pos) {
+		// TODO Auto-generated method stub
+		
+	}
 	@Override
-	public void shot() {
+	public void update(GameContainer gc) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void init() {
 		// TODO Auto-generated method stub
 		
 	}
