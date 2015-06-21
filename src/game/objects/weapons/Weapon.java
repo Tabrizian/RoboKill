@@ -7,7 +7,7 @@ public class Weapon {
 	 * Properties
 	 */
 	protected int power;
-	protected int speed;
+	protected float speed;
 	protected int price;
 	protected String name;
 	/**
@@ -38,7 +38,7 @@ public class Weapon {
 	 * 
 	 * @return speed of weapon
 	 */
-	public int getSpeed() {
+	public float getSpeed() {
 		return speed;
 	}
 
@@ -95,4 +95,5 @@ public class Weapon {
 	public String getImageInField() {
 		return imageInField;
 	}
+	
 }
