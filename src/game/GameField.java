@@ -13,7 +13,7 @@ public class GameField {
 
 	public GameField() {
 
-		image = ("src/game/images/fields/image 187.png");
+		image = ("pics/fields/image 187.png");
 
 	}
 

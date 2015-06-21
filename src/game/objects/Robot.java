@@ -6,6 +6,7 @@ import game.objects.weapons.Weapon;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
@@ -44,6 +45,7 @@ public class Robot {
 	/**
 	 * ArrayList of current missiles.
 	 */
+
 	private ArrayList<Missile> missiles;
 
 	private String imageOfBodyAddress;
@@ -56,12 +58,13 @@ public class Robot {
 		super();
 
 		missiles = new ArrayList<Missile>();
+
 		pos = new Position(70, 70);
 		weapons = new ArrayList<Weapon>();
 		health = 100;
 
-		imageOfBodyAddress = ("src/game/images/robot/image 286.png");
-		imageOfLegAddress = ("src/game/images/robot/image 123.png");
+		imageOfBodyAddress = ("pics/robot/image 286.png");
+		imageOfLegAddress = ("pics/robot/image 123.png");
 
 	}
 
@@ -132,9 +135,11 @@ public class Robot {
 		imageOfLeg.draw(this.getPos().getX(), this.getPos().getY());
 		imageOfBody.setRotation(imageAngleDeg);
 		imageOfBody.draw(this.getPos().getX(), this.getPos().getY());
+
 		
 		for( Weapon gun : weapons ){
 			gun.draw() ;
+
 		}
 		
 	}

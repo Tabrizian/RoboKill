@@ -29,8 +29,8 @@ public class LightBlaster extends Blaster {
 
 		missiles = new ArrayList<BlasterMissile>();
 		
-		imageInFieldAddress = ("src/game/images/weapons/image 403.png") ;
-		imageInInventoryAddress = ("src/game/images/weapons/image 385.png") ;
+		imageInFieldAddress = ("pics/weapons/image 403.png") ;
+		imageInInventoryAddress = ("pics/weapons/image 385.png") ;
 		
 		//this.init() ;
 	}

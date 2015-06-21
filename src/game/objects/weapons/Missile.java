@@ -36,6 +36,8 @@ public abstract class Missile {
 	 * 
 	 * @param gc
 	 */
+
 	public abstract void update(GameContainer gc);
+
 
 }

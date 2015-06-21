@@ -13,8 +13,8 @@ public class Main extends StateBasedGame {
 
 	public Main() {
 		super(gameName);
-		addState(new Game());
 		addState(new PreGame());
+		addState(new Game());
 	}
 
 	@Override
