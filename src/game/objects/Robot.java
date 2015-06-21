@@ -37,6 +37,7 @@ public class Robot {
 	 * Robot angle
 	 */
 	private float imageAngleRad = 0;
+	private float imageAngleDeg = 0 ;
 	/**
 	 * mouse point
 	 */
@@ -134,7 +135,7 @@ public class Robot {
 	 */
 	public void draw() {
 		imageOfLeg.draw(this.getPos().getX(), this.getPos().getY());
-		imageOfBody.setRotation(imageAngleRad);
+		imageOfBody.setRotation(imageAngleDeg);
 		imageOfBody.draw(this.getPos().getX(), this.getPos().getY());
 		for (Missle missle2 : missles) {
 			if (missle2 != null)
@@ -171,7 +172,7 @@ public class Robot {
 		double dy = input.getMouseY() - this.getPos().getY();
 		imageAngleRad = (float) (Math.atan2(dy, dx) - Math.PI / 2);
 
-		imageAngleRad = (float) (imageAngleRad * 180 / Math.PI);
+		imageAngleDeg = (float) (imageAngleRad * 180 / Math.PI);
 
 		if (input.isMousePressed(0)) {
 			fire();
@@ -193,7 +194,7 @@ public class Robot {
 	 * Fires missles
 	 */
 	public void fire() {
-		missles.add(new Missle(imageAngleRad, pos));
+		missles.add(new Missle((float) (imageAngleRad + Math.PI / 2), pos));
 
 	}
 }
