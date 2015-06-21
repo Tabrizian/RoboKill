@@ -48,7 +48,6 @@ public class Robot {
 
 	private ArrayList<Missile> missiles;
 
-
 	private String imageOfBodyAddress;
 	private String imageOfLegAddress;
 
@@ -60,7 +59,6 @@ public class Robot {
 
 	public Robot() {
 		super();
-
 
 		missiles = new ArrayList<Missile>();
 
@@ -176,7 +174,6 @@ public class Robot {
 		double dx = input.getMouseX() - this.getPos().getX();
 		double dy = input.getMouseY() - this.getPos().getY();
 		imageAngleRad = (float) (Math.atan2(dy, dx) - Math.PI / 2);
-
 
 		imageAngleDeg = (float) (imageAngleRad * 180 / Math.PI);
 
