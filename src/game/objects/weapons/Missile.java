@@ -6,50 +6,38 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-public class Missile {
-	private Position pos;
-	private Image img;
+public abstract class Missile {
+	protected Position pos;
+	protected Image img;
 	/**
 	 * Angle at which missile is shooted.
 	 */
-	private float angle;
+	protected float angle;
 
-	public Missile(float angle,Position pos) {
+	public Missile(float angle, Position pos) {
 		this.angle = angle;
 		this.pos = new Position(pos);
 		init();
 	}
 
+	public Position getPos() {
+		return pos;
+	}
+
 	/**
 	 * Initialize missile
 	 */
-	public void init() {
-		try {
-			img = new Image("src/game/images/fires/image 233.png");
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	public abstract void init();
 
-	public void draw() {
-		img.setRotation((float) (angle*180/Math.PI - 90 ));
-		img.draw(pos.getX(), pos.getY());
-		
-	}
+	public abstract void draw();
 
 	/**
 	 * Updates position of missile.
+	 * 
 	 * @param gc
 	 */
-	public void update(GameContainer gc){
-		pos.setX(pos.getX() + (float) Math.sin(-Math.toRadians(angle)));
-		pos.setY(pos.getY() + (float) Math.cos(-Math.toRadians(angle)));
-		img.setRotation(angle);
-	}
-	
-	public Position getPos(){
-		return pos;
-	}
+
+	public abstract void update(GameContainer gc);
+
 
 }
