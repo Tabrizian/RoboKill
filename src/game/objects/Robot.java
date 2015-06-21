@@ -1,7 +1,7 @@
 package game.objects;
 
 import game.Position;
-import game.objects.weapons.Missle;
+import game.objects.weapons.Missile;
 import game.objects.weapons.Weapon;
 
 import java.awt.Point;
@@ -37,14 +37,17 @@ public class Robot {
 	 * Robot angle
 	 */
 	private float imageAngleRad = 0;
+	private float imageAngleDeg = 0;
 	/**
 	 * mouse point
 	 */
 	private Point mousePoint;
 	/**
-	 * ArrayList of current missles.
+	 * ArrayList of current missiles.
 	 */
-	private ArrayList<Missle> missiles;
+
+	private ArrayList<Missile> missiles;
+
 
 	private String imageOfBodyAddress;
 	private String imageOfLegAddress;
@@ -52,14 +55,15 @@ public class Robot {
 	private Image imageOfBody;
 	private Image imageOfLeg;
 
-	// Screen size
-	// private int width = (int) getToolkit().getScreenSize().getWidth();
-	// private int height = (int) getToolkit().getScreenSize().getHeight();
+	//Controls rendering for missiles
+	private long renderControler = 0 ;
 
 	public Robot() {
 		super();
 
-		missiles = new ArrayList<Missle>();
+
+		missiles = new ArrayList<Missile>();
+
 		pos = new Position(70, 70);
 		// weapons = new ArrayList<Weapon>();
 		health = 100;
@@ -134,12 +138,13 @@ public class Robot {
 	 */
 	public void draw() {
 		imageOfLeg.draw(this.getPos().getX(), this.getPos().getY());
-		imageOfBody.setRotation(imageAngleRad);
+		imageOfBody.setRotation(imageAngleDeg);
 		imageOfBody.draw(this.getPos().getX(), this.getPos().getY());
-		for (Missle missle2 : missiles) {
-			//For caution
-			if (missle2 != null)
-				missle2.draw();
+
+		for (Missile missile2 : missiles) {
+			if (missile2 != null)
+				missile2.draw();
+
 		}
 	}
 
@@ -172,19 +177,25 @@ public class Robot {
 		double dy = input.getMouseY() - this.getPos().getY();
 		imageAngleRad = (float) (Math.atan2(dy, dx) - Math.PI / 2);
 
-		imageAngleRad = (float) (imageAngleRad * 180 / Math.PI);
 
-		if (input.isMousePressed(0)) {
-			fire();
+		imageAngleDeg = (float) (imageAngleRad * 180 / Math.PI);
+
+		
+		if (input.isMouseButtonDown(0)) {
+			renderControler++;
+			if (renderControler == 150) {
+				renderControler = 0;
+				fire();
+			}
 		}
 
-		//Removing missiles outside the page.
 		for (int i = 0; i < missiles.size(); i++) {
-			Missle missle2 = missiles.get(i);
-			if (missle2.getPos().getX() < 800 && missle2.getPos().getX() > 0
-					&& missle2.getPos().getY() > 0
-					&& missle2.getPos().getY() < 600) {
-				missle2.update(gc);
+			Missile missile2 = missiles.get(i);
+			if (missile2.getPos().getX() < 800 && missile2.getPos().getX() > 0
+					&& missile2.getPos().getY() > 0
+					&& missile2.getPos().getY() < 600) {
+				missile2.update(gc);
+
 			} else {
 				missiles.remove(i);
 			}
@@ -192,10 +203,10 @@ public class Robot {
 	}
 
 	/**
-	 * Fires missles
+	 * Fires missiles
 	 */
 	public void fire() {
-		missiles.add(new Missle(imageAngleRad, pos));
+		missiles.add(new Missile((float) (imageAngleRad + Math.PI / 2), pos));
 
 	}
 }

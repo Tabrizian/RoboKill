@@ -6,15 +6,15 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-public class Missle {
+public class Missile {
 	private Position pos;
 	private Image img;
 	/**
-	 * Angle at which missle is shooted.
+	 * Angle at which missile is shooted.
 	 */
 	private float angle;
 
-	public Missle(float angle,Position pos) {
+	public Missile(float angle,Position pos) {
 		this.angle = angle;
 		this.pos = new Position(pos);
 		init();
@@ -33,7 +33,9 @@ public class Missle {
 	}
 
 	public void draw() {
+		img.setRotation((float) (angle*180/Math.PI - 90 ));
 		img.draw(pos.getX(), pos.getY());
+		
 	}
 
 	/**
