@@ -1,9 +1,13 @@
 package game.objects.weapons;
 
-import java.awt.Point;
-import java.util.ArrayList;
+import game.Position;
 
-public class Weapon {
+import java.awt.Point;
+
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Image;
+
+public abstract class Weapon {
 	/**
 	 * Properties
 	 */
@@ -18,13 +22,14 @@ public class Weapon {
 	/**
 	 * Image of weapon
 	 */
-	protected String imageInInventory;
-	protected String imageInField;
-
-	protected ArrayList<Missile> missiles;
+	protected Image imageInInventory;
+	protected Image imageInField;
+	
+	protected String imageInInventoryAddress ;
+	protected String imageInFieldAddress ;
 	
 	public Weapon() {
-
+		
 	}
 
 	/**
@@ -86,8 +91,8 @@ public class Weapon {
 	 * 
 	 * @return Image address that is in inventory
 	 */
-	public String getImageInInventory() {
-		return imageInInventory;
+	public String getImageInInventoryAddress() {
+		return imageInInventoryAddress;
 	}
 
 	/**
@@ -95,8 +100,12 @@ public class Weapon {
 	 * 
 	 * @return Image address that is in game field
 	 */
-	public String getImageInField() {
-		return imageInField;
+	public String getImageInFieldAddress() {
+		return imageInFieldAddress;
 	}
 	
+	public abstract void shot(float angleRad , Position pos ) ;
+	public abstract void init() ;
+	public abstract void update(GameContainer gc);
+	public abstract void draw() ;
 }

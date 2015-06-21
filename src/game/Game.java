@@ -1,6 +1,7 @@
 package game;
 
 import game.objects.Robot;
+import game.objects.weapons.Blasters.LightBlaster;
 
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
@@ -35,6 +36,7 @@ public class Game extends BasicGameState {
 	 */
 	public Game() {
 		robot = new Robot();
+		robot.addGun(new LightBlaster());
 		field = new GameField();
 	}
 
