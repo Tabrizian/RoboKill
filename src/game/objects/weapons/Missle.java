@@ -43,6 +43,7 @@ public class Missle {
 	public void update(GameContainer gc){
 		pos.setX(pos.getX() + (float) Math.sin(-Math.toRadians(angle)));
 		pos.setY(pos.getY() + (float) Math.cos(-Math.toRadians(angle)));
+		img.setRotation(angle);
 	}
 	
 	public Position getPos(){
