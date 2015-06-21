@@ -175,7 +175,7 @@ public class Robot {
 		
 		if (input.isMouseButtonDown(0)) {
 			renderControler++;
-			if (renderControler == 99) {
+			if (renderControler == 150) {
 				renderControler = 0;
 				fire();
 			}

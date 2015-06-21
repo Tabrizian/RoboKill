@@ -33,7 +33,9 @@ public class Missile {
 	}
 
 	public void draw() {
+		img.setRotation((float) (angle*180/Math.PI - 90 ));
 		img.draw(pos.getX(), pos.getY());
+		
 	}
 
 	/**
