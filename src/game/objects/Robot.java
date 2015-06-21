@@ -6,6 +6,7 @@ import game.objects.weapons.Weapon;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
@@ -43,7 +44,7 @@ public class Robot {
 	/**
 	 * ArrayList of current missles.
 	 */
-	private  ArrayList<Missle> missles;
+	private ArrayList<Missle> missles;
 
 	private String imageOfBodyAddress;
 	private String imageOfLegAddress;
@@ -123,7 +124,6 @@ public class Robot {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
 	}
 
@@ -137,7 +137,8 @@ public class Robot {
 		imageOfBody.setRotation(imageAngleRad);
 		imageOfBody.draw(this.getPos().getX(), this.getPos().getY());
 		for (Missle missle2 : missles) {
-			missle2.draw();
+			if (missle2 != null)
+				missle2.draw();
 		}
 	}
 
@@ -169,23 +170,30 @@ public class Robot {
 		double dx = input.getMouseX() - this.getPos().getX();
 		double dy = input.getMouseY() - this.getPos().getY();
 		imageAngleRad = (float) (Math.atan2(dy, dx) - Math.PI / 2);
-		
+
 		imageAngleRad = (float) (imageAngleRad * 180 / Math.PI);
-		
-		if(input.isMousePressed(0)){
+
+		if (input.isMousePressed(0)) {
 			fire();
 		}
-		
-		for (Missle missle2 : missles) {
-			missle2.update(gc);
+
+		for (int i = 0; i < missles.size(); i++) {
+			Missle missle2 = missles.get(i);
+			if (missle2.getPos().getX() < 800 && missle2.getPos().getX() > 0
+					&& missle2.getPos().getY() > 0
+					&& missle2.getPos().getY() < 600) {
+				missle2.update(gc);
+			} else {
+				missles.remove(i);
+			}
 		}
 	}
-	
+
 	/**
-	 * Fires missles 
+	 * Fires missles
 	 */
-	public void fire(){
+	public void fire() {
 		missles.add(new Missle(imageAngleRad, pos));
-	
+
 	}
 }
