@@ -63,7 +63,7 @@ public class Robot {
 		weapons = new ArrayList<Weapon>();
 		health = 100;
 
-		imageOfBodyAddress = ("pics/robot/image 286.png");
+		imageOfBodyAddress = ("pics/robot/image 1111.png");
 		imageOfLegAddress = ("pics/robot/image 123.png");
 
 	}

@@ -61,10 +61,10 @@ public class LightBlaster extends Blaster {
 	@Override
 	public void draw(Position pos , int robotWidth , int robotHeight , float angle) {
 		// TODO Auto-generated method stub
-		imageInField.setCenterOfRotation(pos.getY(), pos.getX());
+		/*imageInField.setCenterOfRotation(robotWidth*40/100, robotHeight*35/100);
 		imageInField.setRotation(angle);
-		imageInField.draw(pos.getX() , pos.getY() + robotHeight/2);
-		
+		imageInField.draw(pos.getX()+imageInField.getWidth()/2 , pos.getY() + imageInField.getHeight()*60/100);
+		*/
 		for (BlasterMissile missile2 : missiles) {
 			if (missile2 != null)
 				missile2.draw();
