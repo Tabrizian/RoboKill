@@ -1,7 +1,7 @@
 package game.objects.weapons;
 
 import game.Position;
-import game.objects.AddOnes;
+import game.objects.AddOne;
 import game.objects.Robot;
 
 import java.awt.Point;
@@ -9,7 +9,7 @@ import java.awt.Point;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 
-public abstract class Weapon extends AddOnes {
+public abstract class Weapon extends AddOne {
 	/**
 	 * Properties
 	 */
