@@ -1,6 +1,7 @@
 package game.objects.weapons;
 
 import game.Position;
+import game.objects.AddOne;
 import game.objects.Robot;
 
 import java.awt.Point;
@@ -8,7 +9,7 @@ import java.awt.Point;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 
-public abstract class Weapon {
+public abstract class Weapon extends AddOne {
 	/**
 	 * Properties
 	 */
@@ -23,16 +24,13 @@ public abstract class Weapon {
 	/**
 	 * Image of weapon
 	 */
-	
-	
-	protected String imageInInventoryAddress ;
-	protected String imageInFieldAddress ;
+
+	protected String imageInFieldAddress;
 	/**
 	 * Image of gun
 	 */
-	protected Image imageInInventory;
 	protected Image imageInField;
-	
+
 	public Weapon() {
 	}
 
@@ -107,17 +105,25 @@ public abstract class Weapon {
 	public String getImageInFieldAddress() {
 		return imageInFieldAddress;
 	}
+
 	/**
 	 * Add a gun to robot in Specified place
-	 * @param place Specified place in robot
-	 * @param robot Gun add to this robot
+	 * 
+	 * @param place
+	 *            Specified place in robot
+	 * @param robot
+	 *            Gun add to this robot
 	 */
-	public void addGunToRobot( int place , Robot robot ){
-		
+	public void addGunToRobot(int place, Robot robot) {
+
 	}
-	
-	public abstract void shot(float angleRad , Position pos ) ;
+
+	public abstract void shot(float angleRad, Position pos);
+
 	public abstract void update(GameContainer gc);
-	public abstract void init() ;
-	public abstract void draw(Position pos , int robotWidth , int robotHeight , float angle ) ;
+
+	public abstract void init();
+
+	public abstract void draw(Position pos, int robotWidth, int robotHeight,
+			float angle);
 }
