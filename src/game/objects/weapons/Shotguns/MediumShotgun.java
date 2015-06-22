@@ -25,7 +25,7 @@ public class MediumShotgun extends Shotgun {
 	}
 
 	@Override
-	public void draw() {
+	public void draw(Position pos , int robotWidth , int robotHeight, float angle) {
 		// TODO Auto-generated method stub
 		
 	}

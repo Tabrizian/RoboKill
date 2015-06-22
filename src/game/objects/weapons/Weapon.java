@@ -110,5 +110,5 @@ public abstract class Weapon {
 	public abstract void shot(float angleRad , Position pos ) ;
 	public abstract void update(GameContainer gc);
 	public abstract void init() ;
-	public abstract void draw() ;
+	public abstract void draw(Position pos , int robotWidth , int robotHeight , float angle ) ;
 }

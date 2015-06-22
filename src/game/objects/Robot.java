@@ -136,9 +136,8 @@ public class Robot {
 		imageOfBody.setRotation(imageAngleDeg);
 		imageOfBody.draw(this.getPos().getX(), this.getPos().getY());
 
-		
 		for( Weapon gun : weapons ){
-			gun.draw() ;
+			gun.draw(pos , imageOfLeg.getWidth() , imageOfLeg.getHeight() , imageAngleDeg ) ;
 
 		}
 		

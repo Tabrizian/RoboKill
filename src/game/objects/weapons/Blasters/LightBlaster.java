@@ -51,7 +51,7 @@ public class LightBlaster extends Blaster {
 			if (missile2.getPos().getX() < 800 && missile2.getPos().getX() > 0
 					&& missile2.getPos().getY() > 0
 					&& missile2.getPos().getY() < 600) {
-				missile2.update(gc);
+				missile2.update(gc);  
 			} else {
 				missiles.remove(i);
 			}
@@ -59,8 +59,11 @@ public class LightBlaster extends Blaster {
 	}
 
 	@Override
-	public void draw() {
+	public void draw(Position pos , int robotWidth , int robotHeight , float angle) {
 		// TODO Auto-generated method stub
+		imageInField.setCenterOfRotation(pos.getY(), pos.getX());
+		imageInField.setRotation(angle);
+		imageInField.draw(pos.getX() , pos.getY() + robotHeight/2);
 		
 		for (BlasterMissile missile2 : missiles) {
 			if (missile2 != null)
