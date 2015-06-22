@@ -18,7 +18,7 @@ public class BlasterMissile extends Missile {
 	 */
 	public void init() {
 		try {
-			img = new Image("pics/fires/image 233.png");
+			img = new Image("pics/fires/image 693.png");
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
