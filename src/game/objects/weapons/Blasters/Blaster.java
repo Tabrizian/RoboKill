@@ -10,12 +10,6 @@ public abstract class Blaster extends Weapon {
 	public Blaster() {
 		// TODO Auto-generated constructor stub
 		super() ;
-		//init() ;
 	}
 	
-	public abstract void shot(float angleRad , Position pos ) ;
-	public abstract void update(GameContainer gc);
-	public abstract void init() ;
-	public abstract void draw() ;
-
 }

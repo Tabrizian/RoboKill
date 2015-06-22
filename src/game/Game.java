@@ -3,17 +3,11 @@ package game;
 import game.objects.Robot;
 import game.objects.weapons.Blasters.LightBlaster;
 
-import java.awt.BorderLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -36,7 +30,6 @@ public class Game extends BasicGameState {
 	 */
 	public Game() {
 		robot = new Robot();
-		robot.addGun(new LightBlaster());
 		field = new GameField();
 	}
 
@@ -45,6 +38,7 @@ public class Game extends BasicGameState {
 			throws SlickException {
 		field.init();
 		robot.init();
+		robot.addGun(new LightBlaster());
 	}
 
 	@Override

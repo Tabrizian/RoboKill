@@ -26,9 +26,13 @@ public abstract class Weapon {
 	
 	protected String imageInInventoryAddress ;
 	protected String imageInFieldAddress ;
+	/**
+	 * Image of gun
+	 */
+	protected Image imageInInventory;
+	protected Image imageInField;
 	
 	public Weapon() {
-		//init() ;
 	}
 
 	/**

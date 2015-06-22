@@ -16,30 +16,27 @@ public class LightBlaster extends Blaster {
 	
 	private ArrayList<BlasterMissile> missiles ;
 	
-	private Image imageInInventory;
-	private Image imageInField;
-	
 	public LightBlaster() {
 		super();
 
 		name = "Light Blaster";
 		price = 100;
 		power = 1;
-		speed = 5;
+		speed = (float) 5;
 
 		missiles = new ArrayList<BlasterMissile>();
 		
 		imageInFieldAddress = ("pics/weapons/image 403.png") ;
 		imageInInventoryAddress = ("pics/weapons/image 385.png") ;
 		
-		//this.init() ;
+		init() ;
 	}
 
 	@Override
 	public void shot(float angleRad , Position pos ) {
 		// TODO Auto-generated method stub
 		renderControler++;
-		if (renderControler == 110) {
+		if (renderControler == speed*40) {
 			renderControler = 0;
 			missiles.add(new BlasterMissile((float) (angleRad + Math.PI / 2), pos));
 		}
@@ -74,23 +71,23 @@ public class LightBlaster extends Blaster {
 	/**
 	 * Loads image
 	 */
+	@Override
 	public void init() {
 		// TODO Auto-generated method stub
 		try {
-			imageInField = new Image("src/game/images/weapons/image 403.png") ;
+			imageInField = new Image("pics/weapons/image 403.png") ;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		try {
-			imageInInventory = new Image("src/game/images/weapons/image 385.png") ;
+			imageInInventory = new Image("pics/weapons/image 385.png") ;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
 	
 
 }
