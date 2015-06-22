@@ -64,16 +64,16 @@ public class PreGame extends BasicGameState {
 	}
 
 	@Override
-	public void update(GameContainer gc, StateBasedGame arg1, int arg2)
+	public void update(GameContainer gc, StateBasedGame sbg, int arg2)
 			throws SlickException {
-		start.update(gc);
-		options.update(gc);
-		credits.update(gc);
+		start.update(gc, sbg);
+		options.update(gc, sbg);
+		credits.update(gc, sbg);
 	}
 
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
-		return 1;
+		return 0;
 	}
 }
