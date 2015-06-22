@@ -54,22 +54,24 @@ public class Robot {
 	/**
 	 * Place for add a gun that ordered from left to right
 	 */
-	private int[] places = {0,0,0,0} ;
-	
+	private int[] places = { 0, 0, 0, 0 };
+
 	public Robot() {
-		super() ;
-		
+		super();
+
 		pos = new Position(70, 70);
 		weapons = new ArrayList<Weapon>();
 		health = 100;
 
-		imageOfBodyAddress = ("pics/robot/image" + " " + places[0] + places[1] + places[2] + places[3] + ".png");
+		imageOfBodyAddress = ("pics/robot/image" + " " + places[0] + places[1]
+				+ places[2] + places[3] + ".png");
 		imageOfLegAddress = ("pics/robot/image 123.png");
 
 	}
 
 	/**
 	 * set mouse point
+	 * 
 	 * @param p
 	 */
 	public void setMousePoint(Point p) {
@@ -135,11 +137,12 @@ public class Robot {
 		imageOfBody.setRotation(imageAngleDeg);
 		imageOfBody.draw(this.getPos().getX(), this.getPos().getY());
 
-		for( Weapon gun : weapons ){
-			gun.draw(pos , imageOfLeg.getWidth() , imageOfLeg.getHeight() , imageAngleDeg ) ;
+		for (Weapon gun : weapons) {
+			gun.draw(pos, imageOfLeg.getWidth(), imageOfLeg.getHeight(),
+					imageAngleDeg);
 
 		}
-		
+
 	}
 
 	/**
@@ -174,10 +177,10 @@ public class Robot {
 		imageAngleDeg = (float) (imageAngleRad * 180 / Math.PI);
 
 		if (input.isMouseButtonDown(0))
-				fire();
-		
-		for( Weapon gun : weapons ){
-			gun.update(gc) ;
+			fire();
+
+		for (Weapon gun : weapons) {
+			gun.update(gc);
 		}
 
 	}
@@ -186,19 +189,39 @@ public class Robot {
 	 * Fires missiles
 	 */
 	public void fire() {
-		
-		for ( Weapon gun : weapons ){
-			gun.shot( imageAngleRad , pos );
+
+		for (Weapon gun : weapons) {
+			gun.shot(imageAngleRad, pos);
 		}
 	}
+
 	/**
-	 * Add a gun to robot
+	 * Add a gun to robot in specified place
+	 * 
 	 * @param gun
+	 * @param place
 	 */
-	public void addGun( Weapon gun ){
-		weapons.add(gun) ;
+	public void addGun(Weapon gun, int place) {
+		weapons.add(gun);
+		places[place] = 1;
+		imageOfBodyAddress = ("pics/robot/image" + " " + places[0] + places[1]
+				+ places[2] + places[3] + ".png");
+		//Destroy previous image of body
+		try {
+			imageOfBody.destroy();
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//Create new image of body
+		try {
+			imageOfBody = new Image(this.getImageOfBody());
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	
-	public void remGun(){
+
+	public void remGun() {
 	}
 }
