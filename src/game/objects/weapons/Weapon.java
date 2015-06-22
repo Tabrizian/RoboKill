@@ -1,6 +1,7 @@
 package game.objects.weapons;
 
 import game.Position;
+import game.objects.Robot;
 
 import java.awt.Point;
 
@@ -105,6 +106,14 @@ public abstract class Weapon {
 	 */
 	public String getImageInFieldAddress() {
 		return imageInFieldAddress;
+	}
+	/**
+	 * Add a gun to robot in Specified place
+	 * @param place Specified place in robot
+	 * @param robot Gun add to this robot
+	 */
+	public void addGunToRobot( int place , Robot robot ){
+		
 	}
 	
 	public abstract void shot(float angleRad , Position pos ) ;

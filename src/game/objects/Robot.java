@@ -45,20 +45,22 @@ public class Robot {
 	/**
 	 * ArrayList of current missiles.
 	 */
-
-	private ArrayList<Missile> missiles;
-
 	private String imageOfBodyAddress;
 	private String imageOfLegAddress;
 
 	private Image imageOfBody;
 	private Image imageOfLeg;
 
+	/**
+	 * Place for add a gun that ordered from left to right
+	 */
+	private int[] places ;
+	
 	public Robot() {
-		super();
+		super() ;
 
-		missiles = new ArrayList<Missile>();
-
+		places = new int[4] ;
+		
 		pos = new Position(70, 70);
 		weapons = new ArrayList<Weapon>();
 		health = 100;

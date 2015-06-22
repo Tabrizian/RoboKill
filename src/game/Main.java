@@ -8,14 +8,13 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Main extends StateBasedGame {
 
 	public static final String gameName = "Robo Kill!";
-	public static final int pregame = 1;
-	public static final int play = 0;
+	public static final int pregame = 0;
+	public static final int play = 1;
 
 	public Main() {
 		super(gameName);
-		
-		addState(new Game());
 		addState(new PreGame());
+		addState(new Game());
 	}
 
 	@Override
@@ -39,3 +38,4 @@ public class Main extends StateBasedGame {
 	}
 
 }
+
