@@ -54,25 +54,22 @@ public class Robot {
 	/**
 	 * Place for add a gun that ordered from left to right
 	 */
-	private int[] places ;
+	private int[] places = {0,0,0,0} ;
 	
 	public Robot() {
 		super() ;
-
-		places = new int[4] ;
 		
 		pos = new Position(70, 70);
 		weapons = new ArrayList<Weapon>();
 		health = 100;
 
-		imageOfBodyAddress = ("pics/robot/image 1111.png");
+		imageOfBodyAddress = ("pics/robot/image" + " " + places[0] + places[1] + places[2] + places[3] + ".png");
 		imageOfLegAddress = ("pics/robot/image 123.png");
 
 	}
 
 	/**
 	 * set mouse point
-	 * 
 	 * @param p
 	 */
 	public void setMousePoint(Point p) {
