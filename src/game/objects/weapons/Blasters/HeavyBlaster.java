@@ -12,7 +12,7 @@ public class HeavyBlaster extends Blaster {
 		power = 3 ;
 		price = 3500 ;
 	}
-	
+	@Override
 	public void shot(float angleRad, Position pos) {
 		// TODO Auto-generated method stub
 		

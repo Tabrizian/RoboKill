@@ -22,14 +22,17 @@ public abstract class Weapon {
 	/**
 	 * Image of weapon
 	 */
-	protected Image imageInInventory;
-	protected Image imageInField;
+	
 	
 	protected String imageInInventoryAddress ;
 	protected String imageInFieldAddress ;
+	/**
+	 * Image of gun
+	 */
+	protected Image imageInInventory;
+	protected Image imageInField;
 	
 	public Weapon() {
-		
 	}
 
 	/**
@@ -105,7 +108,7 @@ public abstract class Weapon {
 	}
 	
 	public abstract void shot(float angleRad , Position pos ) ;
-	public abstract void init() ;
 	public abstract void update(GameContainer gc);
+	public abstract void init() ;
 	public abstract void draw() ;
 }

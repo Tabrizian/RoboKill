@@ -2,7 +2,6 @@ package game.objects.weapons.Blasters;
 
 import game.Position;
 import game.objects.weapons.BlasterMissile;
-import game.objects.weapons.Missile;
 
 import java.util.ArrayList;
 
@@ -23,21 +22,21 @@ public class LightBlaster extends Blaster {
 		name = "Light Blaster";
 		price = 100;
 		power = 1;
-		speed = 5;
+		speed = (float) 5;
 
 		missiles = new ArrayList<BlasterMissile>();
 		
 		imageInFieldAddress = ("pics/weapons/image 403.png") ;
 		imageInInventoryAddress = ("pics/weapons/image 385.png") ;
 		
-		//init() ;
+		init() ;
 	}
 
 	@Override
 	public void shot(float angleRad , Position pos ) {
 		// TODO Auto-generated method stub
 		renderControler++;
-		if (renderControler == 110) {
+		if (renderControler == speed*40) {
 			renderControler = 0;
 			missiles.add(new BlasterMissile((float) (angleRad + Math.PI / 2), pos));
 		}
@@ -76,20 +75,19 @@ public class LightBlaster extends Blaster {
 	public void init() {
 		// TODO Auto-generated method stub
 		try {
-			imageInField = new Image(this.getImageInFieldAddress()) ;
+			imageInField = new Image("pics/weapons/image 403.png") ;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		try {
-			imageInInventory = new Image(this.getImageInInventoryAddress()) ;
+			imageInInventory = new Image("pics/weapons/image 385.png") ;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
 	
 
 }
