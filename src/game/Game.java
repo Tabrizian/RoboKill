@@ -1,7 +1,9 @@
 package game;
 
 import game.objects.Robot;
+import game.objects.weapons.Blasters.HeavyBlaster;
 import game.objects.weapons.Blasters.LightBlaster;
+import game.objects.weapons.Blasters.MediumBlaster;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -35,8 +37,10 @@ public class Game extends BasicGameState {
 			throws SlickException {
 		field.init();
 		robot.init();
-		robot.addGun(new LightBlaster() , 0 );
-		robot.addGun(new LightBlaster() , 3 );
+		robot.addGun(new HeavyBlaster(0) , 0 );
+		robot.addGun(new HeavyBlaster(1) , 1 );
+		robot.addGun(new HeavyBlaster(2) , 2 );
+		robot.addGun(new HeavyBlaster(3) , 3 );
 	}
 
 	@Override

@@ -133,13 +133,12 @@ public class Robot {
 	 * @param angle
 	 */
 	public void draw() {
-		imageOfLeg.draw(this.getPos().getX(), this.getPos().getY());
+		imageOfLeg.drawCentered(pos.getX(), pos.getY());
 		imageOfBody.setRotation(imageAngleDeg);
-		imageOfBody.draw(this.getPos().getX(), this.getPos().getY());
+		imageOfBody.drawCentered(pos.getX(), pos.getY());
 
 		for (Weapon gun : weapons) {
-			gun.draw(pos, imageOfLeg.getWidth(), imageOfLeg.getHeight(),
-					imageAngleDeg);
+			gun.draw();
 
 		}
 
@@ -189,9 +188,9 @@ public class Robot {
 	 * Fires missiles
 	 */
 	public void fire() {
-
+		
 		for (Weapon gun : weapons) {
-			gun.shot(imageAngleRad, pos);
+			gun.shot(imageAngleRad, pos, imageOfBody.getWidth() * 70 / 100 );
 		}
 	}
 
@@ -206,14 +205,14 @@ public class Robot {
 		places[place] = 1;
 		imageOfBodyAddress = ("pics/robot/image" + " " + places[0] + places[1]
 				+ places[2] + places[3] + ".png");
-		//Destroy previous image of body
+		// Destroy previous image of body
 		try {
 			imageOfBody.destroy();
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//Create new image of body
+		// Create new image of body
 		try {
 			imageOfBody = new Image(this.getImageOfBody());
 		} catch (SlickException e) {

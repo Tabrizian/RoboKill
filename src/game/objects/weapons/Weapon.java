@@ -10,6 +10,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 
 public abstract class Weapon extends AddOne {
+	// Controls rendering for missiles
+	protected long renderControler = 0;
 	/**
 	 * Properties
 	 */
@@ -22,16 +24,12 @@ public abstract class Weapon extends AddOne {
 	 */
 	protected Point mousePoint;
 	/**
-	 * Image of weapon
+	 * Place in robot.(-1 if is not used by robot )
 	 */
+	protected int place = -1;
 
-	protected String imageInFieldAddress;
-	/**
-	 * Image of gun
-	 */
-	protected Image imageInField;
-
-	public Weapon() {
+	public Weapon(int place) {
+		this.place = place;
 	}
 
 	/**
@@ -98,15 +96,6 @@ public abstract class Weapon extends AddOne {
 	}
 
 	/**
-	 * Getter for image of weapon in game field
-	 * 
-	 * @return Image address that is in game field
-	 */
-	public String getImageInFieldAddress() {
-		return imageInFieldAddress;
-	}
-
-	/**
 	 * Add a gun to robot in Specified place
 	 * 
 	 * @param place
@@ -118,12 +107,11 @@ public abstract class Weapon extends AddOne {
 
 	}
 
-	public abstract void shot(float angleRad, Position pos);
+	public abstract void shot(float angleRad, Position pos, int robotWidth );
 
 	public abstract void update(GameContainer gc);
 
 	public abstract void init();
 
-	public abstract void draw(Position pos, int robotWidth, int robotHeight,
-			float angle);
+	public abstract void draw();
 }

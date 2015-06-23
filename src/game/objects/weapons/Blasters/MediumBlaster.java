@@ -1,40 +1,37 @@
 package game.objects.weapons.Blasters;
 
-import game.Position;
+import game.objects.weapons.BlasterMissile;
 
-import org.newdawn.slick.GameContainer;
+import java.util.ArrayList;
+
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
 public class MediumBlaster extends Blaster {
 
-	public MediumBlaster(){
+	public MediumBlaster(int place){
+		super( place ) ;
+		
 		name = "Medium Blaster" ;
-		speed = (float) 5.88 ;
+		speed = (float) 6 ;
 		price = 2100 ;
 		power = 2 ;
-	}
-
-	@Override
-	public void shot(float angleRad, Position pos) {
-		// TODO Auto-generated method stub
 		
-	}
+		missiles = new ArrayList<BlasterMissile>();
 
-	@Override
-	public void update(GameContainer gc) {
-		// TODO Auto-generated method stub
-		
-	}
+		imageInInventoryAddress = ("pics/weapons/image 929.png");
 
-	@Override
-	public void draw(Position pos , int robotWidth , int robotHeight , float angle) {
-		// TODO Auto-generated method stub
-		
+		init();
 	}
-
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-		
+		try {
+			imageInInventory = new Image("pics/weapons/image 929.png");
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }
