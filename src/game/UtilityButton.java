@@ -58,8 +58,8 @@ public class UtilityButton {
 		if (mX > pos.getX() && mX < (pos.getX() + 45) && mY < (pos.getY() + 13)
 				&& mY > pos.getY()) {
 			focused = true;
-			if(input.isMousePressed(0)){
-				switch(name){
+			if (input.isMousePressed(0)) {
+				switch (name) {
 				case "inv":
 					showInventory = !showInventory;
 					break;

@@ -13,11 +13,10 @@ public class GameField {
 	private String image;
 	private Image fieldImage;
 
-
 	public GameField() {
 
 		image = ("pics/fields/image 187.png");
-		
+
 	}
 
 	public String getImage() {
@@ -30,7 +29,7 @@ public class GameField {
 	public void init() {
 		try {
 			fieldImage = new Image(this.getImage());
-			
+
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,11 +41,11 @@ public class GameField {
 	 */
 	public void draw(Graphics g) {
 		fieldImage.draw(0, 0);
-		
+
 	}
 
 	public void update(GameContainer gc) {
-		
+
 	}
 
 }

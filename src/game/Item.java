@@ -81,5 +81,9 @@ public class Item {
 	public void add(AddOne addOne) {
 		this.addOne = addOne;
 	}
+	
+	public boolean isLifted(){
+		return lifted;
+	}
 
 }

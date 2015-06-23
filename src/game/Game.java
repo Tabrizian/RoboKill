@@ -42,7 +42,9 @@ public class Game extends BasicGameState {
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1)
 			throws SlickException {
+		// Initializing field.
 		field.init();
+		// Initializing buttons.
 		map.init();
 		menu.init();
 		inv.init();
@@ -50,6 +52,7 @@ public class Game extends BasicGameState {
 		LightShotgun lightShotgun = new LightShotgun(0);
 		HeavyBlaster heavyBlaster = new HeavyBlaster(3) ;
 		robot.addGun(lightShotgun, 0);
+		// Adding light shotgun to inventory for test.
 		Inventory.getInventory().add(lightShotgun, 0);
 		Inventory.getInventory().add(heavyBlaster, 3);
 		// robot.addGun(new LightBlaster(1) , 1 );
