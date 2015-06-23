@@ -39,6 +39,8 @@ public class Game extends BasicGameState {
 		field.init();
 		robot.init();
 		robot.addGun(new LightBlaster(0) , 0 );
+	//	robot.addGun(new LightBlaster(1) , 1 );
+	//	robot.addGun(new LightBlaster(2) , 2 );
 		robot.addGun(new LightBlaster(3) , 3 );
 	}
 

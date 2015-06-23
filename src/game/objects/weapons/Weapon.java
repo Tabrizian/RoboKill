@@ -22,21 +22,12 @@ public abstract class Weapon extends AddOne {
 	 */
 	protected Point mousePoint;
 	/**
-	 * Image of weapon
-	 */
-
-	protected String imageInFieldAddress;
-	/**
-	 * Image of gun
-	 */
-	protected Image imageInField;
-	/**
 	 * Place in robot.(-1 if is not used by robot )
 	 */
-	protected int place = -1 ;
-	
+	protected int place = -1;
+
 	public Weapon(int place) {
-		this.place = place ;
+		this.place = place;
 	}
 
 	/**
@@ -103,15 +94,6 @@ public abstract class Weapon extends AddOne {
 	}
 
 	/**
-	 * Getter for image of weapon in game field
-	 * 
-	 * @return Image address that is in game field
-	 */
-	public String getImageInFieldAddress() {
-		return imageInFieldAddress;
-	}
-
-	/**
 	 * Add a gun to robot in Specified place
 	 * 
 	 * @param place
@@ -123,12 +105,11 @@ public abstract class Weapon extends AddOne {
 
 	}
 
-	public abstract void shot(float angleRad, Position pos , int robotWidth , int robotHeight);
+	public abstract void shot(float angleRad, Position pos, int robotWidth );
 
 	public abstract void update(GameContainer gc);
 
 	public abstract void init();
 
-	public abstract void draw(Position pos, int robotWidth, int robotHeight,
-			float angle);
+	public abstract void draw();
 }

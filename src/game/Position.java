@@ -27,6 +27,9 @@ public class Position {
 		this.y = yPos;
 	}
 
+	public Position(){
+		
+	}
 	/**
 	 * Decrease X position if X be greater than zero
 	 */

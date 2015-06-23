@@ -14,7 +14,7 @@ public class HeavyBlaster extends Blaster {
 		price = 3500 ;
 	}
 	@Override
-	public void shot(float angleRad, Position pos , int robotWidth , int robotHeight) {
+	public void shot(float angleRad, Position pos , int robotWidth) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -24,7 +24,7 @@ public class HeavyBlaster extends Blaster {
 		
 	}
 	@Override
-	public void draw(Position pos , int robotWidth , int robotHeight , float angle) {
+	public void draw() {
 		// TODO Auto-generated method stub
 		
 	}

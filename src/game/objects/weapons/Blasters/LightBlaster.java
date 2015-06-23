@@ -13,9 +13,9 @@ public class LightBlaster extends Blaster {
 
 	// Controls rendering for missiles
 	private long renderControler = 0;
-	
-	private ArrayList<BlasterMissile> missiles ;
-	
+
+	private ArrayList<BlasterMissile> missiles;
+
 	public LightBlaster(int place) {
 		super(place);
 
@@ -25,38 +25,45 @@ public class LightBlaster extends Blaster {
 		speed = (float) 5;
 
 		missiles = new ArrayList<BlasterMissile>();
-		
-		imageInFieldAddress = ("pics/weapons/image 403.png") ;
-		imageInInventoryAddress = ("pics/weapons/image 385.png") ;
-		
-		init() ;
+
+		imageInInventoryAddress = ("pics/weapons/image 385.png");
+
+		init();
 	}
 
 	@Override
-	public void shot(float angleRad , Position pos , int robotWidth , int robotHeight ) {
+	public void shot(float angleRad, Position pos, int robotWidth ) {
 		// TODO Auto-generated method stub
-		System.out.println(angleRad) ;
-		if( place == 0 ){
-			pos.setX((float) (pos.getX() - robotWidth/2 * Math.sin(angleRad + Math.PI/2)));
-			pos.setY((float) (pos.getY() + robotWidth/2 * Math.cos(angleRad + Math.PI/2)));
+
+		//determine initial missile position
+		Position pos1 = new Position(pos);
+		if (place == 0) {
+			pos1.setX((float) (pos1.getX() - (float) (robotWidth / 2)
+					* Math.cos(angleRad)));
+			pos1.setY((float) (pos1.getY() - (float) (robotWidth / 2)
+					* Math.sin(angleRad)));
+		} else if (place == 1) {
+			pos1.setX((float) (pos1.getX() - (float) (robotWidth / 4)
+					* Math.cos(angleRad)));
+			pos1.setY((float) (pos1.getY() - (float) (robotWidth / 4)
+					* Math.sin(angleRad)));
+		} else if (place == 2) {
+			pos1.setX((float) (pos1.getX() + (float) (robotWidth / 4)
+					* Math.cos(angleRad)));
+			pos1.setY((float) (pos1.getY() + (float) (robotWidth / 4)
+					* Math.sin(angleRad)));
+		} else if (place == 3) {
+			pos1.setX((float) (pos1.getX() + (float) (robotWidth / 2)
+					* Math.cos(angleRad)));
+			pos1.setY((float) (pos1.getY() + (float) (robotWidth / 2)
+					* Math.sin(angleRad)));
 		}
-		else if( place == 1 ){
-			pos.setX((float) (pos.getX() + robotWidth/4 * Math.sin(angleRad)));
-			pos.setY((float) (pos.getY() + robotWidth/4 * Math.cos(angleRad)));
-		}
-		else if( place == 2 ){
-			pos.setX((float) (pos.getX() - robotWidth/4 * Math.sin(angleRad)));
-			pos.setY((float) (pos.getY() - robotWidth/4 * Math.cos(angleRad)));
-		}
-		else if( place == 3 ){
-			pos.setX((float) (pos.getX() + robotWidth/2 * Math.sin(angleRad + Math.PI/2)));
-			pos.setY((float) (pos.getY() - robotWidth/2 * Math.cos(angleRad + Math.PI/2)));
-		}
-		
+
 		renderControler++;
-		if (renderControler == speed*40) {
+		if (renderControler == speed * 40) {
 			renderControler = 0;
-			missiles.add(new BlasterMissile((float) (angleRad + Math.PI / 2), pos));
+			missiles.add(new BlasterMissile((float) (angleRad + Math.PI / 2),
+					pos1));
 		}
 
 	}
@@ -69,20 +76,19 @@ public class LightBlaster extends Blaster {
 			if (missile2.getPos().getX() < 800 && missile2.getPos().getX() > 0
 					&& missile2.getPos().getY() > 0
 					&& missile2.getPos().getY() < 600) {
-				missile2.update(gc);  
+				missile2.update(gc);
 			} else {
 				missiles.remove(i);
 			}
 		}
 	}
 
+	/**
+	 * Draw missiles of gun
+	 */
 	@Override
-	public void draw(Position pos , int robotWidth , int robotHeight , float angle) {
+	public void draw() {
 		// TODO Auto-generated method stub
-		/*imageInField.setCenterOfRotation(robotWidth*40/100, robotHeight*35/100);
-		imageInField.setRotation(angle);
-		imageInField.draw(pos.getX()+imageInField.getWidth()/2 , pos.getY() + imageInField.getHeight()*60/100);
-		*/
 		for (BlasterMissile missile2 : missiles) {
 			if (missile2 != null)
 				missile2.draw();
@@ -94,21 +100,12 @@ public class LightBlaster extends Blaster {
 	 */
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
 		try {
-			imageInField = new Image("pics/weapons/image 403.png") ;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			imageInInventory = new Image("pics/weapons/image 385.png") ;
+			imageInInventory = new Image("pics/weapons/image 385.png");
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
 
 }

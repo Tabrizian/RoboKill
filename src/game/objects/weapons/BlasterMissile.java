@@ -27,7 +27,7 @@ public class BlasterMissile extends Missile {
 
 	public void draw() {
 		img.setRotation((float) (angle*180/Math.PI - 90 ));
-		img.draw(pos.getX(), pos.getY());
+		img.drawCentered(pos.getX(), pos.getY());
 		
 	}
 

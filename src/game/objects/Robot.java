@@ -133,13 +133,12 @@ public class Robot {
 	 * @param angle
 	 */
 	public void draw() {
-		imageOfLeg.draw(this.getPos().getX(), this.getPos().getY());
+		imageOfLeg.drawCentered(pos.getX(), pos.getY());
 		imageOfBody.setRotation(imageAngleDeg);
-		imageOfBody.draw(this.getPos().getX(), this.getPos().getY());
+		imageOfBody.drawCentered(pos.getX(), pos.getY());
 
 		for (Weapon gun : weapons) {
-			gun.draw(pos, imageOfLeg.getWidth(), imageOfLeg.getHeight(),
-					imageAngleDeg);
+			gun.draw();
 
 		}
 
@@ -190,10 +189,10 @@ public class Robot {
 	 */
 	public void fire() {
 
-		Position pos = new Position(this.pos.getX() + imageOfBody.getWidth()/2,
-				this.pos.getY() + imageOfBody.getHeight()/2);
+		System.out.println("robot " + pos.getX() + " " + pos.getY());
+
 		for (Weapon gun : weapons) {
-			gun.shot(imageAngleRad, pos , imageOfBody.getWidth() , imageOfBody.getHeight());
+			gun.shot(imageAngleRad, pos, imageOfBody.getWidth() * 70 / 100 );
 		}
 	}
 

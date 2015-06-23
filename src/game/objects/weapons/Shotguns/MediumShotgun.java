@@ -10,7 +10,7 @@ public class MediumShotgun extends Shotgun {
 		super(place) ;
 	}
 	@Override
-	public void shot(float angleRad, Position pos , int robotWidth , int robotHeight) {
+	public void shot(float angleRad, Position pos , int robotWidth ) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -28,7 +28,7 @@ public class MediumShotgun extends Shotgun {
 	}
 
 	@Override
-	public void draw(Position pos , int robotWidth , int robotHeight, float angle) {
+	public void draw() {
 		// TODO Auto-generated method stub
 		
 	}

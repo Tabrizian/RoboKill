@@ -11,7 +11,7 @@ public class HeavyShotgun extends Shotgun {
 	}
 
 	@Override
-	public void shot(float angleRad, Position pos , int robotWidth , int robotHeight) {
+	public void shot(float angleRad, Position pos , int robotWidth ) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -29,7 +29,7 @@ public class HeavyShotgun extends Shotgun {
 	}
 
 	@Override
-	public void draw(Position pos , int robotWidth , int robotHeight , float angle) {
+	public void draw() {
 		// TODO Auto-generated method stub
 		
 	}
