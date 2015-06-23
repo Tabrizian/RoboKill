@@ -2,7 +2,8 @@ package game;
 
 import game.objects.Inventory;
 import game.objects.Robot;
-import game.objects.weapons.Shotguns.HeavyShotgun;
+import game.objects.weapons.Blasters.HeavyBlaster;
+import game.objects.weapons.Blasters.LightBlaster;
 import game.objects.weapons.Shotguns.LightShotgun;
 
 import javax.swing.JLabel;
@@ -47,11 +48,13 @@ public class Game extends BasicGameState {
 		inv.init();
 		robot.init();
 		LightShotgun lightShotgun = new LightShotgun(0);
+		HeavyBlaster heavyBlaster = new HeavyBlaster(3) ;
 		robot.addGun(lightShotgun, 0);
 		Inventory.getInventory().add(lightShotgun, 0);
+		Inventory.getInventory().add(heavyBlaster, 3);
 		// robot.addGun(new LightBlaster(1) , 1 );
-		// robot.addGun(new HeavyBlaster(2) , 2 );
-		robot.addGun(new HeavyShotgun(3), 3);
+		 robot.addGun(heavyBlaster , 3 );
+		//robot.addGun(new HeavyShotgun(3), 3);
 	}
 
 	@Override
