@@ -61,15 +61,19 @@ public class Item {
 		if (!lifted) {
 			pos = new Position(defaultPos);
 			if (input.isMouseButtonDown(0)) {
-				if (input.getMouseX() < (pos.getX() + 40)
-						&& input.getMouseX() > pos.getX()
-						&& input.getMouseY() < (pos.getY() + 40)
-						&& input.getMouseY() > pos.getY()) {
+				if (isInside(new Position(input.getMouseX(), input.getMouseY()))) {
 					lifted = true;
 				}
 			}
 		}
-		if (!input.isMouseButtonDown(0)) {
+		if (!input.isMouseButtonDown(0) && lifted) {
+			Item item = ItemsDatabase.getItemsDatabase().thePointed(
+					new Position(input.getMouseX(), input.getMouseY()));
+			if (item != null) {
+				if (addOne != null)
+					item.add(addOne);
+				addOne = null;
+			}
 			lifted = false;
 		}
 		if (lifted) {
@@ -81,9 +85,16 @@ public class Item {
 	public void add(AddOne addOne) {
 		this.addOne = addOne;
 	}
-	
-	public boolean isLifted(){
+
+	public boolean isLifted() {
 		return lifted;
+	}
+
+	public boolean isInside(Position position) {
+		return position.getX() < (defaultPos.getX() + 40)
+				&& position.getX() > defaultPos.getX()
+				&& position.getY() < (defaultPos.getY() + 40)
+				&& position.getY() > defaultPos.getY();
 	}
 
 }

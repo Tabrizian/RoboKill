@@ -66,4 +66,20 @@ public class ItemsDatabase {
 			}
 		}
 	}
+
+	public Item thePointed(Position pos) {
+		for (Item[] items : itemsTabular) {
+			for (Item item : items) {
+				if (item.isInside(pos)) {
+					return item;
+				}
+			}
+		}
+		for (Item item : weaponItems) {
+			if (item.isInside(pos)) {
+				return item;
+			}
+		}
+		return null;
+	}
 }
