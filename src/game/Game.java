@@ -43,10 +43,10 @@ public class Game extends BasicGameState {
 	}
 
 	@Override
-	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2)
+	public void render(GameContainer arg0, StateBasedGame arg1, Graphics g)
 			throws SlickException {
 
-		field.draw();
+		field.draw(g);
 		robot.draw();
 
 	}
@@ -56,6 +56,7 @@ public class Game extends BasicGameState {
 			throws SlickException {
 
 		robot.update(gc);
+		field.update(gc);
 
 	}
 

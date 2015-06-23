@@ -10,6 +10,10 @@ public class Inventory {
 	private Image inventoryImage;
 	private String inventoryAddress;
 	
+	public Inventory(){
+		inventoryAddress = "pics/buttons/inv";
+	}
+	
 	public void init(){
 		for (AddOne addOne : addOnes) {
 			try {

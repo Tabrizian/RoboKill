@@ -1,7 +1,9 @@
 package game;
 
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
 public class GameField {
 
@@ -11,10 +13,16 @@ public class GameField {
 	private String image;
 	private Image fieldImage;
 
+	private UtilityButton map;
+	private UtilityButton menu;
+	private UtilityButton inv;
+
 	public GameField() {
 
 		image = ("pics/fields/image 187.png");
-
+		map = new UtilityButton("map");
+		inv = new UtilityButton("inv");
+		menu = new UtilityButton("menu");
 	}
 
 	public String getImage() {
@@ -27,6 +35,9 @@ public class GameField {
 	public void init() {
 		try {
 			fieldImage = new Image(this.getImage());
+			map.init();
+			menu.init();
+			inv.init();
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -36,8 +47,17 @@ public class GameField {
 	/**
 	 * Draw image
 	 */
-	public void draw() {
+	public void draw(Graphics g) {
 		fieldImage.draw(0, 0);
+		map.draw(g);
+		inv.draw(g);
+		menu.draw(g);
+	}
+
+	public void update(GameContainer gc) {
+		map.update(gc);
+		inv.update(gc);
+		menu.update(gc);
 	}
 
 }
