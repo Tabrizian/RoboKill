@@ -57,6 +57,9 @@ public class Robot {
 	 */
 	private int[] places = { 0, 0, 0, 0 };
 
+	/**
+	 * Animate robot for moving to up
+	 */
 	private Animation toUp;
 	private boolean iskeyUpPressed = false;
 
@@ -65,6 +68,12 @@ public class Robot {
 	private Animation toDown;
 	private boolean iskeyDownPressed = false;
 
+	private Animation toRight;
+	private boolean isKeyRightPressed = false;
+	
+	private Animation toLeft ;
+	private boolean isKeyLeftPressed = false ;
+	
 	public Robot() {
 		super();
 
@@ -134,9 +143,11 @@ public class Robot {
 			e.printStackTrace();
 		}
 
-		toUp = new Animation(createToUpFrames(), 150);
-		fixState = new Animation(createFixStateFrame(), 150);
-		toDown = new Animation(createToDownFrames(), 150) ;
+		toUp = new Animation(createToUpFrames(), 100);
+		fixState = new Animation(createFixStateFrame(), 100);
+		toDown = new Animation(createToDownFrames(), 100);
+		toRight = new Animation(createToRightFrames(), 100);
+		toLeft = new Animation(createToLeftFrames() , 100 ) ;
 	}
 
 	/**
@@ -154,9 +165,13 @@ public class Robot {
 
 		}
 
+		//Manage drawing animations
 		if (iskeyUpPressed == true) {
 
 			fixState.stop();
+			toDown.stop();
+			toRight.stop() ;
+			toLeft.stop() ;
 			toUp.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
 					- imageOfBody.getHeight() / 2);
 			toUp.start();
@@ -164,31 +179,83 @@ public class Robot {
 			imageOfBody.drawCentered(pos.getX(), pos.getY());
 		}
 
-	/*	else if (iskeyDownPressed == true) {
+		else if (iskeyDownPressed == true) {
 
 			fixState.stop();
+			toUp.stop();
+			toRight.stop() ;
+			toLeft.stop() ;
 			toDown.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
 					- imageOfBody.getHeight() / 2);
 			toDown.start();
 			imageOfBody.setRotation(imageAngleDeg);
 			imageOfBody.drawCentered(pos.getX(), pos.getY());
 		}
-		*/
-		if (iskeyUpPressed == false) {
+		
+		else if( isKeyRightPressed == true ){
+			fixState.stop();
 			toUp.stop();
+			toDown.stop();
+			toLeft.stop() ;
+			toRight.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
+					- imageOfBody.getHeight() / 2);
+			toRight.start();
+			imageOfBody.setRotation(imageAngleDeg);
+			imageOfBody.drawCentered(pos.getX(), pos.getY());
+		}
+		else if( isKeyLeftPressed == true ){
+			fixState.stop();
+			toUp.stop();
+			toDown.stop();
+			toRight.stop();
+			toLeft.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
+					- imageOfBody.getHeight() / 2);
+			toLeft.start();
+			imageOfBody.setRotation(imageAngleDeg);
+			imageOfBody.drawCentered(pos.getX(), pos.getY());
+		}
+		else if (iskeyUpPressed == false) {
+			toUp.stop();
+			toDown.stop();
+			toRight.stop() ;
+			toLeft.stop() ;
 			fixState.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
 					- imageOfBody.getHeight() / 2);
 			imageOfBody.setRotation(imageAngleDeg);
 			imageOfBody.drawCentered(pos.getX(), pos.getY());
 		}
-/*
+
 		else if (iskeyDownPressed == false) {
 			toDown.stop();
+			toUp.stop() ;
+			toRight.stop() ;
+			toLeft.stop() ;
 			fixState.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
 					- imageOfBody.getHeight() / 2);
 			imageOfBody.setRotation(imageAngleDeg);
 			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		}*/
+		}
+		
+		else if( isKeyRightPressed == false ){
+			toDown.stop();
+			toUp.stop() ;
+			toRight.stop() ;
+			toLeft.stop() ;
+			fixState.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
+					- imageOfBody.getHeight() / 2);
+			imageOfBody.setRotation(imageAngleDeg);
+			imageOfBody.drawCentered(pos.getX(), pos.getY());
+		}
+		else if ( isKeyLeftPressed == false) {
+			toUp.stop();
+			toDown.stop();
+			toRight.stop() ;
+			toLeft.stop();
+			fixState.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
+					- imageOfBody.getHeight() / 2);
+			imageOfBody.setRotation(imageAngleDeg);
+			imageOfBody.drawCentered(pos.getX(), pos.getY());
+		}
 
 	}
 
@@ -214,10 +281,15 @@ public class Robot {
 			iskeyDownPressed = false;
 		if (input.isKeyDown(Input.KEY_RIGHT) || input.isKeyDown(input.KEY_D)) {
 			xPos += 0.25;
-		}
+			isKeyRightPressed = true;
+		} else
+			isKeyRightPressed = false;
 		if (input.isKeyDown(Input.KEY_LEFT) || input.isKeyDown(input.KEY_A)) {
 			xPos -= 0.25;
+			isKeyLeftPressed = true ;
 		}
+		else
+			isKeyLeftPressed = false ;
 
 		this.setPos(new Position(xPos, yPos));
 
@@ -276,6 +348,7 @@ public class Robot {
 	public void remGun() {
 	}
 
+	//Create frames of an animation
 	private Image[] createToUpFrames() {
 		Image[] frames = new Image[5];
 
@@ -317,7 +390,7 @@ public class Robot {
 
 		return frames;
 	}
-
+	//Create frames of an animation
 	private Image[] createFixStateFrame() {
 		Image[] frames = new Image[1];
 
@@ -331,7 +404,7 @@ public class Robot {
 
 		return frames;
 	}
-
+	//Create frames of an animation
 	private Image[] createToDownFrames() {
 
 		Image[] frames = new Image[5];
@@ -367,6 +440,94 @@ public class Robot {
 		try {
 			Image image5 = new Image("pics/robot/image 589.png");
 			frames[0] = image5;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return frames;
+
+	}
+	//Create frames of an animation
+	private Image[] createToRightFrames() {
+
+		Image[] frames = new Image[5];
+
+		try {
+			Image image1 = new Image("pics/robot/image 1231.png");
+			frames[4] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image2 = new Image("pics/robot/image 2311.png");
+			frames[3] = image2;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image3 = new Image("pics/robot/image 4851.png");
+			frames[2] = image3;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image4 = new Image("pics/robot/image 6531.png");
+			frames[1] = image4;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image5 = new Image("pics/robot/image 5891.png");
+			frames[0] = image5;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return frames;
+
+	}
+	//Create frames of an animation
+	private Image[] createToLeftFrames() {
+
+		Image[] frames = new Image[5];
+
+		try {
+			Image image1 = new Image("pics/robot/image 1231.png");
+			frames[0] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image2 = new Image("pics/robot/image 2311.png");
+			frames[1] = image2;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image3 = new Image("pics/robot/image 4851.png");
+			frames[2] = image3;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image4 = new Image("pics/robot/image 6531.png");
+			frames[3] = image4;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image5 = new Image("pics/robot/image 5891.png");
+			frames[4] = image5;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
