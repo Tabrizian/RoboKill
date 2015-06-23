@@ -13,7 +13,7 @@ public class HeavyBlaster extends Blaster {
 		super(place);
 
 		name = "Heavy Blaster";
-		speed = (float) 4;
+		speedRate = (float) 4;
 		power = 3;
 		price = 3500;
 

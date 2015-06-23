@@ -15,7 +15,7 @@ public class LightBlaster extends Blaster {
 		name = "Light Blaster";
 		price = 100;
 		power = 1;
-		speed = (float) 8;
+		speedRate = (float) 8;
 
 		missiles = new ArrayList<BlasterMissile>();
 

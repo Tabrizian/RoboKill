@@ -16,7 +16,8 @@ public abstract class Weapon extends AddOne {
 	 * Properties
 	 */
 	protected int power;
-	protected float speed;
+	//Lower is faster
+	protected float speedRate;
 	protected int price;
 	protected String name;
 	/**
@@ -46,8 +47,8 @@ public abstract class Weapon extends AddOne {
 	 * 
 	 * @return speed of weapon
 	 */
-	public float getSpeed() {
-		return speed;
+	public float getSpeedRate() {
+		return speedRate;
 	}
 
 	/**

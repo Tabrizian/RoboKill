@@ -8,9 +8,13 @@ import game.Position;
 
 public class ShotgunMissile extends Missile {
 
-	public ShotgunMissile(float angle, Position pos) {
+	//place of missile in a one shot(ordered from left to right)
+	private int num ;
+	
+	public ShotgunMissile(float angle, Position pos , int num) {
 		super(angle, pos);
 		// TODO Auto-generated constructor stub
+		this.num = num ;
 	}
 
 	/**
@@ -18,7 +22,7 @@ public class ShotgunMissile extends Missile {
 	 */
 	public void init() {
 		try {
-			img = new Image("src/game/images/fires/image 233.png");
+			img = new Image("pics/fires/image 693.png");
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -27,7 +31,7 @@ public class ShotgunMissile extends Missile {
 
 	public void draw() {
 		img.setRotation((float) (angle*180/Math.PI - 90 ));
-		img.draw(pos.getX(), pos.getY());
+		img.drawCentered(pos.getX(), pos.getY());
 		
 	}
 
@@ -36,7 +40,21 @@ public class ShotgunMissile extends Missile {
 	 * @param gc
 	 */
 	public void update(GameContainer gc){
-		pos.setX(pos.getX() + (float) Math.cos(angle));
-		pos.setY(pos.getY() + (float) Math.sin(angle));
+		if( num == 0 ){
+			pos.setX(pos.getX() + (float) Math.cos(angle - Math.PI/24));
+			pos.setY(pos.getY() + (float) Math.sin(angle - Math.PI/24));
+		}
+		else if( num == 1 ){
+			pos.setX(pos.getX() + (float) Math.cos(angle - Math.PI/48));
+			pos.setY(pos.getY() + (float) Math.sin(angle - Math.PI/48));
+		}
+		else if( num == 2 ){
+			pos.setX(pos.getX() + (float) Math.cos(angle + Math.PI/48));
+			pos.setY(pos.getY() + (float) Math.sin(angle + Math.PI/48));
+		}
+		else if( num == 3 ){
+			pos.setX(pos.getX() + (float) Math.cos(angle + Math.PI/24));
+			pos.setY(pos.getY() + (float) Math.sin(angle + Math.PI/24));
+		}
 	}
 }

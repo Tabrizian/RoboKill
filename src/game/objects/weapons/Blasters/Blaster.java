@@ -46,7 +46,7 @@ public abstract class Blaster extends Weapon {
 		}
 
 		renderControler++;
-		if (renderControler == speed * 40) {
+		if (renderControler == speedRate * 40) {
 			renderControler = 0;
 			missiles.add(new BlasterMissile((float) (angleRad + Math.PI / 2),
 					pos1));
