@@ -60,7 +60,7 @@ public class UtilityButton {
 			if(input.isMousePressed(0)){
 				switch(name){
 				case "inv":
-					showInventory = true;
+					showInventory = !showInventory;
 					break;
 				}
 			}

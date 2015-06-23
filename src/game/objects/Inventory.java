@@ -1,5 +1,7 @@
 package game.objects;
 
+import game.Position;
+
 import java.util.ArrayList;
 
 import org.newdawn.slick.Image;
@@ -10,6 +12,7 @@ public class Inventory {
 	private Image inventoryImage;
 	private Image itemDiscr;
 	private Image item;
+	private Position pos;
 	/**
 	 * Character states.
 	 */
@@ -26,6 +29,7 @@ public class Inventory {
 		itemDiscrAddress = "pics/inventory/itemDiscr.png";
 		itemAddress = "pics/inventory/item.png";
 		characterAddress = "pics/inventory/character.png";
+		pos = new Position(50, 50);
 		instance = this;
 	}
 
@@ -62,7 +66,9 @@ public class Inventory {
 	}
 
 	public void draw() {
-		inventoryImage.draw(50, 50);
+		inventoryImage.draw(pos.getX(), pos.getX());
+		character.draw(pos.getX() + 50, pos.getY() + 45);
+		itemDiscr.draw(pos.getX() + 343, pos.getY() + 45);
 	}
 
 }
