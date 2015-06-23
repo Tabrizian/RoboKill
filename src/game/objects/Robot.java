@@ -190,8 +190,10 @@ public class Robot {
 	 */
 	public void fire() {
 
+		Position pos = new Position(this.pos.getX() + imageOfBody.getWidth()/2,
+				this.pos.getY() + imageOfBody.getHeight()/2);
 		for (Weapon gun : weapons) {
-			gun.shot(imageAngleRad, pos);
+			gun.shot(imageAngleRad, pos , imageOfBody.getWidth() , imageOfBody.getHeight());
 		}
 	}
 
@@ -206,14 +208,14 @@ public class Robot {
 		places[place] = 1;
 		imageOfBodyAddress = ("pics/robot/image" + " " + places[0] + places[1]
 				+ places[2] + places[3] + ".png");
-		//Destroy previous image of body
+		// Destroy previous image of body
 		try {
 			imageOfBody.destroy();
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//Create new image of body
+		// Create new image of body
 		try {
 			imageOfBody = new Image(this.getImageOfBody());
 		} catch (SlickException e) {

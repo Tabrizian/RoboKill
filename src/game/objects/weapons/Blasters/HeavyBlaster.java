@@ -6,14 +6,15 @@ import org.newdawn.slick.GameContainer;
 
 public class HeavyBlaster extends Blaster {
 
-	public HeavyBlaster(){
+	public HeavyBlaster(int place){
+		super(place) ;
 		name = "Heavy Blaster" ;
 		speed = (float) 6.2 ;
 		power = 3 ;
 		price = 3500 ;
 	}
 	@Override
-	public void shot(float angleRad, Position pos) {
+	public void shot(float angleRad, Position pos , int robotWidth , int robotHeight) {
 		// TODO Auto-generated method stub
 		
 	}

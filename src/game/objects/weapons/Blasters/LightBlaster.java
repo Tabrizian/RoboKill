@@ -16,8 +16,8 @@ public class LightBlaster extends Blaster {
 	
 	private ArrayList<BlasterMissile> missiles ;
 	
-	public LightBlaster() {
-		super();
+	public LightBlaster(int place) {
+		super(place);
 
 		name = "Light Blaster";
 		price = 100;
@@ -33,8 +33,26 @@ public class LightBlaster extends Blaster {
 	}
 
 	@Override
-	public void shot(float angleRad , Position pos ) {
+	public void shot(float angleRad , Position pos , int robotWidth , int robotHeight ) {
 		// TODO Auto-generated method stub
+		System.out.println(angleRad) ;
+		if( place == 0 ){
+			pos.setX((float) (pos.getX() - robotWidth/2 * Math.sin(angleRad + Math.PI/2)));
+			pos.setY((float) (pos.getY() + robotWidth/2 * Math.cos(angleRad + Math.PI/2)));
+		}
+		else if( place == 1 ){
+			pos.setX((float) (pos.getX() + robotWidth/4 * Math.sin(angleRad)));
+			pos.setY((float) (pos.getY() + robotWidth/4 * Math.cos(angleRad)));
+		}
+		else if( place == 2 ){
+			pos.setX((float) (pos.getX() - robotWidth/4 * Math.sin(angleRad)));
+			pos.setY((float) (pos.getY() - robotWidth/4 * Math.cos(angleRad)));
+		}
+		else if( place == 3 ){
+			pos.setX((float) (pos.getX() + robotWidth/2 * Math.sin(angleRad + Math.PI/2)));
+			pos.setY((float) (pos.getY() - robotWidth/2 * Math.cos(angleRad + Math.PI/2)));
+		}
+		
 		renderControler++;
 		if (renderControler == speed*40) {
 			renderControler = 0;

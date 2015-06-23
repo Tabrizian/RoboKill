@@ -7,9 +7,9 @@ import game.objects.weapons.Weapon;
 
 public abstract class Blaster extends Weapon {
 
-	public Blaster() {
+	public Blaster(int place) {
 		// TODO Auto-generated constructor stub
-		super() ;
+		super(place) ;
 	}
 	
 }

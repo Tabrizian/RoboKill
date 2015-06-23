@@ -38,8 +38,8 @@ public class Game extends BasicGameState {
 			throws SlickException {
 		field.init();
 		robot.init();
-		robot.addGun(new LightBlaster() , 0 );
-		robot.addGun(new LightBlaster() , 3 );
+		robot.addGun(new LightBlaster(0) , 0 );
+		robot.addGun(new LightBlaster(3) , 3 );
 	}
 
 	@Override

@@ -30,8 +30,13 @@ public abstract class Weapon extends AddOne {
 	 * Image of gun
 	 */
 	protected Image imageInField;
-
-	public Weapon() {
+	/**
+	 * Place in robot.(-1 if is not used by robot )
+	 */
+	protected int place = -1 ;
+	
+	public Weapon(int place) {
+		this.place = place ;
 	}
 
 	/**
@@ -118,7 +123,7 @@ public abstract class Weapon extends AddOne {
 
 	}
 
-	public abstract void shot(float angleRad, Position pos);
+	public abstract void shot(float angleRad, Position pos , int robotWidth , int robotHeight);
 
 	public abstract void update(GameContainer gc);
 
