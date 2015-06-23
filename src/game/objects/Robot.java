@@ -50,7 +50,6 @@ public class Robot {
 	private String imageOfLegAddress;
 
 	private Image imageOfBody;
-	private Image imageOfLeg;
 
 	/**
 	 * Place for add a gun that ordered from left to right
@@ -138,12 +137,6 @@ public class Robot {
 	 * Loads image of robot
 	 */
 	public void init() {
-		try {
-			imageOfLeg = new Image(this.getImageOfLeg());
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		try {
 			imageOfBody = new Image(this.getImageOfBody());
 		} catch (SlickException e) {
