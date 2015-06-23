@@ -25,7 +25,7 @@ public class UtilityButton {
 
 		imgAddress = "pics/buttons/" + name + ".png";
 		population++;
-		
+
 		inventory = Inventory.getInventory();
 	}
 
@@ -41,9 +41,9 @@ public class UtilityButton {
 
 	public void draw(Graphics g) {
 		img.draw(pos.getX(), pos.getY());
-		if(focused)
+		if (focused)
 			g.drawRect(pos.getX(), pos.getY(), 45, 13);
-		if(showInventory)
+		if (showInventory)
 			inventory.draw();
 
 	}
@@ -53,6 +53,7 @@ public class UtilityButton {
 
 		float mX = input.getMouseX();
 		float mY = input.getMouseY();
+		inventory.update(gc);
 
 		if (mX > pos.getX() && mX < (pos.getX() + 45) && mY < (pos.getY() + 13)
 				&& mY > pos.getY()) {
@@ -60,7 +61,7 @@ public class UtilityButton {
 			if(input.isMousePressed(0)){
 				switch(name){
 				case "inv":
-					showInventory = true;
+					showInventory = !showInventory;
 					break;
 				}
 			}

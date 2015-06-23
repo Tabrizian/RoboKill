@@ -1,12 +1,10 @@
 package game.objects;
 
 import game.Position;
-import game.objects.weapons.Missile;
 import game.objects.weapons.Weapon;
 
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
