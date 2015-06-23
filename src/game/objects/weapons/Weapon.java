@@ -10,6 +10,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 
 public abstract class Weapon extends AddOne {
+	// Controls rendering for missiles
+	protected long renderControler = 0;
 	/**
 	 * Properties
 	 */

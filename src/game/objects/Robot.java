@@ -188,9 +188,7 @@ public class Robot {
 	 * Fires missiles
 	 */
 	public void fire() {
-
-		System.out.println("robot " + pos.getX() + " " + pos.getY());
-
+		
 		for (Weapon gun : weapons) {
 			gun.shot(imageAngleRad, pos, imageOfBody.getWidth() * 70 / 100 );
 		}
