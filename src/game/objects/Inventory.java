@@ -1,6 +1,7 @@
 package game.objects;
 
 import game.Item;
+import game.ItemsDatabase;
 import game.Position;
 
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class Inventory {
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 4; j++) {
 				itemsTabular[i][j] = new Item();
+				ItemsDatabase.getItemsDatabase().addToTabular(i, j, itemsTabular[i][j]);
 			}
 		}
 
@@ -49,6 +51,9 @@ public class Inventory {
 		weapons[1] = new Item(new Position(230, 270));
 		weapons[2] = new Item(new Position(105, 360));
 		weapons[3] = new Item(new Position(300, 360));
+		for (int i = 0; i < weapons.length; i++) {
+			ItemsDatabase.getItemsDatabase().addToWeapons(i, weapons[i]);
+		}
 
 		pos = new Position(50, 50);
 		instance = this;
@@ -97,17 +102,10 @@ public class Inventory {
 		itemDiscr.draw(pos.getX() + 343, pos.getY() + 45);
 		robot.draw(pos.getX() + 50, pos.getY() + 200);
 		inventoryText.draw(pos.getX() + 343, pos.getY() + 250);
-		for (int i = 0; i < 7; i++) {
-			for (int j = 0; j < 4; j++) {
-				itemsTabular[i][j].draw();
-			}
-		}
-		for (Item item : weapons) {
-			item.draw();
-		}
+		ItemsDatabase.getItemsDatabase().drawAll();
 	}
-	
-	public void update(GameContainer gc){
+
+	public void update(GameContainer gc) {
 		for (Item item : weapons) {
 			item.update(gc);
 		}
