@@ -24,12 +24,14 @@ public class Item {
 				310 + population / 7 * 40);
 		defaultPos = new Position(pos);
 		population++;
+
 	}
 
 	public Item(Position pos) {
 		itemAddress = "pics/inventory/item.png";
 		defaultPos = new Position(pos);
 		this.pos = pos;
+		
 	}
 
 	public void init() {
@@ -70,8 +72,9 @@ public class Item {
 			Item item = ItemsDatabase.getItemsDatabase().thePointed(
 					new Position(input.getMouseX(), input.getMouseY()));
 			if (item != null) {
-				if (addOne != null)
+				if (addOne != null){
 					item.add(addOne);
+				}
 				addOne = null;
 			}
 			lifted = false;

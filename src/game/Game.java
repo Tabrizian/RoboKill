@@ -4,7 +4,10 @@ import game.objects.Inventory;
 import game.objects.Robot;
 import game.objects.weapons.Blasters.HeavyBlaster;
 import game.objects.weapons.Blasters.LightBlaster;
+import game.objects.weapons.Blasters.MediumBlaster;
+import game.objects.weapons.Shotguns.HeavyShotgun;
 import game.objects.weapons.Shotguns.LightShotgun;
+import game.objects.weapons.Shotguns.MediumShotgun;
 
 import javax.swing.JLabel;
 
@@ -49,8 +52,8 @@ public class Game extends BasicGameState {
 		menu.init();
 		inv.init();
 		robot.init();
-		LightShotgun lightShotgun = new LightShotgun(0);
-		HeavyBlaster heavyBlaster = new HeavyBlaster(3) ;
+		HeavyShotgun lightShotgun = new HeavyShotgun(0);
+		MediumBlaster heavyBlaster = new MediumBlaster(3) ;
 		robot.addGun(lightShotgun, 0);
 		// Adding light shotgun to inventory for test.
 		Inventory.getInventory().add(lightShotgun, 0);

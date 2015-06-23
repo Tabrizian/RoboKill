@@ -6,7 +6,7 @@ import org.newdawn.slick.SlickException;
 
 import game.Position;
 
-public class ShotgunMissile extends Missile {
+public abstract class ShotgunMissile extends Missile {
 
 	//place of missile in a one shot(ordered from left to right)
 	private int num ;
@@ -15,18 +15,6 @@ public class ShotgunMissile extends Missile {
 		super(angle, pos);
 		// TODO Auto-generated constructor stub
 		this.num = num ;
-	}
-
-	/**
-	 * Initialize missile
-	 */
-	public void init() {
-		try {
-			img = new Image("pics/fires/image 708.png");
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	public void draw() {
