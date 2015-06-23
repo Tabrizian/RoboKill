@@ -1,12 +1,10 @@
 package game.objects;
 
 import game.Position;
-import game.objects.weapons.Missile;
 import game.objects.weapons.Weapon;
 
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
@@ -188,9 +186,9 @@ public class Robot {
 	 * Fires missiles
 	 */
 	public void fire() {
-		
+
 		for (Weapon gun : weapons) {
-			gun.shot(imageAngleRad, pos, imageOfBody.getWidth() * 70 / 100 );
+			gun.shot(imageAngleRad, pos, imageOfBody.getWidth() * 70 / 100);
 		}
 	}
 

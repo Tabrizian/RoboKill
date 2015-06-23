@@ -2,6 +2,7 @@ package game.objects;
 
 import game.Item;
 import game.Position;
+import game.objects.weapons.Weapon;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,8 @@ public class Inventory {
 	private String characterAddress;
 	private String robotAddress;
 	private String inventoryTextAddress;
-	private Item[][] items;
+	private Item[][] itemsTabular;
+	private Item[] weapons;
 	public static Inventory instance = null;
 
 	private Inventory() {
@@ -34,12 +36,18 @@ public class Inventory {
 		characterAddress = "pics/inventory/character.png";
 		robotAddress = "pics/inventory/robot.png";
 		inventoryTextAddress = "pics/texts/inventory.png";
-		items = new Item[7][4];
+		itemsTabular = new Item[7][4];
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 4; j++) {
-				items[i][j] = new Item();
+				itemsTabular[i][j] = new Item();
 			}
 		}
+		
+		weapons = new Item[4];
+		weapons[0] = new Item(new Position(175, 270));
+		weapons[1] = new Item(new Position(230, 270));
+		weapons[2] = new Item(new Position(105, 360));
+		weapons[3] = new Item(new Position(300, 360));
 		pos = new Position(50, 50);
 		instance = this;
 	}
@@ -63,8 +71,11 @@ public class Inventory {
 			}
 			for (int i = 0; i < 7; i++) {
 				for (int j = 0; j < 4; j++) {
-					items[i][j].init();
+					itemsTabular[i][j].init();
 				}
+			}
+			for (Item item : weapons) {
+				item.init();
 			}
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
@@ -90,8 +101,11 @@ public class Inventory {
 		inventoryText.draw(pos.getX() + 343, pos.getY() + 250);
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 4; j++) {
-				items[i][j].draw();
+				itemsTabular[i][j].draw();
 			}
+		}
+		for (Item item : weapons) {
+			item.draw();
 		}
 	}
 

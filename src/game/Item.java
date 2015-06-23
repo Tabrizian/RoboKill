@@ -19,6 +19,7 @@ public class Item {
 	}
 
 	public Item(Position pos) {
+		itemAddress = "pics/inventory/item.png";
 		this.pos = pos;
 	}
 
