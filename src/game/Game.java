@@ -23,18 +23,28 @@ public class Game extends BasicGameState {
 	private JLabel cash;
 	private JLabel shield;
 
+	private UtilityButton map;
+	private UtilityButton menu;
+	private UtilityButton inv;
+
 	/**
 	 * Creates new Game with sample gamefield.
 	 */
 	public Game() {
 		robot = new Robot();
 		field = new GameField();
+		map = new UtilityButton("map");
+		inv = new UtilityButton("inv");
+		menu = new UtilityButton("menu");
 	}
 
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1)
 			throws SlickException {
 		field.init();
+		map.init();
+		menu.init();
+		inv.init();
 		robot.init();
 		LightShotgun lightShotgun = new LightShotgun(0);
 		robot.addGun(lightShotgun, 0);
@@ -50,6 +60,9 @@ public class Game extends BasicGameState {
 
 		field.draw(g);
 		robot.draw();
+		map.draw(g);
+		inv.draw(g);
+		menu.draw(g);
 
 	}
 
@@ -59,7 +72,9 @@ public class Game extends BasicGameState {
 
 		robot.update(gc);
 		field.update(gc);
-
+		map.update(gc);
+		inv.update(gc);
+		menu.update(gc);
 	}
 
 	@Override

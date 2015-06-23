@@ -5,6 +5,7 @@ import game.Position;
 
 import java.util.ArrayList;
 
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -103,6 +104,12 @@ public class Inventory {
 		}
 		for (Item item : weapons) {
 			item.draw();
+		}
+	}
+	
+	public void update(GameContainer gc){
+		for (Item item : weapons) {
+			item.update(gc);
 		}
 	}
 
