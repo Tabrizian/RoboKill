@@ -1,7 +1,9 @@
 package game;
 
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
 public class GameField {
 
@@ -10,7 +12,7 @@ public class GameField {
 	private boolean isActivate;
 	private String image;
 	private Image fieldImage;
-	
+
 	private UtilityButton map;
 	private UtilityButton menu;
 	private UtilityButton inv;
@@ -45,11 +47,17 @@ public class GameField {
 	/**
 	 * Draw image
 	 */
-	public void draw() {
+	public void draw(Graphics g) {
 		fieldImage.draw(0, 0);
-		map.draw();
-		inv.draw();
-		menu.draw();
+		map.draw(g);
+		inv.draw(g);
+		menu.draw(g);
+	}
+
+	public void update(GameContainer gc) {
+		map.update(gc);
+		inv.update(gc);
+		menu.update(gc);
 	}
 
 }

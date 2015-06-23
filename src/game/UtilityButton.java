@@ -1,6 +1,9 @@
 package game;
 
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 public class UtilityButton {
@@ -10,6 +13,7 @@ public class UtilityButton {
 	private String imgAddress;
 	private String name;
 	private Position pos;
+	private boolean focused = false;
 
 	public UtilityButton(String name) {
 		this.name = name;
@@ -28,7 +32,23 @@ public class UtilityButton {
 		}
 	}
 
-	public void draw() {
+	public void draw(Graphics g) {
 		img.draw(pos.getX(), pos.getY());
+		if (focused)
+			g.drawRect(pos.getX(), pos.getY(), 45, 13);
+
+	}
+
+	public void update(GameContainer gc) {
+		Input input = gc.getInput();
+
+		float mX = input.getMouseX();
+		float mY = input.getMouseY();
+
+		if (mX > pos.getX() && mX < (pos.getX() + 45) && mY < (pos.getY() + 13)
+				&& mY > pos.getY()) {
+			focused = true;
+		} else
+			focused = false;
 	}
 }
