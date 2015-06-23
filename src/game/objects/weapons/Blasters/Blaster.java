@@ -18,43 +18,6 @@ public abstract class Blaster extends Weapon {
 	}
 	
 	@Override
-	public void shot(float angleRad, Position pos, int robotWidth ) {
-		// TODO Auto-generated method stub
-
-		//determine initial missile position
-		Position pos1 = new Position(pos);
-		if (place == 0) {
-			pos1.setX((float) (pos1.getX() - (float) (robotWidth / 2)
-					* Math.cos(angleRad)));
-			pos1.setY((float) (pos1.getY() - (float) (robotWidth / 2)
-					* Math.sin(angleRad)));
-		} else if (place == 1) {
-			pos1.setX((float) (pos1.getX() - (float) (robotWidth / 4)
-					* Math.cos(angleRad)));
-			pos1.setY((float) (pos1.getY() - (float) (robotWidth / 4)
-					* Math.sin(angleRad)));
-		} else if (place == 2) {
-			pos1.setX((float) (pos1.getX() + (float) (robotWidth / 4)
-					* Math.cos(angleRad)));
-			pos1.setY((float) (pos1.getY() + (float) (robotWidth / 4)
-					* Math.sin(angleRad)));
-		} else if (place == 3) {
-			pos1.setX((float) (pos1.getX() + (float) (robotWidth / 2)
-					* Math.cos(angleRad)));
-			pos1.setY((float) (pos1.getY() + (float) (robotWidth / 2)
-					* Math.sin(angleRad)));
-		}
-
-		renderControler++;
-		if (renderControler == speedRate * 40) {
-			renderControler = 0;
-			missiles.add(new BlasterMissile((float) (angleRad + Math.PI / 2),
-					pos1));
-		}
-
-	}
-	
-	@Override
 	public void update(GameContainer gc) {
 		// TODO Auto-generated method stub
 		for (int i = 0; i < missiles.size(); i++) {
