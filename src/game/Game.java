@@ -1,13 +1,10 @@
 package game;
 
+import game.objects.Inventory;
 import game.objects.Robot;
-import game.objects.weapons.Blasters.HeavyBlaster;
-import game.objects.weapons.Blasters.LightBlaster;
-import game.objects.weapons.Blasters.MediumBlaster;
 import game.objects.weapons.Shotguns.HeavyShotgun;
 import game.objects.weapons.Shotguns.LightShotgun;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import org.newdawn.slick.GameContainer;
@@ -39,10 +36,12 @@ public class Game extends BasicGameState {
 			throws SlickException {
 		field.init();
 		robot.init();
-		robot.addGun(new LightShotgun(0) , 0 );
-	//	robot.addGun(new LightBlaster(1) , 1 );
-	//	robot.addGun(new HeavyBlaster(2) , 2 );
-		robot.addGun(new HeavyShotgun(3) , 3 );
+		LightShotgun lightShotgun = new LightShotgun(0);
+		robot.addGun(lightShotgun, 0);
+		Inventory.getInventory().add(lightShotgun, 0);
+		// robot.addGun(new LightBlaster(1) , 1 );
+		// robot.addGun(new HeavyBlaster(2) , 2 );
+		robot.addGun(new HeavyShotgun(3), 3);
 	}
 
 	@Override

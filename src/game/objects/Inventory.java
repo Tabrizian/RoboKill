@@ -2,7 +2,6 @@ package game.objects;
 
 import game.Item;
 import game.Position;
-import game.objects.weapons.Weapon;
 
 import java.util.ArrayList;
 
@@ -31,6 +30,7 @@ public class Inventory {
 
 	private Inventory() {
 		addOnes = new ArrayList<AddOne>();
+
 		inventoryAddress = "pics/inventory/inventory.png";
 		itemDiscrAddress = "pics/inventory/itemDiscr.png";
 		characterAddress = "pics/inventory/character.png";
@@ -42,12 +42,13 @@ public class Inventory {
 				itemsTabular[i][j] = new Item();
 			}
 		}
-		
+
 		weapons = new Item[4];
 		weapons[0] = new Item(new Position(175, 270));
 		weapons[1] = new Item(new Position(230, 270));
 		weapons[2] = new Item(new Position(105, 360));
 		weapons[3] = new Item(new Position(300, 360));
+
 		pos = new Position(50, 50);
 		instance = this;
 	}
@@ -65,10 +66,6 @@ public class Inventory {
 			character = new Image(characterAddress);
 			robot = new Image(robotAddress);
 			inventoryText = new Image(inventoryTextAddress);
-			for (AddOne addOne : addOnes) {
-				addOne.imageInInventory = new Image(
-						addOne.imageInInventoryAddress);
-			}
 			for (int i = 0; i < 7; i++) {
 				for (int j = 0; j < 4; j++) {
 					itemsTabular[i][j].init();
@@ -89,8 +86,8 @@ public class Inventory {
 	 * 
 	 * @param addOne
 	 */
-	public void add(AddOne addOne) {
-		addOnes.add(addOne);
+	public void add(AddOne addOne, int place) {
+		weapons[place].add(addOne);
 	}
 
 	public void draw() {

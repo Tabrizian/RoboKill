@@ -1,6 +1,10 @@
 package game;
 
+import game.objects.AddOne;
+
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 public class Item {
@@ -9,6 +13,7 @@ public class Item {
 	private String itemAddress;
 	private String name;
 	private Position pos;
+	private AddOne addOne = null;
 	private static int population = 0;
 
 	public Item() {
@@ -33,7 +38,18 @@ public class Item {
 	}
 
 	public void draw() {
-		itemImage.draw(pos.getX(), pos.getY());
+		if (addOne == null)
+			itemImage.draw(pos.getX(), pos.getY());
+		else
+			addOne.getImageInInventory().draw(pos.getX(), pos.getY());
+	}
+
+	public void update(GameContainer gc) {
+		Input input = gc.getInput();
+	}
+
+	public void add(AddOne addOne) {
+		this.addOne = addOne;
 	}
 
 }
