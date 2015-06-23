@@ -8,8 +8,8 @@ import org.newdawn.slick.SlickException;
 public class GameField {
 
 	private Cell[][] cells;
-	private boolean isCleaned;
-	private boolean isActivate;
+	private boolean isCleaned = false;
+	private boolean isActivate = true;
 	private String image;
 	private Image fieldImage;
 
