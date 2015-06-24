@@ -1,13 +1,10 @@
 package game;
 
+import game.cells.Cell;
 import game.objects.Inventory;
 import game.objects.Robot;
-import game.objects.weapons.Blasters.HeavyBlaster;
-import game.objects.weapons.Blasters.LightBlaster;
 import game.objects.weapons.Blasters.MediumBlaster;
 import game.objects.weapons.Shotguns.HeavyShotgun;
-import game.objects.weapons.Shotguns.LightShotgun;
-import game.objects.weapons.Shotguns.MediumShotgun;
 
 import javax.swing.JLabel;
 
@@ -36,7 +33,14 @@ public class Game extends BasicGameState {
 	 */
 	public Game() {
 		robot = new Robot();
-		field = new GameField();
+		Cell[][] cells = new Cell[15][11];
+		for (int i = 0; i < 15; i++) {
+			for (int j = 0; j < 11; j++) {
+				cells[i][j] = new Cell(i,j);
+			}
+		}
+		GameFieldModel model = new GameFieldModel(cells);
+		field = new GameField(model);
 		map = new UtilityButton("map");
 		inv = new UtilityButton("inv");
 		menu = new UtilityButton("menu");

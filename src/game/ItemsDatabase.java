@@ -69,6 +69,8 @@ public class ItemsDatabase {
 			} else {
 				if (y == -1 && i != x) {
 					weaponItems[i].draw();
+				} else if (y != -1) {
+					weaponItems[i].draw();
 				}
 			}
 

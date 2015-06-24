@@ -42,7 +42,7 @@ public class GameField {
 				e.printStackTrace();
 			}
 		} else {
-			model.drawAll();
+			model.initAll();
 		}
 	}
 

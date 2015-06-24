@@ -8,7 +8,7 @@ import game.objects.Wall;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-public abstract class Cell {
+public class Cell {
 
 	protected Thing thing;
 	protected Position pos;
