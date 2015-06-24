@@ -271,22 +271,22 @@ public class Zombie extends Enemy {
 		float xPos = this.getPos().getX();
 		float yPos = this.getPos().getY();
 
-		if (pos.getY() > robotPosition.getY()) {
+		if (pos.getY() - 25 > robotPosition.getY() + 25 ) {
 			yPos -= 0.05;
 			iskeyUpPressed = true;
 		} else
 			iskeyUpPressed = false;
-		if (pos.getY() < robotPosition.getY()) {
+		if (pos.getY() + 25  < robotPosition.getY() - 25 ) {
 			yPos += 0.05;
 			iskeyDownPressed = true;
 		} else
 			iskeyDownPressed = false;
-		if (pos.getX() < robotPosition.getX()) {
+		if (pos.getX() + 25 < robotPosition.getX() - 25) {
 			xPos += 0.05;
 			isKeyRightPressed = true;
 		} else
 			isKeyRightPressed = false;
-		if (pos.getX() > robotPosition.getX()) {
+		if (pos.getX() - 25 > robotPosition.getX() + 25 ) {
 			xPos -= 0.05;
 			isKeyLeftPressed = true;
 		} else
