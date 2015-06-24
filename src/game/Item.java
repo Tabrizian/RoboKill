@@ -76,6 +76,7 @@ public class Item {
 					item.add(addOne);
 				}
 				addOne = null;
+				System.out.println(item.getAddOne());
 			}
 			lifted = false;
 		}
@@ -93,6 +94,9 @@ public class Item {
 		return lifted;
 	}
 
+	public AddOne getAddOne(){
+		return addOne;
+	}
 	public boolean isInside(Position position) {
 		return position.getX() < (defaultPos.getX() + 40)
 				&& position.getX() > defaultPos.getX()

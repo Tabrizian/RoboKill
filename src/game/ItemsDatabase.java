@@ -26,9 +26,28 @@ public class ItemsDatabase {
 		weaponItems[place] = item;
 	}
 
+	/**
+	 * Draws all of the items and
+	 */
 	public void drawAll() {
 		int x = -1, y = -1;
 
+		for (int i = 0; i < 7 && x == -1 && y == -1; i++) {
+			for (int j = 0; j < 4; j++) {
+				if (itemsTabular[i][j].isLifted()) {
+					x = i;
+					y = j;
+					break;
+				}
+			}
+		}
+
+		for (int i = 0; i < weaponItems.length; i++) {
+			if (weaponItems[i].isLifted()) {
+				x = i;
+				break;
+			}
+		}
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 4; j++) {
 				if (y == -1)
@@ -47,36 +66,26 @@ public class ItemsDatabase {
 
 		}
 
-		for (int i = 0; i < 7 && x == -1 && y == -1; i++) {
-			for (int j = 0; j < 4; j++) {
-				if (itemsTabular[i][j].isLifted()) {
-					itemsTabular[i][j].draw();
-					x = i;
-					y = j;
-					break;
-				}
-			}
-		}
-
-		for (int i = 0; i < weaponItems.length; i++) {
-			if (weaponItems[i].isLifted()) {
-				weaponItems[i].draw();
-				x = i;
-				break;
-			}
+		if (x != -1 && y == -1) {
+			weaponItems[x].draw();
 		}
 	}
 
+	/**
+	 * @param
+	 * @return Null if the position is inside no items otherwise returns the
+	 *         item which is pointed to.
+	 */
 	public Item thePointed(Position pos) {
 		for (Item[] items : itemsTabular) {
 			for (Item item : items) {
-				if (item.isInside(pos)) {
+				if (item.isInside(pos) && !item.isLifted()) {
 					return item;
 				}
 			}
 		}
 		for (Item item : weaponItems) {
-			if (item.isInside(pos)) {
+			if (item.isInside(pos) && !item.isLifted()) {
 				return item;
 			}
 		}
