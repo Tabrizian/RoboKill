@@ -33,7 +33,7 @@ public class GameField {
 	 * Loads image
 	 */
 	public void init() {
-		if (model != null) {
+		if (model == null) {
 			try {
 				fieldImage = new Image(this.getImage());
 
