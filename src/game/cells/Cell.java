@@ -77,7 +77,7 @@ public class Cell {
 	 */
 	public  void init(){
 		try {
-			image = new Image("pics/cells/image 831.png") ;
+			image = new Image("pics/cells/image test.png") ;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,8 +85,8 @@ public class Cell {
 	}
 	
 	private Position calPos( int row , int column ){
-		int xPos = row*52 + 26 ;
-		int yPos = column*52 + 26 ;
+		int xPos = row*52 + 35 ;
+		int yPos = column*52 + 38 ;
 		
 		Position pos = new Position(xPos, yPos) ;
 		
