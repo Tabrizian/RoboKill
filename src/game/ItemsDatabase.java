@@ -50,19 +50,27 @@ public class ItemsDatabase {
 		}
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 4; j++) {
-				if (y == -1)
-					itemsTabular[i][j].draw();
-				else if (x != i && y != j)
-					itemsTabular[i][j].draw();
+				if (x == -1) {
+					if (y == -1) {
+						itemsTabular[i][j].draw();
+					}
+				} else {
+					if (y == -1)
+						itemsTabular[i][j].draw();
+				}
 			}
 		}
 
 		for (int i = 0; i < weaponItems.length; i++) {
-
-			if (y == -1 && x != i)
-				weaponItems[i].draw();
-			else if (y != -1)
-				weaponItems[i].draw();
+			if (x == -1) {
+				if (y == -1) {
+					weaponItems[i].draw();
+				}
+			} else {
+				if (y == -1 && i != x) {
+					weaponItems[i].draw();
+				}
+			}
 
 		}
 
