@@ -1,5 +1,7 @@
 package game.cells;
 
+import org.newdawn.slick.Image;
+
 public class DownLeftCornerCell extends Cell {
 
 	public DownLeftCornerCell(float xPos, float yPos) {
@@ -16,7 +18,6 @@ public class DownLeftCornerCell extends Cell {
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

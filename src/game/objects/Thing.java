@@ -1,5 +1,17 @@
 package game.objects;
 
-public class Thing {
+public abstract class Thing {
+	
+	public Thing(){
+		
+	}
+	/**
+	 * Draw image
+	 */
+	public abstract void draw() ;
+	/**
+	 * Loads image
+	 */
+	public abstract void init() ;
 
 }
