@@ -37,7 +37,7 @@ public class Game extends BasicGameState {
 	 * Creates new Game with sample gamefield.
 	 */
 	public Game() {
-		robot = new Robot();
+		robot = Robot.getRobot();
 		enemy = new Zombie(robot.getPos() , new Position(300, 300)) ;
 		Cell[][] cells = new Cell[15][11];
 		for (int i = 0; i < 15; i++) {

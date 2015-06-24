@@ -79,7 +79,9 @@ public class Robot {
 
 	private Animation toDownRight;
 
-	public Robot() {
+	public static Robot instance = null;
+	
+	private Robot() {
 		super();
 
 		pos = new Position(70, 70);
@@ -88,8 +90,15 @@ public class Robot {
 
 		imageOfBodyAddress = ("pics/robot/image" + " " + places[0] + places[1]
 				+ places[2] + places[3] + ".png");
+		
+		instance = this;
 	}
 
+	public static Robot getRobot() {
+		if (instance == null)
+			new Robot();
+		return instance;
+	}
 	/**
 	 * set mouse point
 	 * 
