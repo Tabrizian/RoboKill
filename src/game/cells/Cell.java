@@ -16,9 +16,9 @@ public abstract class Cell {
 	protected Image image ;
 	
 	
-	public Cell(float xPos , float yPos , Thing thing ){
+	public Cell(int row , int column , Thing thing ){
 		isExploded = false ;
-		pos = new Position(xPos, yPos) ;
+		pos = new Position( calPos( row , column ) ) ;
 		if( thing instanceof Box ){
 			this.thing = new Box() ;
 			this.thing = thing ;
@@ -31,9 +31,9 @@ public abstract class Cell {
 		init() ;
 	}
 	
-	public Cell(float xPos , float yPos){
+	public Cell(int row , int column){
 		isExploded = false ;
-		pos = new Position(xPos, yPos) ;
+		pos = new Position( calPos( row , column ) ) ;
 	}
 	/**
 	 * Getter for position of the cell on screen
@@ -82,5 +82,14 @@ public abstract class Cell {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}			
+	}
+	
+	private Position calPos( int row , int column ){
+		int xPos = row*52 + 26 ;
+		int yPos = column*52 + 26 ;
+		
+		Position pos = new Position(xPos, yPos) ;
+		
+		return pos ;
 	}
 }
