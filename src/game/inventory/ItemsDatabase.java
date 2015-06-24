@@ -123,4 +123,8 @@ public class ItemsDatabase {
 		return false;
 
 	}
+	
+	public Item[] getWeapons(){
+		return weaponItems;
+	}
 }
