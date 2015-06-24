@@ -39,7 +39,7 @@ public class UtilityButton {
 		}
 	}
 
-	public void draw(Graphics g) {
+	public void draw(Graphics g ) {
 		img.draw(pos.getX(), pos.getY());
 		if (focused)
 			g.drawRect(pos.getX(), pos.getY(), 45, 13);
@@ -67,5 +67,7 @@ public class UtilityButton {
 			}
 		} else
 			focused = false;
+		
+		
 	}
 }

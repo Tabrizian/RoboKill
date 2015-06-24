@@ -19,6 +19,8 @@ public class Main extends StateBasedGame {
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
+		String[] icons = {"pics/icon/icon16.png","pics/icon/icon32.png" ,  "pics/icon/icon24.png", };
+		gc.setIcons(icons);
 		getState(play).init(gc, this);
 		getState(pregame).init(gc, this);
 	}
@@ -30,7 +32,9 @@ public class Main extends StateBasedGame {
 			appgc = new AppGameContainer(new Main());
 			appgc.setDisplayMode(800, 600, false);
 			appgc.setShowFPS(false);
+			//appgc.setIcon("pics/icon/icon2.ico");
 			appgc.start();
+			
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

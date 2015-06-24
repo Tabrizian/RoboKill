@@ -82,15 +82,16 @@ public class Game extends BasicGameState {
 	}
 
 	@Override
-	public void render(GameContainer arg0, StateBasedGame arg1, Graphics g)
+	public void render(GameContainer gc, StateBasedGame arg1, Graphics g)
 			throws SlickException {
 
 		field.draw(g);
 		robot.draw();
 		((Zombie) enemy).draw() ;
-		map.draw(g);
-		inv.draw(g);
-		menu.draw(g);
+		map.draw(g );
+		inv.draw(g );
+		menu.draw(g );
+		
 		
 
 	}
@@ -106,6 +107,8 @@ public class Game extends BasicGameState {
 		map.update(gc);
 		inv.update(gc);
 		menu.update(gc);
+		
+		
 		
 	}
 
