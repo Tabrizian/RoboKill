@@ -18,11 +18,11 @@ public class Zombie extends Enemy {
 
 	private float imageAngleRad = 0;
 	private float imageAngleDeg = 0;
-	
+
 	private String imageOfBodyAddress;
 
 	private Image imageOfBody;
-	
+
 	/**
 	 * Weapons that robot carries them
 	 */
@@ -51,23 +51,24 @@ public class Zombie extends Enemy {
 	private Animation toUpLeft;
 
 	private Animation toDownRight;
-	
-	public Zombie(Position robotPos , Position pos) {
+
+	public Zombie(Position robotPos, Position pos) {
 		super();
 
 		this.pos = new Position(pos);
 		health = 100;
 
 		imageOfBodyAddress = ("pics/enemy/Zombie/image 98.png");
-		
-		robotPosition = pos ;
-		
-		weapons = new Weapon[4] ;
+
+		robotPosition = pos;
+
+		weapons = new Weapon[4];
 	}
-	
-	public void setRobotPos( Position pos ){
-		this.robotPosition = pos ;
+
+	public void setRobotPos(Position pos) {
+		this.robotPosition = pos;
 	}
+
 	/**
 	 * Set an angle for robot rotating
 	 * 
@@ -76,7 +77,7 @@ public class Zombie extends Enemy {
 	public void setImageAngle(float r) {
 		imageAngleRad = r;
 	}
-	
+
 	public String getImageOfBody() {
 		return imageOfBodyAddress;
 	}
@@ -105,13 +106,13 @@ public class Zombie extends Enemy {
 		toUpRight = new Animation(createToUpRightFrames(), 120);
 		toDownRight = new Animation(createToDownRightFrames(), 120);
 		toUpLeft = new Animation(createToUpLeftFrames(), 120);
-		
-		weapons[0] = new LightBlaster(0) ;
-		weapons[1] = null ;
-		weapons[2] = null ;
-		weapons[3] = new LightBlaster(3) ;
+
+		weapons[0] = new LightBlaster(0);
+		weapons[1] = null;
+		weapons[2] = null;
+		weapons[3] = new LightBlaster(3);
 	}
-	
+
 	/**
 	 * Draw robot with an angle for rotating that based on mouse position
 	 * 
@@ -261,7 +262,7 @@ public class Zombie extends Enemy {
 		}
 
 	}
-	
+
 	/**
 	 * Updates robot state in GameContainer gc
 	 * 
@@ -271,22 +272,22 @@ public class Zombie extends Enemy {
 		float xPos = this.getPos().getX();
 		float yPos = this.getPos().getY();
 
-		if (pos.getY() - 25 > robotPosition.getY() + 25 ) {
+		if (pos.getY() - 10 > robotPosition.getY() + 10) {
 			yPos -= 0.05;
 			iskeyUpPressed = true;
 		} else
 			iskeyUpPressed = false;
-		if (pos.getY() + 25  < robotPosition.getY() - 25 ) {
+		if (pos.getY() + 10 < robotPosition.getY() - 10) {
 			yPos += 0.05;
 			iskeyDownPressed = true;
 		} else
 			iskeyDownPressed = false;
-		if (pos.getX() + 25 < robotPosition.getX() - 25) {
+		if (pos.getX() + 10 < robotPosition.getX() - 10) {
 			xPos += 0.05;
 			isKeyRightPressed = true;
 		} else
 			isKeyRightPressed = false;
-		if (pos.getX() - 25 > robotPosition.getX() + 25 ) {
+		if (pos.getX() - 10 > robotPosition.getX() + 10) {
 			xPos -= 0.05;
 			isKeyLeftPressed = true;
 		} else
@@ -300,9 +301,9 @@ public class Zombie extends Enemy {
 
 		imageAngleDeg = (float) (imageAngleRad * 180 / Math.PI);
 
-		Random r = new Random() ;
-		int x = r.nextInt() % 5 ;
-		if ( x == 2 )
+		Random r = new Random();
+		int x = r.nextInt() % 5;
+		if (x == 2)
 			fire();
 
 		for (Weapon gun : weapons) {
@@ -311,7 +312,7 @@ public class Zombie extends Enemy {
 		}
 
 	}
-	
+
 	/**
 	 * Fires missiles
 	 */
@@ -322,431 +323,431 @@ public class Zombie extends Enemy {
 				gun.shot(imageAngleRad, pos, imageOfBody.getWidth() * 70 / 100);
 		}
 	}
-	
+
 	// Create frames of an animation
-		private Image[] createToUpFrames() {
+	private Image[] createToUpFrames() {
 
-			Image[] frames = new Image[6];
+		Image[] frames = new Image[6];
 
-			try {
-				Image image1 = new Image("pics/enemy/Zombie/image 283.png");
-				frames[5] = image1;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image2 = new Image("pics/enemy/Zombie/image 237.png");
-				frames[4] = image2;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image3 = new Image("pics/enemy/Zombie/image 610.png");
-				frames[3] = image3;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image4 = new Image("pics/enemy/Zombie/image 237.png");
-				frames[2] = image4;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image5 = new Image("pics/enemy/Zombie/image 283.png");
-				frames[1] = image5;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image6 = new Image("pics/enemy/Zombie/image 582.png");
-				frames[0] = image6;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			return frames;
-
+		try {
+			Image image1 = new Image("pics/enemy/Zombie/image 283.png");
+			frames[5] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image2 = new Image("pics/enemy/Zombie/image 237.png");
+			frames[4] = image2;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image3 = new Image("pics/enemy/Zombie/image 610.png");
+			frames[3] = image3;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image4 = new Image("pics/enemy/Zombie/image 237.png");
+			frames[2] = image4;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image5 = new Image("pics/enemy/Zombie/image 283.png");
+			frames[1] = image5;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image6 = new Image("pics/enemy/Zombie/image 582.png");
+			frames[0] = image6;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		// Create frames of an animation
-		private Image[] createFixStateFrame() {
-			Image[] frames = new Image[1];
+		return frames;
 
-			try {
-				Image image1 = new Image("pics/robot/image 123.png");
-				frames[0] = image1;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	}
 
-			return frames;
+	// Create frames of an animation
+	private Image[] createFixStateFrame() {
+		Image[] frames = new Image[1];
+
+		try {
+			Image image1 = new Image("pics/enemy/Zombie/image 283.png");
+			frames[0] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		// Create frames of an animation
-		private Image[] createToDownFrames() {
+		return frames;
+	}
 
-			Image[] frames = new Image[6];
+	// Create frames of an animation
+	private Image[] createToDownFrames() {
 
-			try {
-				Image image1 = new Image("pics/enemy/Zombie/image 283.png");
-				frames[0] = image1;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image2 = new Image("pics/enemy/Zombie/image 237.png");
-				frames[1] = image2;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image3 = new Image("pics/enemy/Zombie/image 610.png");
-				frames[2] = image3;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image4 = new Image("pics/enemy/Zombie/image 237.png");
-				frames[3] = image4;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image5 = new Image("pics/enemy/Zombie/image 283.png");
-				frames[4] = image5;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image6 = new Image("pics/enemy/Zombie/image 582.png");
-				frames[5] = image6;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		Image[] frames = new Image[6];
 
-			return frames;
-
+		try {
+			Image image1 = new Image("pics/enemy/Zombie/image 283.png");
+			frames[0] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image2 = new Image("pics/enemy/Zombie/image 237.png");
+			frames[1] = image2;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image3 = new Image("pics/enemy/Zombie/image 610.png");
+			frames[2] = image3;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image4 = new Image("pics/enemy/Zombie/image 237.png");
+			frames[3] = image4;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image5 = new Image("pics/enemy/Zombie/image 283.png");
+			frames[4] = image5;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image6 = new Image("pics/enemy/Zombie/image 582.png");
+			frames[5] = image6;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		// Create frames of an animation
-		private Image[] createToRightFrames() {
+		return frames;
 
-			Image[] frames = new Image[6];
+	}
 
-			try {
-				Image image1 = new Image("pics/enemy/Zombie/image 2831.png");
-				frames[0] = image1;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image2 = new Image("pics/enemy/Zombie/image 2371.png");
-				frames[1] = image2;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image3 = new Image("pics/enemy/Zombie/image 6101.png");
-				frames[2] = image3;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image4 = new Image("pics/enemy/Zombie/image 2371.png");
-				frames[3] = image4;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image5 = new Image("pics/enemy/Zombie/image 2831.png");
-				frames[4] = image5;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image6 = new Image("pics/enemy/Zombie/image 5821.png");
-				frames[5] = image6;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	// Create frames of an animation
+	private Image[] createToRightFrames() {
 
-			return frames;
+		Image[] frames = new Image[6];
 
+		try {
+			Image image1 = new Image("pics/enemy/Zombie/image 2831.png");
+			frames[0] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image2 = new Image("pics/enemy/Zombie/image 2371.png");
+			frames[1] = image2;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image3 = new Image("pics/enemy/Zombie/image 6101.png");
+			frames[2] = image3;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image4 = new Image("pics/enemy/Zombie/image 2371.png");
+			frames[3] = image4;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image5 = new Image("pics/enemy/Zombie/image 2831.png");
+			frames[4] = image5;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image6 = new Image("pics/enemy/Zombie/image 5821.png");
+			frames[5] = image6;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		// Create frames of an animation
-		private Image[] createToLeftFrames() {
+		return frames;
 
-			Image[] frames = new Image[6];
+	}
 
-			try {
-				Image image1 = new Image("pics/enemy/Zombie/image 2831.png");
-				frames[5] = image1;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image2 = new Image("pics/enemy/Zombie/image 2371.png");
-				frames[4] = image2;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image3 = new Image("pics/enemy/Zombie/image 6101.png");
-				frames[3] = image3;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image4 = new Image("pics/enemy/Zombie/image 2371.png");
-				frames[2] = image4;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image5 = new Image("pics/enemy/Zombie/image 2831.png");
-				frames[1] = image5;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image6 = new Image("pics/enemy/Zombie/image 5821.png");
-				frames[0] = image6;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	// Create frames of an animation
+	private Image[] createToLeftFrames() {
 
-			return frames;
+		Image[] frames = new Image[6];
 
+		try {
+			Image image1 = new Image("pics/enemy/Zombie/image 2831.png");
+			frames[5] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image2 = new Image("pics/enemy/Zombie/image 2371.png");
+			frames[4] = image2;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image3 = new Image("pics/enemy/Zombie/image 6101.png");
+			frames[3] = image3;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image4 = new Image("pics/enemy/Zombie/image 2371.png");
+			frames[2] = image4;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image5 = new Image("pics/enemy/Zombie/image 2831.png");
+			frames[1] = image5;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image6 = new Image("pics/enemy/Zombie/image 5821.png");
+			frames[0] = image6;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		private Image[] createToUpRightFrames() {
+		return frames;
 
-			Image[] frames = new Image[6];
+	}
 
-			try {
-				Image image1 = new Image("pics/enemy/Zombie/image 2832.png");
-				frames[0] = image1;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image2 = new Image("pics/enemy/Zombie/image 2372.png");
-				frames[1] = image2;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image3 = new Image("pics/enemy/Zombie/image 6102.png");
-				frames[2] = image3;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image4 = new Image("pics/enemy/Zombie/image 2372.png");
-				frames[3] = image4;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image5 = new Image("pics/enemy/Zombie/image 2832.png");
-				frames[4] = image5;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image6 = new Image("pics/enemy/Zombie/image 5822.png");
-				frames[5] = image6;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	private Image[] createToUpRightFrames() {
 
-			return frames;
+		Image[] frames = new Image[6];
 
+		try {
+			Image image1 = new Image("pics/enemy/Zombie/image 2832.png");
+			frames[0] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image2 = new Image("pics/enemy/Zombie/image 2372.png");
+			frames[1] = image2;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image3 = new Image("pics/enemy/Zombie/image 6102.png");
+			frames[2] = image3;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image4 = new Image("pics/enemy/Zombie/image 2372.png");
+			frames[3] = image4;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image5 = new Image("pics/enemy/Zombie/image 2832.png");
+			frames[4] = image5;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image6 = new Image("pics/enemy/Zombie/image 5822.png");
+			frames[5] = image6;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		private Image[] createToDownLeftFrames() {
+		return frames;
 
-			Image[] frames = new Image[6];
+	}
 
-			try {
-				Image image1 = new Image("pics/enemy/Zombie/image 2832.png");
-				frames[5] = image1;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image2 = new Image("pics/enemy/Zombie/image 2372.png");
-				frames[4] = image2;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image3 = new Image("pics/enemy/Zombie/image 6102.png");
-				frames[3] = image3;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image4 = new Image("pics/enemy/Zombie/image 2372.png");
-				frames[2] = image4;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image5 = new Image("pics/enemy/Zombie/image 2832.png");
-				frames[1] = image5;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image6 = new Image("pics/enemy/Zombie/image 5822.png");
-				frames[0] = image6;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	private Image[] createToDownLeftFrames() {
 
-			return frames;
+		Image[] frames = new Image[6];
 
+		try {
+			Image image1 = new Image("pics/enemy/Zombie/image 2832.png");
+			frames[5] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image2 = new Image("pics/enemy/Zombie/image 2372.png");
+			frames[4] = image2;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image3 = new Image("pics/enemy/Zombie/image 6102.png");
+			frames[3] = image3;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image4 = new Image("pics/enemy/Zombie/image 2372.png");
+			frames[2] = image4;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image5 = new Image("pics/enemy/Zombie/image 2832.png");
+			frames[1] = image5;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image6 = new Image("pics/enemy/Zombie/image 5822.png");
+			frames[0] = image6;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		private Image[] createToDownRightFrames() {
+		return frames;
 
-			Image[] frames = new Image[6];
+	}
 
-			try {
-				Image image1 = new Image("pics/enemy/Zombie/image 2833.png");
-				frames[0] = image1;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image2 = new Image("pics/enemy/Zombie/image 2373.png");
-				frames[1] = image2;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image3 = new Image("pics/enemy/Zombie/image 6103.png");
-				frames[2] = image3;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image4 = new Image("pics/enemy/Zombie/image 2373.png");
-				frames[3] = image4;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image5 = new Image("pics/enemy/Zombie/image 2833.png");
-				frames[4] = image5;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image6 = new Image("pics/enemy/Zombie/image 5823.png");
-				frames[5] = image6;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	private Image[] createToDownRightFrames() {
 
-			return frames;
+		Image[] frames = new Image[6];
 
+		try {
+			Image image1 = new Image("pics/enemy/Zombie/image 2833.png");
+			frames[0] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image2 = new Image("pics/enemy/Zombie/image 2373.png");
+			frames[1] = image2;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image3 = new Image("pics/enemy/Zombie/image 6103.png");
+			frames[2] = image3;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image4 = new Image("pics/enemy/Zombie/image 2373.png");
+			frames[3] = image4;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image5 = new Image("pics/enemy/Zombie/image 2833.png");
+			frames[4] = image5;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image6 = new Image("pics/enemy/Zombie/image 5823.png");
+			frames[5] = image6;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		private Image[] createToUpLeftFrames() {
+		return frames;
 
-			Image[] frames = new Image[6];
+	}
 
-			try {
-				Image image1 = new Image("pics/enemy/Zombie/image 2833.png");
-				frames[5] = image1;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image2 = new Image("pics/enemy/Zombie/image 2373.png");
-				frames[4] = image2;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image3 = new Image("pics/enemy/Zombie/image 6103.png");
-				frames[3] = image3;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image4 = new Image("pics/enemy/Zombie/image 2373.png");
-				frames[2] = image4;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image5 = new Image("pics/enemy/Zombie/image 2833.png");
-				frames[1] = image5;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				Image image6 = new Image("pics/enemy/Zombie/image 5823.png");
-				frames[0] = image6;
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	private Image[] createToUpLeftFrames() {
 
-			return frames;
+		Image[] frames = new Image[6];
 
+		try {
+			Image image1 = new Image("pics/enemy/Zombie/image 2833.png");
+			frames[5] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		try {
+			Image image2 = new Image("pics/enemy/Zombie/image 2373.png");
+			frames[4] = image2;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image3 = new Image("pics/enemy/Zombie/image 6103.png");
+			frames[3] = image3;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image4 = new Image("pics/enemy/Zombie/image 2373.png");
+			frames[2] = image4;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image5 = new Image("pics/enemy/Zombie/image 2833.png");
+			frames[1] = image5;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image6 = new Image("pics/enemy/Zombie/image 5823.png");
+			frames[0] = image6;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return frames;
+
+	}
 }

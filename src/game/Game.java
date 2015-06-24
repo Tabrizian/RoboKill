@@ -38,6 +38,7 @@ public class Game extends BasicGameState {
 	 */
 	public Game() {
 		robot = new Robot();
+		enemy = new Zombie(robot.getPos() , new Position(300, 300)) ;
 		Cell[][] cells = new Cell[15][11];
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 11; j++) {
@@ -50,7 +51,7 @@ public class Game extends BasicGameState {
 		inv = new UtilityButton("inv");
 		menu = new UtilityButton("menu");
 		
-		enemy = new Zombie(robot.getPos() , new Position(300, 300)) ;
+		
 	}
 
 	@Override
@@ -86,10 +87,11 @@ public class Game extends BasicGameState {
 
 		field.draw(g);
 		robot.draw();
+		((Zombie) enemy).draw() ;
 		map.draw(g);
 		inv.draw(g);
 		menu.draw(g);
-		((Zombie) enemy).draw() ;
+		
 
 	}
 
@@ -98,12 +100,13 @@ public class Game extends BasicGameState {
 			throws SlickException {
 
 		robot.update(gc);
+		((Zombie) enemy).update(gc) ;
+		((Zombie) enemy).setRobotPos(robot.getPos());
 		field.update(gc);
 		map.update(gc);
 		inv.update(gc);
 		menu.update(gc);
-		((Zombie) enemy).update(gc) ;
-		((Zombie) enemy).setRobotPos(robot.getPos());
+		
 	}
 
 	@Override
