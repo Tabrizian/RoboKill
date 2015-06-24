@@ -27,6 +27,8 @@ public abstract class Cell {
 			this.thing = new Wall() ;
 			this.thing = thing ;			
 		}
+		
+		init() ;
 	}
 	
 	public Cell(float xPos , float yPos){
@@ -52,15 +54,22 @@ public abstract class Cell {
 	 * @param thing
 	 */
 	public void setThing( Thing thing ){
-		this.thing = thing ;
+		if( thing instanceof Box ){
+			this.thing = new Box() ;
+			this.thing = thing ;
+		}
+		else if( thing instanceof Wall ){
+			this.thing = new Wall() ;
+			this.thing = thing ;	
+		}
 	}
 	/**
 	 * Draw the cell behind its thing if exists
 	 */
 	public  void draw(){
-		image.draw(pos.getX(), pos.getY());
+		image.drawCentered(pos.getX(), pos.getY());
 		if( thing != null )
-			thing.draw() ;
+			thing.draw( pos.getX() , pos.getY() ) ;
 		
 	}
 	/**
@@ -72,10 +81,6 @@ public abstract class Cell {
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		if( thing != null )
-			thing.init() ;
-			
+		}			
 	}
 }
