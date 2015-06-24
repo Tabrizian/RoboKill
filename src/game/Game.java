@@ -1,7 +1,7 @@
 package game;
 
 import game.cells.Cell;
-import game.objects.Inventory;
+import game.inventory.Inventory;
 import game.objects.Robot;
 import game.objects.weapons.Blasters.MediumBlaster;
 import game.objects.weapons.Shotguns.HeavyShotgun;

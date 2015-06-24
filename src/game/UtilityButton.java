@@ -1,6 +1,6 @@
 package game;
 
-import game.objects.Inventory;
+import game.inventory.Inventory;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
