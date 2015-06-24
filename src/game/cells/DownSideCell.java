@@ -13,4 +13,10 @@ public class DownSideCell extends Cell {
 		
 	}
 
+	@Override
+	public void init() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
