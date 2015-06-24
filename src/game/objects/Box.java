@@ -1,5 +1,8 @@
 package game.objects;
 
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+
 public class Box extends Thing {
 
 	public Box() {
@@ -16,7 +19,12 @@ public class Box extends Thing {
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-
+		try {
+			image = new Image("pics/things/image 712.png") ;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
