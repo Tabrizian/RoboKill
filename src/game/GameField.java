@@ -1,5 +1,7 @@
 package game;
 
+import game.cells.Cell;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
