@@ -96,15 +96,15 @@ public class Zombie extends Enemy {
 			e.printStackTrace();
 		}
 
-		toUp = new Animation(createToUpFrames(), 100);
-		fixState = new Animation(createFixStateFrame(), 100);
-		toDown = new Animation(createToDownFrames(), 100);
-		toRight = new Animation(createToRightFrames(), 100);
-		toLeft = new Animation(createToLeftFrames(), 100);
-		toDownLeft = new Animation(createToDownLeftFrames(), 85);
-		toUpRight = new Animation(createToUpRightFrames(), 85);
-		toDownRight = new Animation(createToDownRightFrames(), 85);
-		toUpLeft = new Animation(createToUpLeftFrames(), 85);
+		toUp = new Animation(createToUpFrames(), 150);
+		fixState = new Animation(createFixStateFrame(), 150);
+		toDown = new Animation(createToDownFrames(), 150);
+		toRight = new Animation(createToRightFrames(), 150);
+		toLeft = new Animation(createToLeftFrames(), 150);
+		toDownLeft = new Animation(createToDownLeftFrames(), 120);
+		toUpRight = new Animation(createToUpRightFrames(), 120);
+		toDownRight = new Animation(createToDownRightFrames(), 120);
+		toUpLeft = new Animation(createToUpLeftFrames(), 120);
 		
 		weapons[0] = new LightBlaster(0) ;
 		weapons[1] = null ;
@@ -325,45 +325,54 @@ public class Zombie extends Enemy {
 	
 	// Create frames of an animation
 		private Image[] createToUpFrames() {
-			Image[] frames = new Image[5];
+
+			Image[] frames = new Image[6];
 
 			try {
-				Image image1 = new Image("pics/robot/image 123.png");
-				frames[0] = image1;
+				Image image1 = new Image("pics/enemy/Zombie/image 283.png");
+				frames[5] = image1;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image2 = new Image("pics/robot/image 231.png");
-				frames[1] = image2;
+				Image image2 = new Image("pics/enemy/Zombie/image 237.png");
+				frames[4] = image2;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image3 = new Image("pics/robot/image 485.png");
-				frames[2] = image3;
+				Image image3 = new Image("pics/enemy/Zombie/image 610.png");
+				frames[3] = image3;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image4 = new Image("pics/robot/image 653.png");
-				frames[3] = image4;
+				Image image4 = new Image("pics/enemy/Zombie/image 237.png");
+				frames[2] = image4;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image5 = new Image("pics/robot/image 589.png");
-				frames[4] = image5;
+				Image image5 = new Image("pics/enemy/Zombie/image 283.png");
+				frames[1] = image5;
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				Image image6 = new Image("pics/enemy/Zombie/image 582.png");
+				frames[0] = image6;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
 			return frames;
+
 		}
 
 		// Create frames of an animation
@@ -384,39 +393,46 @@ public class Zombie extends Enemy {
 		// Create frames of an animation
 		private Image[] createToDownFrames() {
 
-			Image[] frames = new Image[5];
+			Image[] frames = new Image[6];
 
 			try {
-				Image image1 = new Image("pics/robot/image 123.png");
-				frames[4] = image1;
+				Image image1 = new Image("pics/enemy/Zombie/image 283.png");
+				frames[0] = image1;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image2 = new Image("pics/robot/image 231.png");
-				frames[3] = image2;
+				Image image2 = new Image("pics/enemy/Zombie/image 237.png");
+				frames[1] = image2;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image3 = new Image("pics/robot/image 485.png");
+				Image image3 = new Image("pics/enemy/Zombie/image 610.png");
 				frames[2] = image3;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image4 = new Image("pics/robot/image 653.png");
-				frames[1] = image4;
+				Image image4 = new Image("pics/enemy/Zombie/image 237.png");
+				frames[3] = image4;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image5 = new Image("pics/robot/image 589.png");
-				frames[0] = image5;
+				Image image5 = new Image("pics/enemy/Zombie/image 283.png");
+				frames[4] = image5;
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				Image image6 = new Image("pics/enemy/Zombie/image 582.png");
+				frames[5] = image6;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -429,39 +445,46 @@ public class Zombie extends Enemy {
 		// Create frames of an animation
 		private Image[] createToRightFrames() {
 
-			Image[] frames = new Image[5];
+			Image[] frames = new Image[6];
 
 			try {
-				Image image1 = new Image("pics/robot/image 1231.png");
-				frames[4] = image1;
+				Image image1 = new Image("pics/enemy/Zombie/image 2831.png");
+				frames[0] = image1;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image2 = new Image("pics/robot/image 2311.png");
-				frames[3] = image2;
+				Image image2 = new Image("pics/enemy/Zombie/image 2371.png");
+				frames[1] = image2;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image3 = new Image("pics/robot/image 4851.png");
+				Image image3 = new Image("pics/enemy/Zombie/image 6101.png");
 				frames[2] = image3;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image4 = new Image("pics/robot/image 6531.png");
-				frames[1] = image4;
+				Image image4 = new Image("pics/enemy/Zombie/image 2371.png");
+				frames[3] = image4;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image5 = new Image("pics/robot/image 5891.png");
-				frames[0] = image5;
+				Image image5 = new Image("pics/enemy/Zombie/image 2831.png");
+				frames[4] = image5;
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				Image image6 = new Image("pics/enemy/Zombie/image 5821.png");
+				frames[5] = image6;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -474,39 +497,46 @@ public class Zombie extends Enemy {
 		// Create frames of an animation
 		private Image[] createToLeftFrames() {
 
-			Image[] frames = new Image[5];
+			Image[] frames = new Image[6];
 
 			try {
-				Image image1 = new Image("pics/robot/image 1231.png");
-				frames[0] = image1;
+				Image image1 = new Image("pics/enemy/Zombie/image 2831.png");
+				frames[5] = image1;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image2 = new Image("pics/robot/image 2311.png");
-				frames[1] = image2;
+				Image image2 = new Image("pics/enemy/Zombie/image 2371.png");
+				frames[4] = image2;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image3 = new Image("pics/robot/image 4851.png");
-				frames[2] = image3;
+				Image image3 = new Image("pics/enemy/Zombie/image 6101.png");
+				frames[3] = image3;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image4 = new Image("pics/robot/image 6531.png");
-				frames[3] = image4;
+				Image image4 = new Image("pics/enemy/Zombie/image 2371.png");
+				frames[2] = image4;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image5 = new Image("pics/robot/image 5891.png");
-				frames[4] = image5;
+				Image image5 = new Image("pics/enemy/Zombie/image 2831.png");
+				frames[1] = image5;
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				Image image6 = new Image("pics/enemy/Zombie/image 5821.png");
+				frames[0] = image6;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -518,39 +548,46 @@ public class Zombie extends Enemy {
 
 		private Image[] createToUpRightFrames() {
 
-			Image[] frames = new Image[5];
+			Image[] frames = new Image[6];
 
 			try {
-				Image image1 = new Image("pics/robot/image 1232.png");
+				Image image1 = new Image("pics/enemy/Zombie/image 2832.png");
 				frames[0] = image1;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image2 = new Image("pics/robot/image 2312.png");
+				Image image2 = new Image("pics/enemy/Zombie/image 2372.png");
 				frames[1] = image2;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image3 = new Image("pics/robot/image 4852.png");
+				Image image3 = new Image("pics/enemy/Zombie/image 6102.png");
 				frames[2] = image3;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image4 = new Image("pics/robot/image 6532.png");
+				Image image4 = new Image("pics/enemy/Zombie/image 2372.png");
 				frames[3] = image4;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image5 = new Image("pics/robot/image 5892.png");
+				Image image5 = new Image("pics/enemy/Zombie/image 2832.png");
 				frames[4] = image5;
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				Image image6 = new Image("pics/enemy/Zombie/image 5822.png");
+				frames[5] = image6;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -562,39 +599,46 @@ public class Zombie extends Enemy {
 
 		private Image[] createToDownLeftFrames() {
 
-			Image[] frames = new Image[5];
+			Image[] frames = new Image[6];
 
 			try {
-				Image image1 = new Image("pics/robot/image 1232.png");
-				frames[4] = image1;
+				Image image1 = new Image("pics/enemy/Zombie/image 2832.png");
+				frames[5] = image1;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image2 = new Image("pics/robot/image 2312.png");
-				frames[3] = image2;
+				Image image2 = new Image("pics/enemy/Zombie/image 2372.png");
+				frames[4] = image2;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image3 = new Image("pics/robot/image 4852.png");
-				frames[2] = image3;
+				Image image3 = new Image("pics/enemy/Zombie/image 6102.png");
+				frames[3] = image3;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image4 = new Image("pics/robot/image 6532.png");
-				frames[1] = image4;
+				Image image4 = new Image("pics/enemy/Zombie/image 2372.png");
+				frames[2] = image4;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image5 = new Image("pics/robot/image 5892.png");
-				frames[0] = image5;
+				Image image5 = new Image("pics/enemy/Zombie/image 2832.png");
+				frames[1] = image5;
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				Image image6 = new Image("pics/enemy/Zombie/image 5822.png");
+				frames[0] = image6;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -606,39 +650,46 @@ public class Zombie extends Enemy {
 
 		private Image[] createToDownRightFrames() {
 
-			Image[] frames = new Image[5];
+			Image[] frames = new Image[6];
 
 			try {
-				Image image1 = new Image("pics/robot/image 1233.png");
-				frames[4] = image1;
+				Image image1 = new Image("pics/enemy/Zombie/image 2833.png");
+				frames[0] = image1;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image2 = new Image("pics/robot/image 2313.png");
-				frames[3] = image2;
+				Image image2 = new Image("pics/enemy/Zombie/image 2373.png");
+				frames[1] = image2;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image3 = new Image("pics/robot/image 4853.png");
+				Image image3 = new Image("pics/enemy/Zombie/image 6103.png");
 				frames[2] = image3;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image4 = new Image("pics/robot/image 6533.png");
-				frames[1] = image4;
+				Image image4 = new Image("pics/enemy/Zombie/image 2373.png");
+				frames[3] = image4;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image5 = new Image("pics/robot/image 5893.png");
-				frames[0] = image5;
+				Image image5 = new Image("pics/enemy/Zombie/image 2833.png");
+				frames[4] = image5;
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				Image image6 = new Image("pics/enemy/Zombie/image 5823.png");
+				frames[5] = image6;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -650,39 +701,46 @@ public class Zombie extends Enemy {
 
 		private Image[] createToUpLeftFrames() {
 
-			Image[] frames = new Image[5];
+			Image[] frames = new Image[6];
 
 			try {
-				Image image1 = new Image("pics/robot/image 1233.png");
-				frames[0] = image1;
+				Image image1 = new Image("pics/enemy/Zombie/image 2833.png");
+				frames[5] = image1;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image2 = new Image("pics/robot/image 2313.png");
-				frames[1] = image2;
+				Image image2 = new Image("pics/enemy/Zombie/image 2373.png");
+				frames[4] = image2;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image3 = new Image("pics/robot/image 4853.png");
-				frames[2] = image3;
+				Image image3 = new Image("pics/enemy/Zombie/image 6103.png");
+				frames[3] = image3;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image4 = new Image("pics/robot/image 6533.png");
-				frames[3] = image4;
+				Image image4 = new Image("pics/enemy/Zombie/image 2373.png");
+				frames[2] = image4;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
-				Image image5 = new Image("pics/robot/image 5893.png");
-				frames[4] = image5;
+				Image image5 = new Image("pics/enemy/Zombie/image 2833.png");
+				frames[1] = image5;
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				Image image6 = new Image("pics/enemy/Zombie/image 5823.png");
+				frames[0] = image6;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
