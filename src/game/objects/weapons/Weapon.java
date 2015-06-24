@@ -96,6 +96,9 @@ public abstract class Weapon extends AddOne {
 		return imageInInventoryAddress;
 	}
 
+	public void setPlace( int index ){
+		place = index ;
+	}
 	/**
 	 * Add a gun to robot in Specified place
 	 * 
