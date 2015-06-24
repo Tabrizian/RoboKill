@@ -57,6 +57,8 @@ public class ItemsDatabase {
 				} else {
 					if (y == -1)
 						itemsTabular[i][j].draw();
+					else if (x != i || y != j)
+						itemsTabular[i][j].draw();
 				}
 			}
 		}
@@ -76,9 +78,10 @@ public class ItemsDatabase {
 
 		}
 
-		if (x != -1 && y == -1) {
+		if (y == -1 && x != -1)
 			weaponItems[x].draw();
-		}
+		if (y != -1 && x != -1)
+			itemsTabular[x][y].draw();
 	}
 
 	/**
@@ -100,5 +103,22 @@ public class ItemsDatabase {
 			}
 		}
 		return null;
+	}
+
+	public boolean isAnyOneLifted() {
+		for (Item[] items : itemsTabular) {
+			for (Item item : items) {
+				if (item.isLifted()) {
+					return true;
+				}
+			}
+		}
+		for (Item item : weaponItems) {
+			if (item.isLifted()) {
+				return true;
+			}
+		}
+		return false;
+
 	}
 }

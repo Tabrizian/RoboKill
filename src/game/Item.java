@@ -31,7 +31,7 @@ public class Item {
 		itemAddress = "pics/inventory/item.png";
 		defaultPos = new Position(pos);
 		this.pos = pos;
-		
+
 	}
 
 	public void init() {
@@ -64,7 +64,8 @@ public class Item {
 			pos = new Position(defaultPos);
 			if (input.isMouseButtonDown(0)) {
 				if (isInside(new Position(input.getMouseX(), input.getMouseY()))) {
-					lifted = true;
+					if (!ItemsDatabase.getItemsDatabase().isAnyOneLifted())
+						lifted = true;
 				}
 			}
 		}
@@ -72,11 +73,10 @@ public class Item {
 			Item item = ItemsDatabase.getItemsDatabase().thePointed(
 					new Position(input.getMouseX(), input.getMouseY()));
 			if (item != null) {
-				if (addOne != null){
+				if (addOne != null) {
 					item.add(addOne);
 				}
 				addOne = null;
-				System.out.println(item.getAddOne());
 			}
 			lifted = false;
 		}
@@ -94,9 +94,10 @@ public class Item {
 		return lifted;
 	}
 
-	public AddOne getAddOne(){
+	public AddOne getAddOne() {
 		return addOne;
 	}
+
 	public boolean isInside(Position position) {
 		return position.getX() < (defaultPos.getX() + 40)
 				&& position.getX() > defaultPos.getX()

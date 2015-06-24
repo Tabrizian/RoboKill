@@ -42,7 +42,8 @@ public class Inventory {
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 4; j++) {
 				itemsTabular[i][j] = new Item();
-				ItemsDatabase.getItemsDatabase().addToTabular(i, j, itemsTabular[i][j]);
+				ItemsDatabase.getItemsDatabase().addToTabular(i, j,
+						itemsTabular[i][j]);
 			}
 		}
 
@@ -108,6 +109,11 @@ public class Inventory {
 	public void update(GameContainer gc) {
 		for (Item item : weapons) {
 			item.update(gc);
+		}
+		for (Item[] items : itemsTabular) {
+			for (Item item : items) {
+				item.update(gc);
+			}
 		}
 	}
 
