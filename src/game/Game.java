@@ -3,6 +3,8 @@ package game;
 import game.cells.Cell;
 import game.inventory.Inventory;
 import game.objects.Robot;
+import game.objects.enemies.Enemy;
+import game.objects.enemies.Zombie;
 import game.objects.weapons.Blasters.LightBlaster;
 import game.objects.weapons.Blasters.MediumBlaster;
 import game.objects.weapons.Shotguns.HeavyShotgun;
@@ -25,6 +27,7 @@ public class Game extends BasicGameState {
 	private Robot robot;
 	private JLabel cash;
 	private JLabel shield;
+	private Enemy enemy ;
 
 	private UtilityButton map;
 	private UtilityButton menu;
@@ -46,6 +49,8 @@ public class Game extends BasicGameState {
 		map = new UtilityButton("map");
 		inv = new UtilityButton("inv");
 		menu = new UtilityButton("menu");
+		
+		enemy = new Zombie(robot.getPos() , new Position(300, 300)) ;
 	}
 
 	@Override
@@ -58,6 +63,7 @@ public class Game extends BasicGameState {
 		menu.init();
 		inv.init();
 		robot.init();
+		((Zombie) enemy).init() ;
 		HeavyShotgun heavyShotgun = new HeavyShotgun(0);
 		MediumBlaster MediumBlaster = new MediumBlaster(3);
 		LightBlaster lightBlaster = new LightBlaster(1) ;
@@ -83,6 +89,7 @@ public class Game extends BasicGameState {
 		map.draw(g);
 		inv.draw(g);
 		menu.draw(g);
+		((Zombie) enemy).draw() ;
 
 	}
 
@@ -95,6 +102,8 @@ public class Game extends BasicGameState {
 		map.update(gc);
 		inv.update(gc);
 		menu.update(gc);
+		((Zombie) enemy).update(gc) ;
+		((Zombie) enemy).setRobotPos(robot.getPos());
 	}
 
 	@Override

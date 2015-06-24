@@ -46,7 +46,6 @@ public class Robot {
 	 * ArrayList of current missiles.
 	 */
 	private String imageOfBodyAddress;
-	private String imageOfLegAddress;
 
 	private Image imageOfBody;
 
@@ -89,8 +88,6 @@ public class Robot {
 
 		imageOfBodyAddress = ("pics/robot/image" + " " + places[0] + places[1]
 				+ places[2] + places[3] + ".png");
-		imageOfLegAddress = ("pics/robot/image 123.png");
-
 	}
 
 	/**
@@ -122,10 +119,6 @@ public class Robot {
 
 	public String getImageOfBody() {
 		return imageOfBodyAddress;
-	}
-
-	public String getImageOfLeg() {
-		return imageOfLegAddress;
 	}
 
 	public void setPos(Position pos) {
