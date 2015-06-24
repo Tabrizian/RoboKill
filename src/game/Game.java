@@ -3,8 +3,10 @@ package game;
 import game.cells.Cell;
 import game.inventory.Inventory;
 import game.objects.Robot;
+import game.objects.weapons.Blasters.LightBlaster;
 import game.objects.weapons.Blasters.MediumBlaster;
 import game.objects.weapons.Shotguns.HeavyShotgun;
+import game.objects.weapons.Shotguns.LightShotgun;
 
 import javax.swing.JLabel;
 
@@ -36,7 +38,7 @@ public class Game extends BasicGameState {
 		Cell[][] cells = new Cell[15][11];
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 11; j++) {
-				cells[i][j] = new Cell(i,j);
+				cells[i][j] = new Cell(i, j);
 			}
 		}
 		GameFieldModel model = new GameFieldModel(cells);
@@ -56,15 +58,20 @@ public class Game extends BasicGameState {
 		menu.init();
 		inv.init();
 		robot.init();
-		HeavyShotgun lightShotgun = new HeavyShotgun(0);
-		MediumBlaster heavyBlaster = new MediumBlaster(3) ;
-		robot.addGun(lightShotgun, 0);
+		HeavyShotgun heavyShotgun = new HeavyShotgun(0);
+		MediumBlaster MediumBlaster = new MediumBlaster(3);
+		LightBlaster lightBlaster = new LightBlaster(1) ;
+		LightShotgun lightShotgun = new LightShotgun(2) ;
+		
 		// Adding light shotgun to inventory for test.
-		Inventory.getInventory().add(lightShotgun, 0);
-		Inventory.getInventory().add(heavyBlaster, 3);
-		// robot.addGun(new LightBlaster(1) , 1 );
-		 robot.addGun(heavyBlaster , 3 );
-		//robot.addGun(new HeavyShotgun(3), 3);
+		Inventory.getInventory().add(heavyShotgun, 0);
+		Inventory.getInventory().add(MediumBlaster, 3);
+		Inventory.getInventory().add(lightBlaster, 1);
+		Inventory.getInventory().add(lightShotgun, 2);
+		robot.addGun(heavyShotgun, 0);
+		robot.addGun(lightBlaster, 1);
+		robot.addGun(MediumBlaster, 3);
+		robot.addGun(lightShotgun, 2);
 	}
 
 	@Override
