@@ -9,16 +9,20 @@ import org.newdawn.slick.SlickException;
 
 public class GameField {
 
-	private Cell[][] cells;
 	private boolean isCleaned = false;
 	private boolean isActivate = true;
 	private String image;
 	private Image fieldImage;
+	private GameFieldModel model;
 
 	public GameField() {
 
 		image = ("pics/fields/image 187.png");
 
+	}
+
+	public GameField(GameFieldModel model) {
+		this.model = model;
 	}
 
 	public String getImage() {
@@ -29,12 +33,16 @@ public class GameField {
 	 * Loads image
 	 */
 	public void init() {
-		try {
-			fieldImage = new Image(this.getImage());
+		if (model != null) {
+			try {
+				fieldImage = new Image(this.getImage());
 
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			model.drawAll();
 		}
 	}
 
@@ -42,7 +50,10 @@ public class GameField {
 	 * Draw image
 	 */
 	public void draw(Graphics g) {
-		fieldImage.draw(0, 0);
+		if (model == null)
+			fieldImage.draw(0, 0);
+		else
+			model.drawAll();
 
 	}
 
