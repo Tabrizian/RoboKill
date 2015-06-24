@@ -47,9 +47,9 @@ public class Inventory {
 		}
 
 		weapons = new Item[4];
-		weapons[0] = new Item(new Position(175, 270));
-		weapons[1] = new Item(new Position(230, 270));
-		weapons[2] = new Item(new Position(105, 360));
+		weapons[1] = new Item(new Position(175, 270));
+		weapons[2] = new Item(new Position(230, 270));
+		weapons[0] = new Item(new Position(105, 360));
 		weapons[3] = new Item(new Position(300, 360));
 		for (int i = 0; i < weapons.length; i++) {
 			ItemsDatabase.getItemsDatabase().addToWeapons(i, weapons[i]);
@@ -114,6 +114,10 @@ public class Inventory {
 				item.update(gc);
 			}
 		}
+	}
+	
+	public Item[] getWeaponsItems(){
+		return weapons ;
 	}
 
 }

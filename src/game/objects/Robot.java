@@ -1,17 +1,16 @@
 package game.objects;
 
 import game.Position;
+import game.inventory.Inventory;
+import game.inventory.Item;
 import game.objects.weapons.Weapon;
 
 import java.awt.Point;
-import java.util.ArrayList;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.InputListener;
-import org.newdawn.slick.KeyListener;
 import org.newdawn.slick.SlickException;
 
 /**
@@ -29,7 +28,7 @@ public class Robot {
 	/**
 	 * Weapons that robot carries them
 	 */
-	private ArrayList<Weapon> weapons;
+	private Weapon[] weapons;
 	/**
 	 * Healthy of robot
 	 */
@@ -69,23 +68,23 @@ public class Robot {
 
 	private Animation toRight;
 	private boolean isKeyRightPressed = false;
-	
-	private Animation toLeft ;
-	private boolean isKeyLeftPressed = false ;
-	
-	private Animation toUpRight ;
-	
-	private Animation toDownLeft ;
-	
-	private Animation toUpLeft ;
-	
-	private Animation toDownRight ;
-	
+
+	private Animation toLeft;
+	private boolean isKeyLeftPressed = false;
+
+	private Animation toUpRight;
+
+	private Animation toDownLeft;
+
+	private Animation toUpLeft;
+
+	private Animation toDownRight;
+
 	public Robot() {
 		super();
 
 		pos = new Position(70, 70);
-		weapons = new ArrayList<Weapon>();
+		weapons = new Weapon[4];
 		health = 100;
 
 		imageOfBodyAddress = ("pics/robot/image" + " " + places[0] + places[1]
@@ -148,11 +147,11 @@ public class Robot {
 		fixState = new Animation(createFixStateFrame(), 100);
 		toDown = new Animation(createToDownFrames(), 100);
 		toRight = new Animation(createToRightFrames(), 100);
-		toLeft = new Animation(createToLeftFrames() , 100 ) ;
-		toDownLeft = new Animation( createToDownLeftFrames() , 85 ) ;
-		toUpRight = new Animation( createToUpRightFrames() , 85 ) ;
-		toDownRight = new Animation( createToDownRightFrames() , 85 ) ;
-		toUpLeft = new Animation( createToUpLeftFrames() , 85 ) ;
+		toLeft = new Animation(createToLeftFrames(), 100);
+		toDownLeft = new Animation(createToDownLeftFrames(), 85);
+		toUpRight = new Animation(createToUpRightFrames(), 85);
+		toDownRight = new Animation(createToDownRightFrames(), 85);
+		toUpLeft = new Animation(createToUpLeftFrames(), 85);
 	}
 
 	/**
@@ -166,17 +165,18 @@ public class Robot {
 		imageOfBody.drawCentered(pos.getX(), pos.getY());
 
 		for (Weapon gun : weapons) {
-			gun.draw();
+			if (gun != null)
+				gun.draw();
 
 		}
 
-		//Manage drawing animations
-		if( iskeyUpPressed == true && isKeyRightPressed == true ){
+		// Manage drawing animations
+		if (iskeyUpPressed == true && isKeyRightPressed == true) {
 			fixState.stop();
 			toUp.stop();
 			toDown.stop();
 			toRight.stop();
-			toLeft.stop() ;
+			toLeft.stop();
 			toDownLeft.stop();
 			toDownRight.stop();
 			toUpLeft.stop();
@@ -185,13 +185,12 @@ public class Robot {
 			toUpRight.start();
 			imageOfBody.setRotation(imageAngleDeg);
 			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		}
-		else if( iskeyDownPressed == true && isKeyLeftPressed == true ){
+		} else if (iskeyDownPressed == true && isKeyLeftPressed == true) {
 			fixState.stop();
 			toUp.stop();
 			toDown.stop();
 			toRight.stop();
-			toLeft.stop() ;
+			toLeft.stop();
 			toUpRight.stop();
 			toDownRight.stop();
 			toUpLeft.stop();
@@ -200,13 +199,12 @@ public class Robot {
 			toDownLeft.start();
 			imageOfBody.setRotation(imageAngleDeg);
 			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		}
-		else if( iskeyUpPressed == true && isKeyLeftPressed == true ){
+		} else if (iskeyUpPressed == true && isKeyLeftPressed == true) {
 			fixState.stop();
 			toUp.stop();
 			toDown.stop();
 			toRight.stop();
-			toLeft.stop() ;
+			toLeft.stop();
 			toUpRight.stop();
 			toDownRight.stop();
 			toDownLeft.stop();
@@ -215,27 +213,25 @@ public class Robot {
 			toUpLeft.start();
 			imageOfBody.setRotation(imageAngleDeg);
 			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		}
-		else if( iskeyDownPressed == true && isKeyRightPressed == true ){
+		} else if (iskeyDownPressed == true && isKeyRightPressed == true) {
 			fixState.stop();
 			toUp.stop();
 			toDown.stop();
 			toRight.stop();
-			toLeft.stop() ;
+			toLeft.stop();
 			toUpRight.stop();
 			toUpLeft.stop();
-			toDownLeft.stop() ;
-			toDownRight.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
-					- imageOfBody.getHeight() / 2);
+			toDownLeft.stop();
+			toDownRight.draw(pos.getX() - imageOfBody.getWidth() / 2,
+					pos.getY() - imageOfBody.getHeight() / 2);
 			toDownRight.start();
 			imageOfBody.setRotation(imageAngleDeg);
 			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		}
-		else if (iskeyUpPressed == true) {
+		} else if (iskeyUpPressed == true) {
 			fixState.stop();
 			toDown.stop();
-			toRight.stop() ;
-			toLeft.stop() ;
+			toRight.stop();
+			toLeft.stop();
 			toUpRight.stop();
 			toDownLeft.stop();
 			toDownRight.stop();
@@ -251,8 +247,8 @@ public class Robot {
 			toUpRight.stop();
 			fixState.stop();
 			toUp.stop();
-			toRight.stop() ;
-			toLeft.stop() ;
+			toRight.stop();
+			toLeft.stop();
 			toDownLeft.stop();
 			toDownRight.stop();
 			toUpLeft.stop();
@@ -262,13 +258,13 @@ public class Robot {
 			imageOfBody.setRotation(imageAngleDeg);
 			imageOfBody.drawCentered(pos.getX(), pos.getY());
 		}
-		
-		else if( isKeyRightPressed == true ){
+
+		else if (isKeyRightPressed == true) {
 			fixState.stop();
 			toUpRight.stop();
 			toUp.stop();
 			toDown.stop();
-			toLeft.stop() ;
+			toLeft.stop();
 			toDownLeft.stop();
 			toDownRight.stop();
 			toUpLeft.stop();
@@ -277,8 +273,7 @@ public class Robot {
 			toRight.start();
 			imageOfBody.setRotation(imageAngleDeg);
 			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		}
-		else if( isKeyLeftPressed == true ){
+		} else if (isKeyLeftPressed == true) {
 			fixState.stop();
 			toUp.stop();
 			toDown.stop();
@@ -292,12 +287,11 @@ public class Robot {
 			toLeft.start();
 			imageOfBody.setRotation(imageAngleDeg);
 			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		}
-		else{
+		} else {
 			toUp.stop();
 			toDown.stop();
-			toRight.stop() ;
-			toLeft.stop() ;
+			toRight.stop();
+			toLeft.stop();
 			toUpRight.stop();
 			toDownLeft.stop();
 			toDownRight.stop();
@@ -307,7 +301,6 @@ public class Robot {
 			imageOfBody.setRotation(imageAngleDeg);
 			imageOfBody.drawCentered(pos.getX(), pos.getY());
 		}
-		
 
 	}
 
@@ -338,10 +331,9 @@ public class Robot {
 			isKeyRightPressed = false;
 		if (input.isKeyDown(Input.KEY_LEFT) || input.isKeyDown(input.KEY_A)) {
 			xPos -= 0.25;
-			isKeyLeftPressed = true ;
-		}
-		else
-			isKeyLeftPressed = false ;
+			isKeyLeftPressed = true;
+		} else
+			isKeyLeftPressed = false;
 
 		this.setPos(new Position(xPos, yPos));
 
@@ -355,9 +347,20 @@ public class Robot {
 			fire();
 
 		for (Weapon gun : weapons) {
-			gun.update(gc);
+			if (gun != null)
+				gun.update(gc);
 		}
 
+		Item[] items = Inventory.getInventory().getWeaponsItems();
+		for (int i = 0; i < 4; i++) {
+			if (items[i].getAddOne() != null && places[i] == 0){
+				((Weapon) items[i].getAddOne()).setPlace(i);
+				addGun( (Weapon) items[i].getAddOne() , i );
+			}
+			else if (items[i].getAddOne() == null && places[i] == 1)
+				remGun(i);
+
+		}
 	}
 
 	/**
@@ -366,7 +369,8 @@ public class Robot {
 	public void fire() {
 
 		for (Weapon gun : weapons) {
-			gun.shot(imageAngleRad, pos, imageOfBody.getWidth() * 70 / 100);
+			if (gun != null)
+				gun.shot(imageAngleRad, pos, imageOfBody.getWidth() * 70 / 100);
 		}
 	}
 
@@ -377,7 +381,7 @@ public class Robot {
 	 * @param place
 	 */
 	public void addGun(Weapon gun, int place) {
-		weapons.add(gun);
+		weapons[place] = gun;
 		places[place] = 1;
 		imageOfBodyAddress = ("pics/robot/image" + " " + places[0] + places[1]
 				+ places[2] + places[3] + ".png");
@@ -397,10 +401,29 @@ public class Robot {
 		}
 	}
 
-	public void remGun() {
+	public void remGun(int index) {
+		weapons[index] = null;
+		places[index] = 0;
+
+		imageOfBodyAddress = ("pics/robot/image" + " " + places[0] + places[1]
+				+ places[2] + places[3] + ".png");
+		// Destroy previous image of body
+		try {
+			imageOfBody.destroy();
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// Create new image of body
+		try {
+			imageOfBody = new Image(this.getImageOfBody());
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	//Create frames of an animation
+	// Create frames of an animation
 	private Image[] createToUpFrames() {
 		Image[] frames = new Image[5];
 
@@ -442,7 +465,8 @@ public class Robot {
 
 		return frames;
 	}
-	//Create frames of an animation
+
+	// Create frames of an animation
 	private Image[] createFixStateFrame() {
 		Image[] frames = new Image[1];
 
@@ -456,7 +480,8 @@ public class Robot {
 
 		return frames;
 	}
-	//Create frames of an animation
+
+	// Create frames of an animation
 	private Image[] createToDownFrames() {
 
 		Image[] frames = new Image[5];
@@ -500,7 +525,8 @@ public class Robot {
 		return frames;
 
 	}
-	//Create frames of an animation
+
+	// Create frames of an animation
 	private Image[] createToRightFrames() {
 
 		Image[] frames = new Image[5];
@@ -544,7 +570,8 @@ public class Robot {
 		return frames;
 
 	}
-	//Create frames of an animation
+
+	// Create frames of an animation
 	private Image[] createToLeftFrames() {
 
 		Image[] frames = new Image[5];
@@ -588,7 +615,7 @@ public class Robot {
 		return frames;
 
 	}
-	
+
 	private Image[] createToUpRightFrames() {
 
 		Image[] frames = new Image[5];
@@ -632,7 +659,7 @@ public class Robot {
 		return frames;
 
 	}
-	
+
 	private Image[] createToDownLeftFrames() {
 
 		Image[] frames = new Image[5];
@@ -676,7 +703,7 @@ public class Robot {
 		return frames;
 
 	}
-	
+
 	private Image[] createToDownRightFrames() {
 
 		Image[] frames = new Image[5];
@@ -697,7 +724,7 @@ public class Robot {
 		}
 		try {
 			Image image3 = new Image("pics/robot/image 4853.png");
-			frames[2] = image3 ;
+			frames[2] = image3;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -720,7 +747,7 @@ public class Robot {
 		return frames;
 
 	}
-	
+
 	private Image[] createToUpLeftFrames() {
 
 		Image[] frames = new Image[5];
