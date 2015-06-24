@@ -13,4 +13,10 @@ public class UpLeftCornerCell extends Cell {
 		
 	}
 
+	@Override
+	public void init() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

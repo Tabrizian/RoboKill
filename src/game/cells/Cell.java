@@ -34,4 +34,5 @@ public abstract class Cell {
 	}
 	
 	public abstract void draw() ;
+	public abstract void init() ;
 }
