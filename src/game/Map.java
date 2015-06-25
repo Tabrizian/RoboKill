@@ -16,9 +16,22 @@ public class Map {
 	 * Player who controls robot
 	 */
 	private Player player ;
+	/**
+	 * An instance of the map
+	 */
+	private static Map instance ;
 	
-	public Map(){
-		
+	private Map(){
+		instance = this ;
+	}
+	/**
+	 * A method that return a unique map
+	 * @return
+	 */
+	public static Map getMap(){
+		if( instance == null )
+			new Map() ;
+		return instance ;
 	}
 	
 	public void init(){
