@@ -53,12 +53,13 @@ public class ItemDiscription {
 						String.valueOf(weapon.getPower()), blue);
 				font.drawString(pos.getX() + 20, pos.getY() + 105, "VALUE:",
 						yellow);
-				font.drawString(pos.getX() + 150, pos.getY() + 105,
-						String.valueOf(weapon.getPrice()), yellow);
-				font.drawString(pos.getX() + 20, pos.getY() + 125, "RATE OF FIRE:",
-						blue);
+				font.drawString(pos.getX() + 150, pos.getY() + 105, "$"
+						+ String.valueOf(weapon.getPrice()), yellow);
+				font.drawString(pos.getX() + 20, pos.getY() + 125,
+						"RATE OF FIRE:", blue);
 				font.drawString(pos.getX() + 150, pos.getY() + 125,
-						String.valueOf(weapon.getSpeedRate()) + " PER SECOND",blue);
+						String.valueOf(weapon.getSpeedRate()) + " PER SECOND",
+						blue);
 			}
 		}
 	}

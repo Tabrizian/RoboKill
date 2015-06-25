@@ -25,8 +25,8 @@ public class Game extends BasicGameState {
 	 */
 	private GameField field;
 	private Robot robot;
-	private JLabel cash;
-	private JLabel shield;
+	private Player player;
+	
 	private Enemy enemy;
 
 	private UtilityButton map;
@@ -50,6 +50,7 @@ public class Game extends BasicGameState {
 		map = new UtilityButton("map");
 		inv = new UtilityButton("inv");
 		menu = new UtilityButton("menu");
+		player = new Player("Hello");
 
 	}
 
