@@ -36,13 +36,7 @@ public class Map {
 		robot = Robot.getRobot();
 
 		// Create fields
-		Cell[][] cells = new Cell[15][11];
-		for (int i = 0; i < 15; i++) {
-			for (int j = 0; j < 11; j++) {
-				cells[i][j] = new Cell(i, j);
-			}
-		}
-		GameFieldModel model = new GameFieldModel(cells);
+		GameFieldModel model = new GameFieldModel(createModel(1));
 		fields[4][1] = new GameField(model, 1, robot);
 
 	}
@@ -106,5 +100,33 @@ public class Map {
 	 */
 	public void drawInScopeMode() {
 
+	}
+	//Creates a model based on a given key that is 1 to 10
+	private Cell[][] createModel( int key ){
+		Cell[][] cells = new Cell[15][11];
+		if( key == 1 ){
+			for (int i = 0; i < 6; i++) {
+				for (int j = 0; j < 11; j++) {
+					cells[i][j] = new Cell(i, j , true);
+				}
+			}
+			for (int i = 6; i < 15; i++) {
+				for (int j = 0; j < 7; j++) {
+					cells[i][j] = new Cell(i, j);
+				}
+			}
+			for (int i = 6; i < 9; i++) {
+				for (int j = 7; j < 11; j++) {
+					cells[i][j] = new Cell(i, j , true);
+				}
+			}
+			for (int i = 9; i < 15; i++) {
+				for (int j = 7; j < 11; j++) {
+					cells[i][j] = new Cell(i, j );
+				}
+			}
+		}
+		
+		return cells ;
 	}
 }
