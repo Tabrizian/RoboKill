@@ -1,6 +1,7 @@
 package game.inventory;
 
 import game.Position;
+import game.UtilityButton;
 
 import java.awt.Font;
 
@@ -38,11 +39,11 @@ public class OkButton {
 	 */
 	private TrueTypeFont font;
 
-	public OkButton(String text) {
+	public OkButton(String text,Position pos) {
 		addressOfImg = "pics/buttons/image 547.png";
-		addressOfImgFocused = "pics/buttons/image 597.png";
+//		addressOfImgFocused = "pics/buttons/image 597.png";
 		this.text = text;
-		pos = new Position(300, 220 + population * 60);
+		this.pos = pos;
 		population++;
 	}
 
@@ -50,7 +51,7 @@ public class OkButton {
 
 		try {
 			img = new Image(addressOfImg);
-			imgFocused = new Image(addressOfImgFocused);
+//			imgFocused = new Image(addressOfImgFocused);
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,26 +64,26 @@ public class OkButton {
 
 	public void draw(Graphics g) {
 
-		if (!focused)
+//		if (!focused)
 			img.draw(pos.getX(), pos.getY());
-		else
-			imgFocused.draw(pos.getX(), pos.getY());
+//		else
+//			imgFocused.draw(pos.getX(), pos.getY());
 
-		font.drawString(pos.getX() + 15, pos.getY() + 8, text, new Color(255,
-				170, 0));
+		font.drawString(pos.getX() + 65, pos.getY() + 8, text, new Color(0,
+				253, 253));
 	}
 
-	public void update(GameContainer gc, StateBasedGame sbg) {
+	public void update(GameContainer gc) {
 		Input input = gc.getInput();
 		float mX = input.getMouseX();
 		float mY = input.getMouseY();
 
-		if (mX > pos.getX() && mX < (pos.getX() + 150)
-				&& mY < (pos.getY() + 30) && mY > pos.getY()) {
+		if (mX > pos.getX() && mX < (pos.getX() + 161)
+				&& mY < (pos.getY() + 41) && mY > pos.getY()) {
 			focused = true;
 			// Entering to game state.
-			if (input.isMousePressed(0) && text.equals("START"))
-				sbg.enterState(1);
+			if (input.isMousePressed(0))
+				UtilityButton.setInventoryState(false);
 		} else {
 			focused = false;
 		}

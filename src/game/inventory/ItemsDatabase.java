@@ -123,8 +123,8 @@ public class ItemsDatabase {
 		return false;
 
 	}
-	
-	public Item[] getWeapons(){
+
+	public Item[] getWeapons() {
 		return weaponItems;
 	}
 }

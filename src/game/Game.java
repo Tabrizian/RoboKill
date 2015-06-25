@@ -27,7 +27,7 @@ public class Game extends BasicGameState {
 	private Robot robot;
 	private JLabel cash;
 	private JLabel shield;
-	private Enemy enemy ;
+	private Enemy enemy;
 
 	private UtilityButton map;
 	private UtilityButton menu;
@@ -38,7 +38,7 @@ public class Game extends BasicGameState {
 	 */
 	public Game() {
 		robot = Robot.getRobot();
-		enemy = new Zombie(robot.getPos() , new Position(300, 300)) ;
+		enemy = new Zombie(robot.getPos(), new Position(300, 300));
 		Cell[][] cells = new Cell[15][11];
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 11; j++) {
@@ -50,8 +50,7 @@ public class Game extends BasicGameState {
 		map = new UtilityButton("map");
 		inv = new UtilityButton("inv");
 		menu = new UtilityButton("menu");
-		
-		
+
 	}
 
 	@Override
@@ -64,12 +63,12 @@ public class Game extends BasicGameState {
 		menu.init();
 		inv.init();
 		robot.init();
-		((Zombie) enemy).init() ;
+		((Zombie) enemy).init();
 		HeavyShotgun heavyShotgun = new HeavyShotgun(0);
 		MediumBlaster MediumBlaster = new MediumBlaster(3);
-		LightBlaster lightBlaster = new LightBlaster(1) ;
-		LightShotgun lightShotgun = new LightShotgun(2) ;
-		
+		LightBlaster lightBlaster = new LightBlaster(1);
+		LightShotgun lightShotgun = new LightShotgun(2);
+
 		// Adding light shotgun to inventory for test.
 		Inventory.getInventory().add(heavyShotgun, 0);
 		Inventory.getInventory().add(MediumBlaster, 3);
@@ -87,12 +86,10 @@ public class Game extends BasicGameState {
 
 		field.draw(g);
 		robot.draw();
-		((Zombie) enemy).draw() ;
-		map.draw(g );
-		inv.draw(g );
-		menu.draw(g );
-		
-		
+		((Zombie) enemy).draw();
+		map.draw(g);
+		inv.draw(g);
+		menu.draw(g);
 
 	}
 
@@ -101,15 +98,13 @@ public class Game extends BasicGameState {
 			throws SlickException {
 
 		robot.update(gc);
-		((Zombie) enemy).update(gc) ;
+		((Zombie) enemy).update(gc);
 		((Zombie) enemy).setRobotPos(robot.getPos());
 		field.update(gc);
 		map.update(gc);
 		inv.update(gc);
 		menu.update(gc);
-		
-		
-		
+
 	}
 
 	@Override

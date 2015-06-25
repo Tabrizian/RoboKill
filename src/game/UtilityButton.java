@@ -17,7 +17,7 @@ public class UtilityButton {
 	private Position pos;
 	private boolean focused = false;
 	private Inventory inventory;
-	private boolean showInventory = false;
+	private static boolean showInventory = false;
 
 	public UtilityButton(String name) {
 		this.name = name;
@@ -44,7 +44,7 @@ public class UtilityButton {
 		if (focused)
 			g.drawRect(pos.getX(), pos.getY(), 45, 13);
 		if (showInventory)
-			inventory.draw();
+			inventory.draw(g);
 
 	}
 
@@ -69,5 +69,9 @@ public class UtilityButton {
 			focused = false;
 		
 		
+	}
+	
+	public static void setInventoryState(boolean show){
+		showInventory = show;
 	}
 }
