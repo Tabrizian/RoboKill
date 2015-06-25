@@ -4,8 +4,13 @@ import game.Position;
 import game.objects.AddOne;
 import game.objects.weapons.Weapon;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.Timer;
+
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -27,10 +32,12 @@ public class Inventory {
 	private String inventoryTextAddress;
 	private Item[][] itemsTabular;
 	private Item[] weapons;
+
 	public static Inventory instance = null;
 	private OkButton ok;
 	private boolean isPointedToItem = false;
 	private ItemDiscription discription;
+	private boolean isDrawAnimation = false;
 
 	private Inventory() {
 
@@ -93,8 +100,8 @@ public class Inventory {
 			e.printStackTrace();
 		}
 
-		discription.init();
 
+		discription.init();
 	}
 
 	/**
@@ -136,4 +143,11 @@ public class Inventory {
 		return weapons;
 	}
 
+	public boolean negativIsDrawAnimation() {
+		if (isDrawAnimation == false)
+			isDrawAnimation = true;
+		else
+			isDrawAnimation = false;
+		return isDrawAnimation;
+	}
 }

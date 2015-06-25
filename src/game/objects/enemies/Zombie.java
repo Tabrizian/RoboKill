@@ -8,6 +8,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
+import game.GameField;
 import game.Position;
 import game.inventory.Inventory;
 import game.inventory.Item;
@@ -51,8 +52,10 @@ public class Zombie extends Enemy {
 	private Animation toUpLeft;
 
 	private Animation toDownRight;
+	
+	private GameField field ;
 
-	public Zombie(Position robotPos, Position pos) {
+	public Zombie(Position robotPos, Position pos , GameField field) {
 		super();
 
 		this.pos = new Position(pos);
@@ -63,6 +66,8 @@ public class Zombie extends Enemy {
 		robotPosition = pos;
 
 		weapons = new Weapon[4];
+		
+		this.field = field ;
 	}
 
 	public void setRobotPos(Position pos) {
@@ -293,7 +298,11 @@ public class Zombie extends Enemy {
 		} else
 			isKeyLeftPressed = false;
 
-		this.setPos(new Position(xPos, yPos));
+		xPos -= 25 ;
+		yPos -= 20 ;
+		if( field.isValidPos( new Position(xPos, yPos))){
+			this.setPos(new Position(xPos+= 25, yPos+=20));
+		}
 
 		double dx = robotPosition.getX() - this.getPos().getX();
 		double dy = robotPosition.getY() - this.getPos().getY();

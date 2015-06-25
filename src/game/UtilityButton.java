@@ -2,6 +2,7 @@ package game;
 
 import game.inventory.Inventory;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -19,12 +20,19 @@ public class UtilityButton {
 	private Inventory inventory;
 	private static boolean showInventory = false;
 
+	private Image[] frames;
+	private Animation s;
+
+	private boolean isAnimationDrawe = false;
+
 	public UtilityButton(String name) {
 		this.name = name;
 		pos = new Position(665 + population * 45, 590);
 
 		imgAddress = "pics/buttons/" + name + ".png";
 		population++;
+
+		frames = new Image[46];
 
 		inventory = Inventory.getInventory();
 	}
@@ -37,14 +45,30 @@ public class UtilityButton {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		for (int i = 1; i <= 46; i++) {
+			String s = Integer.toString(i);
+			try {
+				frames[i - 1] = new Image("pics/inventory/" + s + ".png");
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		s = new Animation(frames, 15);
+
+		s.setLooping(false);
 	}
 
-	public void draw(Graphics g ) {
+	public void draw(Graphics g) {
 		img.draw(pos.getX(), pos.getY());
 		if (focused)
 			g.drawRect(pos.getX(), pos.getY(), 45, 13);
 		if (showInventory)
-			inventory.draw(g);
+
+			inventory.draw();
+
 
 	}
 
@@ -67,8 +91,7 @@ public class UtilityButton {
 			}
 		} else
 			focused = false;
-		
-		
+
 	}
 	
 	public static void setInventoryState(boolean show){
