@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Random;
+
 import game.cells.Cell;
 import game.cells.DownCell;
 import game.cells.DownLeftCell;
@@ -113,6 +115,7 @@ public class Map {
 	// Creates a model based on a given key that is 1 to 10
 	private Cell[][] createModel(int key) {
 		Cell[][] cells = new Cell[15][11];
+		
 		if (key == 1) {
 			for (int i = 0; i < 6; i++) {
 				for (int j = 0; j < 11; j++) {
@@ -126,8 +129,10 @@ public class Map {
 
 			for (int i = 7; i < 15; i++) {
 				for (int j = 0; j < 6; j++) {
-					if (i == 13 && j == 2 || i == 13 && j == 3 || i==13 && j == 4)
-						cells[i][j] = new SimpleCell(i, j, new Box());
+					if (i == 13 && j == 2 || i == 13 && j == 3 || i==13 && j == 4){
+						Random rand = new Random() ;
+						cells[i][j] = new SimpleCell(i, j, new Box(Math.abs(rand.nextInt()%3) + 1));
+					}
 					else
 						cells[i][j] = new SimpleCell(i, j);
 				}
