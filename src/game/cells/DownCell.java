@@ -25,7 +25,7 @@ public class DownCell extends Cell {
 	
 	public void init(){
 		try {
-			image = new Image("pics/cells/image test.png");
+			image = new Image("pics/cells/image test4.png");
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

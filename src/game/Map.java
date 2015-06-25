@@ -1,6 +1,8 @@
 package game;
 
 import game.cells.Cell;
+import game.cells.DownCell;
+import game.cells.DownLeftCell;
 import game.cells.LeftCell;
 import game.cells.SimpleCell;
 import game.inventory.Inventory;
@@ -113,20 +115,33 @@ public class Map {
 					cells[i][j] = new SimpleCell(i, j , true);
 				}
 			}
-			for (int j = 0; j < 7; j++) {
+			for (int j = 0; j < 6; j++) {
 				cells[6][j] = new LeftCell(6, j);
 			}
+			cells[6][6] = new DownLeftCell(6, 6) ;
+			
 			for (int i = 7; i < 15; i++) {
-				for (int j = 0; j < 7; j++) {
+				for (int j = 0; j < 6; j++) {
 					cells[i][j] = new SimpleCell(i, j);
 				}
 			}
+			cells[7][6] = new DownCell(7, 6) ;
+			cells[8][6] = new DownCell(8, 6 ) ;
+			
+			for( int i = 9 ; i < 15 ; i++ )
+				cells[i][6] = new SimpleCell(i, 6) ;
+			
 			for (int i = 6; i < 9; i++) {
 				for (int j = 7; j < 11; j++) {
 					cells[i][j] = new SimpleCell(i, j , true);
 				}
 			}
-			for (int i = 9; i < 15; i++) {
+			
+			for (int j = 7; j < 11; j++) {
+				cells[9][j] = new LeftCell(9, j );
+			}
+			
+			for (int i = 10; i < 15; i++) {
 				for (int j = 7; j < 11; j++) {
 					cells[i][j] = new SimpleCell(i, j );
 				}
