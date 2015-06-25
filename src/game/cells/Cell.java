@@ -1,4 +1,4 @@
-package game;
+package game.cells;
 
 import game.Position;
 import game.objects.Box;
@@ -8,13 +8,13 @@ import game.objects.Wall;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-public class Cell {
+public abstract class Cell {
 
 	protected Thing thing;
 	protected Position pos;
 	protected boolean isExploded;
-	private boolean isBlocked;
-	private boolean isNoun;
+	protected boolean isBlocked;
+	protected boolean isNoun;
 	protected Image image;
 
 	public Cell(int row, int column, Thing thing) {
@@ -99,14 +99,7 @@ public class Cell {
 	/**
 	 * Loads images
 	 */
-	public void init() {
-		try {
-			image = new Image("pics/cells/image test.png");
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	public abstract void init() ;
 
 	private Position calPos(int row, int column) {
 		int xPos = row * 52 + 35;

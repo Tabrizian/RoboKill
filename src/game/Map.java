@@ -1,5 +1,8 @@
 package game;
 
+import game.cells.Cell;
+import game.cells.LeftCell;
+import game.cells.SimpleCell;
 import game.inventory.Inventory;
 import game.objects.Robot;
 import game.objects.weapons.Blasters.LightBlaster;
@@ -107,22 +110,25 @@ public class Map {
 		if( key == 1 ){
 			for (int i = 0; i < 6; i++) {
 				for (int j = 0; j < 11; j++) {
-					cells[i][j] = new Cell(i, j , true);
+					cells[i][j] = new SimpleCell(i, j , true);
 				}
 			}
-			for (int i = 6; i < 15; i++) {
+			for (int j = 0; j < 7; j++) {
+				cells[6][j] = new LeftCell(6, j);
+			}
+			for (int i = 7; i < 15; i++) {
 				for (int j = 0; j < 7; j++) {
-					cells[i][j] = new Cell(i, j);
+					cells[i][j] = new SimpleCell(i, j);
 				}
 			}
 			for (int i = 6; i < 9; i++) {
 				for (int j = 7; j < 11; j++) {
-					cells[i][j] = new Cell(i, j , true);
+					cells[i][j] = new SimpleCell(i, j , true);
 				}
 			}
 			for (int i = 9; i < 15; i++) {
 				for (int j = 7; j < 11; j++) {
-					cells[i][j] = new Cell(i, j );
+					cells[i][j] = new SimpleCell(i, j );
 				}
 			}
 		}

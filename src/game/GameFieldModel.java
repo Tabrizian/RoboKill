@@ -1,5 +1,7 @@
 package game;
 
+import game.cells.Cell;
+
 
 public class GameFieldModel {
 
