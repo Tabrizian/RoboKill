@@ -37,7 +37,7 @@ public class GameField {
 		this.robot = robot ;
 		//Create enemies for this field
 		enemies = new Enemy[numOfEnemies] ;
-		enemies[0] = new Zombie(robot.getPos() , new Position(300, 300)) ;
+		enemies[0] = new Zombie(robot.getPos() , new Position(300, 300) , this) ;
 	}
 
 	public String getImage() {
@@ -82,6 +82,8 @@ public class GameField {
 		
 		suroundImage.draw(0, 0);
 		
+		if( this.getModel().getHasExitText() == true)
+			this.getModel().getExitText().draw(350, 65);
 		//Draw all enemies
 		((Zombie) enemies[0]).draw() ;
 
@@ -95,5 +97,11 @@ public class GameField {
 
 	public GameFieldModel getModel(){
 		return model ;
+	}
+	
+	public boolean isValidPos( Position pos ){
+		if( model.getCellWithPos(pos.getX() , pos.getY() ).getIsBlocked() )
+			return false;
+		return true ;
 	}
 }

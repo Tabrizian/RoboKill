@@ -109,4 +109,8 @@ public abstract class Cell {
 
 		return pos;
 	}
+	
+	public boolean getIsBlocked(){
+		return isBlocked ;
+	}
 }

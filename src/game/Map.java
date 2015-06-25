@@ -6,6 +6,7 @@ import game.cells.DownLeftCell;
 import game.cells.LeftCell;
 import game.cells.SimpleCell;
 import game.inventory.Inventory;
+import game.objects.Box;
 import game.objects.Robot;
 import game.objects.weapons.Blasters.LightBlaster;
 import game.objects.weapons.Blasters.MediumBlaster;
@@ -33,14 +34,6 @@ public class Map {
 	private Map() {
 		instance = this;
 		fields = new GameField[5][5];
-
-		robot = Robot.getRobot();
-
-		// Create fields
-		GameFieldModel model = new GameFieldModel(createModel(1));
-		model.setPlane();
-		fields[4][1] = new GameField(model, 1, robot);
-
 	}
 
 	/**
@@ -58,6 +51,14 @@ public class Map {
 	 * Loads images for components
 	 */
 	public void init() {
+		GameFieldModel model = new GameFieldModel(createModel(1));
+		model.setPlane();
+		model.setExitText();
+		robot = Robot.getRobot(fields[4][1]);
+		
+		fields[4][1] = new GameField(model, 1, robot);
+
+		
 		robot.init();
 		fields[4][1].init();
 
@@ -83,12 +84,13 @@ public class Map {
 	 * @param g
 	 */
 	public void draw(Graphics g) {
-		//Draw all fields
+		// Draw all fields
 		fields[4][1].draw(g);
 		robot.draw();
-		//For drawing air plane
-		if( fields[4][1].getModel().getHasPlane() == true )
+		// For drawing air plane
+		if (fields[4][1].getModel().getHasPlane() == true)
 			fields[4][1].getModel().getPlane().draw(80, 80);
+
 	}
 
 	/**
@@ -107,52 +109,56 @@ public class Map {
 	public void drawInScopeMode() {
 
 	}
-	//Creates a model based on a given key that is 1 to 10
-	private Cell[][] createModel( int key ){
+
+	// Creates a model based on a given key that is 1 to 10
+	private Cell[][] createModel(int key) {
 		Cell[][] cells = new Cell[15][11];
-		if( key == 1 ){
+		if (key == 1) {
 			for (int i = 0; i < 6; i++) {
 				for (int j = 0; j < 11; j++) {
-					cells[i][j] = new SimpleCell(i, j , true);
+					cells[i][j] = new SimpleCell(i, j, true);
 				}
 			}
 			for (int j = 0; j < 6; j++) {
 				cells[6][j] = new LeftCell(6, j);
 			}
-			cells[6][6] = new DownLeftCell(6, 6) ;
-			
+			cells[6][6] = new DownLeftCell(6, 6);
+
 			for (int i = 7; i < 15; i++) {
 				for (int j = 0; j < 6; j++) {
+					if (i == 13 && j == 2 || i == 13 && j == 3 || i==13 && j == 4)
+						cells[i][j] = new SimpleCell(i, j, new Box());
+					else
+						cells[i][j] = new SimpleCell(i, j);
+				}
+			}
+			cells[7][6] = new DownCell(7, 6);
+			cells[8][6] = new DownCell(8, 6);
+
+			for (int i = 9; i < 15; i++)
+				cells[i][6] = new SimpleCell(i, 6);
+
+			for (int i = 6; i < 9; i++) {
+				for (int j = 7; j < 11; j++) {
+					cells[i][j] = new SimpleCell(i, j, true);
+				}
+			}
+
+			for (int j = 7; j < 11; j++) {
+				cells[9][j] = new LeftCell(9, j);
+			}
+
+			for (int i = 10; i < 15; i++) {
+				for (int j = 7; j < 11; j++) {
 					cells[i][j] = new SimpleCell(i, j);
 				}
 			}
-			cells[7][6] = new DownCell(7, 6) ;
-			cells[8][6] = new DownCell(8, 6 ) ;
-			
-			for( int i = 9 ; i < 15 ; i++ )
-				cells[i][6] = new SimpleCell(i, 6) ;
-			
-			for (int i = 6; i < 9; i++) {
-				for (int j = 7; j < 11; j++) {
-					cells[i][j] = new SimpleCell(i, j , true);
-				}
-			}
-			
-			for (int j = 7; j < 11; j++) {
-				cells[9][j] = new LeftCell(9, j );
-			}
-			
-			for (int i = 10; i < 15; i++) {
-				for (int j = 7; j < 11; j++) {
-					cells[i][j] = new SimpleCell(i, j );
-				}
-			}
 		}
-		
-		return cells ;
+
+		return cells;
 	}
-	
-	public Robot getRobot(){
-		return robot ;
+
+	public Robot getRobot() {
+		return robot;
 	}
 }

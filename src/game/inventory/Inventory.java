@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.swing.Timer;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -31,7 +32,10 @@ public class Inventory {
 	private String inventoryTextAddress;
 	private Item[][] itemsTabular;
 	private Item[] weapons;
+
 	public static Inventory instance = null;
+
+	private boolean isDrawAnimation = false;
 
 	private Inventory() {
 		addOnes = new ArrayList<AddOne>();
@@ -89,6 +93,9 @@ public class Inventory {
 			e.printStackTrace();
 		}
 
+		// s.setAutoUpdate(false);
+		// s.setPingPong(true);
+
 	}
 
 	/**
@@ -101,7 +108,7 @@ public class Inventory {
 	}
 
 	public void draw() {
-		
+
 		inventoryImage.draw(pos.getX(), pos.getX());
 		character.draw(pos.getX() + 50, pos.getY() + 45);
 		itemDiscr.draw(pos.getX() + 343, pos.getY() + 45);
@@ -120,9 +127,16 @@ public class Inventory {
 			}
 		}
 	}
-	
-	public Item[] getWeaponsItems(){
-		return weapons ;
+
+	public Item[] getWeaponsItems() {
+		return weapons;
 	}
 
+	public boolean negativIsDrawAnimation() {
+		if (isDrawAnimation == false)
+			isDrawAnimation = true;
+		else
+			isDrawAnimation = false;
+		return isDrawAnimation;
+	}
 }

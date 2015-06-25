@@ -1,5 +1,6 @@
 package game.objects;
 
+import game.GameField;
 import game.Position;
 import game.inventory.Inventory;
 import game.inventory.Item;
@@ -80,6 +81,8 @@ public class Robot {
 	private Animation toDownRight;
 
 	public static Robot instance = null;
+	
+	private static GameField field ;
 
 	private Robot() {
 		super();
@@ -95,9 +98,10 @@ public class Robot {
 		instance = this;
 	}
 
-	public static Robot getRobot() {
+	public static Robot getRobot(GameField field) {
 		if (instance == null)
 			new Robot();
+		Robot.field = field ;
 		return instance;
 	}
 
@@ -343,7 +347,11 @@ public class Robot {
 		} else
 			isKeyLeftPressed = false;
 
-		this.setPos(new Position(xPos, yPos));
+		xPos -= 25 ;
+		yPos -= 20 ;
+		if( field.isValidPos( new Position(xPos, yPos))){
+			this.setPos(new Position(xPos+= 25, yPos+=20));
+		}
 
 		double dx = input.getMouseX() - this.getPos().getX();
 		double dy = input.getMouseY() - this.getPos().getY();

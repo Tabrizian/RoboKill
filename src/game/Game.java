@@ -15,7 +15,6 @@ public class Game extends BasicGameState {
 	 */
 	private Label cash;
 	private Label shield;
-	private ProgressBar bar ;
 	private Map map;
 	/**
 	 * Player who controls robot
@@ -60,10 +59,11 @@ public class Game extends BasicGameState {
 			throws SlickException {
 		map.draw(g);
 		mapButton.draw(g);
-		inv.draw(g);
+		
 		menu.draw(g);
 		cash.draw(g , Map.getMap().getRobot().getHealth() , player.getCash() );
 		shield.draw(g , Map.getMap().getRobot().getHealth() , player.getCash());
+		inv.draw(g);
 	}
 
 	@Override
