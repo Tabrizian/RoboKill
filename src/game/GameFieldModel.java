@@ -2,11 +2,16 @@ package game;
 
 import game.cells.Cell;
 
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+
 
 public class GameFieldModel {
 
 	private Cell[][] cells;
 
+	private boolean hasPlane ;
+	private Image plane ;
 	/**
 	 * @param cells - a 11X15 two dimensional array of cells.
 	 */
@@ -54,6 +59,23 @@ public class GameFieldModel {
 				cells[i][j].init();
 			}
 		}
+		try {
+			plane = new Image("pics/plane/image 335.png") ;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void setPlane(){
+		hasPlane = true ;		
 	}
 
+	public boolean getHasPlane(){
+		return hasPlane ;
+	}
+	
+	public Image getPlane(){
+		return plane ;
+	}
 }

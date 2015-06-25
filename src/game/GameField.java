@@ -93,4 +93,7 @@ public class GameField {
 		((Zombie) enemies[0]).setRobotPos(robot.getPos());
 	}
 
+	public GameFieldModel getModel(){
+		return model ;
+	}
 }

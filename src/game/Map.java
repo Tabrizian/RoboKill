@@ -42,6 +42,7 @@ public class Map {
 
 		// Create fields
 		GameFieldModel model = new GameFieldModel(createModel(1));
+		model.setPlane();
 		fields[4][1] = new GameField(model, 1, robot);
 
 	}
@@ -86,8 +87,12 @@ public class Map {
 	 * @param g
 	 */
 	public void draw(Graphics g) {
+		//Draw all fields
 		fields[4][1].draw(g);
 		robot.draw();
+		//For drawing air plane
+		if( fields[4][1].getModel().getHasPlane() == true )
+			fields[4][1].getModel().getPlane().draw(80, 80);
 	}
 
 	/**

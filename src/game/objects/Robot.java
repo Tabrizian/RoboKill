@@ -80,7 +80,7 @@ public class Robot {
 	private Animation toDownRight;
 
 	public static Robot instance = null;
-	
+
 	private Robot() {
 		super();
 
@@ -90,7 +90,7 @@ public class Robot {
 
 		imageOfBodyAddress = ("pics/robot/image" + " " + places[0] + places[1]
 				+ places[2] + places[3] + ".png");
-		
+
 		instance = this;
 	}
 
@@ -99,6 +99,7 @@ public class Robot {
 			new Robot();
 		return instance;
 	}
+
 	/**
 	 * set mouse point
 	 * 
@@ -317,22 +318,26 @@ public class Robot {
 
 		Input input = gc.getInput();
 		if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(input.KEY_W)) {
-			yPos -= 0.25;
+			if (yPos > 10)
+				yPos -= 0.25;
 			iskeyUpPressed = true;
 		} else
 			iskeyUpPressed = false;
 		if (input.isKeyDown(Input.KEY_DOWN) || input.isKeyDown(input.KEY_S)) {
-			yPos += 0.25;
+			if (yPos < 590)
+				yPos += 0.25;
 			iskeyDownPressed = true;
 		} else
 			iskeyDownPressed = false;
 		if (input.isKeyDown(Input.KEY_RIGHT) || input.isKeyDown(input.KEY_D)) {
-			xPos += 0.25;
+			if (xPos < 790)
+				xPos += 0.25;
 			isKeyRightPressed = true;
 		} else
 			isKeyRightPressed = false;
 		if (input.isKeyDown(Input.KEY_LEFT) || input.isKeyDown(input.KEY_A)) {
-			xPos -= 0.25;
+			if (xPos > 10)
+				xPos -= 0.25;
 			isKeyLeftPressed = true;
 		} else
 			isKeyLeftPressed = false;
@@ -355,11 +360,10 @@ public class Robot {
 
 		Item[] items = Inventory.getInventory().getWeaponsItems();
 		for (int i = 0; i < 4; i++) {
-			if (items[i].getAddOne() != null && places[i] == 0){
+			if (items[i].getAddOne() != null && places[i] == 0) {
 				((Weapon) items[i].getAddOne()).setPlace(i);
-				addGun( (Weapon) items[i].getAddOne() , i );
-			}
-			else if (items[i].getAddOne() == null && places[i] == 1)
+				addGun((Weapon) items[i].getAddOne(), i);
+			} else if (items[i].getAddOne() == null && places[i] == 1)
 				remGun(i);
 
 		}
