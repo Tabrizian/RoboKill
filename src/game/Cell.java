@@ -1,4 +1,4 @@
-package game.cells;
+package game;
 
 import game.Position;
 import game.objects.Box;

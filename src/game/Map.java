@@ -1,15 +1,14 @@
 package game;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-
-import game.cells.Cell;
 import game.inventory.Inventory;
 import game.objects.Robot;
 import game.objects.weapons.Blasters.LightBlaster;
 import game.objects.weapons.Blasters.MediumBlaster;
 import game.objects.weapons.Shotguns.HeavyShotgun;
 import game.objects.weapons.Shotguns.LightShotgun;
+
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 
 public class Map {
 

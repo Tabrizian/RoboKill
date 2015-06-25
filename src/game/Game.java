@@ -1,15 +1,5 @@
 package game;
 
-import game.cells.Cell;
-import game.inventory.Inventory;
-import game.objects.Robot;
-import game.objects.enemies.Enemy;
-import game.objects.enemies.Zombie;
-import game.objects.weapons.Blasters.LightBlaster;
-import game.objects.weapons.Blasters.MediumBlaster;
-import game.objects.weapons.Shotguns.HeavyShotgun;
-import game.objects.weapons.Shotguns.LightShotgun;
-
 import javax.swing.JLabel;
 
 import org.newdawn.slick.GameContainer;
