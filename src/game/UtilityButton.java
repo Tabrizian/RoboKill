@@ -8,6 +8,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
 
 public class UtilityButton {
 
@@ -66,13 +67,12 @@ public class UtilityButton {
 		if (focused)
 			g.drawRect(pos.getX(), pos.getY(), 45, 13);
 		if (showInventory)
-
-			inventory.draw();
+			inventory.draw(g);
 
 
 	}
 
-	public void update(GameContainer gc) {
+	public void update(GameContainer gc,StateBasedGame sbg) {
 		Input input = gc.getInput();
 
 		float mX = input.getMouseX();
@@ -86,6 +86,9 @@ public class UtilityButton {
 				switch (name) {
 				case "inv":
 					showInventory = !showInventory;
+					break;
+				case "menu":
+					sbg.enterState(0);
 					break;
 				}
 			}

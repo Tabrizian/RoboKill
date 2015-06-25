@@ -34,13 +34,13 @@ public class Game extends BasicGameState {
 	public Game() {
 
 		map = Map.getMap();
-		player = Player.getPlayer() ;
-		
+		player = Player.getPlayer();
+
 		mapButton = new UtilityButton("map");
 		inv = new UtilityButton("inv");
 		menu = new UtilityButton("menu");
-		cash = new Label("cash") ;
-		shield = new Label("shield") ;
+		cash = new Label("cash");
+		shield = new Label("shield");
 	}
 
 	@Override
@@ -60,20 +60,20 @@ public class Game extends BasicGameState {
 			throws SlickException {
 		map.draw(g);
 		mapButton.draw(g);
-		
+
 		menu.draw(g);
-		cash.draw(g , Map.getMap().getRobot().getHealth() , player.getCash() );
-		shield.draw(g , Map.getMap().getRobot().getHealth() , player.getCash());
+		cash.draw(g, Map.getMap().getRobot().getHealth(), player.getCash());
+		shield.draw(g, Map.getMap().getRobot().getHealth(), player.getCash());
 		inv.draw(g);
 	}
 
 	@Override
-	public void update(GameContainer gc, StateBasedGame arg1, int arg2)
+	public void update(GameContainer gc, StateBasedGame sbg, int arg2)
 			throws SlickException {
 		map.update(gc);
-		mapButton.update(gc);
-		inv.update(gc);
-		menu.update(gc);
+		mapButton.update(gc, sbg);
+		inv.update(gc, sbg);
+		menu.update(gc, sbg);
 
 	}
 
