@@ -26,10 +26,6 @@ public class Map {
 	 */
 	private Robot robot;
 	/**
-	 * Player who controls robot
-	 */
-	private Player player;
-	/**
 	 * An instance of the map
 	 */
 	private static Map instance;
@@ -154,5 +150,9 @@ public class Map {
 		}
 		
 		return cells ;
+	}
+	
+	public Robot getRobot(){
+		return robot ;
 	}
 }

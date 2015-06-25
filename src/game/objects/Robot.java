@@ -91,6 +91,7 @@ public class Robot {
 		imageOfBodyAddress = ("pics/robot/image" + " " + places[0] + places[1]
 				+ places[2] + places[3] + ".png");
 
+		health = 100 ;
 		instance = this;
 	}
 
@@ -796,5 +797,9 @@ public class Robot {
 
 		return frames;
 
+	}
+	
+	public int getHealth(){
+		return health ;
 	}
 }
