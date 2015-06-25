@@ -3,7 +3,11 @@ package game.inventory;
 import game.Position;
 import game.objects.AddOne;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
+import javax.swing.Timer;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
@@ -97,6 +101,7 @@ public class Inventory {
 	}
 
 	public void draw() {
+		
 		inventoryImage.draw(pos.getX(), pos.getX());
 		character.draw(pos.getX() + 50, pos.getY() + 45);
 		itemDiscr.draw(pos.getX() + 343, pos.getY() + 45);
