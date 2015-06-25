@@ -67,7 +67,7 @@ public class UtilityButton {
 			g.drawRect(pos.getX(), pos.getY(), 45, 13);
 		if (showInventory)
 
-			inventory.draw();
+			inventory.draw(g);
 
 
 	}

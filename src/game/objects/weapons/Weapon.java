@@ -48,7 +48,7 @@ public abstract class Weapon extends AddOne {
 	 * @return speed of weapon
 	 */
 	public float getSpeedRate() {
-		return speedRate;
+		return (float) (1/speedRate*45);
 	}
 
 	/**

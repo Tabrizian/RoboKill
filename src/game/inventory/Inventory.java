@@ -114,6 +114,7 @@ public class Inventory {
 	}
 
 	public void draw(Graphics g) {
+		g.setAntiAlias(true);
 		inventoryImage.draw(pos.getX(), pos.getX());
 		character.draw(pos.getX() + 50, pos.getY() + 45);
 
