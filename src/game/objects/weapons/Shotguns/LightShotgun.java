@@ -76,7 +76,7 @@ public class LightShotgun extends Shotgun {
 	public void init() {
 		// TODO Auto-generated method stub
 		try {
-			imageInInventory = new Image("pics/weapons/image 385.png");
+			imageInInventory = new Image("pics/weapons/image 362.png");
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
