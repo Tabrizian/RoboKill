@@ -41,7 +41,7 @@ public class OkButton {
 
 	public OkButton(String text,Position pos) {
 		addressOfImg = "pics/buttons/image 547.png";
-//		addressOfImgFocused = "pics/buttons/image 597.png";
+		addressOfImgFocused = "pics/buttons/image 5471.png";
 		this.text = text;
 		this.pos = pos;
 		population++;
@@ -51,7 +51,7 @@ public class OkButton {
 
 		try {
 			img = new Image(addressOfImg);
-//			imgFocused = new Image(addressOfImgFocused);
+			imgFocused = new Image(addressOfImgFocused);
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,10 +64,10 @@ public class OkButton {
 
 	public void draw(Graphics g) {
 
-//		if (!focused)
+		if (!focused)
 			img.draw(pos.getX(), pos.getY());
-//		else
-//			imgFocused.draw(pos.getX(), pos.getY());
+		else
+			imgFocused.draw(pos.getX(), pos.getY());
 
 		font.drawString(pos.getX() + 65, pos.getY() + 8, text, new Color(0,
 				253, 253));
