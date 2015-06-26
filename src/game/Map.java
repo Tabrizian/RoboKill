@@ -6,7 +6,9 @@ import game.cells.Cell;
 import game.cells.DownCell;
 import game.cells.DownLeftCell;
 import game.cells.LeftCell;
+import game.cells.RightCell;
 import game.cells.SimpleCell;
+import game.cells.UpCell;
 import game.inventory.Inventory;
 import game.objects.Barrel;
 import game.objects.Box;
@@ -186,7 +188,45 @@ public class Map {
 				}
 			}
 		}
-
+		else if ( key == 3 ){
+			for( int i = 0 ; i < 15 ; i++ ){
+				for ( int j = 0 ; j < 4 ; j++ ){
+					cells[i][j] = new SimpleCell(i, j , true ) ;
+				}
+			}
+			
+			for( int i = 0 ; i < 15 ; i++ )
+				cells[i][4] = new UpCell(i, 4) ;
+			
+			for( int i = 0 ; i < 15 ; i++ )
+				cells[i][5] = new SimpleCell(i, 5) ;
+			
+			for( int i = 0 ; i < 6 ; i++ )
+				cells[i][6] = new DownCell(i, 6 ) ;
+			
+			for( int i = 6 ; i < 9 ; i++ )
+				cells[i][6] = new SimpleCell(i,6) ;
+			
+			for( int i = 9 ; i < 15 ; i++ )
+				cells[i][6] = new DownCell(i, 6 ) ;
+			
+			for( int i = 7 ; i < 11 ; i++ )
+				cells[6][i] = new LeftCell(6, i ) ;
+			
+			for( int i = 7 ; i < 11 ; i++ )
+				cells[7][i] = new SimpleCell(7, i ) ;
+			
+			for( int i = 7 ; i < 11 ; i++ )
+				cells[8][i] = new RightCell(8, i ) ;
+			
+			for( int i = 0 ; i < 6 ; i++ )
+				for( int j = 7 ; j < 11 ; j++ )
+					cells[i][j] = new SimpleCell(i, j , true) ;
+			
+			for( int i = 9 ; i < 15 ; i++ )
+				for( int j = 7 ; j < 11 ; j++ )
+					cells[i][j] = new SimpleCell(i, j , true) ;
+		}
 		return cells;
 	}
 
@@ -231,7 +271,7 @@ public class Map {
 		fields[3][0] = new GameField(model2, 3, state2);
 		fields[3][0].setActivation(false);
 		// Creates game field 3
-		GameFieldModel model3 = new GameFieldModel(createModel(1));
+		GameFieldModel model3 = new GameFieldModel(createModel(3));
 		int[] state3 = new int[4];
 		state3[0] = -1;
 		state3[1] = 0;
