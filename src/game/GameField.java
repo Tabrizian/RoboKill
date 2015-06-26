@@ -67,7 +67,12 @@ public class GameField {
 			do{
 				pos = new Position(Math.abs(r
 						.nextInt()) % 800, Math.abs(r.nextInt()) % 600) ;
+				//For error detecting
+				pos.setX(pos.getX()-25);
+				pos.setY(pos.getY()-20);
 			}while( !isValidPos(pos) || isNounCell(pos)) ;
+			pos.setX(pos.getX()+25);
+			pos.setY(pos.getY()+20);
 			enemies[i] = new Zombie(robot.getPos(),pos, this);
 		}
 	}

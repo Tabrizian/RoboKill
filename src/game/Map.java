@@ -59,7 +59,7 @@ public class Map {
 		// Create game fields
 		createGameFields();
 		robot = Robot.getRobot();
-		robot.setActiveField(fields[4][1]);
+		robot.setActiveField(fields[3][1]);
 
 		robot.init();
 		// Initialize fields
@@ -274,7 +274,7 @@ public class Map {
 		state1[2] = -1;
 		state1[3] = -1;
 		fields[4][1] = new GameField(model1, 1, state1);
-		fields[4][1].setActivation(true);
+		fields[4][1].setActivation(false);
 		// Creates game field 2
 		GameFieldModel model2 = new GameFieldModel(createModel(2));
 		int[] state2 = new int[4];
@@ -292,7 +292,7 @@ public class Map {
 		state3[2] = 0;
 		state3[3] = 0;
 		fields[3][1] = new GameField(model3, 7, state3);
-		fields[3][1].setActivation(false);
+		fields[3][1].setActivation(true);
 		// Creates game field 4
 		GameFieldModel model4 = new GameFieldModel(createModel(1));
 		int[] state4 = new int[4];

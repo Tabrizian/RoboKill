@@ -54,7 +54,7 @@ public class Robot {
 	 * Place for add a gun that ordered from left to right
 	 */
 	private int[] places = { 0, 0, 0, 0 };
-	private Image text ;
+	private Image text;
 	/**
 	 * Animate robot for moving to up
 	 */
@@ -162,7 +162,7 @@ public class Robot {
 		}
 
 		try {
-			text = new Image("pics/game/warning.png") ;
+			text = new Image("pics/game/warning.png");
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -179,9 +179,10 @@ public class Robot {
 		fall = new Animation(createFallFrames(), 100);
 	}
 
-	public Image getText(){
+	public Image getText() {
 		return text;
 	}
+
 	/**
 	 * Draw robot with an angle for rotating that based on mouse position
 	 * 
@@ -202,11 +203,11 @@ public class Robot {
 			fall.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
 					- imageOfBody.getHeight() / 2);
 			fall.start();
-			if( fall.getFrame() == 15 ){
-				fall = null ;
-				fall = new Animation(createFallFrames(), 100 ) ;
-				health = 100 ;
-				setPos(new Position(500 , 300));
+			if (fall.getFrame() == 15) {
+				fall = null;
+				fall = new Animation(createFallFrames(), 100);
+				health = 100;
+				setPos(new Position(500, 300));
 			}
 		} else {
 			imageOfBody.setRotation(imageAngleDeg);
@@ -355,42 +356,45 @@ public class Robot {
 		float yPos = this.getPos().getY();
 
 		Input input = gc.getInput();
-		if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(input.KEY_W)) {
-			if (yPos > 25)
-				yPos -= 0.25;
-			iskeyUpPressed = true;
-		} else
-			iskeyUpPressed = false;
-		if (input.isKeyDown(Input.KEY_DOWN) || input.isKeyDown(input.KEY_S)) {
-			if (yPos < 575)
-				yPos += 0.25;
-			iskeyDownPressed = true;
-		} else
-			iskeyDownPressed = false;
-		if (input.isKeyDown(Input.KEY_RIGHT) || input.isKeyDown(input.KEY_D)) {
-			if (xPos < 775)
-				xPos += 0.25;
-			isKeyRightPressed = true;
-		} else
-			isKeyRightPressed = false;
-		if (input.isKeyDown(Input.KEY_LEFT) || input.isKeyDown(input.KEY_A)) {
-			if (xPos > 25)
-				xPos -= 0.25;
-			isKeyLeftPressed = true;
-		} else
-			isKeyLeftPressed = false;
+		if (health != 0) {
+			if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(input.KEY_W)) {
+				if (yPos > 25)
+					yPos -= 0.25;
+				iskeyUpPressed = true;
+			} else
+				iskeyUpPressed = false;
+			if (input.isKeyDown(Input.KEY_DOWN) || input.isKeyDown(input.KEY_S)) {
+				if (yPos < 575)
+					yPos += 0.25;
+				iskeyDownPressed = true;
+			} else
+				iskeyDownPressed = false;
+			if (input.isKeyDown(Input.KEY_RIGHT)
+					|| input.isKeyDown(input.KEY_D)) {
+				if (xPos < 775)
+					xPos += 0.25;
+				isKeyRightPressed = true;
+			} else
+				isKeyRightPressed = false;
+			if (input.isKeyDown(Input.KEY_LEFT) || input.isKeyDown(input.KEY_A)) {
+				if (xPos > 25)
+					xPos -= 0.25;
+				isKeyLeftPressed = true;
+			} else
+				isKeyLeftPressed = false;
 
-		xPos -= 25;
-		yPos -= 20;
-		
-		if (field.isNounCell(xPos, yPos)) {
-			this.health = 0;
+			
+			xPos -= 28 ;
+			yPos -= 25 ;
+			if (field.isNounCell(xPos, yPos)) {
+				this.health = 0;
+			}
+			xPos += 3;
+			yPos += 5;
+			if (field.isValidPos(new Position(xPos, yPos))) {
+				this.setPos(new Position(xPos += 25, yPos += 20));
+			}
 		}
-		
-		if (field.isValidPos(new Position(xPos, yPos))) {
-			this.setPos(new Position(xPos += 25, yPos += 20));
-		}
-
 		double dx = input.getMouseX() - this.getPos().getX();
 		double dy = input.getMouseY() - this.getPos().getY();
 		imageAngleRad = (float) (Math.atan2(dy, dx) - Math.PI / 2);
