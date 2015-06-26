@@ -59,8 +59,12 @@ public class Map {
 		model.setExitText();
 		robot = Robot.getRobot();
 		robot.setActiveField( fields[4][1] ) ;
-		
-		fields[4][1] = new GameField(model, 1, robot);
+		int[] state = new int[4] ;
+		state[0] = 0 ;
+		state[1] = -1 ;
+		state[2] = -1 ;
+		state[3] = -1 ;
+		fields[4][1] = new GameField(model, 1, robot , state);
 
 		
 		robot.init();

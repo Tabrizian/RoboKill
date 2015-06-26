@@ -328,25 +328,25 @@ public class Robot {
 
 		Input input = gc.getInput();
 		if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(input.KEY_W)) {
-			if (yPos > 10)
+			if (yPos > 25)
 				yPos -= 0.25;
 			iskeyUpPressed = true;
 		} else
 			iskeyUpPressed = false;
 		if (input.isKeyDown(Input.KEY_DOWN) || input.isKeyDown(input.KEY_S)) {
-			if (yPos < 590)
+			if (yPos < 575)
 				yPos += 0.25;
 			iskeyDownPressed = true;
 		} else
 			iskeyDownPressed = false;
 		if (input.isKeyDown(Input.KEY_RIGHT) || input.isKeyDown(input.KEY_D)) {
-			if (xPos < 790)
+			if (xPos < 775)
 				xPos += 0.25;
 			isKeyRightPressed = true;
 		} else
 			isKeyRightPressed = false;
 		if (input.isKeyDown(Input.KEY_LEFT) || input.isKeyDown(input.KEY_A)) {
-			if (xPos > 10)
+			if (xPos > 25)
 				xPos -= 0.25;
 			isKeyLeftPressed = true;
 		} else
