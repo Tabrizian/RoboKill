@@ -13,6 +13,7 @@ public abstract class Missile {
 	 * Angle at which missile is shooted.
 	 */
 	protected float angle;
+	protected boolean exploded;
 
 	public Missile(float angle, Position pos) {
 		this.angle = angle;
@@ -38,6 +39,14 @@ public abstract class Missile {
 	 */
 
 	public abstract void update(GameContainer gc);
+
+	public boolean isExploded() {
+		return exploded;
+	}
+
+	public void setExploded(boolean exploded) {
+		this.exploded = exploded;
+	}
 
 
 }
