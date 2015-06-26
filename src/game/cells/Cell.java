@@ -132,4 +132,11 @@ public abstract class Cell {
 	public boolean getIsBlocked(){
 		return isBlocked ;
 	}
+	/**
+	 * Getter for isNoun
+	 * @return
+	 */
+	public boolean getIsNoun(){
+		return isNoun ;
+	}
 }

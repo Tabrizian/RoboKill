@@ -211,6 +211,11 @@ public class GameField {
 		return true;
 	}
 
+	public boolean isNounCell( float xPos , float yPos){
+		if( model.getCellWithPos(xPos, yPos).getIsNoun() )
+			return true ;
+		return false ;
+	}
 	/**
 	 * Setter for isActivat
 	 * 
