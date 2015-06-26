@@ -32,6 +32,7 @@ public class Inventory {
 	private String inventoryTextAddress;
 	private Item[][] itemsTabular;
 	private Item[] weapons;
+	private Item[] upgrades;
 
 	public static Inventory instance = null;
 	private OkButton ok;
@@ -54,7 +55,6 @@ public class Inventory {
 			}
 		}
 
-
 		weapons = new Item[4];
 		weapons[1] = new Item(new Position(175, 270));
 		weapons[2] = new Item(new Position(230, 270));
@@ -69,6 +69,14 @@ public class Inventory {
 				pos.getY() + 45));
 		instance = this;
 
+		upgrades = new Item[4];
+		upgrades[0] = new Item(new Position(105, 430));
+		upgrades[1] = new Item(new Position(145, 430));
+		upgrades[2] = new Item(new Position(265, 430));
+		upgrades[3] = new Item(new Position(305, 430));
+		for (int i = 0; i < upgrades.length; i++) {
+			ItemsDatabase.getItemsDatabase().addToUpgrades(i, upgrades[i]);
+		}
 		ok = new OkButton("OK",
 				new Position(pos.getX() + 265, pos.getY() + 440));
 	}
@@ -78,6 +86,7 @@ public class Inventory {
 			new Inventory();
 		return instance;
 	}
+
 	/**
 	 * Loads images
 	 */
@@ -96,11 +105,13 @@ public class Inventory {
 			for (Item item : weapons) {
 				item.init();
 			}
+			for (Item item : upgrades) {
+				item.init();
+			}
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 
 		discription.init();
 	}
@@ -113,8 +124,10 @@ public class Inventory {
 	public void add(AddOne addOne, int place) {
 		weapons[place].add(addOne);
 	}
+
 	/**
 	 * Draws images with Graphics g
+	 * 
 	 * @param g
 	 */
 	public void draw(Graphics g) {
@@ -128,21 +141,29 @@ public class Inventory {
 		ItemsDatabase.getItemsDatabase().drawAll();
 		discription.draw(g);
 	}
+
 	/**
 	 * Updates items
+	 * 
 	 * @param gc
 	 */
 	public void update(GameContainer gc) {
-		
+
 		for (Item item1 : weapons) {
 			item1.update(gc);
 		}
+		
+		for (Item item1 : upgrades) {
+			item1.update(gc);
+		}
+
 
 		for (Item[] items : itemsTabular) {
 			for (Item item1 : items) {
 				item1.update(gc);
 			}
 		}
+		
 		ok.update(gc);
 		discription.update(gc);
 	}
