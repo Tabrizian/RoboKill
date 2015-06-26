@@ -1,17 +1,20 @@
 package game;
 
+import java.io.IOException;
+
 import javax.swing.JPanel;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.loading.DeferredResource;
+import org.newdawn.slick.loading.LoadingList;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class PreGame extends BasicGameState {
 
-	
 	private JPanel profile;
 	private Image backgroundImage;
 	private String backgroundImageAddress;
@@ -19,13 +22,18 @@ public class PreGame extends BasicGameState {
 	private PreGameButton start;
 	private PreGameButton options;
 	private PreGameButton credits;
-	private boolean imageLoaded = false;
-	private Thread thread;
+	private String loadingBarAddress;
+	private Image loadingBar;
+	private DeferredResource nextResource;
+	/** True if we've loaded all the resources and started rendereing */
+	private boolean started;
+
 	private Image backgroundLoadingImage;
 
 	public PreGame() {
 		backgroundImageAddress = "pics/backgrounds/image 700.jpg";
 		loadingImageAddress = "pics/backgrounds/image 3.jpg";
+		loadingBarAddress = "pics/loading/image 1.png";
 		start = new PreGameButton("START");
 		options = new PreGameButton("OPTIONS");
 		credits = new PreGameButton("CREDITS");
@@ -35,8 +43,9 @@ public class PreGame extends BasicGameState {
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1)
 			throws SlickException {
+		LoadingList.setDeferredLoading(true);
 		backgroundLoadingImage = new Image(loadingImageAddress);
-
+		loadingBar = new Image(loadingBarAddress);
 		try {
 			backgroundImage = new Image(backgroundImageAddress);
 		} catch (SlickException e) {
@@ -47,19 +56,25 @@ public class PreGame extends BasicGameState {
 		start.init();
 		options.init();
 		credits.init();
-		imageLoaded = true;
 	}
 
 	@Override
 	public void render(GameContainer arg0, StateBasedGame arg1, Graphics g)
 			throws SlickException {
-		if (imageLoaded) {
+		if (started) {
 			backgroundImage.draw(0, 0);
 			start.draw(g);
 			options.draw(g);
 			credits.draw(g);
 		} else {
+
+			int total = LoadingList.get().getTotalResources();
+			int loaded = LoadingList.get().getTotalResources()
+					- LoadingList.get().getRemainingResources();
+
 			backgroundLoadingImage.draw(0, 0);
+			loadingBar.draw(70, 528, 658 * (((float) loaded) / total), 12);
+
 		}
 	}
 
@@ -69,6 +84,25 @@ public class PreGame extends BasicGameState {
 		start.update(gc, sbg);
 		options.update(gc, sbg);
 		credits.update(gc, sbg);
+		if (nextResource != null) {
+			try {
+				nextResource.load();
+			} catch (IOException e) {
+				throw new SlickException("Failed to load: "
+						+ nextResource.getDescription(), e);
+			}
+
+			nextResource = null;
+		}
+
+		if (LoadingList.get().getRemainingResources() > 0) {
+			nextResource = LoadingList.get().getNext();
+		} else {
+			if (!started) {
+				started = true;
+
+			}
+		}
 	}
 
 	@Override
