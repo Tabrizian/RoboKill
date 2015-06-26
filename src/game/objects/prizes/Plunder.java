@@ -1,5 +1,7 @@
 package game.objects.prizes;
 
-public class Plunder {
+import game.objects.AddOne;
+
+public class Plunder extends AddOne{
 
 }

@@ -2,6 +2,7 @@ package game.inventory;
 
 import game.Position;
 import game.objects.AddOne;
+import game.objects.prizes.Plunder;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
@@ -19,20 +20,21 @@ public class Item {
 	private static int population = 0;
 	private boolean lifted = false;
 
-	public Item() {
+	public Item(String name) {
 		itemAddress = "pics/inventory/item.png";
 		pos = new Position(400 + (population % 7) * 40,
 				310 + population / 7 * 40);
 		defaultPos = new Position(pos);
+		this.name = name;
 		population++;
 
 	}
 
-	public Item(Position pos) {
+	public Item(Position pos, String name) {
 		itemAddress = "pics/inventory/item.png";
 		defaultPos = new Position(pos);
 		this.pos = pos;
-
+		this.name = name;
 	}
 
 	public void init() {
@@ -75,9 +77,16 @@ public class Item {
 					new Position(input.getMouseX(), input.getMouseY()));
 			if (item != null) {
 				if (addOne != null) {
-					item.add(addOne);
+					if (item.getName().equals("upgrade")) {
+						if (addOne instanceof Plunder){
+							item.add(addOne);
+							addOne = null;
+						}
+					} else {
+						item.add(addOne);
+						addOne = null;
+					}
 				}
-				addOne = null;
 			}
 			lifted = false;
 		}
@@ -86,22 +95,28 @@ public class Item {
 			pos.setY(input.getMouseY());
 		}
 	}
+
 	/**
 	 * Adds a addOne to the item
+	 * 
 	 * @param addOne
 	 */
 	public void add(AddOne addOne) {
 		this.addOne = addOne;
 	}
+
 	/**
 	 * Returns true if this item is lifted by mouse
+	 * 
 	 * @return
 	 */
 	public boolean isLifted() {
 		return lifted;
 	}
+
 	/**
 	 * Getter for addOne
+	 * 
 	 * @return
 	 */
 	public AddOne getAddOne() {
@@ -113,6 +128,10 @@ public class Item {
 				&& position.getX() > defaultPos.getX()
 				&& position.getY() < (defaultPos.getY() + 40)
 				&& position.getY() > defaultPos.getY();
+	}
+	
+	public String getName(){
+		return name;
 	}
 
 }
