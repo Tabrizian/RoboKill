@@ -54,7 +54,7 @@ public class Robot {
 	 * Place for add a gun that ordered from left to right
 	 */
 	private int[] places = { 0, 0, 0, 0 };
-
+	private Image text ;
 	/**
 	 * Animate robot for moving to up
 	 */
@@ -161,6 +161,12 @@ public class Robot {
 			e.printStackTrace();
 		}
 
+		try {
+			text = new Image("pics/game/warning.png") ;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		toUp = new Animation(createToUpFrames(), 100);
 		fixState = new Animation(createFixStateFrame(), 100);
 		toDown = new Animation(createToDownFrames(), 100);
@@ -173,6 +179,9 @@ public class Robot {
 		fall = new Animation(createFallFrames(), 100);
 	}
 
+	public Image getText(){
+		return text;
+	}
 	/**
 	 * Draw robot with an angle for rotating that based on mouse position
 	 * 

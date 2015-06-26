@@ -98,6 +98,9 @@ public class Map {
 						// For drawing air plane
 						if (fields[i][j].getModel().getHasPlane() == true)
 							fields[i][j].getModel().getPlane().draw(80, 80);
+						
+						if( robot.getHealth() == 0 )
+							robot.getText().drawCentered(400, 300);
 					}
 				}
 			}
