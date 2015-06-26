@@ -13,7 +13,7 @@ import org.newdawn.slick.SlickException;
 public class GameField {
 
 	private boolean isCleaned = false;
-	private boolean isActivate = true;
+	private boolean isActivate = false;
 
 	private String image;
 	private Image fieldImage;
@@ -211,7 +211,14 @@ public class GameField {
 			return false;
 		return true;
 	}
-
+	/**
+	 * Setter for isActivat
+	 * @param x
+	 */
+	public void setActivation( boolean x ){
+		isActivate = x ;
+	}
+	
 	// Creates frames for opening
 	private Image[] createFramesForOpeningUp() {
 		Image[] frames = new Image[10];

@@ -53,20 +53,11 @@ public class Map {
 	 * Loads images for components
 	 */
 	public void init() {
-		//Create game fields
-		GameFieldModel model = new GameFieldModel(createModel(1));
-		model.setPlane();
-		model.setExitText();
+		// Create game fields
+		createGameFields();
 		robot = Robot.getRobot();
-		robot.setActiveField( fields[4][1] ) ;
-		int[] state = new int[4] ;
-		state[0] = 0 ;
-		state[1] = 0 ;
-		state[2] = 0 ;
-		state[3] = 0 ;
-		fields[4][1] = new GameField(model, 1, robot , state);
+		robot.setActiveField(fields[4][1]);
 
-		
 		robot.init();
 		fields[4][1].init();
 
@@ -121,7 +112,7 @@ public class Map {
 	// Creates a model based on a given key that is from 1 to 10
 	private Cell[][] createModel(int key) {
 		Cell[][] cells = new Cell[15][11];
-		
+
 		if (key == 1) {
 			for (int i = 0; i < 6; i++) {
 				for (int j = 0; j < 11; j++) {
@@ -135,11 +126,12 @@ public class Map {
 
 			for (int i = 7; i < 15; i++) {
 				for (int j = 0; j < 6; j++) {
-					if (i == 13 && j == 2 || i == 13 && j == 3 || i==13 && j == 4){
-						Random rand = new Random() ;
-						cells[i][j] = new SimpleCell(i, j, new Box(Math.abs(rand.nextInt()%3) + 1));
-					}
-					else
+					if (i == 13 && j == 2 || i == 13 && j == 3 || i == 13
+							&& j == 4) {
+						Random rand = new Random();
+						cells[i][j] = new SimpleCell(i, j, new Box(
+								Math.abs(rand.nextInt() % 3) + 1));
+					} else
 						cells[i][j] = new SimpleCell(i, j);
 				}
 			}
@@ -161,23 +153,112 @@ public class Map {
 
 			for (int i = 10; i < 15; i++) {
 				for (int j = 7; j < 11; j++) {
-					if (i == 13 && j == 8 || i == 13 && j == 9 ){
-						Random rand = new Random() ;
-						cells[i][j] = new SimpleCell(i, j, new Box(Math.abs(rand.nextInt()%3) + 1));
-					}
-					else
+					if (i == 13 && j == 8 || i == 13 && j == 9) {
+						Random rand = new Random();
+						cells[i][j] = new SimpleCell(i, j, new Box(
+								Math.abs(rand.nextInt() % 3) + 1));
+					} else
 						cells[i][j] = new SimpleCell(i, j);
 				}
 			}
 		}
 
 		return cells;
-	}	
+	}
+
 	/**
 	 * Gives active game field
-	 * @return	Active field
+	 * 
+	 * @return Active field
 	 */
-	public GameField getActiveGameField(){
-		return fields[4][1] ;
+	public GameField getActiveGameField() {
+		return fields[4][1];
+	}
+
+	private void createGameFields() {
+		// Makes some of the fields null
+		for (int i = 0; i < 2; i++)
+			for (int j = 0; j < 3; j++)
+				fields[i][j] = null;
+		fields[0][2] = null;
+		fields[4][0] = null;
+		fields[4][2] = null;
+		for (int i = 2; i < 5; i++)
+			for (int j = 3; j < 5; j++)
+				fields[i][j] = null;
+		// Creates game field 1
+		GameFieldModel model1 = new GameFieldModel(createModel(1));
+		model1.setPlane();
+		model1.setExitText();
+		int[] state1 = new int[4];
+		state1[0] = 0;
+		state1[1] = -1;
+		state1[2] = -1;
+		state1[3] = -1;
+		fields[4][1] = new GameField(model1, 1, robot, state1);
+		fields[4][1].setActivation(true);
+		// Creates game field 2
+		GameFieldModel model2 = new GameFieldModel(createModel(1));
+		int[] state2 = new int[4];
+		state2[0] = -1;
+		state2[1] = 0;
+		state2[2] = -1;
+		state2[3] = -1;
+		fields[3][0] = new GameField(model2, 3, robot, state2);
+		fields[3][0].setActivation(false);
+		// Creates game field 3
+		GameFieldModel model3 = new GameFieldModel(createModel(1));
+		int[] state3 = new int[4];
+		state3[0] = -1;
+		state3[1] = 0;
+		state3[2] = 0;
+		state3[3] = 0;
+		fields[3][1] = new GameField(model3, 7, robot, state3);
+		fields[3][1].setActivation(false);
+		// Creates game field 4
+		GameFieldModel model4 = new GameFieldModel(createModel(1));
+		int[] state4 = new int[4];
+		state4[0] = 0;
+		state4[1] = -1;
+		state4[2] = -1;
+		state4[3] = 0;
+		fields[3][2] = new GameField(model4, 2, robot, state4);
+		fields[3][2].setActivation(false);
+		// Creates game field 5
+		GameFieldModel model5 = new GameFieldModel(createModel(1));
+		int[] state5 = new int[4];
+		state5[0] = 0;
+		state5[1] = -1;
+		state5[2] = 0;
+		state5[3] = -1;
+		fields[2][2] = new GameField(model5, 4, robot, state5);
+		fields[2][2].setActivation(false);
+		// Creates game field 6
+		GameFieldModel model6 = new GameFieldModel(createModel(1));
+		int[] state6 = new int[4];
+		state6[0] = -1;
+		state6[1] = 0;
+		state6[2] = 0;
+		state6[3] = -1;
+		fields[1][2] = new GameField(model6, 4, robot, state6);
+		fields[1][2].setActivation(false);
+		// Creates game field 7
+		GameFieldModel model7 = new GameFieldModel(createModel(1));
+		int[] state7 = new int[4];
+		state7[0] = 0;
+		state7[1] = 0;
+		state7[2] = -1;
+		state7[3] = 0;
+		fields[1][3] = new GameField(model7, 4, robot, state7);
+		fields[1][3].setActivation(false);
+		// Creates game field 8
+		GameFieldModel model8 = new GameFieldModel(createModel(1));
+		int[] state8 = new int[4];
+		state8[0] = 0;
+		state8[1] = -1;
+		state8[2] = -1;
+		state8[3] = 0;
+		fields[1][4] = new GameField(model8, 7, robot, state8);
+		fields[1][4].setActivation(false);
 	}
 }
