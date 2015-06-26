@@ -219,7 +219,13 @@ public class GameField {
 	public void setActivation(boolean x) {
 		isActivate = x;
 	}
-
+	/**
+	 * Getter for isActivate
+	 * @return
+	 */
+	public boolean getActivation(){
+		return isActivate ;
+	}
 	// Creates frames for opening
 	private Image[] createFramesForOpeningUp() {
 		Image[] frames = new Image[10];

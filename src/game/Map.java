@@ -59,7 +59,12 @@ public class Map {
 		robot.setActiveField(fields[4][1]);
 
 		robot.init();
-		fields[4][1].init();
+		//Initialize fields
+		for( int i = 0 ; i < 5 ; i++ )
+			for( int j = 0 ; j < 5 ; j++ )
+				if( fields[i][j] != null )
+					fields[i][j].init();
+		
 
 		HeavyShotgun heavyShotgun = new HeavyShotgun(0, "robot");
 		MediumBlaster MediumBlaster = new MediumBlaster(3, "robot");
@@ -83,12 +88,20 @@ public class Map {
 	 * @param g
 	 */
 	public void draw(Graphics g) {
-		// Draw all fields
-		fields[4][1].draw(g);
-		robot.draw();
-		// For drawing air plane
-		if (fields[4][1].getModel().getHasPlane() == true)
-			fields[4][1].getModel().getPlane().draw(80, 80);
+		// Draw active fields
+		for( int i = 0 ; i < 5 ; i++ )
+			for( int j = 0 ; j < 5 ; j++ ){
+				if( fields[i][j] != null ){
+					if( fields[i][j].getActivation() ){
+						fields[i][j].draw(g);
+						robot.draw();
+						// For drawing air plane
+						if (fields[i][j].getModel().getHasPlane() == true)
+							fields[i][j].getModel().getPlane().draw(80, 80);
+					}
+				}
+			}
+		
 
 	}
 
@@ -99,7 +112,13 @@ public class Map {
 	 */
 	public void update(GameContainer gc) {
 		robot.update(gc);
-		fields[4][1].update(gc);
+		for( int i = 0 ; i < 5 ; i++ )
+			for( int j = 0 ; j < 5 ; j++ ){
+				if( fields[i][j] != null ){
+					if( fields[i][j].getActivation() )
+						fields[i][j].update(gc);
+				}
+			}
 	}
 
 	/**
@@ -260,5 +279,23 @@ public class Map {
 		state8[3] = 0;
 		fields[1][4] = new GameField(model8, 7, state8);
 		fields[1][4].setActivation(false);
+		// Creates game field 9
+		GameFieldModel model9 = new GameFieldModel(createModel(1));
+		int[] state9 = new int[4];
+		state9[0] = -1;
+		state9[1] = 0;
+		state9[2] = 0;
+		state9[3] = -1;
+		fields[0][3] = new GameField(model9, 6, state9);
+		fields[0][3].setActivation(false);
+		// Creates game field 10
+		GameFieldModel model10 = new GameFieldModel(createModel(1));
+		int[] state10 = new int[4];
+		state10[0] = -1;
+		state10[1] = -1;
+		state10[2] = 0;
+		state10[3] = 0;
+		fields[0][4] = new GameField(model10, 10, state10);
+		fields[0][4].setActivation(false);
 	}
 }
