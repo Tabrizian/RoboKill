@@ -9,15 +9,17 @@ import org.newdawn.slick.SlickException;
 public abstract class Missile {
 	protected Position pos;
 	protected Image img;
+	private String owner;
 	/**
 	 * Angle at which missile is shooted.
 	 */
 	protected float angle;
 	protected boolean exploded;
 
-	public Missile(float angle, Position pos) {
+	public Missile(float angle, Position pos, String owner) {
 		this.angle = angle;
 		this.pos = new Position(pos);
+		this.owner = owner;
 		init();
 	}
 
@@ -46,6 +48,5 @@ public abstract class Missile {
 	public void setExploded(boolean exploded) {
 		this.exploded = exploded;
 	}
-
 
 }

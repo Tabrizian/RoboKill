@@ -21,7 +21,7 @@ public abstract class Weapon extends AddOne {
 	protected float speedRate;
 	protected int price;
 	protected String name;
-	private String owner;
+	protected String owner;
 	/**
 	 * Mouse Point
 	 */

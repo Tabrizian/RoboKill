@@ -7,8 +7,8 @@ import game.Position;
 
 public class MediumShotgunMissile extends ShotgunMissile {
 
-	public MediumShotgunMissile(float angle, Position pos, int num) {
-		super(angle, pos, num);
+	public MediumShotgunMissile(float angle, Position pos, int num, String owner) {
+		super(angle, pos, num, owner);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -56,7 +56,7 @@ public class HeavyBlaster extends Blaster {
 		if (renderControler == speedRate * 40) {
 			renderControler = 0;
 			missiles.add(new HeavyBlasterMissile(
-					(float) (angleRad + Math.PI / 2), pos1));
+					(float) (angleRad + Math.PI / 2), pos1, owner));
 		}
 
 	}

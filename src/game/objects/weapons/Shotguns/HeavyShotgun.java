@@ -56,13 +56,13 @@ public class HeavyShotgun extends Shotgun {
 		if (renderControler == speedRate * 40) {
 			renderControler = 0;
 			missiles.add(new HeavyShotgunMissile(
-					(float) (angleRad + Math.PI / 2), pos1, 0));
+					(float) (angleRad + Math.PI / 2), pos1, 0, owner));
 			missiles.add(new HeavyShotgunMissile(
-					(float) (angleRad + Math.PI / 2), pos1, 1));
+					(float) (angleRad + Math.PI / 2), pos1, 1, owner));
 			missiles.add(new HeavyShotgunMissile(
-					(float) (angleRad + Math.PI / 2), pos1, 2));
+					(float) (angleRad + Math.PI / 2), pos1, 2, owner));
 			missiles.add(new HeavyShotgunMissile(
-					(float) (angleRad + Math.PI / 2), pos1, 3));
+					(float) (angleRad + Math.PI / 2), pos1, 3, owner));
 		}
 
 	}

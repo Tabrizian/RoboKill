@@ -7,10 +7,11 @@ import game.Position;
 
 public class LightBlasterMissile extends BlasterMissile {
 
-	public LightBlasterMissile(float angle, Position pos) {
-		super(angle, pos);
+	public LightBlasterMissile(float angle, Position pos, String owner) {
+		super(angle, pos, owner);
 		// TODO Auto-generated constructor stub
 	}
+
 	@Override
 	public void init() {
 		try {
