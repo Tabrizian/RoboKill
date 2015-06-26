@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JComponent;
 
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 
 public class Enemy  {
@@ -29,4 +30,19 @@ public class Enemy  {
 		return pos;
 	}
 	
+	public void init(){
+		
+	}
+	
+	public void draw(){
+		
+	}
+	
+	public void update(GameContainer gc){
+		
+	}
+	
+	public void setRobotPos( Position pos) {
+		
+	}
 }

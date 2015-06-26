@@ -188,6 +188,20 @@ public class Map {
 				}
 			}
 		}
+		else if ( key == 2 ){
+			for( int i = 0 ; i < 15 ; i++ ){
+				for( int j = 0 ; j < 11 ; j++ ){
+					if( i == 1 && j == 1 || i==1 && j==2 || i==2 && j==1 || i==2 && j==2)
+						cells[i][j] = new SimpleCell(i,j, new Box() ) ;
+					else if( i== 1 && j==6 || i==2 && j == 6 )
+						cells[i][j] = new SimpleCell(i,j , new Barrel() ) ;
+					else if(( i == 11 || i==12) && ( j==4 || j==5 || j==6))
+						cells[i][j] = new SimpleCell(i, j, new Box(3)) ;
+					else
+						cells[i][j] = new SimpleCell(i,j) ;
+				}
+			}
+		}
 		else if ( key == 3 ){
 			for( int i = 0 ; i < 15 ; i++ ){
 				for ( int j = 0 ; j < 4 ; j++ ){
@@ -262,7 +276,7 @@ public class Map {
 		fields[4][1] = new GameField(model1, 1, state1);
 		fields[4][1].setActivation(true);
 		// Creates game field 2
-		GameFieldModel model2 = new GameFieldModel(createModel(1));
+		GameFieldModel model2 = new GameFieldModel(createModel(2));
 		int[] state2 = new int[4];
 		state2[0] = -1;
 		state2[1] = 0;
