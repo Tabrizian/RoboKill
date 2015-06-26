@@ -11,7 +11,7 @@ public class LightBlasterMissile extends BlasterMissile {
 		super(angle, pos);
 		// TODO Auto-generated constructor stub
 	}
-
+	@Override
 	public void init() {
 		try {
 			img = new Image("pics/fires/image 693.png");

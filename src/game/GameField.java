@@ -31,15 +31,21 @@ public class GameField {
 	}
 
 	public GameField(GameFieldModel model , int numOfEnemies , Robot robot) {
+		//Preparing environment
 		image = ("pics/fields/image 593.jpg");
 		suround = ("pics/fields/image 743.png") ;
 		this.model = model;
 		this.robot = robot ;
+		
 		//Create enemies for this field
 		enemies = new Enemy[numOfEnemies] ;
 		enemies[0] = new Zombie(robot.getPos() , new Position(300, 300) , this) ;
 	}
 
+	/**
+	 * Getter for background of the field
+	 * @return
+	 */
 	public String getImage() {
 		return image;
 	}
@@ -72,7 +78,7 @@ public class GameField {
 	}
 
 	/**
-	 * Draw image
+	 * Draw the field
 	 */
 	public void draw(Graphics g) {
 
@@ -88,17 +94,27 @@ public class GameField {
 		((Zombie) enemies[0]).draw() ;
 
 	}
-
+	/**
+	 * Updates enemies in game container gc
+	 * @param gc
+	 */
 	public void update(GameContainer gc) {
 		//Update all enemies
 		((Zombie) enemies[0]).update(gc) ;
 		((Zombie) enemies[0]).setRobotPos(robot.getPos());
 	}
-
+	/**
+	 * Getter for model of the field
+	 * @return
+	 */
 	public GameFieldModel getModel(){
 		return model ;
 	}
-	
+	/**
+	 * Check that this position is not blocked by a certain cell
+	 * @param pos
+	 * @return false if is not blocked and true in otherwise
+	 */
 	public boolean isValidPos( Position pos ){
 		if( model.getCellWithPos(pos.getX() , pos.getY() ).getIsBlocked() )
 			return false;

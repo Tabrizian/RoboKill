@@ -1,8 +1,6 @@
 package game;
 
-import java.io.IOException;
-
-import javax.swing.JLabel;
+import game.objects.Robot;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -15,7 +13,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Game extends BasicGameState {
 
 	/**
-	 * Current working gamefield.
+	 * Current working game field.
 	 */
 
 	private Label cash;
@@ -32,11 +30,11 @@ public class Game extends BasicGameState {
 	private UtilityButton menu;
 	private UtilityButton inv;
 	private DeferredResource nextResource;
-	/** True if we've loaded all the resources and started rendereing */
+	/** True if we've loaded all the resources and started rendering */
 	private boolean started;
 
 	/**
-	 * Creates new Game with sample gamefield.
+	 * Creates new Game with sample game field.
 	 */
 	public Game() {
 
@@ -55,6 +53,7 @@ public class Game extends BasicGameState {
 			throws SlickException {
 		LoadingList.setDeferredLoading(true);
 		map.init();
+		
 		mapButton.init();
 		menu.init();
 		inv.init();
@@ -70,8 +69,8 @@ public class Game extends BasicGameState {
 			mapButton.draw(g);
 
 			menu.draw(g);
-			cash.draw(g, Map.getMap().getRobot().getHealth(), player.getCash());
-			shield.draw(g, Map.getMap().getRobot().getHealth(),
+			cash.draw(g, Robot.getRobot().getHealth(), player.getCash());
+			shield.draw(g, Robot.getRobot().getHealth(),
 					player.getCash());
 			inv.draw(g);
 
@@ -82,6 +81,7 @@ public class Game extends BasicGameState {
 			throws SlickException {
 
 		map.update(gc);
+		
 		mapButton.update(gc, sbg);
 		inv.update(gc, sbg);
 		menu.update(gc, sbg);

@@ -82,7 +82,7 @@ public class Robot {
 
 	public static Robot instance = null;
 	
-	private static GameField field ;
+	private  GameField field ;
 
 	private Robot() {
 		super();
@@ -98,13 +98,18 @@ public class Robot {
 		instance = this;
 	}
 
-	public static Robot getRobot(GameField field) {
+	public static Robot getRobot() {
 		if (instance == null)
 			new Robot();
-		Robot.field = field ;
 		return instance;
 	}
-
+	/**
+	 * Sets a field that the robot is inside it
+	 * @param field
+	 */
+	public void setActiveField( GameField field ){
+		this.field = field ;
+	}
 	/**
 	 * set mouse point
 	 * 
@@ -416,7 +421,10 @@ public class Robot {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * Remove a gun from robot that exists in certain place
+	 * @param index
+	 */
 	public void remGun(int index) {
 		weapons[index] = null;
 		places[index] = 0;

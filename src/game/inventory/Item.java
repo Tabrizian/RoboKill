@@ -86,15 +86,24 @@ public class Item {
 			pos.setY(input.getMouseY());
 		}
 	}
-
+	/**
+	 * Adds a addOne to the item
+	 * @param addOne
+	 */
 	public void add(AddOne addOne) {
 		this.addOne = addOne;
 	}
-
+	/**
+	 * Returns true if this item is lifted by mouse
+	 * @return
+	 */
 	public boolean isLifted() {
 		return lifted;
 	}
-
+	/**
+	 * Getter for addOne
+	 * @return
+	 */
 	public AddOne getAddOne() {
 		return addOne;
 	}

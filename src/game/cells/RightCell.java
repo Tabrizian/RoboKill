@@ -19,7 +19,9 @@ public class RightCell extends Cell{
 	public RightCell(int row, int column, boolean isNoun) {
 		super( row , column , isNoun ) ;
 	}
-	
+	/**
+	 * Loads image
+	 */
 	public void init(){
 		try {
 			image = new Image("pics/cells/image test3.png");

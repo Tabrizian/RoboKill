@@ -38,6 +38,9 @@ public class UtilityButton {
 		inventory = Inventory.getInventory();
 	}
 
+	/**
+	 * Loads image
+	 */
 	public void init() {
 		inventory.init();
 		try {
@@ -61,7 +64,10 @@ public class UtilityButton {
 
 		s.setLooping(false);
 	}
-
+	/**
+	 * Draws button and draws focused button with Graphics g
+	 * @param g
+	 */
 	public void draw(Graphics g) {
 		img.draw(pos.getX(), pos.getY());
 		if (focused)
@@ -72,7 +78,11 @@ public class UtilityButton {
 
 
 	}
-
+	/**
+	 * Listener for the button
+	 * @param gc
+	 * @param sbg
+	 */
 	public void update(GameContainer gc,StateBasedGame sbg) {
 		Input input = gc.getInput();
 

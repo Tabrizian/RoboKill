@@ -81,31 +81,52 @@ public class GameFieldModel {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * If call this method set a plane for this game field model
+	 */
 	public void setPlane() {
 		hasPlane = true;
 	}
-
+	/**
+	 * Getter for hasPlane
+	 * @return
+	 */
 	public boolean getHasPlane() {
 		return hasPlane;
 	}
-
+	/**
+	 * Getter for image of plane
+	 * @return
+	 */
 	public Image getPlane() {
 		return plane;
 	}
-
+	/**
+	 * If call this method set a exit text for the model
+	 */
 	public void setExitText() {
 		hasExitText = true;
 	}
-
+	/**
+	 * Getter for hasExitText
+	 * @return
+	 */
 	public boolean getHasExitText() {
 		return hasExitText;
 	}
-
+	/**
+	 * Getter for image of exitText
+	 * @return
+	 */
 	public Image getExitText() {
 		return exitText;
 	}
-
+	/**
+	 * Returns a cell that exists in position (x,y)
+	 * @param x
+	 * @param y
+	 * @return	A cell in position (x,y)
+	 */
 	public Cell getCellWithPos(float x, float y) {
 		x -= 35;
 		x /= 52;
