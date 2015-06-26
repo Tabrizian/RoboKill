@@ -62,9 +62,14 @@ public class GameField {
 		// Create enemies for this field
 		Random r = new Random();
 		enemies = new Enemy[numOfEnemies];
-		for (int i = 0; i < numOfEnemies; i++)
-			enemies[i] = new Zombie(robot.getPos(), new Position(Math.abs(r
-					.nextInt()) % 800, Math.abs(r.nextInt()) % 600), this);
+		for (int i = 0; i < numOfEnemies; i++){
+			Position pos ;
+			do{
+				pos = new Position(Math.abs(r
+						.nextInt()) % 800, Math.abs(r.nextInt()) % 600) ;
+			}while( !isValidPos(pos) || isNounCell(pos)) ;
+			enemies[i] = new Zombie(robot.getPos(),pos, this);
+		}
 	}
 
 	/**
@@ -228,6 +233,11 @@ public class GameField {
 		return false;
 	}
 
+	public boolean isNounCell(Position pos) {
+		if (model.getCellWithPos(pos.getX(), pos.getY()).getIsNoun())
+			return true;
+		return false;
+	}
 	/**
 	 * Setter for isActivat
 	 * 
