@@ -19,8 +19,6 @@ public class MediumShotgun extends Shotgun {
 		power = 3;
 		speedRate = (float) 14;
 
-		missiles = new ArrayList<ShotgunMissile>();
-
 		imageInInventoryAddress = ("pics/weapons/image 168.png");
 
 		init();

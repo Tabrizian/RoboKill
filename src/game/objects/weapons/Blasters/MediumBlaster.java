@@ -18,8 +18,6 @@ public class MediumBlaster extends Blaster {
 		speedRate = (float) 6 ;
 		price = 2100 ;
 		power = 2 ;
-		
-		missiles = new ArrayList<BlasterMissile>();
 
 		imageInInventoryAddress = ("pics/weapons/image 929.png");
 

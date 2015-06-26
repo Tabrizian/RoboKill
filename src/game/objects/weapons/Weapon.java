@@ -5,6 +5,7 @@ import game.objects.AddOne;
 import game.objects.Robot;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
@@ -29,8 +30,11 @@ public abstract class Weapon extends AddOne {
 	 */
 	protected int place = -1;
 
+	protected ArrayList<Missile> missiles;
+	
 	public Weapon(int place) {
 		this.place = place;
+		missiles = new ArrayList<Missile>();
 	}
 
 	/**
@@ -116,10 +120,30 @@ public abstract class Weapon extends AddOne {
 	}
 
 	public abstract void shot(float angleRad, Position pos, int robotWidth );
-
-	public abstract void update(GameContainer gc);
-
 	public abstract void init();
 
-	public abstract void draw();
+	public  void update(GameContainer gc){
+
+		// TODO Auto-generated method stub
+		for (int i = 0; i < missiles.size(); i++) {
+			Missile missile2 =  missiles.get(i);
+			if (missile2.getPos().getX() < 800 && missile2.getPos().getX() > 0
+					&& missile2.getPos().getY() > 0
+					&& missile2.getPos().getY() < 600) {
+				missile2.update(gc);
+			} else {
+				missiles.remove(i);
+			}
+		}
+	
+	}
+	public  void draw(){
+
+		// TODO Auto-generated method stub
+		for (Missile missile2 : missiles) {
+			if (missile2 != null)
+				missile2.draw();
+		}
+	
+	}
 }

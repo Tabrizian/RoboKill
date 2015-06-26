@@ -155,7 +155,12 @@ public class Map {
 
 			for (int i = 10; i < 15; i++) {
 				for (int j = 7; j < 11; j++) {
-					cells[i][j] = new SimpleCell(i, j);
+					if (i == 13 && j == 8 || i == 13 && j == 9 ){
+						Random rand = new Random() ;
+						cells[i][j] = new SimpleCell(i, j, new Box(Math.abs(rand.nextInt()%3) + 1));
+					}
+					else
+						cells[i][j] = new SimpleCell(i, j);
 				}
 			}
 		}
@@ -165,5 +170,13 @@ public class Map {
 
 	public Robot getRobot() {
 		return robot;
+	}
+	
+	/**
+	 * Gives active game field
+	 * @return	Active field
+	 */
+	public GameField getActiveGameField(){
+		return fields[4][1] ;
 	}
 }

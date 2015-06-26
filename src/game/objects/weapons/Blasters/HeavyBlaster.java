@@ -1,8 +1,8 @@
 package game.objects.weapons.Blasters;
 
 import game.Position;
-import game.objects.weapons.BlasterMissile;
 import game.objects.weapons.HeavyBlasterMissile;
+import game.objects.weapons.Missile;
 
 import java.util.ArrayList;
 
@@ -18,8 +18,6 @@ public class HeavyBlaster extends Blaster {
 		speedRate = (float) 4;
 		power = 3;
 		price = 3500;
-
-		missiles = new ArrayList<BlasterMissile>();
 
 		imageInInventoryAddress = ("pics/weapons/image 240.png");
 

@@ -367,6 +367,7 @@ public class Robot {
 				gun.update(gc);
 		}
 
+		//Updates gun from inventory
 		Item[] items = Inventory.getInventory().getWeaponsItems();
 		for (int i = 0; i < 4; i++) {
 			if (items[i].getAddOne() != null && places[i] == 0) {
