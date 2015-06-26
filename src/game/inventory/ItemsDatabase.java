@@ -6,11 +6,13 @@ public class ItemsDatabase {
 
 	private Item[][] itemsTabular;
 	private Item[] weaponItems;
+	private Item[] upgradeItems;
 	private static ItemsDatabase instance = null;
 
 	private ItemsDatabase() {
 		itemsTabular = new Item[7][4];
 		weaponItems = new Item[4];
+		upgradeItems = new Item[4];
 		instance = this;
 	}
 
@@ -28,11 +30,16 @@ public class ItemsDatabase {
 		weaponItems[place] = item;
 	}
 
+	public void addToUpgrades(int place, Item item) {
+		upgradeItems[place] = item;
+	}
+
 	/**
 	 * Draws all of the items and
 	 */
 	public void drawAll() {
 		int x = -1, y = -1;
+		int x1 = -1;
 
 		for (int i = 0; i < 7 && x == -1 && y == -1; i++) {
 			for (int j = 0; j < 4; j++) {
@@ -50,6 +57,14 @@ public class ItemsDatabase {
 				break;
 			}
 		}
+
+		for (int i = 0; i < upgradeItems.length; i++) {
+			if (upgradeItems[i].isLifted()) {
+				x1 = i;
+				break;
+			}
+		}
+
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 4; j++) {
 				if (x == -1) {
@@ -80,10 +95,17 @@ public class ItemsDatabase {
 
 		}
 
+		for (int i = 0; i < upgradeItems.length; i++) {
+			if (x1 != i)
+				upgradeItems[i].draw();
+		}
+
 		if (y == -1 && x != -1)
 			weaponItems[x].draw();
 		if (y != -1 && x != -1)
 			itemsTabular[x][y].draw();
+		if (x1 != -1)
+			upgradeItems[x1].draw();
 	}
 
 	/**
@@ -104,6 +126,12 @@ public class ItemsDatabase {
 				return item;
 			}
 		}
+		for (Item item : upgradeItems) {
+			if (item.isInside(pos) && !item.isLifted()) {
+				return item;
+			}
+		}
+
 		return null;
 	}
 
@@ -119,6 +147,10 @@ public class ItemsDatabase {
 			if (item.isLifted()) {
 				return true;
 			}
+		}
+		for (Item item : upgradeItems) {
+			if (item.isLifted())
+				return true;
 		}
 		return false;
 
