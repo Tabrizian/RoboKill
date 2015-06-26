@@ -77,4 +77,19 @@ public class MissilesDatabase {
 				&& pos2.getY() > pos.getY()
 				&& pos2.getY() < (pos.getY() + height);
 	}
+
+	public void addMissile(Missile missile) {
+		if (missile.getOwner().equals("robot"))
+			addMissleRobot(missile);
+		else
+			addMissleEnemy(missile);
+	}
+
+	public void removeMissile(Missile missile) {
+		if (missilesEnemy.contains(missile)) {
+			missilesEnemy.remove(missile);
+		} else {
+			missilesRobot.remove(missile);
+		}
+	}
 }

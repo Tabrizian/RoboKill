@@ -13,10 +13,10 @@ import game.inventory.Inventory;
 import game.objects.Barrel;
 import game.objects.Box;
 import game.objects.Robot;
-import game.objects.weapons.Blasters.LightBlaster;
-import game.objects.weapons.Blasters.MediumBlaster;
-import game.objects.weapons.Shotguns.HeavyShotgun;
-import game.objects.weapons.Shotguns.LightShotgun;
+import game.objects.weapons.blasters.LightBlaster;
+import game.objects.weapons.blasters.MediumBlaster;
+import game.objects.weapons.shotguns.HeavyShotgun;
+import game.objects.weapons.shotguns.LightShotgun;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;

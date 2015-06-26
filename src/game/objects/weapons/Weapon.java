@@ -17,7 +17,7 @@ public abstract class Weapon extends AddOne {
 	 * Properties
 	 */
 	protected int power;
-	//Lower is faster
+	// Lower is faster
 	protected float speedRate;
 	protected int price;
 	protected String name;
@@ -32,8 +32,8 @@ public abstract class Weapon extends AddOne {
 	protected int place = -1;
 
 	protected ArrayList<Missile> missiles;
-	
-	public Weapon(int place,String owner) {
+
+	public Weapon(int place, String owner) {
 		this.place = place;
 		missiles = new ArrayList<Missile>();
 		this.owner = owner;
@@ -54,11 +54,11 @@ public abstract class Weapon extends AddOne {
 	 * @return speed of weapon
 	 */
 	public float getSpeedRate() {
-		float x = (float) (1/speedRate*45) ;
-		x *= 100 ;
-		x = (int)x ;
-		x /= 100 ;
-		return x ;
+		float x = (float) (1 / speedRate * 45);
+		x *= 100;
+		x = (int) x;
+		x /= 100;
+		return x;
 	}
 
 	/**
@@ -106,36 +106,41 @@ public abstract class Weapon extends AddOne {
 		return imageInInventoryAddress;
 	}
 
-	public void setPlace( int index ){
-		place = index ;
+	public void setPlace(int index) {
+		place = index;
 	}
-	public abstract void shot(float angleRad, Position pos, int robotWidth );
+
+	public abstract void shot(float angleRad, Position pos, int robotWidth);
+
 	public abstract void init();
 
-	public  void update(GameContainer gc){
+	public void update(GameContainer gc) {
 
 		// TODO Auto-generated method stub
 		for (int i = 0; i < missiles.size(); i++) {
-			Missile missile2 =  missiles.get(i);
+			Missile missile2 = missiles.get(i);
 			if (missile2.getPos().getX() < 800 && missile2.getPos().getX() > 0
 					&& missile2.getPos().getY() > 0
 					&& missile2.getPos().getY() < 600) {
 				missile2.update(gc);
 			} else {
+				MissilesDatabase.getMissilesDatabase().removeMissile(
+						missiles.get(i));
 				missiles.remove(i);
 			}
 		}
-	
+
 	}
+
 	/**
 	 * Draws missiles of the gun
 	 */
-	public  void draw(){
+	public void draw() {
 		// TODO Auto-generated method stub
 		for (Missile missile2 : missiles) {
 			if (missile2 != null)
 				missile2.draw();
 		}
-	
+
 	}
 }

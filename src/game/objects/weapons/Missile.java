@@ -20,6 +20,7 @@ public abstract class Missile {
 		this.angle = angle;
 		this.pos = new Position(pos);
 		this.owner = owner;
+		MissilesDatabase.getMissilesDatabase().addMissile(this);
 		init();
 	}
 
@@ -47,6 +48,10 @@ public abstract class Missile {
 
 	public void setExploded(boolean exploded) {
 		this.exploded = exploded;
+	}
+
+	public String getOwner() {
+		return owner;
 	}
 
 }

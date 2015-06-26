@@ -13,7 +13,7 @@ import game.Position;
 import game.inventory.Inventory;
 import game.inventory.Item;
 import game.objects.weapons.Weapon;
-import game.objects.weapons.Blasters.LightBlaster;
+import game.objects.weapons.blasters.LightBlaster;
 
 public class Zombie extends Enemy {
 

@@ -1,4 +1,4 @@
-package game.objects.weapons.Shotguns;
+package game.objects.weapons.shotguns;
 
 import game.Position;
 import game.objects.weapons.ShotgunMissile;
