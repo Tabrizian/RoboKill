@@ -15,7 +15,9 @@ public class Label {
 		imageAddress = ("pics/labels/" + name + ".png") ;
 		this.name = name ;
 	}
-	
+	/**
+	 * Loads images
+	 */
 	public void init(){
 		try {
 			image = new Image(imageAddress) ;
@@ -30,7 +32,12 @@ public class Label {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Draws the label with Graphics g
+	 * @param g
+	 * @param shield
+	 * @param cash
+	 */
 	public void draw( Graphics g , int shield , int cash){
 		if( name.equals("shield")){
 			image.draw(90, 0);

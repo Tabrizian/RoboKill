@@ -53,10 +53,12 @@ public class Map {
 	 * Loads images for components
 	 */
 	public void init() {
+		//Create game fields
 		GameFieldModel model = new GameFieldModel(createModel(1));
 		model.setPlane();
 		model.setExitText();
-		robot = Robot.getRobot(fields[4][1]);
+		robot = Robot.getRobot();
+		robot.setActiveField( fields[4][1] ) ;
 		
 		fields[4][1] = new GameField(model, 1, robot);
 
@@ -112,7 +114,7 @@ public class Map {
 
 	}
 
-	// Creates a model based on a given key that is 1 to 10
+	// Creates a model based on a given key that is from 1 to 10
 	private Cell[][] createModel(int key) {
 		Cell[][] cells = new Cell[15][11];
 		
@@ -166,12 +168,7 @@ public class Map {
 		}
 
 		return cells;
-	}
-
-	public Robot getRobot() {
-		return robot;
-	}
-	
+	}	
 	/**
 	 * Gives active game field
 	 * @return	Active field

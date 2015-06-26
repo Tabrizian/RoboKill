@@ -101,6 +101,12 @@ public abstract class Cell {
 	 */
 	public abstract void init() ;
 
+	/**
+	 * Returns position of a certain cell
+	 * @param row	
+	 * @param column
+	 * @return
+	 */
 	private Position calPos(int row, int column) {
 		int xPos = row * 52 + 35;
 		int yPos = column * 52 + 38;
@@ -109,7 +115,10 @@ public abstract class Cell {
 
 		return pos;
 	}
-	
+	/**
+	 * Getter for isBlocked
+	 * @return
+	 */
 	public boolean getIsBlocked(){
 		return isBlocked ;
 	}

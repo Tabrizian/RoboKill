@@ -37,7 +37,6 @@ public class Inventory {
 	private OkButton ok;
 	private boolean isPointedToItem = false;
 	private ItemDiscription discription;
-	private boolean isDrawAnimation = false;
 
 	private Inventory() {
 
@@ -79,7 +78,9 @@ public class Inventory {
 			new Inventory();
 		return instance;
 	}
-
+	/**
+	 * Loads images
+	 */
 	public void init() {
 		try {
 			inventoryImage = new Image(inventoryAddress);
@@ -112,7 +113,10 @@ public class Inventory {
 	public void add(AddOne addOne, int place) {
 		weapons[place].add(addOne);
 	}
-
+	/**
+	 * Draws images with Graphics g
+	 * @param g
+	 */
 	public void draw(Graphics g) {
 		g.setAntiAlias(true);
 		inventoryImage.draw(pos.getX(), pos.getX());
@@ -124,7 +128,10 @@ public class Inventory {
 		ItemsDatabase.getItemsDatabase().drawAll();
 		discription.draw(g);
 	}
-
+	/**
+	 * Updates items
+	 * @param gc
+	 */
 	public void update(GameContainer gc) {
 		
 		for (Item item1 : weapons) {
@@ -142,13 +149,5 @@ public class Inventory {
 
 	public Item[] getWeaponsItems() {
 		return weapons;
-	}
-
-	public boolean negativIsDrawAnimation() {
-		if (isDrawAnimation == false)
-			isDrawAnimation = true;
-		else
-			isDrawAnimation = false;
-		return isDrawAnimation;
 	}
 }

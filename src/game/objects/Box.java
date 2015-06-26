@@ -6,7 +6,7 @@ import org.newdawn.slick.SlickException;
 public class Box extends Thing {
 
 	/**
-	 * kind of the box based on its rotate ;
+	 * kind of the box based on its rotation ;
 	 */
 	private int kind ;
 	public Box() {

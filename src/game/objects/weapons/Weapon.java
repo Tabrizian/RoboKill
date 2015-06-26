@@ -107,18 +107,6 @@ public abstract class Weapon extends AddOne {
 	public void setPlace( int index ){
 		place = index ;
 	}
-	/**
-	 * Add a gun to robot in Specified place
-	 * 
-	 * @param place
-	 *            Specified place in robot
-	 * @param robot
-	 *            Gun add to this robot
-	 */
-	public void addGunToRobot(int place, Robot robot) {
-
-	}
-
 	public abstract void shot(float angleRad, Position pos, int robotWidth );
 	public abstract void init();
 
@@ -137,8 +125,10 @@ public abstract class Weapon extends AddOne {
 		}
 	
 	}
+	/**
+	 * Draws missiles of the gun
+	 */
 	public  void draw(){
-
 		// TODO Auto-generated method stub
 		for (Missile missile2 : missiles) {
 			if (missile2 != null)
