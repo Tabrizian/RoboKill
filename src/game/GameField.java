@@ -27,13 +27,13 @@ public class GameField {
 
 	private Animation openDoorUp;
 	private Animation closeDoorUp;
-	
+
 	private Animation openDoorDown;
 	private Animation closeDoorDown;
-	
+
 	private Animation openDoorRight;
 	private Animation closeDoorRight;
-	
+
 	private Animation openDoorLeft;
 	private Animation closeDoorLeft;
 	// States of doors that is opened or is closed or should not be drawn( to
@@ -46,13 +46,12 @@ public class GameField {
 
 	}
 
-	public GameField(GameFieldModel model, int numOfEnemies, Robot robot,
-			int[] stateOfDoors) {
+	public GameField(GameFieldModel model, int numOfEnemies, int[] stateOfDoors) {
 		// Preparing environment
 		image = ("pics/fields/image 593.jpg");
 		suround = ("pics/fields/image 743.png");
 		this.model = model;
-		this.robot = robot;
+		this.robot = Robot.getRobot();
 		this.stateOfDoors = new int[4];
 		this.stateOfDoors = stateOfDoors;
 
@@ -97,13 +96,13 @@ public class GameField {
 
 		openDoorUp = new Animation(createFramesForOpeningUp(), 85);
 		closeDoorUp = new Animation(createFramesForClosingUp(), 85);
-		
+
 		openDoorDown = new Animation(createFramesForOpeningDown(), 85);
 		closeDoorDown = new Animation(createFramesForClosingDown(), 85);
-		
+
 		openDoorRight = new Animation(createFramesForOpeningRight(), 85);
 		closeDoorRight = new Animation(createFramesForClosingRight(), 85);
-		
+
 		openDoorLeft = new Animation(createFramesForOpeningLeft(), 85);
 		closeDoorLeft = new Animation(createFramesForClosingLeft(), 85);
 
@@ -120,7 +119,7 @@ public class GameField {
 
 		suroundImage.draw(0, 0);
 
-		//Draw doors
+		// Draw doors
 		switch (stateOfDoors[0]) {
 		case 0:
 			closeDoorUp.setLooping(false);
@@ -133,7 +132,7 @@ public class GameField {
 		case -1:
 			break;
 		}
-		
+
 		switch (stateOfDoors[1]) {
 		case 0:
 			closeDoorRight.setLooping(false);
@@ -146,7 +145,7 @@ public class GameField {
 		case -1:
 			break;
 		}
-		
+
 		switch (stateOfDoors[2]) {
 		case 0:
 			closeDoorDown.setLooping(false);
@@ -159,7 +158,7 @@ public class GameField {
 		case -1:
 			break;
 		}
-		
+
 		switch (stateOfDoors[3]) {
 		case 0:
 			closeDoorLeft.setLooping(false);
@@ -211,14 +210,16 @@ public class GameField {
 			return false;
 		return true;
 	}
+
 	/**
 	 * Setter for isActivat
+	 * 
 	 * @param x
 	 */
-	public void setActivation( boolean x ){
-		isActivate = x ;
+	public void setActivation(boolean x) {
+		isActivate = x;
 	}
-	
+
 	// Creates frames for opening
 	private Image[] createFramesForOpeningUp() {
 		Image[] frames = new Image[10];
@@ -373,7 +374,7 @@ public class GameField {
 
 		return frames;
 	}
-	
+
 	private Image[] createFramesForOpeningDown() {
 		Image[] frames = new Image[10];
 
@@ -527,7 +528,7 @@ public class GameField {
 
 		return frames;
 	}
-	
+
 	private Image[] createFramesForOpeningRight() {
 		Image[] frames = new Image[10];
 
@@ -681,7 +682,7 @@ public class GameField {
 
 		return frames;
 	}
-	
+
 	private Image[] createFramesForOpeningLeft() {
 		Image[] frames = new Image[10];
 

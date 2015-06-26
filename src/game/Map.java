@@ -195,7 +195,7 @@ public class Map {
 		state1[1] = -1;
 		state1[2] = -1;
 		state1[3] = -1;
-		fields[4][1] = new GameField(model1, 1, robot, state1);
+		fields[4][1] = new GameField(model1, 1, state1);
 		fields[4][1].setActivation(true);
 		// Creates game field 2
 		GameFieldModel model2 = new GameFieldModel(createModel(1));
@@ -204,7 +204,7 @@ public class Map {
 		state2[1] = 0;
 		state2[2] = -1;
 		state2[3] = -1;
-		fields[3][0] = new GameField(model2, 3, robot, state2);
+		fields[3][0] = new GameField(model2, 3, state2);
 		fields[3][0].setActivation(false);
 		// Creates game field 3
 		GameFieldModel model3 = new GameFieldModel(createModel(1));
@@ -213,7 +213,7 @@ public class Map {
 		state3[1] = 0;
 		state3[2] = 0;
 		state3[3] = 0;
-		fields[3][1] = new GameField(model3, 7, robot, state3);
+		fields[3][1] = new GameField(model3, 7, state3);
 		fields[3][1].setActivation(false);
 		// Creates game field 4
 		GameFieldModel model4 = new GameFieldModel(createModel(1));
@@ -222,7 +222,7 @@ public class Map {
 		state4[1] = -1;
 		state4[2] = -1;
 		state4[3] = 0;
-		fields[3][2] = new GameField(model4, 2, robot, state4);
+		fields[3][2] = new GameField(model4, 2, state4);
 		fields[3][2].setActivation(false);
 		// Creates game field 5
 		GameFieldModel model5 = new GameFieldModel(createModel(1));
@@ -231,7 +231,7 @@ public class Map {
 		state5[1] = -1;
 		state5[2] = 0;
 		state5[3] = -1;
-		fields[2][2] = new GameField(model5, 4, robot, state5);
+		fields[2][2] = new GameField(model5, 4, state5);
 		fields[2][2].setActivation(false);
 		// Creates game field 6
 		GameFieldModel model6 = new GameFieldModel(createModel(1));
@@ -240,7 +240,7 @@ public class Map {
 		state6[1] = 0;
 		state6[2] = 0;
 		state6[3] = -1;
-		fields[1][2] = new GameField(model6, 4, robot, state6);
+		fields[1][2] = new GameField(model6, 4, state6);
 		fields[1][2].setActivation(false);
 		// Creates game field 7
 		GameFieldModel model7 = new GameFieldModel(createModel(1));
@@ -249,7 +249,7 @@ public class Map {
 		state7[1] = 0;
 		state7[2] = -1;
 		state7[3] = 0;
-		fields[1][3] = new GameField(model7, 4, robot, state7);
+		fields[1][3] = new GameField(model7, 4, state7);
 		fields[1][3].setActivation(false);
 		// Creates game field 8
 		GameFieldModel model8 = new GameFieldModel(createModel(1));
@@ -258,7 +258,7 @@ public class Map {
 		state8[1] = -1;
 		state8[2] = -1;
 		state8[3] = 0;
-		fields[1][4] = new GameField(model8, 7, robot, state8);
+		fields[1][4] = new GameField(model8, 7, state8);
 		fields[1][4].setActivation(false);
 	}
 }
