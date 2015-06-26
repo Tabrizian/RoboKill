@@ -1,6 +1,7 @@
 package game.cells;
 
 import game.Position;
+import game.objects.Barrel;
 import game.objects.Box;
 import game.objects.Thing;
 import game.objects.Wall;
@@ -28,7 +29,10 @@ public abstract class Cell {
 		} else if (thing instanceof Wall) {
 			this.thing = new Wall();
 			this.thing = thing;
-			isBlocked = true;
+		}
+		else if (thing instanceof Barrel) {
+			this.thing = new Barrel();
+			this.thing = thing;
 		}
 
 		init();
@@ -79,6 +83,12 @@ public abstract class Cell {
 			isBlocked = true;
 		} else if (thing instanceof Wall) {
 			this.thing = new Wall();
+			this.thing = thing;
+			isNoun = false;
+			isBlocked = true;
+		}
+		else if (thing instanceof Wall) {
+			this.thing = new Barrel();
 			this.thing = thing;
 			isNoun = false;
 			isBlocked = true;

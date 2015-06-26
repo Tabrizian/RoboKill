@@ -8,6 +8,7 @@ import game.cells.DownLeftCell;
 import game.cells.LeftCell;
 import game.cells.SimpleCell;
 import game.inventory.Inventory;
+import game.objects.Barrel;
 import game.objects.Box;
 import game.objects.Robot;
 import game.objects.weapons.Blasters.LightBlaster;
@@ -59,12 +60,11 @@ public class Map {
 		robot.setActiveField(fields[4][1]);
 
 		robot.init();
-		//Initialize fields
-		for( int i = 0 ; i < 5 ; i++ )
-			for( int j = 0 ; j < 5 ; j++ )
-				if( fields[i][j] != null )
+		// Initialize fields
+		for (int i = 0; i < 5; i++)
+			for (int j = 0; j < 5; j++)
+				if (fields[i][j] != null)
 					fields[i][j].init();
-		
 
 		HeavyShotgun heavyShotgun = new HeavyShotgun(0, "robot");
 		MediumBlaster MediumBlaster = new MediumBlaster(3, "robot");
@@ -89,10 +89,10 @@ public class Map {
 	 */
 	public void draw(Graphics g) {
 		// Draw active fields
-		for( int i = 0 ; i < 5 ; i++ )
-			for( int j = 0 ; j < 5 ; j++ ){
-				if( fields[i][j] != null ){
-					if( fields[i][j].getActivation() ){
+		for (int i = 0; i < 5; i++)
+			for (int j = 0; j < 5; j++) {
+				if (fields[i][j] != null) {
+					if (fields[i][j].getActivation()) {
 						fields[i][j].draw(g);
 						robot.draw();
 						// For drawing air plane
@@ -101,7 +101,6 @@ public class Map {
 					}
 				}
 			}
-		
 
 	}
 
@@ -112,10 +111,10 @@ public class Map {
 	 */
 	public void update(GameContainer gc) {
 		robot.update(gc);
-		for( int i = 0 ; i < 5 ; i++ )
-			for( int j = 0 ; j < 5 ; j++ ){
-				if( fields[i][j] != null ){
-					if( fields[i][j].getActivation() )
+		for (int i = 0; i < 5; i++)
+			for (int j = 0; j < 5; j++) {
+				if (fields[i][j] != null) {
+					if (fields[i][j].getActivation())
 						fields[i][j].update(gc);
 				}
 			}
@@ -167,7 +166,10 @@ public class Map {
 			}
 
 			for (int j = 7; j < 11; j++) {
-				cells[9][j] = new LeftCell(9, j);
+				if (j == 7 || j == 8)
+					cells[9][j] = new LeftCell(9, j, new Barrel(2));
+				else
+					cells[9][j] = new LeftCell(9, j);
 			}
 
 			for (int i = 10; i < 15; i++) {

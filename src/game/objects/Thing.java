@@ -14,7 +14,9 @@ public abstract class Thing {
 	/**
 	 * Draw image
 	 */
-	public abstract void draw(float xPos , float yPos) ;
+	public void draw(float xPos , float yPos) {
+		image.drawCentered(xPos, yPos);
+	}
 	/**
 	 * Loads image
 	 */
