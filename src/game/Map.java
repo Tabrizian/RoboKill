@@ -61,9 +61,9 @@ public class Map {
 		robot.setActiveField( fields[4][1] ) ;
 		int[] state = new int[4] ;
 		state[0] = 0 ;
-		state[1] = -1 ;
-		state[2] = -1 ;
-		state[3] = -1 ;
+		state[1] = 0 ;
+		state[2] = 0 ;
+		state[3] = 0 ;
 		fields[4][1] = new GameField(model, 1, robot , state);
 
 		

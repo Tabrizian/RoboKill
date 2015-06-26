@@ -25,8 +25,17 @@ public class GameField {
 	private Enemy[] enemies;
 	private Robot robot;
 
-	private Animation openDoor;
-	private Animation closeDoor;
+	private Animation openDoorUp;
+	private Animation closeDoorUp;
+	
+	private Animation openDoorDown;
+	private Animation closeDoorDown;
+	
+	private Animation openDoorRight;
+	private Animation closeDoorRight;
+	
+	private Animation openDoorLeft;
+	private Animation closeDoorLeft;
 	// States of doors that is opened or is closed or should not be drawn( to
 	// turn 1 , 0 , -1 )
 	private int[] stateOfDoors;
@@ -86,8 +95,17 @@ public class GameField {
 		// Initialize all enemies
 		((Zombie) enemies[0]).init();
 
-		openDoor = new Animation(createFramesForOpening(), 85);
-		closeDoor = new Animation(createFramesForClosing(), 85);
+		openDoorUp = new Animation(createFramesForOpeningUp(), 85);
+		closeDoorUp = new Animation(createFramesForClosingUp(), 85);
+		
+		openDoorDown = new Animation(createFramesForOpeningDown(), 85);
+		closeDoorDown = new Animation(createFramesForClosingDown(), 85);
+		
+		openDoorRight = new Animation(createFramesForOpeningRight(), 85);
+		closeDoorRight = new Animation(createFramesForClosingRight(), 85);
+		
+		openDoorLeft = new Animation(createFramesForOpeningLeft(), 85);
+		closeDoorLeft = new Animation(createFramesForClosingLeft(), 85);
 
 	}
 
@@ -105,12 +123,12 @@ public class GameField {
 		//Draw doors
 		switch (stateOfDoors[0]) {
 		case 0:
-			closeDoor.setLooping(false);
-			closeDoor.draw(350, 0);
+			closeDoorUp.setLooping(false);
+			closeDoorUp.draw(350, 0);
 			break;
 		case 1:
-			openDoor.setLooping(false);
-			openDoor.draw(350, 0);
+			openDoorUp.setLooping(false);
+			openDoorUp.draw(350, 0);
 			break;
 		case -1:
 			break;
@@ -118,12 +136,12 @@ public class GameField {
 		
 		switch (stateOfDoors[1]) {
 		case 0:
-			closeDoor.setLooping(false);
-			closeDoor.draw(350, 0);
+			closeDoorRight.setLooping(false);
+			closeDoorRight.draw(740, 250);
 			break;
 		case 1:
-			openDoor.setLooping(false);
-			openDoor.draw(350, 0);
+			openDoorRight.setLooping(false);
+			openDoorRight.draw(740, 250);
 			break;
 		case -1:
 			break;
@@ -131,12 +149,12 @@ public class GameField {
 		
 		switch (stateOfDoors[2]) {
 		case 0:
-			closeDoor.setLooping(false);
-			closeDoor.draw(350, 0);
+			closeDoorDown.setLooping(false);
+			closeDoorDown.draw(350, 540);
 			break;
 		case 1:
-			openDoor.setLooping(false);
-			openDoor.draw(350, 0);
+			openDoorDown.setLooping(false);
+			openDoorDown.draw(350, 540);
 			break;
 		case -1:
 			break;
@@ -144,12 +162,12 @@ public class GameField {
 		
 		switch (stateOfDoors[3]) {
 		case 0:
-			closeDoor.setLooping(false);
-			closeDoor.draw(350, 0);
+			closeDoorLeft.setLooping(false);
+			closeDoorLeft.draw(0, 250);
 			break;
 		case 1:
-			openDoor.setLooping(false);
-			openDoor.draw(350, 0);
+			openDoorLeft.setLooping(false);
+			openDoorLeft.draw(0, 250);
 			break;
 		case -1:
 			break;
@@ -195,7 +213,7 @@ public class GameField {
 	}
 
 	// Creates frames for opening
-	private Image[] createFramesForOpening() {
+	private Image[] createFramesForOpeningUp() {
 		Image[] frames = new Image[10];
 
 		try {
@@ -272,7 +290,7 @@ public class GameField {
 		return frames;
 	}
 
-	private Image[] createFramesForClosing() {
+	private Image[] createFramesForClosingUp() {
 		Image[] frames = new Image[10];
 
 		try {
@@ -340,6 +358,468 @@ public class GameField {
 		}
 		try {
 			Image image1 = new Image("pics/door/image 10.png");
+			frames[0] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return frames;
+	}
+	
+	private Image[] createFramesForOpeningDown() {
+		Image[] frames = new Image[10];
+
+		try {
+			Image image1 = new Image("pics/door/image 12.png");
+			frames[0] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 22.png");
+			frames[1] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 32.png");
+			frames[2] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 42.png");
+			frames[3] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 52.png");
+			frames[4] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 62.png");
+			frames[5] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 72.png");
+			frames[6] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 82.png");
+			frames[7] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 92.png");
+			frames[8] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 102.png");
+			frames[9] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return frames;
+	}
+
+	private Image[] createFramesForClosingDown() {
+		Image[] frames = new Image[10];
+
+		try {
+			Image image1 = new Image("pics/door/image 12.png");
+			frames[9] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 22.png");
+			frames[8] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 32.png");
+			frames[7] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 42.png");
+			frames[6] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 52.png");
+			frames[5] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 62.png");
+			frames[4] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 72.png");
+			frames[3] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 82.png");
+			frames[2] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 92.png");
+			frames[1] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 102.png");
+			frames[0] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return frames;
+	}
+	
+	private Image[] createFramesForOpeningRight() {
+		Image[] frames = new Image[10];
+
+		try {
+			Image image1 = new Image("pics/door/image 11.png");
+			frames[0] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 21.png");
+			frames[1] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 31.png");
+			frames[2] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 41.png");
+			frames[3] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 51.png");
+			frames[4] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 61.png");
+			frames[5] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 71.png");
+			frames[6] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 81.png");
+			frames[7] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 91.png");
+			frames[8] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 101.png");
+			frames[9] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return frames;
+	}
+
+	private Image[] createFramesForClosingRight() {
+		Image[] frames = new Image[10];
+
+		try {
+			Image image1 = new Image("pics/door/image 11.png");
+			frames[9] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 21.png");
+			frames[8] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 31.png");
+			frames[7] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 41.png");
+			frames[6] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 51.png");
+			frames[5] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 61.png");
+			frames[4] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 71.png");
+			frames[3] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 81.png");
+			frames[2] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 91.png");
+			frames[1] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 101.png");
+			frames[0] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return frames;
+	}
+	
+	private Image[] createFramesForOpeningLeft() {
+		Image[] frames = new Image[10];
+
+		try {
+			Image image1 = new Image("pics/door/image 13.png");
+			frames[0] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 23.png");
+			frames[1] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 33.png");
+			frames[2] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 43.png");
+			frames[3] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 53.png");
+			frames[4] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 63.png");
+			frames[5] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 73.png");
+			frames[6] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 83.png");
+			frames[7] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 93.png");
+			frames[8] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 103.png");
+			frames[9] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return frames;
+	}
+
+	private Image[] createFramesForClosingLeft() {
+		Image[] frames = new Image[10];
+
+		try {
+			Image image1 = new Image("pics/door/image 13.png");
+			frames[9] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 23.png");
+			frames[8] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 33.png");
+			frames[7] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 43.png");
+			frames[6] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 53.png");
+			frames[5] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 63.png");
+			frames[4] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 73.png");
+			frames[3] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 83.png");
+			frames[2] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 93.png");
+			frames[1] = image1;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Image image1 = new Image("pics/door/image 103.png");
 			frames[0] = image1;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
