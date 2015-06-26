@@ -11,8 +11,8 @@ import org.newdawn.slick.SlickException;
 
 public class LightBlaster extends Blaster {
 
-	public LightBlaster(int place) {
-		super(place);
+	public LightBlaster(int place, String owner) {
+		super(place, owner);
 
 		name = "Light Blaster";
 		price = 100;
@@ -23,12 +23,12 @@ public class LightBlaster extends Blaster {
 
 		init();
 	}
-	
+
 	@Override
-	public void shot(float angleRad, Position pos, int robotWidth ) {
+	public void shot(float angleRad, Position pos, int robotWidth) {
 		// TODO Auto-generated method stub
 
-		//determine initial missile position
+		// determine initial missile position
 		Position pos1 = new Position(pos);
 		if (place == 0) {
 			pos1.setX((float) (pos1.getX() - (float) (robotWidth / 2)
@@ -55,12 +55,12 @@ public class LightBlaster extends Blaster {
 		renderControler++;
 		if (renderControler == speedRate * 40) {
 			renderControler = 0;
-			missiles.add(new LightBlasterMissile((float) (angleRad + Math.PI / 2),
-					pos1));
+			missiles.add(new LightBlasterMissile(
+					(float) (angleRad + Math.PI / 2), pos1));
 		}
 
 	}
-	
+
 	/**
 	 * Loads image
 	 */

@@ -1,17 +1,26 @@
-package game;
+package game.objects.weapons;
 
-import game.objects.weapons.Missile;
+import game.Position;
 
 import java.util.ArrayList;
 
-public class MisslesDatabase {
+public class MissilesDatabase {
 
 	private ArrayList<Missile> missilesRobot;
 	private ArrayList<Missile> missilesEnemy;
+	private static MissilesDatabase instance = null;
 
-	private MisslesDatabase() {
+	private MissilesDatabase() {
 		missilesEnemy = new ArrayList<Missile>();
 		missilesRobot = new ArrayList<Missile>();
+		instance = this;
+	}
+
+	public static MissilesDatabase getMissilesDatabase() {
+		if (instance == null) {
+			new MissilesDatabase();
+		}
+		return instance;
 	}
 
 	public void addMissleEnemy(Missile missile) {
@@ -42,12 +51,12 @@ public class MisslesDatabase {
 
 	public void explodeArea(Position pos, float width, float height) {
 		for (Missile missile : missilesEnemy) {
-			if(isInsideArea(pos, width, height, missile.getPos()))
-				missile.setExploded(true); 
+			if (isInsideArea(pos, width, height, missile.getPos()))
+				missile.setExploded(true);
 		}
-		
+
 		for (Missile missile : missilesRobot) {
-			if(isInsideArea(pos, width, height, missile.getPos()))
+			if (isInsideArea(pos, width, height, missile.getPos()))
 				missile.setExploded(true);
 		}
 	}

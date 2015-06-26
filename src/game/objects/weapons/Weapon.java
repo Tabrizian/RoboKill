@@ -21,6 +21,7 @@ public abstract class Weapon extends AddOne {
 	protected float speedRate;
 	protected int price;
 	protected String name;
+	private String owner;
 	/**
 	 * Mouse Point
 	 */
@@ -32,9 +33,10 @@ public abstract class Weapon extends AddOne {
 
 	protected ArrayList<Missile> missiles;
 	
-	public Weapon(int place) {
+	public Weapon(int place,String owner) {
 		this.place = place;
 		missiles = new ArrayList<Missile>();
+		this.owner = owner;
 	}
 
 	/**

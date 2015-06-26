@@ -11,9 +11,9 @@ import org.newdawn.slick.SlickException;
 
 public class MediumShotgun extends Shotgun {
 
-	public MediumShotgun(int place){
-		super( place ) ;
-		
+	public MediumShotgun(int place, String owner) {
+		super(place, owner);
+
 		name = "Medium Shotgun";
 		price = 2800;
 		power = 3;
@@ -23,11 +23,12 @@ public class MediumShotgun extends Shotgun {
 
 		init();
 	}
+
 	@Override
-	public void shot(float angleRad, Position pos, int robotWidth ) {
+	public void shot(float angleRad, Position pos, int robotWidth) {
 		// TODO Auto-generated method stub
 
-		//determine initial missile position
+		// determine initial missile position
 		Position pos1 = new Position(pos);
 		if (place == 0) {
 			pos1.setX((float) (pos1.getX() - (float) (robotWidth / 2)
@@ -54,17 +55,18 @@ public class MediumShotgun extends Shotgun {
 		renderControler++;
 		if (renderControler == speedRate * 40) {
 			renderControler = 0;
-			missiles.add(new MediumShotgunMissile((float) (angleRad + Math.PI / 2),
-					pos1 , 0));
-			missiles.add(new MediumShotgunMissile((float) (angleRad + Math.PI / 2),
-					pos1 , 1));
-			missiles.add(new MediumShotgunMissile((float) (angleRad + Math.PI / 2),
-					pos1 , 2));
-			missiles.add(new MediumShotgunMissile((float) (angleRad + Math.PI / 2),
-					pos1 , 3));
+			missiles.add(new MediumShotgunMissile(
+					(float) (angleRad + Math.PI / 2), pos1, 0));
+			missiles.add(new MediumShotgunMissile(
+					(float) (angleRad + Math.PI / 2), pos1, 1));
+			missiles.add(new MediumShotgunMissile(
+					(float) (angleRad + Math.PI / 2), pos1, 2));
+			missiles.add(new MediumShotgunMissile(
+					(float) (angleRad + Math.PI / 2), pos1, 3));
 		}
 
 	}
+
 	/**
 	 * Loads image
 	 */

@@ -61,10 +61,10 @@ public class Map {
 		robot.init();
 		fields[4][1].init();
 
-		HeavyShotgun heavyShotgun = new HeavyShotgun(0);
-		MediumBlaster MediumBlaster = new MediumBlaster(3);
-		LightBlaster lightBlaster = new LightBlaster(1);
-		LightShotgun lightShotgun = new LightShotgun(2);
+		HeavyShotgun heavyShotgun = new HeavyShotgun(0, "robot");
+		MediumBlaster MediumBlaster = new MediumBlaster(3, "robot");
+		LightBlaster lightBlaster = new LightBlaster(1, "robot");
+		LightShotgun lightShotgun = new LightShotgun(2, "robot");
 
 		// Adding light shotgun to inventory for test.
 		Inventory.getInventory().add(heavyShotgun, 0);

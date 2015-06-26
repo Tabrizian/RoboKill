@@ -78,7 +78,7 @@ public class Item {
 			if (item != null) {
 				if (addOne != null) {
 					if (item.getName().equals("upgrade")) {
-						if (addOne instanceof Plunder){
+						if (addOne instanceof Plunder) {
 							item.add(addOne);
 							addOne = null;
 						}
@@ -129,8 +129,8 @@ public class Item {
 				&& position.getY() < (defaultPos.getY() + 40)
 				&& position.getY() > defaultPos.getY();
 	}
-	
-	public String getName(){
+
+	public String getName() {
 		return name;
 	}
 

@@ -52,10 +52,10 @@ public class Zombie extends Enemy {
 	private Animation toUpLeft;
 
 	private Animation toDownRight;
-	
-	private GameField field ;
 
-	public Zombie(Position robotPos, Position pos , GameField field) {
+	private GameField field;
+
+	public Zombie(Position robotPos, Position pos, GameField field) {
 		super();
 
 		this.pos = new Position(pos);
@@ -66,8 +66,8 @@ public class Zombie extends Enemy {
 		robotPosition = pos;
 
 		weapons = new Weapon[4];
-		
-		this.field = field ;
+
+		this.field = field;
 	}
 
 	public void setRobotPos(Position pos) {
@@ -112,10 +112,10 @@ public class Zombie extends Enemy {
 		toDownRight = new Animation(createToDownRightFrames(), 120);
 		toUpLeft = new Animation(createToUpLeftFrames(), 120);
 
-		weapons[0] = new LightBlaster(0);
+		weapons[0] = new LightBlaster(0, "enemy");
 		weapons[1] = null;
 		weapons[2] = null;
-		weapons[3] = new LightBlaster(3);
+		weapons[3] = new LightBlaster(3, "enemy");
 	}
 
 	/**
@@ -298,10 +298,10 @@ public class Zombie extends Enemy {
 		} else
 			isKeyLeftPressed = false;
 
-		xPos -= 25 ;
-		yPos -= 20 ;
-		if( field.isValidPos( new Position(xPos, yPos))){
-			this.setPos(new Position(xPos+= 25, yPos+=20));
+		xPos -= 25;
+		yPos -= 20;
+		if (field.isValidPos(new Position(xPos, yPos))) {
+			this.setPos(new Position(xPos += 25, yPos += 20));
 		}
 
 		double dx = robotPosition.getX() - this.getPos().getX();

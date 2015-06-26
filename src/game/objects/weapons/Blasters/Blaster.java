@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import org.newdawn.slick.GameContainer;
 
 public abstract class Blaster extends Weapon {
-	
-	public Blaster(int place) {
+
+	public Blaster(int place, String owner) {
 		// TODO Auto-generated constructor stub
-		super(place) ;
+		super(place, owner);
 	}
 }

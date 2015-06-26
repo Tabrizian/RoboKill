@@ -11,24 +11,24 @@ import org.newdawn.slick.SlickException;
 
 public class MediumBlaster extends Blaster {
 
-	public MediumBlaster(int place){
-		super( place ) ;
-		
-		name = "Medium Blaster" ;
-		speedRate = (float) 6 ;
-		price = 2100 ;
-		power = 2 ;
+	public MediumBlaster(int place, String owner) {
+		super(place, owner);
+
+		name = "Medium Blaster";
+		speedRate = (float) 6;
+		price = 2100;
+		power = 2;
 
 		imageInInventoryAddress = ("pics/weapons/image 929.png");
 
 		init();
 	}
-	
+
 	@Override
-	public void shot(float angleRad, Position pos, int robotWidth ) {
+	public void shot(float angleRad, Position pos, int robotWidth) {
 		// TODO Auto-generated method stub
 
-		//determine initial missile position
+		// determine initial missile position
 		Position pos1 = new Position(pos);
 		if (place == 0) {
 			pos1.setX((float) (pos1.getX() - (float) (robotWidth / 2)
@@ -55,12 +55,12 @@ public class MediumBlaster extends Blaster {
 		renderControler++;
 		if (renderControler == speedRate * 40) {
 			renderControler = 0;
-			missiles.add(new MediumBlasterMissile((float) (angleRad + Math.PI / 2),
-					pos1));
+			missiles.add(new MediumBlasterMissile(
+					(float) (angleRad + Math.PI / 2), pos1));
 		}
 
 	}
-	
+
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
@@ -71,5 +71,5 @@ public class MediumBlaster extends Blaster {
 			e.printStackTrace();
 		}
 	}
-	
+
 }
