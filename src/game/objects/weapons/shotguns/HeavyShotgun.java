@@ -1,25 +1,25 @@
-package game.objects.weapons.Blasters;
+package game.objects.weapons.shotguns;
 
 import game.Position;
-import game.objects.weapons.BlasterMissile;
-import game.objects.weapons.MediumBlasterMissile;
+import game.objects.weapons.HeavyShotgunMissile;
+import game.objects.weapons.ShotgunMissile;
 
 import java.util.ArrayList;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-public class MediumBlaster extends Blaster {
+public class HeavyShotgun extends Shotgun {
 
-	public MediumBlaster(int place, String owner) {
+	public HeavyShotgun(int place, String owner) {
 		super(place, owner);
 
-		name = "Medium Blaster";
-		speedRate = (float) 6;
-		price = 2100;
-		power = 2;
+		name = "Heavy Shotgun";
+		price = 4200;
+		power = 4;
+		speedRate = (float) 9;
 
-		imageInInventoryAddress = ("pics/weapons/image 929.png");
+		imageInInventoryAddress = ("pics/weapons/image 348.png");
 
 		init();
 	}
@@ -55,21 +55,29 @@ public class MediumBlaster extends Blaster {
 		renderControler++;
 		if (renderControler == speedRate * 40) {
 			renderControler = 0;
-			missiles.add(new MediumBlasterMissile(
-					(float) (angleRad + Math.PI / 2), pos1, owner));
+			missiles.add(new HeavyShotgunMissile(
+					(float) (angleRad + Math.PI / 2), pos1, 0, owner));
+			missiles.add(new HeavyShotgunMissile(
+					(float) (angleRad + Math.PI / 2), pos1, 1, owner));
+			missiles.add(new HeavyShotgunMissile(
+					(float) (angleRad + Math.PI / 2), pos1, 2, owner));
+			missiles.add(new HeavyShotgunMissile(
+					(float) (angleRad + Math.PI / 2), pos1, 3, owner));
 		}
 
 	}
 
+	/**
+	 * Loads image
+	 */
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
 		try {
-			imageInInventory = new Image("pics/weapons/image 929.png");
+			imageInInventory = new Image("pics/weapons/image 348.png");
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
 }

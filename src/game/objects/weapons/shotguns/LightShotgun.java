@@ -1,7 +1,7 @@
-package game.objects.weapons.Shotguns;
+package game.objects.weapons.shotguns;
 
 import game.Position;
-import game.objects.weapons.HeavyShotgunMissile;
+import game.objects.weapons.LightShotgunMissile;
 import game.objects.weapons.ShotgunMissile;
 
 import java.util.ArrayList;
@@ -9,17 +9,17 @@ import java.util.ArrayList;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-public class HeavyShotgun extends Shotgun {
+public class LightShotgun extends Shotgun {
 
-	public HeavyShotgun(int place, String owner) {
+	public LightShotgun(int place, String owner) {
 		super(place, owner);
 
-		name = "Heavy Shotgun";
-		price = 4200;
-		power = 4;
-		speedRate = (float) 9;
+		name = "Light Shotgun";
+		price = 200;
+		power = 2;
+		speedRate = (float) 19;
 
-		imageInInventoryAddress = ("pics/weapons/image 348.png");
+		imageInInventoryAddress = ("pics/weapons/image 362.png");
 
 		init();
 	}
@@ -55,13 +55,13 @@ public class HeavyShotgun extends Shotgun {
 		renderControler++;
 		if (renderControler == speedRate * 40) {
 			renderControler = 0;
-			missiles.add(new HeavyShotgunMissile(
+			missiles.add(new LightShotgunMissile(
 					(float) (angleRad + Math.PI / 2), pos1, 0, owner));
-			missiles.add(new HeavyShotgunMissile(
+			missiles.add(new LightShotgunMissile(
 					(float) (angleRad + Math.PI / 2), pos1, 1, owner));
-			missiles.add(new HeavyShotgunMissile(
+			missiles.add(new LightShotgunMissile(
 					(float) (angleRad + Math.PI / 2), pos1, 2, owner));
-			missiles.add(new HeavyShotgunMissile(
+			missiles.add(new LightShotgunMissile(
 					(float) (angleRad + Math.PI / 2), pos1, 3, owner));
 		}
 
@@ -74,7 +74,7 @@ public class HeavyShotgun extends Shotgun {
 	public void init() {
 		// TODO Auto-generated method stub
 		try {
-			imageInInventory = new Image("pics/weapons/image 348.png");
+			imageInInventory = new Image("pics/weapons/image 362.png");
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,25 +1,25 @@
-package game.objects.weapons.Blasters;
+package game.objects.weapons.blasters;
 
 import game.Position;
-import game.objects.weapons.LightBlasterMissile;
-import game.objects.weapons.Missile;
+import game.objects.weapons.BlasterMissile;
+import game.objects.weapons.MediumBlasterMissile;
 
 import java.util.ArrayList;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-public class LightBlaster extends Blaster {
+public class MediumBlaster extends Blaster {
 
-	public LightBlaster(int place, String owner) {
+	public MediumBlaster(int place, String owner) {
 		super(place, owner);
 
-		name = "Light Blaster";
-		price = 100;
-		power = 1;
-		speedRate = (float) 8;
+		name = "Medium Blaster";
+		speedRate = (float) 6;
+		price = 2100;
+		power = 2;
 
-		imageInInventoryAddress = ("pics/weapons/image 385.png");
+		imageInInventoryAddress = ("pics/weapons/image 929.png");
 
 		init();
 	}
@@ -55,19 +55,17 @@ public class LightBlaster extends Blaster {
 		renderControler++;
 		if (renderControler == speedRate * 40) {
 			renderControler = 0;
-			missiles.add(new LightBlasterMissile(
+			missiles.add(new MediumBlasterMissile(
 					(float) (angleRad + Math.PI / 2), pos1, owner));
 		}
 
 	}
 
-	/**
-	 * Loads image
-	 */
 	@Override
 	public void init() {
+		// TODO Auto-generated method stub
 		try {
-			imageInInventory = new Image("pics/weapons/image 385.png");
+			imageInInventory = new Image("pics/weapons/image 929.png");
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,4 +1,4 @@
-package game.objects.weapons.Blasters;
+package game.objects.weapons.blasters;
 
 import game.Position;
 import game.objects.weapons.BlasterMissile;

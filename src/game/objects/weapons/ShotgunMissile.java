@@ -1,10 +1,8 @@
 package game.objects.weapons;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-
 import game.Position;
+
+import org.newdawn.slick.GameContainer;
 
 public abstract class ShotgunMissile extends Missile {
 
