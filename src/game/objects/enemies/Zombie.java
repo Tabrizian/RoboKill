@@ -325,7 +325,8 @@ public class Zombie extends Enemy {
 
 		if (MissilesDatabase.getMissilesDatabase().isRobotMissileInsideArea(
 				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35)) {
-			health--;
+			if (health > 0)
+				health--;
 		}
 
 	}
