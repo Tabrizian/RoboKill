@@ -124,145 +124,147 @@ public class Zombie extends Enemy {
 	 */
 	public void draw(Graphics g) {
 
-		imageOfBody.setRotation(imageAngleDeg);
-		imageOfBody.drawCentered(pos.getX(), pos.getY());
+		if (health > 0) {
+			imageOfBody.setRotation(imageAngleDeg);
+			imageOfBody.drawCentered(pos.getX(), pos.getY());
 
-		for (Weapon gun : weapons) {
-			if (gun != null)
-				gun.draw();
+			for (Weapon gun : weapons) {
+				if (gun != null)
+					gun.draw();
 
-		}
+			}
 
-		// Manage drawing animations
-		if (iskeyUpPressed == true && isKeyRightPressed == true) {
-			fixState.stop();
-			toUp.stop();
-			toDown.stop();
-			toRight.stop();
-			toLeft.stop();
-			toDownLeft.stop();
-			toDownRight.stop();
-			toUpLeft.stop();
-			toUpRight.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
-					- imageOfBody.getHeight() / 2);
-			toUpRight.start();
-			imageOfBody.setRotation(imageAngleDeg);
-			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		} else if (iskeyDownPressed == true && isKeyLeftPressed == true) {
-			fixState.stop();
-			toUp.stop();
-			toDown.stop();
-			toRight.stop();
-			toLeft.stop();
-			toUpRight.stop();
-			toDownRight.stop();
-			toUpLeft.stop();
-			toDownLeft.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
-					- imageOfBody.getHeight() / 2);
-			toDownLeft.start();
-			imageOfBody.setRotation(imageAngleDeg);
-			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		} else if (iskeyUpPressed == true && isKeyLeftPressed == true) {
-			fixState.stop();
-			toUp.stop();
-			toDown.stop();
-			toRight.stop();
-			toLeft.stop();
-			toUpRight.stop();
-			toDownRight.stop();
-			toDownLeft.stop();
-			toUpLeft.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
-					- imageOfBody.getHeight() / 2);
-			toUpLeft.start();
-			imageOfBody.setRotation(imageAngleDeg);
-			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		} else if (iskeyDownPressed == true && isKeyRightPressed == true) {
-			fixState.stop();
-			toUp.stop();
-			toDown.stop();
-			toRight.stop();
-			toLeft.stop();
-			toUpRight.stop();
-			toUpLeft.stop();
-			toDownLeft.stop();
-			toDownRight.draw(pos.getX() - imageOfBody.getWidth() / 2,
-					pos.getY() - imageOfBody.getHeight() / 2);
-			toDownRight.start();
-			imageOfBody.setRotation(imageAngleDeg);
-			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		} else if (iskeyUpPressed == true) {
-			fixState.stop();
-			toDown.stop();
-			toRight.stop();
-			toLeft.stop();
-			toUpRight.stop();
-			toDownLeft.stop();
-			toDownRight.stop();
-			toUpLeft.stop();
-			toUp.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
-					- imageOfBody.getHeight() / 2);
-			toUp.start();
-			imageOfBody.setRotation(imageAngleDeg);
-			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		}
+			// Manage drawing animations
+			if (iskeyUpPressed == true && isKeyRightPressed == true) {
+				fixState.stop();
+				toUp.stop();
+				toDown.stop();
+				toRight.stop();
+				toLeft.stop();
+				toDownLeft.stop();
+				toDownRight.stop();
+				toUpLeft.stop();
+				toUpRight.draw(pos.getX() - imageOfBody.getWidth() / 2,
+						pos.getY() - imageOfBody.getHeight() / 2);
+				toUpRight.start();
+				imageOfBody.setRotation(imageAngleDeg);
+				imageOfBody.drawCentered(pos.getX(), pos.getY());
+			} else if (iskeyDownPressed == true && isKeyLeftPressed == true) {
+				fixState.stop();
+				toUp.stop();
+				toDown.stop();
+				toRight.stop();
+				toLeft.stop();
+				toUpRight.stop();
+				toDownRight.stop();
+				toUpLeft.stop();
+				toDownLeft.draw(pos.getX() - imageOfBody.getWidth() / 2,
+						pos.getY() - imageOfBody.getHeight() / 2);
+				toDownLeft.start();
+				imageOfBody.setRotation(imageAngleDeg);
+				imageOfBody.drawCentered(pos.getX(), pos.getY());
+			} else if (iskeyUpPressed == true && isKeyLeftPressed == true) {
+				fixState.stop();
+				toUp.stop();
+				toDown.stop();
+				toRight.stop();
+				toLeft.stop();
+				toUpRight.stop();
+				toDownRight.stop();
+				toDownLeft.stop();
+				toUpLeft.draw(pos.getX() - imageOfBody.getWidth() / 2,
+						pos.getY() - imageOfBody.getHeight() / 2);
+				toUpLeft.start();
+				imageOfBody.setRotation(imageAngleDeg);
+				imageOfBody.drawCentered(pos.getX(), pos.getY());
+			} else if (iskeyDownPressed == true && isKeyRightPressed == true) {
+				fixState.stop();
+				toUp.stop();
+				toDown.stop();
+				toRight.stop();
+				toLeft.stop();
+				toUpRight.stop();
+				toUpLeft.stop();
+				toDownLeft.stop();
+				toDownRight.draw(pos.getX() - imageOfBody.getWidth() / 2,
+						pos.getY() - imageOfBody.getHeight() / 2);
+				toDownRight.start();
+				imageOfBody.setRotation(imageAngleDeg);
+				imageOfBody.drawCentered(pos.getX(), pos.getY());
+			} else if (iskeyUpPressed == true) {
+				fixState.stop();
+				toDown.stop();
+				toRight.stop();
+				toLeft.stop();
+				toUpRight.stop();
+				toDownLeft.stop();
+				toDownRight.stop();
+				toUpLeft.stop();
+				toUp.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
+						- imageOfBody.getHeight() / 2);
+				toUp.start();
+				imageOfBody.setRotation(imageAngleDeg);
+				imageOfBody.drawCentered(pos.getX(), pos.getY());
+			}
 
-		else if (iskeyDownPressed == true) {
-			toUpRight.stop();
-			fixState.stop();
-			toUp.stop();
-			toRight.stop();
-			toLeft.stop();
-			toDownLeft.stop();
-			toDownRight.stop();
-			toUpLeft.stop();
-			toDown.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
-					- imageOfBody.getHeight() / 2);
-			toDown.start();
-			imageOfBody.setRotation(imageAngleDeg);
-			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		}
+			else if (iskeyDownPressed == true) {
+				toUpRight.stop();
+				fixState.stop();
+				toUp.stop();
+				toRight.stop();
+				toLeft.stop();
+				toDownLeft.stop();
+				toDownRight.stop();
+				toUpLeft.stop();
+				toDown.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
+						- imageOfBody.getHeight() / 2);
+				toDown.start();
+				imageOfBody.setRotation(imageAngleDeg);
+				imageOfBody.drawCentered(pos.getX(), pos.getY());
+			}
 
-		else if (isKeyRightPressed == true) {
-			fixState.stop();
-			toUpRight.stop();
-			toUp.stop();
-			toDown.stop();
-			toLeft.stop();
-			toDownLeft.stop();
-			toDownRight.stop();
-			toUpLeft.stop();
-			toRight.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
-					- imageOfBody.getHeight() / 2);
-			toRight.start();
-			imageOfBody.setRotation(imageAngleDeg);
-			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		} else if (isKeyLeftPressed == true) {
-			fixState.stop();
-			toUp.stop();
-			toDown.stop();
-			toRight.stop();
-			toUpRight.stop();
-			toDownLeft.stop();
-			toDownRight.stop();
-			toUpLeft.stop();
-			toLeft.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
-					- imageOfBody.getHeight() / 2);
-			toLeft.start();
-			imageOfBody.setRotation(imageAngleDeg);
-			imageOfBody.drawCentered(pos.getX(), pos.getY());
-		} else {
-			toUp.stop();
-			toDown.stop();
-			toRight.stop();
-			toLeft.stop();
-			toUpRight.stop();
-			toDownLeft.stop();
-			toDownRight.stop();
-			toUpLeft.stop();
-			fixState.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
-					- imageOfBody.getHeight() / 2);
-			imageOfBody.setRotation(imageAngleDeg);
-			imageOfBody.drawCentered(pos.getX(), pos.getY());
+			else if (isKeyRightPressed == true) {
+				fixState.stop();
+				toUpRight.stop();
+				toUp.stop();
+				toDown.stop();
+				toLeft.stop();
+				toDownLeft.stop();
+				toDownRight.stop();
+				toUpLeft.stop();
+				toRight.draw(pos.getX() - imageOfBody.getWidth() / 2,
+						pos.getY() - imageOfBody.getHeight() / 2);
+				toRight.start();
+				imageOfBody.setRotation(imageAngleDeg);
+				imageOfBody.drawCentered(pos.getX(), pos.getY());
+			} else if (isKeyLeftPressed == true) {
+				fixState.stop();
+				toUp.stop();
+				toDown.stop();
+				toRight.stop();
+				toUpRight.stop();
+				toDownLeft.stop();
+				toDownRight.stop();
+				toUpLeft.stop();
+				toLeft.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
+						- imageOfBody.getHeight() / 2);
+				toLeft.start();
+				imageOfBody.setRotation(imageAngleDeg);
+				imageOfBody.drawCentered(pos.getX(), pos.getY());
+			} else {
+				toUp.stop();
+				toDown.stop();
+				toRight.stop();
+				toLeft.stop();
+				toUpRight.stop();
+				toDownLeft.stop();
+				toDownRight.stop();
+				toUpLeft.stop();
+				fixState.draw(pos.getX() - imageOfBody.getWidth() / 2,
+						pos.getY() - imageOfBody.getHeight() / 2);
+				imageOfBody.setRotation(imageAngleDeg);
+				imageOfBody.drawCentered(pos.getX(), pos.getY());
+			}
 		}
 
 	}
@@ -323,11 +325,14 @@ public class Zombie extends Enemy {
 		MissilesDatabase.getMissilesDatabase().explodeAreaForEnemy(
 				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35);
 
+		
 		if (MissilesDatabase.getMissilesDatabase().isRobotMissileInsideArea(
 				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35)) {
 			if (health > 0)
 				health--;
 		}
+		
+		
 
 	}
 

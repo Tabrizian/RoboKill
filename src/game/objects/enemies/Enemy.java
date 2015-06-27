@@ -5,16 +5,16 @@ import game.Position;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
-public class Enemy  {
+public class Enemy {
 
 	protected Position pos;
 	protected int health;
-	protected Position robotPosition ;
-	
-	public Enemy(){
-		
+	protected Position robotPosition;
+
+	public Enemy() {
+
 	}
-	
+
 	/**
 	 * get robot position
 	 * 
@@ -23,20 +23,24 @@ public class Enemy  {
 	public Position getPos() {
 		return pos;
 	}
-	
-	public void init(){
-		
-	}
-	
-	public void draw(Graphics g){
-		
-	}
-	
-	public void update(GameContainer gc){
+
+	public void init() {
 
 	}
-	
-	public void setRobotPos( Position pos) {
-		
+
+	public void draw(Graphics g) {
+
+	}
+
+	public void update(GameContainer gc) {
+
+	}
+
+	public void setRobotPos(Position pos) {
+
+	}
+
+	public int getHealth() {
+		return health;
 	}
 }
