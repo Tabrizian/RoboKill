@@ -3,6 +3,7 @@ package game.objects.enemies;
 import game.GameField;
 import game.Position;
 import game.objects.Robot;
+import game.objects.weapons.MissilesDatabase;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
@@ -54,7 +55,7 @@ public class Sagehar extends Enemy {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		moving = new Animation(images, 400);
+		moving = new Animation(images, 120);
 		fixed = new Animation(fixes, 100);
 		robotPosition = Robot.getRobot().getPos();
 	}
@@ -111,6 +112,15 @@ public class Sagehar extends Enemy {
 
 		for (int i = 0; i < images.length; i++) {
 			images[i].setRotation(imageAngleDeg);
+		}
+		
+		MissilesDatabase.getMissilesDatabase().explodeAreaForEnemy(
+				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35);
+
+		if (MissilesDatabase.getMissilesDatabase().isRobotMissileInsideArea(
+				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35)) {
+			if (health > 0)
+				health--;
 		}
 
 	}
