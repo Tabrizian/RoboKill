@@ -3,6 +3,7 @@ package game.objects.enemies;
 import game.GameField;
 import game.Position;
 import game.objects.Robot;
+import game.objects.weapons.MissilesDatabase;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
@@ -26,8 +27,8 @@ public class Sagehar extends Enemy {
 	private Position robotPosition;
 	private GameField field;
 
-	public Sagehar(Position pos,GameField field) {
-
+	public Sagehar(Position pos, GameField field) {
+		health = 100;
 		this.field = field;
 		this.pos =  new Position(pos);
 	}
@@ -54,14 +55,20 @@ public class Sagehar extends Enemy {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		moving = new Animation(images, 100);
+		moving = new Animation(images, 120);
 		fixed = new Animation(fixes, 100);
 		robotPosition = Robot.getRobot().getPos();
 	}
 
 	public void draw() {
-		
-			fixed.draw(20, 20);
+		// System.out.println("sadasdad");
+		if (health > 0) {
+			if (isMoving) {
+
+				moving.draw(pos.getX(), pos.getY());
+			} else
+				fixed.draw(pos.getX(), pos.getY());
+		}
 	}
 
 	public void update(GameContainer gc) {
@@ -70,23 +77,25 @@ public class Sagehar extends Enemy {
 		float xPos = this.getPos().getX();
 		float yPos = this.getPos().getY();
 
-		if (pos.getY() - 10 > robotPosition.getY() + 10) {
+		if (pos.getY() - 10 > Robot.getRobot().getPos().getY() + 10) {
 			yPos -= 0.05;
 			isMoving = true;
-		} else
+		}
 
-		if (pos.getY() + 10 < robotPosition.getY() - 10) {
+		if (pos.getY() + 10 < Robot.getRobot().getPos().getY() - 10) {
 			yPos += 0.05;
 			isMoving = true;
-		} else if (pos.getX() + 10 < robotPosition.getX() - 10) {
+		}
+		if (pos.getX() + 10 < Robot.getRobot().getPos().getX() - 10) {
 			xPos += 0.05;
 			isMoving = true;
-		} else if (pos.getX() - 10 > robotPosition.getX() + 10) {
+		}
+		if (pos.getX() - 10 > Robot.getRobot().getPos().getX() + 10) {
 			xPos -= 0.05;
 			isMoving = true;
-		} else {
-			isMoving = false;
-		}
+		}/*
+		 * else { isMoving = false; }
+		 */
 
 		xPos -= 25;
 		yPos -= 20;
@@ -95,15 +104,24 @@ public class Sagehar extends Enemy {
 			this.setPos(new Position(xPos += 25, yPos += 20));
 		}
 
-//		double dx = robotPosition.getX() - this.getPos().getX();
-//		double dy = robotPosition.getY() - this.getPos().getY();
-//		imageAngleRad = (float) (Math.atan2(dy, dx) - Math.PI / 2);
-//
-//		imageAngleDeg = (float) (imageAngleRad * 180 / Math.PI);
-//
-//		for (int i = 0; i < images.length; i++) {
-//			images[i].setRotation(imageAngleDeg);
-//		}
+		double dx = Robot.getRobot().getPos().getX() - this.getPos().getX();
+		double dy = Robot.getRobot().getPos().getY() - this.getPos().getY();
+		imageAngleRad = (float) (Math.atan2(dy, dx) - Math.PI / 2);
+
+		imageAngleDeg = (float) (imageAngleRad * 180 / Math.PI);
+
+		for (int i = 0; i < images.length; i++) {
+			images[i].setRotation(imageAngleDeg);
+		}
+		
+		MissilesDatabase.getMissilesDatabase().explodeAreaForEnemy(
+				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35);
+
+		if (MissilesDatabase.getMissilesDatabase().isRobotMissileInsideArea(
+				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35)) {
+			if (health > 0)
+				health--;
+		}
 
 	}
 

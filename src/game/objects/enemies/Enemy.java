@@ -28,7 +28,7 @@ public class Enemy {
 
 	}
 
-	public void draw(Graphics g) {
+	public void draw() {
 
 	}
 
