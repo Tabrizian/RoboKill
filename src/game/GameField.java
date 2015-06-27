@@ -206,14 +206,15 @@ public class GameField {
 	 */
 	public void update(GameContainer gc) {
 		// Update all enemies
-
+		
+		
 		for (int i = 0; i < numOfEnemies; i++) {
-			if (enemies[i].getHealth() == 0) {
-				enemies[i] = null;
-			}
 			if (enemies[i] != null) {
 				enemies[i].update(gc);
 				enemies[i].setRobotPos(robot.getPos());
+				if (enemies[i].getHealth() == 0) {
+					enemies[i] = null;
+				}
 			}
 		}
 
