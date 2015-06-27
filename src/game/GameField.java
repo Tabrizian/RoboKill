@@ -1,10 +1,10 @@
 package game;
 
-import java.util.Random;
-
 import game.objects.Robot;
 import game.objects.enemies.Enemy;
 import game.objects.enemies.Zombie;
+
+import java.util.Random;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
@@ -133,7 +133,7 @@ public class GameField {
 
 		fieldImage.draw(0, 0);
 
-		model.drawAll();
+		model.drawAll(g);
 
 		suroundImage.draw(0, 0);
 
@@ -215,6 +215,12 @@ public class GameField {
 				if (enemies[i].getHealth() == 0) {
 					enemies[i] = null;
 				}
+			}
+		}
+		
+		for (int i = 0; i < 15; i++) {
+			for (int j = 0; j < 11; j++) {
+				model.getCell(i, j).update();;
 			}
 		}
 

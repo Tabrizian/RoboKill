@@ -7,8 +7,8 @@ import game.objects.Thing;
 import game.objects.Wall;
 import game.objects.weapons.MissilesDatabase;
 
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 
 public abstract class Cell {
 
@@ -97,11 +97,12 @@ public abstract class Cell {
 	/**
 	 * Draw the cell behind its thing if exists
 	 */
-	public void draw() {
+	public void draw(Graphics g) {
 		if (isNoun == false)
 			image.drawCentered(pos.getX(), pos.getY());
-		if (thing != null)
+		if (thing != null) {
 			thing.draw(pos.getX(), pos.getY());
+		}
 
 	}
 
@@ -109,16 +110,20 @@ public abstract class Cell {
 		if (thing != null) {
 			MissilesDatabase.getMissilesDatabase().explodeForCells(pos, 25, 25);
 			if (MissilesDatabase.getMissilesDatabase()
-					.isEnemyMissileInsideArea(pos, 25, 25)) {
+					.isEnemyMissileInsideArea(
+							new Position(pos.getX() - 20, pos.getY() - 20), 45,
+							45)) {
 				if (thing.getHealth() > 0)
 					thing.decHealth();
 			}
 			if (MissilesDatabase.getMissilesDatabase()
-					.isRobotMissileInsideArea(pos, 25, 25)) {
+					.isRobotMissileInsideArea(
+							new Position(pos.getX() - 20, pos.getY() - 20), 45,
+							45)) {
 				if (thing.getHealth() > 0)
 					thing.decHealth();
 			}
-			if(thing.getHealth() == 0)
+			if (thing.getHealth() == 0)
 				thing = null;
 		}
 	}

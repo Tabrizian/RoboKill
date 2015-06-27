@@ -2,6 +2,7 @@ package game;
 
 import game.cells.Cell;
 
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -50,10 +51,10 @@ public class GameFieldModel {
 	/**
 	 * Draws all of the cells to the screen.
 	 */
-	public void drawAll() {
+	public void drawAll(Graphics g) {
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 11; j++) {
-				cells[i][j].draw();
+				cells[i][j].draw(g);
 			}
 		}
 	}
@@ -81,51 +82,63 @@ public class GameFieldModel {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * If call this method set a plane for this game field model
 	 */
 	public void setPlane() {
 		hasPlane = true;
 	}
+
 	/**
 	 * Getter for hasPlane
+	 * 
 	 * @return
 	 */
 	public boolean getHasPlane() {
 		return hasPlane;
 	}
+
 	/**
 	 * Getter for image of plane
+	 * 
 	 * @return
 	 */
 	public Image getPlane() {
 		return plane;
 	}
+
 	/**
 	 * If call this method set a exit text for the model
 	 */
 	public void setExitText() {
 		hasExitText = true;
 	}
+
 	/**
 	 * Getter for hasExitText
+	 * 
 	 * @return
 	 */
 	public boolean getHasExitText() {
 		return hasExitText;
 	}
+
 	/**
 	 * Getter for image of exitText
+	 * 
 	 * @return
 	 */
 	public Image getExitText() {
 		return exitText;
 	}
+
 	/**
 	 * Returns a cell that exists in position (x,y)
+	 * 
 	 * @param x
 	 * @param y
-	 * @return	A cell in position (x,y)
+	 * @return A cell in position (x,y)
 	 */
 	public Cell getCellWithPos(float x, float y) {
 		x -= 35;
@@ -134,10 +147,10 @@ public class GameFieldModel {
 		y /= 52;
 		x += 1;
 		y += 1;
-		try{
+		try {
 			return cells[(int) x][(int) y];
-		}catch( Exception e ){
-			return cells[0][0] ;
+		} catch (Exception e) {
+			return cells[0][0];
 		}
 
 	}
