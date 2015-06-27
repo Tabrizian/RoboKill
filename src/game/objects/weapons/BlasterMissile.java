@@ -15,8 +15,10 @@ public abstract class BlasterMissile extends Missile {
 	 * Initialize missile
 	 */
 	public void draw() {
-		img.setRotation((float) (angle * 180 / Math.PI - 90));
-		img.drawCentered(pos.getX(), pos.getY());
+		if (isExploded() == false) {
+			img.setRotation((float) (angle * 180 / Math.PI - 90));
+			img.drawCentered(pos.getX(), pos.getY());
+		}
 
 	}
 

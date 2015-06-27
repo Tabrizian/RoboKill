@@ -4,6 +4,7 @@ import game.GameField;
 import game.Position;
 import game.inventory.Inventory;
 import game.inventory.Item;
+import game.objects.weapons.MissilesDatabase;
 import game.objects.weapons.Weapon;
 
 import java.awt.Point;
@@ -415,6 +416,8 @@ public class Robot {
 				remGun(i);
 
 		}
+		
+		MissilesDatabase.getMissilesDatabase().explodeArea(pos, 20, 20);
 	}
 
 	/**

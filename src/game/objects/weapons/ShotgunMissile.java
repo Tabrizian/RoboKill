@@ -16,8 +16,10 @@ public abstract class ShotgunMissile extends Missile {
 	}
 
 	public void draw() {
-		img.setRotation((float) (angle * 180 / Math.PI - 90));
-		img.drawCentered(pos.getX(), pos.getY());
+		if (isExploded()) {
+			img.setRotation((float) (angle * 180 / Math.PI - 90));
+			img.drawCentered(pos.getX(), pos.getY());
+		}
 
 	}
 
