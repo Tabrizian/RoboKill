@@ -384,7 +384,8 @@ public class Robot {
 
 		if (MissilesDatabase.getMissilesDatabase().isEnemyMissileInsideArea(
 				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35)) {
-			health--;
+			if (health > 0)
+				health--;
 		}
 		Input input = gc.getInput();
 		if (health != 0) {
