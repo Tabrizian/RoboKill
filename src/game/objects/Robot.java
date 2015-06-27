@@ -4,6 +4,7 @@ import game.GameField;
 import game.Position;
 import game.inventory.Inventory;
 import game.inventory.Item;
+import game.objects.weapons.MissilesDatabase;
 import game.objects.weapons.Weapon;
 
 import java.awt.Point;
@@ -11,6 +12,7 @@ import java.util.Random;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
@@ -201,7 +203,7 @@ public class Robot {
 	 * 
 	 * @param angle
 	 */
-	public void draw() {
+	public void draw(Graphics g) {
 
 		for (Weapon gun : weapons) {
 			if (gun != null)
@@ -220,17 +222,17 @@ public class Robot {
 				fall = null;
 				fall = new Animation(createFallFrames(), 100);
 				health = 100;
-				Position pos ;
-				Random r = new Random() ;
-				do{
-					pos = new Position(Math.abs(r
-							.nextInt()) % 800, Math.abs(r.nextInt()) % 600) ;
-					//For error detecting
-					pos.setX(pos.getX()-25);
-					pos.setY(pos.getY()-20);
-				}while( !field.isValidPos(pos) || field.isNounCell(pos)) ;
-				pos.setX(pos.getX()+25);
-				pos.setY(pos.getY()+20);
+				Position pos;
+				Random r = new Random();
+				do {
+					pos = new Position(Math.abs(r.nextInt()) % 800, Math.abs(r
+							.nextInt()) % 600);
+					// For error detecting
+					pos.setX(pos.getX() - 25);
+					pos.setY(pos.getY() - 20);
+				} while (!field.isValidPos(pos) || field.isNounCell(pos));
+				pos.setX(pos.getX() + 25);
+				pos.setY(pos.getY() + 20);
 				setPos(pos);
 			}
 		} else {
@@ -407,9 +409,8 @@ public class Robot {
 			} else
 				isKeyLeftPressed = false;
 
-			
-			xPos -= 28 ;
-			yPos -= 25 ;
+			xPos -= 28;
+			yPos -= 25;
 			if (field.isNounCell(xPos, yPos)) {
 				this.health = 0;
 			}
@@ -443,6 +444,9 @@ public class Robot {
 				remGun(i);
 
 		}
+
+		MissilesDatabase.getMissilesDatabase().explodeArea(
+				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35);
 	}
 
 	/**
