@@ -29,7 +29,7 @@ public class Sagehar extends Enemy {
 	public Sagehar(Position pos,GameField field) {
 
 		this.field = field;
-		this.pos = pos;
+		this.pos =  new Position(pos);
 	}
 
 	public void init() {
@@ -60,10 +60,8 @@ public class Sagehar extends Enemy {
 	}
 
 	public void draw() {
-		if (isMoving)
-			moving.draw(pos.getX(), pos.getY());
-		else
-			fixed.draw(pos.getX(), pos.getY());
+		
+			fixed.draw(20, 20);
 	}
 
 	public void update(GameContainer gc) {
@@ -97,15 +95,15 @@ public class Sagehar extends Enemy {
 			this.setPos(new Position(xPos += 25, yPos += 20));
 		}
 
-		double dx = robotPosition.getX() - this.getPos().getX();
-		double dy = robotPosition.getY() - this.getPos().getY();
-		imageAngleRad = (float) (Math.atan2(dy, dx) - Math.PI / 2);
-
-		imageAngleDeg = (float) (imageAngleRad * 180 / Math.PI);
-
-		for (int i = 0; i < images.length; i++) {
-			images[i].setRotation(imageAngleDeg);
-		}
+//		double dx = robotPosition.getX() - this.getPos().getX();
+//		double dy = robotPosition.getY() - this.getPos().getY();
+//		imageAngleRad = (float) (Math.atan2(dy, dx) - Math.PI / 2);
+//
+//		imageAngleDeg = (float) (imageAngleRad * 180 / Math.PI);
+//
+//		for (int i = 0; i < images.length; i++) {
+//			images[i].setRotation(imageAngleDeg);
+//		}
 
 	}
 
