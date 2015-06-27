@@ -115,18 +115,18 @@ public class Robot {
 	 */
 	public void setActiveField(GameField field) {
 		this.field = field;
-		Position pos ;
-		Random r = new Random() ;
-		do{
-			pos = new Position(Math.abs(r
-					.nextInt()) % 800, Math.abs(r.nextInt()) % 600) ;
-			//For error detecting
-			pos.setX(pos.getX()-25);
-			pos.setY(pos.getY()-20);
-		}while( !field.isValidPos(pos) || field.isNounCell(pos)) ;
-		pos.setX(pos.getX()+25);
-		pos.setY(pos.getY()+20);
-		
+		Position pos;
+		Random r = new Random();
+		do {
+			pos = new Position(Math.abs(r.nextInt()) % 800, Math.abs(r
+					.nextInt()) % 600);
+			// For error detecting
+			pos.setX(pos.getX() - 25);
+			pos.setY(pos.getY() - 20);
+		} while (!field.isValidPos(pos) || field.isNounCell(pos));
+		pos.setX(pos.getX() + 25);
+		pos.setY(pos.getY() + 20);
+
 		this.pos = new Position(pos);
 	}
 
@@ -381,6 +381,10 @@ public class Robot {
 		float xPos = this.getPos().getX();
 		float yPos = this.getPos().getY();
 
+		if (MissilesDatabase.getMissilesDatabase().isEnemyMissileInsideArea(
+				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35)) {
+			health--;
+		}
 		Input input = gc.getInput();
 		if (health != 0) {
 			if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(input.KEY_W)) {

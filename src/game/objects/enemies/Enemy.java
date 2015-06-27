@@ -33,7 +33,7 @@ public class Enemy  {
 	}
 	
 	public void update(GameContainer gc){
-		
+
 	}
 	
 	public void setRobotPos( Position pos) {
