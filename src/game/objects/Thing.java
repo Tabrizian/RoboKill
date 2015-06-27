@@ -1,25 +1,38 @@
 package game.objects;
 
+import game.objects.weapons.MissilesDatabase;
+
 import org.newdawn.slick.Image;
 
 public abstract class Thing {
 	/**
 	 * Image of the thing in field
 	 */
-	protected Image image ;
-	
-	public Thing(){
-		
+	protected Image image;
+	private int health = 100;
+
+	public Thing() {
+
 	}
+
 	/**
 	 * Draw image
 	 */
-	public void draw(float xPos , float yPos) {
+	public void draw(float xPos, float yPos) {
 		image.drawCentered(xPos, yPos);
 	}
+
 	/**
 	 * Loads image
 	 */
-	public abstract void init() ;
+	public abstract void init();
+
+	public int getHealth() {
+		return health;
+	}
+
+	public void decHealth() {
+		health--;
+	}
 
 }

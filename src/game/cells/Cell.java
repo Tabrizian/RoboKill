@@ -5,6 +5,7 @@ import game.objects.Barrel;
 import game.objects.Box;
 import game.objects.Thing;
 import game.objects.Wall;
+import game.objects.weapons.MissilesDatabase;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -29,8 +30,7 @@ public abstract class Cell {
 		} else if (thing instanceof Wall) {
 			this.thing = new Wall();
 			this.thing = thing;
-		}
-		else if (thing instanceof Barrel) {
+		} else if (thing instanceof Barrel) {
 			this.thing = new Barrel();
 			this.thing = thing;
 		}
@@ -86,8 +86,7 @@ public abstract class Cell {
 			this.thing = thing;
 			isNoun = false;
 			isBlocked = true;
-		}
-		else if (thing instanceof Wall) {
+		} else if (thing instanceof Wall) {
 			this.thing = new Barrel();
 			this.thing = thing;
 			isNoun = false;
@@ -106,14 +105,33 @@ public abstract class Cell {
 
 	}
 
+	public void update() {
+		if (thing != null) {
+			MissilesDatabase.getMissilesDatabase().explodeForCells(pos, 25, 25);
+			if (MissilesDatabase.getMissilesDatabase()
+					.isEnemyMissileInsideArea(pos, 25, 25)) {
+				if (thing.getHealth() > 0)
+					thing.decHealth();
+			}
+			if (MissilesDatabase.getMissilesDatabase()
+					.isRobotMissileInsideArea(pos, 25, 25)) {
+				if (thing.getHealth() > 0)
+					thing.decHealth();
+			}
+			if(thing.getHealth() == 0)
+				thing = null;
+		}
+	}
+
 	/**
 	 * Loads images
 	 */
-	public abstract void init() ;
+	public abstract void init();
 
 	/**
 	 * Returns position of a certain cell
-	 * @param row	
+	 * 
+	 * @param row
 	 * @param column
 	 * @return
 	 */
@@ -125,18 +143,22 @@ public abstract class Cell {
 
 		return pos;
 	}
+
 	/**
 	 * Getter for isBlocked
+	 * 
 	 * @return
 	 */
-	public boolean getIsBlocked(){
-		return isBlocked ;
+	public boolean getIsBlocked() {
+		return isBlocked;
 	}
+
 	/**
 	 * Getter for isNoun
+	 * 
 	 * @return
 	 */
-	public boolean getIsNoun(){
-		return isNoun ;
+	public boolean getIsNoun() {
+		return isNoun;
 	}
 }

@@ -73,7 +73,7 @@ public class MissilesDatabase {
 	 * @param pos2
 	 * @return
 	 */
-	private boolean isInsideArea(Position pos, float width, float height,
+	public boolean isInsideArea(Position pos, float width, float height,
 			Position pos2) {
 		return pos2.getX() > pos.getX() && pos2.getX() < (pos.getX() + width)
 				&& pos2.getY() > pos.getY()
@@ -94,4 +94,16 @@ public class MissilesDatabase {
 			missilesRobot.remove(missile);
 		}
 	}
+
+	public void explodeForCells(Position pos, float width, float height) {
+		for (Missile missile : missilesRobot) {
+			if (isInsideArea(pos, width, height, missile.getPos()))
+				missile.setExploded(true);
+		}
+		for (Missile missile : missilesEnemy) {
+			if (isInsideArea(pos, width, height, missile.getPos()))
+				missile.setExploded(true);
+		}
+	}
+	
 }
