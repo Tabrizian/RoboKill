@@ -61,7 +61,7 @@ public class Map {
 		// Create game fields
 		createGameFields();
 		robot = Robot.getRobot();
-		robot.setActiveField(fields[3][2]);
+		robot.setActiveField(fields[3][0]);
 
 		robot.init();
 		// Initialize fields
@@ -98,7 +98,7 @@ public class Map {
 				if (fields[i][j] != null) {
 					if (fields[i][j].getActivation()) {
 						fields[i][j].draw(g);
-						robot.draw();
+						robot.draw(g);
 						// For drawing air plane
 						if (fields[i][j].getModel().getHasPlane() == true)
 							fields[i][j].getModel().getPlane().draw(80, 80);
@@ -325,7 +325,7 @@ public class Map {
 		state2[2] = -1;
 		state2[3] = -1;
 		fields[3][0] = new GameField(model2, 3, state2);
-		fields[3][0].setActivation(false);
+		fields[3][0].setActivation(true);
 		// Creates game field 3
 		GameFieldModel model3 = new GameFieldModel(createModel(3));
 		int[] state3 = new int[4];
@@ -343,7 +343,7 @@ public class Map {
 		state4[2] = -1;
 		state4[3] = 0;
 		fields[3][2] = new GameField(model4, 2, state4);
-		fields[3][2].setActivation(true);
+		fields[3][2].setActivation(false);
 		// Creates game field 5
 		GameFieldModel model5 = new GameFieldModel(createModel(5));
 		int[] state5 = new int[4];
@@ -352,7 +352,7 @@ public class Map {
 		state5[2] = 0;
 		state5[3] = -1;
 		fields[2][2] = new GameField(model5, 4, state5);
-		fields[2][2].setActivation(true);
+		fields[2][2].setActivation(false);
 		// Creates game field 6
 		GameFieldModel model6 = new GameFieldModel(createModel(1));
 		int[] state6 = new int[4];

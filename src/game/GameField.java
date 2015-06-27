@@ -194,7 +194,7 @@ public class GameField {
 			this.getModel().getExitText().draw(347, 65);
 		// Draw all enemies
 		for (int i = 0; i < numOfEnemies; i++)
-			enemies[i].draw();
+			enemies[i].draw(g);
 	}
 
 	/**

@@ -1,19 +1,18 @@
 package game.objects.enemies;
 
+import game.GameField;
+import game.Position;
+import game.objects.weapons.MissilesDatabase;
+import game.objects.weapons.Weapon;
+import game.objects.weapons.blasters.LightBlaster;
+
 import java.util.Random;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-
-import game.GameField;
-import game.Position;
-import game.inventory.Inventory;
-import game.inventory.Item;
-import game.objects.weapons.Weapon;
-import game.objects.weapons.blasters.LightBlaster;
 
 public class Zombie extends Enemy {
 
@@ -123,7 +122,7 @@ public class Zombie extends Enemy {
 	 * 
 	 * @param angle
 	 */
-	public void draw() {
+	public void draw(Graphics g) {
 
 		imageOfBody.setRotation(imageAngleDeg);
 		imageOfBody.drawCentered(pos.getX(), pos.getY());
@@ -133,6 +132,8 @@ public class Zombie extends Enemy {
 				gun.draw();
 
 		}
+
+		g.drawRect(pos.getX() - 15, pos.getY() - 15, 35, 35);
 
 		// Manage drawing animations
 		if (iskeyUpPressed == true && isKeyRightPressed == true) {
@@ -300,7 +301,8 @@ public class Zombie extends Enemy {
 
 		xPos -= 25;
 		yPos -= 20;
-		if (field.isValidPos(new Position(xPos, yPos)) && !field.isNounCell(xPos, yPos)) {
+		if (field.isValidPos(new Position(xPos, yPos))
+				&& !field.isNounCell(xPos, yPos)) {
 			this.setPos(new Position(xPos += 25, yPos += 20));
 		}
 
@@ -319,6 +321,9 @@ public class Zombie extends Enemy {
 			if (gun != null)
 				gun.update(gc);
 		}
+
+		MissilesDatabase.getMissilesDatabase().explodeArea(
+				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35);
 
 	}
 
