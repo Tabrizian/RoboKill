@@ -2,9 +2,11 @@ package game;
 
 import game.objects.Robot;
 import game.objects.enemies.Enemy;
+import game.objects.enemies.Sagehar;
 import game.objects.enemies.Vahshi;
 import game.objects.enemies.Zombie;
 
+//github.com/tabrizian/robokill
 import java.util.Random;
 
 import org.newdawn.slick.Animation;
@@ -73,12 +75,16 @@ public class GameField {
 				pos.setY(pos.getY() - 20);
 			} while (!isValidPos(pos) || isNounCell(pos));
 			pos.setX(pos.getX() + 25);
+
 			pos.setY(pos.getY() + 20);
-			int x = Math.abs(r.nextInt()) % 3 ;
-			if( x == 0 )
+			int x = Math.abs(r.nextInt()) % 3;
+			if (x == 0)
 				enemies[i] = new Vahshi(robot.getPos(), pos, this);
-			else
+			else if (x == 1)
 				enemies[i] = new Zombie(robot.getPos(), pos, this);
+			else
+				enemies[i] = new Sagehar(pos, this);
+
 		}
 	}
 
@@ -211,8 +217,7 @@ public class GameField {
 	 */
 	public void update(GameContainer gc) {
 		// Update all enemies
-		
-		
+
 		for (int i = 0; i < numOfEnemies; i++) {
 			if (enemies[i] != null) {
 				enemies[i].update(gc);
@@ -222,10 +227,11 @@ public class GameField {
 				}
 			}
 		}
-		
+
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 11; j++) {
-				model.getCell(i, j).update();;
+				model.getCell(i, j).update();
+				;
 			}
 		}
 

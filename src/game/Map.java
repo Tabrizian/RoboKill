@@ -585,7 +585,7 @@ public class Map {
 		state10[1] = -1;
 		state10[2] = 0;
 		state10[3] = 0;
-		fields[0][4] = new GameField(model10, 3, state10);
+		fields[0][4] = new GameField(model10, 6, state10);
 		fields[0][4].setActivation(true);
 	}
 }
