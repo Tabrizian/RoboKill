@@ -49,12 +49,14 @@ public class MissilesDatabase {
 		return false;
 	}
 
-	public void explodeArea(Position pos, float width, float height) {
+	public void explodeAreaForRobot(Position pos, float width, float height) {
 		for (Missile missile : missilesEnemy) {
 			if (isInsideArea(pos, width, height, missile.getPos()))
 				missile.setExploded(true);
 		}
+	}
 
+	public void explodeAreaForEnemy(Position pos, float width, float height) {
 		for (Missile missile : missilesRobot) {
 			if (isInsideArea(pos, width, height, missile.getPos()))
 				missile.setExploded(true);

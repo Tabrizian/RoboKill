@@ -133,8 +133,6 @@ public class Zombie extends Enemy {
 
 		}
 
-		g.drawRect(pos.getX() - 15, pos.getY() - 15, 35, 35);
-
 		// Manage drawing animations
 		if (iskeyUpPressed == true && isKeyRightPressed == true) {
 			fixState.stop();
@@ -322,7 +320,7 @@ public class Zombie extends Enemy {
 				gun.update(gc);
 		}
 
-		MissilesDatabase.getMissilesDatabase().explodeArea(
+		MissilesDatabase.getMissilesDatabase().explodeAreaForEnemy(
 				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35);
 
 	}
