@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Random;
+
 import game.objects.Robot;
 import game.objects.enemies.Enemy;
 import game.objects.enemies.Zombie;
@@ -23,6 +25,7 @@ public class GameField {
 
 	private GameFieldModel model;
 	private Enemy[] enemies;
+	private int numOfEnemies;
 	private Robot robot;
 
 	private Animation openDoorUp;
@@ -54,10 +57,24 @@ public class GameField {
 		this.robot = Robot.getRobot();
 		this.stateOfDoors = new int[4];
 		this.stateOfDoors = stateOfDoors;
+		this.numOfEnemies = numOfEnemies;
 
 		// Create enemies for this field
+		Random r = new Random();
 		enemies = new Enemy[numOfEnemies];
-		enemies[0] = new Zombie(robot.getPos(), new Position(300, 300), this);
+		for (int i = 0; i < numOfEnemies; i++){
+			Position pos ;
+			do{
+				pos = new Position(Math.abs(r
+						.nextInt()) % 800, Math.abs(r.nextInt()) % 600) ;
+				//For error detecting
+				pos.setX(pos.getX()-25);
+				pos.setY(pos.getY()-20);
+			}while( !isValidPos(pos) || isNounCell(pos)) ;
+			pos.setX(pos.getX()+25);
+			pos.setY(pos.getY()+20);
+			enemies[i] = new Zombie(robot.getPos(),pos, this);
+		}
 	}
 
 	/**
@@ -92,7 +109,8 @@ public class GameField {
 		model.initAll();
 
 		// Initialize all enemies
-		((Zombie) enemies[0]).init();
+		for (int i = 0; i < numOfEnemies; i++)
+			enemies[i].init();
 
 		openDoorUp = new Animation(createFramesForOpeningUp(), 85);
 		closeDoorUp = new Animation(createFramesForClosingUp(), 85);
@@ -175,8 +193,8 @@ public class GameField {
 		if (this.getModel().getHasExitText() == true)
 			this.getModel().getExitText().draw(347, 65);
 		// Draw all enemies
-		((Zombie) enemies[0]).draw();
-
+		for (int i = 0; i < numOfEnemies; i++)
+			enemies[i].draw();
 	}
 
 	/**
@@ -186,8 +204,11 @@ public class GameField {
 	 */
 	public void update(GameContainer gc) {
 		// Update all enemies
-		((Zombie) enemies[0]).update(gc);
-		((Zombie) enemies[0]).setRobotPos(robot.getPos());
+		for (int i = 0; i < numOfEnemies; i++) {
+			enemies[i].update(gc);
+			enemies[i].setRobotPos(robot.getPos());
+		}
+
 	}
 
 	/**
@@ -211,10 +232,16 @@ public class GameField {
 		return true;
 	}
 
-	public boolean isNounCell( float xPos , float yPos){
-		if( model.getCellWithPos(xPos, yPos).getIsNoun() )
-			return true ;
-		return false ;
+	public boolean isNounCell(float xPos, float yPos) {
+		if (model.getCellWithPos(xPos, yPos).getIsNoun())
+			return true;
+		return false;
+	}
+
+	public boolean isNounCell(Position pos) {
+		if (model.getCellWithPos(pos.getX(), pos.getY()).getIsNoun())
+			return true;
+		return false;
 	}
 	/**
 	 * Setter for isActivat
@@ -224,13 +251,16 @@ public class GameField {
 	public void setActivation(boolean x) {
 		isActivate = x;
 	}
+
 	/**
 	 * Getter for isActivate
+	 * 
 	 * @return
 	 */
-	public boolean getActivation(){
-		return isActivate ;
+	public boolean getActivation() {
+		return isActivate;
 	}
+
 	// Creates frames for opening
 	private Image[] createFramesForOpeningUp() {
 		Image[] frames = new Image[10];

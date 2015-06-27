@@ -300,7 +300,7 @@ public class Zombie extends Enemy {
 
 		xPos -= 25;
 		yPos -= 20;
-		if (field.isValidPos(new Position(xPos, yPos))) {
+		if (field.isValidPos(new Position(xPos, yPos)) && !field.isNounCell(xPos, yPos)) {
 			this.setPos(new Position(xPos += 25, yPos += 20));
 		}
 

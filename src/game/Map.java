@@ -5,12 +5,16 @@ import java.util.Random;
 import game.cells.Cell;
 import game.cells.DownCell;
 import game.cells.DownLeftCell;
+import game.cells.DownRightCell;
 import game.cells.LeftCell;
+import game.cells.RightCell;
 import game.cells.SimpleCell;
+import game.cells.UpCell;
 import game.inventory.Inventory;
 import game.objects.Barrel;
 import game.objects.Box;
 import game.objects.Robot;
+import game.objects.Wall;
 import game.objects.weapons.blasters.LightBlaster;
 import game.objects.weapons.blasters.MediumBlaster;
 import game.objects.weapons.shotguns.HeavyShotgun;
@@ -57,7 +61,7 @@ public class Map {
 		// Create game fields
 		createGameFields();
 		robot = Robot.getRobot();
-		robot.setActiveField(fields[4][1]);
+		robot.setActiveField(fields[3][2]);
 
 		robot.init();
 		// Initialize fields
@@ -98,8 +102,8 @@ public class Map {
 						// For drawing air plane
 						if (fields[i][j].getModel().getHasPlane() == true)
 							fields[i][j].getModel().getPlane().draw(80, 80);
-						
-						if( robot.getHealth() == 0 )
+
+						if (robot.getHealth() == 0)
 							robot.getText().drawCentered(400, 300);
 					}
 				}
@@ -185,8 +189,100 @@ public class Map {
 						cells[i][j] = new SimpleCell(i, j);
 				}
 			}
-		}
+		} else if (key == 2) {
+			for (int i = 0; i < 15; i++) {
+				for (int j = 0; j < 11; j++) {
+					if (i == 1 && j == 1 || i == 1 && j == 2 || i == 2
+							&& j == 1 || i == 2 && j == 2)
+						cells[i][j] = new SimpleCell(i, j, new Box());
+					else if (i == 1 && j == 6 || i == 2 && j == 6)
+						cells[i][j] = new SimpleCell(i, j, new Barrel());
+					else if ((i == 11 || i == 12)
+							&& (j == 4 || j == 5 || j == 6))
+						cells[i][j] = new SimpleCell(i, j, new Box(3));
+					else
+						cells[i][j] = new SimpleCell(i, j);
+				}
+			}
+		} else if (key == 3) {
+			for (int i = 0; i < 15; i++) {
+				for (int j = 0; j < 4; j++) {
+					cells[i][j] = new SimpleCell(i, j, true);
+				}
+			}
 
+			for (int i = 0; i < 15; i++)
+				cells[i][4] = new UpCell(i, 4);
+
+			for (int i = 0; i < 15; i++)
+				cells[i][5] = new SimpleCell(i, 5);
+
+			for (int i = 0; i < 6; i++)
+				cells[i][6] = new DownCell(i, 6);
+
+			for (int i = 6; i < 9; i++)
+				cells[i][6] = new SimpleCell(i, 6);
+
+			for (int i = 9; i < 15; i++)
+				cells[i][6] = new DownCell(i, 6);
+
+			for (int i = 7; i < 11; i++)
+				cells[6][i] = new LeftCell(6, i);
+
+			for (int i = 7; i < 11; i++)
+				cells[7][i] = new SimpleCell(7, i);
+
+			for (int i = 7; i < 11; i++)
+				cells[8][i] = new RightCell(8, i);
+
+			for (int i = 0; i < 6; i++)
+				for (int j = 7; j < 11; j++)
+					cells[i][j] = new SimpleCell(i, j, true);
+
+			for (int i = 9; i < 15; i++)
+				for (int j = 7; j < 11; j++)
+					cells[i][j] = new SimpleCell(i, j, true);
+		} else if (key == 4) {
+			for (int i = 0; i < 12; i++)
+				for (int j = 0; j < 8; j++) {
+					if ((i == 8 || i == 9) && (j == 5 || j == 6))
+						cells[i][j] = new SimpleCell(i, j, new Wall());
+					else if (j == 2 && (i == 2 || i == 3 || i == 4 || i == 5))
+						cells[i][j] = new SimpleCell(i, j, new Box((i % 3) + 1));
+					else
+						cells[i][j] = new SimpleCell(i, j);
+				}
+
+			for (int i = 0; i < 13; i++) {
+				if (i == 12)
+					cells[i][8] = new DownRightCell(i, 8 , new Barrel(1));
+				else if( i== 11 || i == 10)
+					cells[i][8] = new DownCell(i, 8 , new Barrel(1));
+				else
+					cells[i][8] = new DownCell(i, 8);
+			}
+			
+			for( int i = 0 ; i < 8 ; i++ )
+				cells[12][i] = new RightCell(12, i) ;
+			
+			for( int i = 0 ; i < 15 ; i++ )
+				for( int j = 0 ; j < 11 ; j++ )
+					if( cells[i][j] == null )
+						cells[i][j] = new SimpleCell(i, j , true) ;
+		} else if (key == 5) {
+			for (int i = 0; i < 11; i++)
+				cells[7][i] = new SimpleCell(7, i);
+			for (int i = 0; i < 11; i++)
+				cells[6][i] = new LeftCell(6, i);
+			for (int i = 0; i < 11; i++)
+				cells[8][i] = new RightCell(8, i);
+			for (int i = 0; i < 6; i++)
+				for (int j = 0; j < 11; j++)
+					cells[i][j] = new SimpleCell(i, j, true);
+			for (int i = 9; i < 15; i++)
+				for (int j = 0; j < 11; j++)
+					cells[i][j] = new SimpleCell(i, j, true);
+		}
 		return cells;
 	}
 
@@ -220,9 +316,9 @@ public class Map {
 		state1[2] = -1;
 		state1[3] = -1;
 		fields[4][1] = new GameField(model1, 1, state1);
-		fields[4][1].setActivation(true);
+		fields[4][1].setActivation(false);
 		// Creates game field 2
-		GameFieldModel model2 = new GameFieldModel(createModel(1));
+		GameFieldModel model2 = new GameFieldModel(createModel(2));
 		int[] state2 = new int[4];
 		state2[0] = -1;
 		state2[1] = 0;
@@ -231,7 +327,7 @@ public class Map {
 		fields[3][0] = new GameField(model2, 3, state2);
 		fields[3][0].setActivation(false);
 		// Creates game field 3
-		GameFieldModel model3 = new GameFieldModel(createModel(1));
+		GameFieldModel model3 = new GameFieldModel(createModel(3));
 		int[] state3 = new int[4];
 		state3[0] = -1;
 		state3[1] = 0;
@@ -240,23 +336,23 @@ public class Map {
 		fields[3][1] = new GameField(model3, 7, state3);
 		fields[3][1].setActivation(false);
 		// Creates game field 4
-		GameFieldModel model4 = new GameFieldModel(createModel(1));
+		GameFieldModel model4 = new GameFieldModel(createModel(4));
 		int[] state4 = new int[4];
 		state4[0] = 0;
 		state4[1] = -1;
 		state4[2] = -1;
 		state4[3] = 0;
 		fields[3][2] = new GameField(model4, 2, state4);
-		fields[3][2].setActivation(false);
+		fields[3][2].setActivation(true);
 		// Creates game field 5
-		GameFieldModel model5 = new GameFieldModel(createModel(1));
+		GameFieldModel model5 = new GameFieldModel(createModel(5));
 		int[] state5 = new int[4];
 		state5[0] = 0;
 		state5[1] = -1;
 		state5[2] = 0;
 		state5[3] = -1;
 		fields[2][2] = new GameField(model5, 4, state5);
-		fields[2][2].setActivation(false);
+		fields[2][2].setActivation(true);
 		// Creates game field 6
 		GameFieldModel model6 = new GameFieldModel(createModel(1));
 		int[] state6 = new int[4];
