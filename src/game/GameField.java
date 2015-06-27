@@ -2,6 +2,7 @@ package game;
 
 import game.objects.Robot;
 import game.objects.enemies.Enemy;
+import game.objects.enemies.Sagehar;
 import game.objects.enemies.Zombie;
 
 import java.util.Random;
@@ -73,7 +74,7 @@ public class GameField {
 			} while (!isValidPos(pos) || isNounCell(pos));
 			pos.setX(pos.getX() + 25);
 			pos.setY(pos.getY() + 20);
-			enemies[i] = new Zombie(robot.getPos(), pos, this);
+			enemies[i] = new Sagehar(pos, this);
 		}
 	}
 
@@ -206,8 +207,7 @@ public class GameField {
 	 */
 	public void update(GameContainer gc) {
 		// Update all enemies
-		
-		
+
 		for (int i = 0; i < numOfEnemies; i++) {
 			if (enemies[i] != null) {
 				enemies[i].update(gc);
@@ -217,10 +217,11 @@ public class GameField {
 				}
 			}
 		}
-		
+
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 11; j++) {
-				model.getCell(i, j).update();;
+				model.getCell(i, j).update();
+				;
 			}
 		}
 
