@@ -18,5 +18,8 @@ public class Wall extends Thing {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void decHealth(){
+		
+	}
 }
