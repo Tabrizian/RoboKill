@@ -63,7 +63,7 @@ public class Map {
 		createGameFields();
 		robot = Robot.getRobot();
 
-		robot.setActiveField(fields[3][0]);
+		robot.setActiveField(fields[1][2]);
 
 
 		robot.init();
@@ -303,13 +303,19 @@ public class Map {
 				cells[i][3] = new UpCell(i, 3) ;
 			
 			for( int i = 4 ; i < 11 ; i++ )
-				if( i == 7 || i==8 || i==9 || i==10)
+				if( i == 7 || i==8 || i==9 )
 					cells[9][i] = new RightCell(9	, i ,new Box((i%3) + 1) );
+				else if( i==10)
+					cells[9][i] = new RightCell(9, i);
 				else
 					cells[9][i] = new SimpleCell(9, i) ;
 			for( int i = 10 ; i < 15 ; i++ )
-				for( int j = 4 ; j < 7 ; j++ )
-					cells[i][j] = new SimpleCell(i, j);
+				for( int j = 4 ; j < 7 ; j++ ){
+					if( j == 6)
+						cells[i][j] = new DownCell(i, j);
+					else
+						cells[i][j] = new SimpleCell(i, j);
+				}
 			
 			for( int i = 0 ; i < 15 ; i++ )
 				for( int j = 0 ; j < 11 ; j++ )
@@ -358,7 +364,7 @@ public class Map {
 		state2[2] = -1;
 		state2[3] = -1;
 		fields[3][0] = new GameField(model2, 3, state2);
-		fields[3][0].setActivation(true);
+		fields[3][0].setActivation(false);
 		// Creates game field 3
 		GameFieldModel model3 = new GameFieldModel(createModel(3));
 		int[] state3 = new int[4];
