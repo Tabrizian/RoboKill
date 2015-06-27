@@ -7,6 +7,7 @@ import game.inventory.Item;
 import game.objects.weapons.Weapon;
 
 import java.awt.Point;
+import java.util.Random;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
@@ -207,7 +208,18 @@ public class Robot {
 				fall = null;
 				fall = new Animation(createFallFrames(), 100);
 				health = 100;
-				setPos(new Position(500, 300));
+				Position pos ;
+				Random r = new Random() ;
+				do{
+					pos = new Position(Math.abs(r
+							.nextInt()) % 800, Math.abs(r.nextInt()) % 600) ;
+					//For error detecting
+					pos.setX(pos.getX()-25);
+					pos.setY(pos.getY()-20);
+				}while( !field.isValidPos(pos) || field.isNounCell(pos)) ;
+				pos.setX(pos.getX()+25);
+				pos.setY(pos.getY()+20);
+				setPos(pos);
 			}
 		} else {
 			imageOfBody.setRotation(imageAngleDeg);
