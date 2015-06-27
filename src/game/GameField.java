@@ -3,6 +3,7 @@ package game;
 import game.objects.Robot;
 import game.objects.enemies.Enemy;
 import game.objects.enemies.Vahshi;
+import game.objects.enemies.Zombie;
 
 import java.util.Random;
 
@@ -73,7 +74,11 @@ public class GameField {
 			} while (!isValidPos(pos) || isNounCell(pos));
 			pos.setX(pos.getX() + 25);
 			pos.setY(pos.getY() + 20);
-			enemies[i] = new Vahshi(robot.getPos(), pos, this);
+			int x = Math.abs(r.nextInt()) % 3 ;
+			if( x == 0 )
+				enemies[i] = new Vahshi(robot.getPos(), pos, this);
+			else
+				enemies[i] = new Zombie(robot.getPos(), pos, this);
 		}
 	}
 
