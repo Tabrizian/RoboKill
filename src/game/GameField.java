@@ -62,18 +62,18 @@ public class GameField {
 		// Create enemies for this field
 		Random r = new Random();
 		enemies = new Enemy[numOfEnemies];
-		for (int i = 0; i < numOfEnemies; i++){
-			Position pos ;
-			do{
-				pos = new Position(Math.abs(r
-						.nextInt()) % 800, Math.abs(r.nextInt()) % 600) ;
-				//For error detecting
-				pos.setX(pos.getX()-25);
-				pos.setY(pos.getY()-20);
-			}while( !isValidPos(pos) || isNounCell(pos)) ;
-			pos.setX(pos.getX()+25);
-			pos.setY(pos.getY()+20);
-			enemies[i] = new Zombie(robot.getPos(),pos, this);
+		for (int i = 0; i < numOfEnemies; i++) {
+			Position pos;
+			do {
+				pos = new Position(Math.abs(r.nextInt()) % 800, Math.abs(r
+						.nextInt()) % 600);
+				// For error detecting
+				pos.setX(pos.getX() - 25);
+				pos.setY(pos.getY() - 20);
+			} while (!isValidPos(pos) || isNounCell(pos));
+			pos.setX(pos.getX() + 25);
+			pos.setY(pos.getY() + 20);
+			enemies[i] = new Zombie(robot.getPos(), pos, this);
 		}
 	}
 
@@ -193,8 +193,10 @@ public class GameField {
 		if (this.getModel().getHasExitText() == true)
 			this.getModel().getExitText().draw(347, 65);
 		// Draw all enemies
-		for (int i = 0; i < numOfEnemies; i++)
-			enemies[i].draw(g);
+		for (int i = 0; i < numOfEnemies; i++) {
+			if (enemies[i] != null)
+				enemies[i].draw(g);
+		}
 	}
 
 	/**
@@ -205,8 +207,10 @@ public class GameField {
 	public void update(GameContainer gc) {
 		// Update all enemies
 		for (int i = 0; i < numOfEnemies; i++) {
-			enemies[i].update(gc);
-			enemies[i].setRobotPos(robot.getPos());
+			if (enemies[i] != null) {
+				enemies[i].update(gc);
+				enemies[i].setRobotPos(robot.getPos());
+			}
 		}
 
 	}
@@ -243,6 +247,7 @@ public class GameField {
 			return true;
 		return false;
 	}
+
 	/**
 	 * Setter for isActivat
 	 * 
