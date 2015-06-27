@@ -64,7 +64,7 @@ public class Map {
 		createGameFields();
 		robot = Robot.getRobot();
 
-		robot.setActiveField(fields[0][3]);
+		robot.setActiveField(fields[0][4]);
 
 		robot.init();
 		// Initialize fields
@@ -103,8 +103,10 @@ public class Map {
 						fields[i][j].draw(g);
 						robot.draw(g);
 						// For drawing air plane
-						if (fields[i][j].getModel().getHasPlane() == true)
-							fields[i][j].getModel().getPlane().draw(80, 80);
+						if (fields[i][j].getModel().getHasPlane() == true){
+							Position pos = new Position(fields[i][j].getModel().getPlanePos() ) ;
+							fields[i][j].getModel().getPlane().draw(pos.getX(), pos.getY());
+						}
 
 						if (robot.getHealth() == 0)
 							robot.getText().drawCentered(400, 300);
@@ -390,43 +392,84 @@ public class Map {
 				for (int j = 0; j < 11; j++)
 					if (cells[i][j] == null)
 						cells[i][j] = new SimpleCell(i, j, true);
-		}
-		else if( key == 9 ){
-			for( int i = 0 ; i < 15 ; i++ )
-				for( int j = 0 ; j < 11 ; j++ )
-				{
-					if( j == 2 && i >=4 && i <= 10 )
-						cells[i][j] = new SimpleCell(i, j , new Wall() ) ;
-					else if( i==10 && j>2 && j <=8)
-						cells[i][j] = new SimpleCell(i, j , new Wall() ) ;
-					else if( j == 8 && i >=4 && i < 10 )
-						cells[i][j] = new SimpleCell(i, j , new Wall() ) ;
-					else if( i ==4 && j >= 5 && j <= 7)
-						cells[i][j] = new SimpleCell(i, j , new Wall() ) ;
-					else if( j == 4 && i >=6&& i <= 9)
-						cells[i][j] = new SimpleCell(i, j , new Box() ) ;
-					else if( i == 9 && j >= 5 && j <= 7)
-						cells[i][j] = new SimpleCell(i, j , new Box(2) ) ;
-					else if( j==7 && i >= 6 && i < 9 )
-						cells[i][j] = new SimpleCell(i, j , new Box(3) ) ;
-					else if( i == 6 && j > 4 && j < 7)
-						cells[i][j] = new SimpleCell(i, j , new Box() ) ;
-					else if( j== 5 && i>=7 && i <= 8)
-						cells[i][j] = new SimpleCell(i, j , new Wall() ) ;
-					else if( j== 6 && i>=7 && i <= 8)
-						cells[i][j] = new SimpleCell(i, j , new Wall() ) ;
-					else if( i==0 && j >= 0 && j <= 1)
-						cells[i][j] = new SimpleCell(i, j , new Barrel() ) ;
-					else if( i==14 && j >= 9 && j <=10)
-						cells[i][j] = new SimpleCell(i, j , new Barrel() ) ;
-					else if( j==0 && i >= 13 && i <= 14)
-						cells[i][j] = new SimpleCell(i, j , new Barrel() ) ;
-					else if( j==10 && i >= 0 && i <= 1)
-						cells[i][j] = new SimpleCell(i, j , new Barrel() ) ;
+		} else if (key == 9) {
+			for (int i = 0; i < 15; i++)
+				for (int j = 0; j < 11; j++) {
+					if (j == 2 && i >= 4 && i <= 10)
+						cells[i][j] = new SimpleCell(i, j, new Wall());
+					else if (i == 10 && j > 2 && j <= 8)
+						cells[i][j] = new SimpleCell(i, j, new Wall());
+					else if (j == 8 && i >= 4 && i < 10)
+						cells[i][j] = new SimpleCell(i, j, new Wall());
+					else if (i == 4 && j >= 5 && j <= 7)
+						cells[i][j] = new SimpleCell(i, j, new Wall());
+					else if (j == 4 && i >= 6 && i <= 9)
+						cells[i][j] = new SimpleCell(i, j, new Box());
+					else if (i == 9 && j >= 5 && j <= 7)
+						cells[i][j] = new SimpleCell(i, j, new Box(2));
+					else if (j == 7 && i >= 6 && i < 9)
+						cells[i][j] = new SimpleCell(i, j, new Box(3));
+					else if (i == 6 && j > 4 && j < 7)
+						cells[i][j] = new SimpleCell(i, j, new Box());
+					else if (j == 5 && i >= 7 && i <= 8)
+						cells[i][j] = new SimpleCell(i, j, new Wall());
+					else if (j == 6 && i >= 7 && i <= 8)
+						cells[i][j] = new SimpleCell(i, j, new Wall());
+					else if (i == 0 && j >= 0 && j <= 1)
+						cells[i][j] = new SimpleCell(i, j, new Barrel());
+					else if (i == 14 && j >= 9 && j <= 10)
+						cells[i][j] = new SimpleCell(i, j, new Barrel());
+					else if (j == 0 && i >= 13 && i <= 14)
+						cells[i][j] = new SimpleCell(i, j, new Barrel());
+					else if (j == 10 && i >= 0 && i <= 1)
+						cells[i][j] = new SimpleCell(i, j, new Barrel());
 					else
 						cells[i][j] = new SimpleCell(i, j);
-					
+
 				}
+		} else if (key == 10) {
+			for (int i = 0; i < 6; i++)
+				for (int j = 4; j < 7; j++) {
+					if (j == 4)
+						cells[i][j] = new UpCell(i, j);
+					else if (j == 5)
+						cells[i][j] = new SimpleCell(i, j);
+					else if (j == 6)
+						cells[i][j] = new DownCell(i, j);
+				}
+
+			for (int i = 6; i < 9; i++)
+				for (int j = 7; j < 11; j++) {
+					if (i == 6)
+						cells[i][j] = new LeftCell(i, j);
+					else if (i == 7)
+						cells[i][j] = new SimpleCell(i, j);
+					else if (i == 8)
+						cells[i][j] = new RightCell(i, j);
+				}
+
+			for (int i = 6; i <= 8; i++)
+				for (int j = 6; j >= 8 - i + 1; j--) {
+					if (j == 8 - i + 1)
+						cells[i][j] = new UpLeftCell(i, j, new Box());
+					else
+						cells[i][j] = new SimpleCell(i, j);
+				}
+
+			for (int i = 9; i < 15; i++)
+				for (int j = 0; j <= 9 - i + 6; j++) {
+					if (j == 9 - i + 6)
+						cells[i][j] = new DownRightCell(i, j, new Box());
+					else if( i == 9 && j == 0 )
+						cells[i][j] = new LeftCell(9, 0) ;
+					else
+						cells[i][j] = new SimpleCell(i, j);
+				}
+
+			for (int i = 0; i < 15; i++)
+				for (int j = 0; j < 11; j++)
+					if (cells[i][j] == null)
+						cells[i][j] = new SimpleCell(i, j , true);
 		}
 		return cells;
 	}
@@ -453,7 +496,7 @@ public class Map {
 				fields[i][j] = null;
 		// Creates game field 1
 		GameFieldModel model1 = new GameFieldModel(createModel(1));
-		model1.setPlane();
+		model1.setPlane( new Position(50 , 50) );
 		model1.setExitText();
 		int[] state1 = new int[4];
 		state1[0] = 0;
@@ -532,16 +575,17 @@ public class Map {
 		state9[1] = 0;
 		state9[2] = 0;
 		state9[3] = -1;
-		fields[0][3] = new GameField(model9, 1, state9);
-		fields[0][3].setActivation(true);
+		fields[0][3] = new GameField(model9, 6, state9);
+		fields[0][3].setActivation(false);
 		// Creates game field 10
-		GameFieldModel model10 = new GameFieldModel(createModel(1));
+		GameFieldModel model10 = new GameFieldModel(createModel(10));
+		model10.setPlane(new Position(525 , 170));
 		int[] state10 = new int[4];
 		state10[0] = -1;
 		state10[1] = -1;
 		state10[2] = 0;
 		state10[3] = 0;
-		fields[0][4] = new GameField(model10, 10, state10);
-		fields[0][4].setActivation(false);
+		fields[0][4] = new GameField(model10, 2, state10);
+		fields[0][4].setActivation(true);
 	}
 }

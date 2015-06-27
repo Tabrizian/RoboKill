@@ -12,6 +12,7 @@ public class GameFieldModel {
 
 	private boolean hasPlane = false;
 	private Image plane;
+	private Position planePos;
 
 	private boolean hasExitText = false;
 	private Image exitText;
@@ -86,8 +87,9 @@ public class GameFieldModel {
 	/**
 	 * If call this method set a plane for this game field model
 	 */
-	public void setPlane() {
+	public void setPlane(Position pos) {
 		hasPlane = true;
+		planePos = new Position(pos);
 	}
 
 	/**
@@ -131,6 +133,13 @@ public class GameFieldModel {
 	 */
 	public Image getExitText() {
 		return exitText;
+	}
+
+	/**
+	 * Getter for plane position
+	 */
+	public Position getPlanePos() {
+		return planePos;
 	}
 
 	/**

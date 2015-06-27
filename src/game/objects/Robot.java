@@ -213,7 +213,6 @@ public class Robot {
 
 		// Manage drawing animations
 		if (health == 0) {
-			System.out.println("salalal");
 			imageOfBody.draw(-50, -50);
 			fall.setLooping(false);
 			fall.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
