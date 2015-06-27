@@ -61,9 +61,9 @@ public class Sagehar extends Enemy {
 
 	public void draw() {
 		if (isMoving)
-			moving.draw(50, 50);
+			moving.draw(pos.getX(), pos.getY());
 		else
-			fixed.draw(50, 50);
+			fixed.draw(pos.getX(), pos.getY());
 	}
 
 	public void update(GameContainer gc) {
