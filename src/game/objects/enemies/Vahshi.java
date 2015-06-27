@@ -93,7 +93,7 @@ public class Vahshi extends Enemy {
 	 * 
 	 * @param angle
 	 */
-	public void draw(Graphics g) {
+	public void draw() {
 
 		if (health > 0) {
 			// Manage drawing animations

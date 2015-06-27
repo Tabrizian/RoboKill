@@ -122,7 +122,7 @@ public class Zombie extends Enemy {
 	 * 
 	 * @param angle
 	 */
-	public void draw(Graphics g) {
+	public void draw() {
 
 		if (health > 0) {
 			imageOfBody.setRotation(imageAngleDeg);

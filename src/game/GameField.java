@@ -84,7 +84,6 @@ public class GameField {
 				enemies[i] = new Zombie(robot.getPos(), pos, this);
 			else
 				enemies[i] = new Sagehar(pos, this);
-
 		}
 	}
 
@@ -205,8 +204,9 @@ public class GameField {
 			this.getModel().getExitText().draw(347, 65);
 		// Draw all enemies
 		for (int i = 0; i < numOfEnemies; i++) {
-			if (enemies[i] != null)
-				enemies[i].draw(g);
+			if (enemies[i] != null){
+				enemies[i].draw();
+			}
 		}
 	}
 
