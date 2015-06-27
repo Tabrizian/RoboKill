@@ -445,7 +445,7 @@ public class Robot {
 
 		}
 
-		MissilesDatabase.getMissilesDatabase().explodeArea(
+		MissilesDatabase.getMissilesDatabase().explodeAreaForRobot(
 				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35);
 	}
 
