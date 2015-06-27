@@ -123,8 +123,10 @@ public abstract class Cell {
 				if (thing.getHealth() > 0)
 					thing.decHealth();
 			}
-			if (thing.getHealth() == 0)
+			if (thing.getHealth() == 0){
+				isBlocked = false ;
 				thing = null;
+			}
 		}
 	}
 
