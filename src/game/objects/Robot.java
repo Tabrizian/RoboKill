@@ -90,7 +90,6 @@ public class Robot {
 	private Robot() {
 		super();
 
-		pos = new Position(500, 500);
 		weapons = new Weapon[4];
 		health = 100;
 
@@ -114,6 +113,19 @@ public class Robot {
 	 */
 	public void setActiveField(GameField field) {
 		this.field = field;
+		Position pos ;
+		Random r = new Random() ;
+		do{
+			pos = new Position(Math.abs(r
+					.nextInt()) % 800, Math.abs(r.nextInt()) % 600) ;
+			//For error detecting
+			pos.setX(pos.getX()-25);
+			pos.setY(pos.getY()-20);
+		}while( !field.isValidPos(pos) || field.isNounCell(pos)) ;
+		pos.setX(pos.getX()+25);
+		pos.setY(pos.getY()+20);
+		
+		this.pos = new Position(pos);
 	}
 
 	/**
