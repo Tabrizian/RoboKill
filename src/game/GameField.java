@@ -2,16 +2,15 @@ package game;
 
 import game.objects.Robot;
 import game.objects.enemies.Enemy;
-import game.objects.enemies.Sagehar;
-import game.objects.enemies.Zombie;
-
-import java.util.Random;
+import game.objects.enemies.Vahshi;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+//github.com/tabrizian/robokill
+import java.util.Random;
 
 public class GameField {
 
@@ -74,7 +73,8 @@ public class GameField {
 			} while (!isValidPos(pos) || isNounCell(pos));
 			pos.setX(pos.getX() + 25);
 			pos.setY(pos.getY() + 20);
-			enemies[i] = new Sagehar(pos, this);
+			enemies[i] = new Vahshi(robot.getPos(), pos, this);
+
 		}
 	}
 
