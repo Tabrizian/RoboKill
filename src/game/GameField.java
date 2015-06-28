@@ -80,10 +80,10 @@ public class GameField {
 			int x = Math.abs(r.nextInt()) % 3;
 			if (x == 0)
 				enemies[i] = new Vahshi(robot.getPos(), pos, this);
-			else if (x == 1)
+			else// if (x == 1)
 				enemies[i] = new Zombie(robot.getPos(), pos, this);
-			else
-				enemies[i] = new Sagehar(pos, this);
+		//	else
+			//	enemies[i] = new Sagehar(pos, this);
 		}
 	}
 

@@ -424,16 +424,17 @@ public class Robot {
 			if (field.isValidPos(new Position(xPos, yPos))) {
 				this.setPos(new Position(xPos += 25, yPos += 20));
 			}
-		}
-		double dx = input.getMouseX() - this.getPos().getX();
-		double dy = input.getMouseY() - this.getPos().getY();
-		imageAngleRad = (float) (Math.atan2(dy, dx) - Math.PI / 2);
 
-		imageAngleDeg = (float) (imageAngleRad * 180 / Math.PI);
+			double dx = input.getMouseX() - this.getPos().getX();
+			double dy = input.getMouseY() - this.getPos().getY();
+			imageAngleRad = (float) (Math.atan2(dy, dx) - Math.PI / 2);
 
-		if (input.isMouseButtonDown(0))
-			fire();
+			imageAngleDeg = (float) (imageAngleRad * 180 / Math.PI);
 
+			if (input.isMouseButtonDown(0))
+				fire();
+			}
+		
 		for (Weapon gun : weapons) {
 			if (gun != null)
 				gun.update(gc);
