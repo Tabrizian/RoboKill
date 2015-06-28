@@ -172,4 +172,8 @@ public class UtilityButton {
 		state = show;
 		
 	}
+	
+	public static boolean getInventoryState(){
+		return showInventory ;
+	}
 }
