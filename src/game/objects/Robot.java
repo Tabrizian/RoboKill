@@ -89,8 +89,10 @@ public class Robot {
 	private GameField field;
 
 	private Animation fall;
-	
-	private boolean isDead = false ;
+
+	private boolean isDead = false;
+
+	private boolean falling = false;
 
 	private Robot() {
 		super();
@@ -118,19 +120,6 @@ public class Robot {
 	 */
 	public void setActiveField(GameField field) {
 		this.field = field;
-		Position pos;
-		Random r = new Random();
-		do {
-			pos = new Position(Math.abs(r.nextInt()) % 800, Math.abs(r
-					.nextInt()) % 600);
-			// For error detecting
-			pos.setX(pos.getX() - 25);
-			pos.setY(pos.getY() - 20);
-		} while (!field.isValidPos(pos) || field.isNounCell(pos));
-		pos.setX(pos.getX() + 25);
-		pos.setY(pos.getY() + 20);
-
-		this.pos = new Position(pos);
 	}
 
 	/**
@@ -194,7 +183,7 @@ public class Robot {
 		toUpRight = new Animation(createToUpRightFrames(), 85);
 		toDownRight = new Animation(createToDownRightFrames(), 85);
 		toUpLeft = new Animation(createToUpLeftFrames(), 85);
-		fall = new Animation(createFallFrames(), 100);
+		fall = new Animation(createFallFrames(), 65);
 	}
 
 	public Image getText() {
@@ -216,16 +205,25 @@ public class Robot {
 
 		// Manage drawing animations
 		if (health == 0) {
-			imageOfBody.draw(-50, -50);
-			fall.setLooping(false);
-			fall.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
-					- imageOfBody.getHeight() / 2);
-			fall.start();
-			if (fall.getFrame() == 15) {
-				fall = null;
-				fall = new Animation(createFallFrames(), 100);
+			if (falling == true) {
+
+				System.out.println("in Robot line 209 ");
+				imageOfBody.draw(-50, -50);
+				fall.setLooping(false);
+				fall.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
+						- imageOfBody.getHeight() / 2);
+				fall.start();
+
+				if (fall.getFrame() == 15) {
+					falling = false;
+					fall = null;
+					fall = new Animation(createFallFrames(), 65);
+					health = 100;
+					isDead = true;
+				}
+			} else {
 				health = 100;
-				isDead = true ;				
+				isDead = true;
 			}
 		} else {
 			imageOfBody.setRotation(imageAngleDeg);
@@ -364,6 +362,10 @@ public class Robot {
 
 	}
 
+	public void setFalling(boolean x) {
+		falling = x;
+	}
+
 	/**
 	 * Updates robot state in GameContainer gc
 	 * 
@@ -407,13 +409,16 @@ public class Robot {
 				isKeyLeftPressed = false;
 
 			if (field.isNounCell(xPos, yPos)) {
-				System.out.println(field.getModel().getCellWithPos(xPos, yPos).getIsNoun()) ;
-				System.out.println("in Robot , line 420 " + this.getPos().getX() + " " + this.getPos().getY());
+				System.out.println(field.getModel().getCellWithPos(xPos, yPos)
+						.getIsNoun());
+				System.out.println("in Robot , line 420 "
+						+ this.getPos().getX() + " " + this.getPos().getY());
+				falling = true;
 				this.health = 0;
 			}
 
 			if (field.isValidPos(new Position(xPos, yPos))) {
-				this.setPos(new Position(xPos , yPos ));
+				this.setPos(new Position(xPos, yPos));
 			}
 
 			double dx = input.getMouseX() - this.getPos().getX();
@@ -424,8 +429,8 @@ public class Robot {
 
 			if (input.isMouseButtonDown(0))
 				fire();
-			}
-		
+		}
+
 		for (Weapon gun : weapons) {
 			if (gun != null)
 				gun.update(gc);
@@ -457,13 +462,14 @@ public class Robot {
 		}
 	}
 
-	public boolean getIsDead(){
-		return isDead ;
+	public boolean getIsDead() {
+		return isDead;
 	}
-	
-	public void setIsDead( boolean s ){
-		isDead = s ;
+
+	public void setIsDead(boolean s) {
+		isDead = s;
 	}
+
 	/**
 	 * Add a gun to robot in specified place
 	 * 

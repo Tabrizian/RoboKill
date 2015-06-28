@@ -51,7 +51,7 @@ public class Game extends BasicGameState {
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1)
 			throws SlickException {
-	//	LoadingList.setDeferredLoading(true);
+		LoadingList.setDeferredLoading(true);
 		map.init();
 		
 		mapButton.init();

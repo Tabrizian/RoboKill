@@ -125,12 +125,14 @@ public class Map {
 	 */
 	public void update(GameContainer gc) {
 		robot.update(gc);
-		if( Robot.getRobot().getIsDead() == true ){
+		if (Robot.getRobot().getIsDead() == true) {
 			Robot.getRobot().setIsDead(false);
+			Robot.getRobot().setFalling(false);
 			getActiveGameField().setActivation(false);
 			fields[4][1].setActivation(true);
 			Robot.getRobot().setActiveField(fields[4][1]);
-			
+			Robot.getRobot().setPos(new Position(500, 300));
+
 		}
 		for (int i = 0; i < 5; i++)
 			for (int j = 0; j < 5; j++) {
@@ -145,37 +147,34 @@ public class Map {
 							fields[i - 1][j].setActivation(true);
 							robot.setActiveField(fields[i - 1][j]);
 							fields[i][j].setActivation(false);
-							Robot.getRobot().setPos(new Position(360 , 535));
-						}
-						else if (fields[i][j].getStateOfDoors()[1] == 1
+							Robot.getRobot().setPos(new Position(360, 535));
+						} else if (fields[i][j].getStateOfDoors()[1] == 1
 								&& robot.getPos().getX() >= 745
 								&& robot.getPos().getX() <= 775
 								&& robot.getPos().getY() >= 245
 								&& robot.getPos().getY() <= 320) {
-							fields[i][j+1].setActivation(true);
-							robot.setActiveField(fields[i][j+1]);
+							fields[i][j + 1].setActivation(true);
+							robot.setActiveField(fields[i][j + 1]);
 							fields[i][j].setActivation(false);
-							Robot.getRobot().setPos(new Position(45 , 280));
-						}
-						else if (fields[i][j].getStateOfDoors()[2] == 1
+							Robot.getRobot().setPos(new Position(45, 280));
+						} else if (fields[i][j].getStateOfDoors()[2] == 1
 								&& robot.getPos().getX() >= 350
 								&& robot.getPos().getX() <= 430
 								&& robot.getPos().getY() >= 540
 								&& robot.getPos().getY() <= 600) {
-							fields[i+1][j].setActivation(true);
-							robot.setActiveField(fields[i+1][j]);
+							fields[i + 1][j].setActivation(true);
+							robot.setActiveField(fields[i + 1][j]);
 							fields[i][j].setActivation(false);
-							Robot.getRobot().setPos(new Position(360 , 45));
-						}
-						else if (fields[i][j].getStateOfDoors()[3] == 1
+							Robot.getRobot().setPos(new Position(360, 45));
+						} else if (fields[i][j].getStateOfDoors()[3] == 1
 								&& robot.getPos().getX() >= 10
 								&& robot.getPos().getX() <= 40
 								&& robot.getPos().getY() >= 245
 								&& robot.getPos().getY() <= 300) {
-							fields[i][j-1].setActivation(true);
-							robot.setActiveField(fields[i][j-1]);
+							fields[i][j - 1].setActivation(true);
+							robot.setActiveField(fields[i][j - 1]);
 							fields[i][j].setActivation(false);
-							Robot.getRobot().setPos(new Position(740 , 280));
+							Robot.getRobot().setPos(new Position(740, 280));
 						}
 					}
 				}
@@ -530,12 +529,12 @@ public class Map {
 	 * @return Active field
 	 */
 	public GameField getActiveGameField() {
-		for( int i = 0 ; i < 5 ; i++ )
-			for( int j = 0 ; j < 5 ; j++ )
-				if( fields[i][j] != null )
-					if( fields[i][j].getActivation())
+		for (int i = 0; i < 5; i++)
+			for (int j = 0; j < 5; j++)
+				if (fields[i][j] != null)
+					if (fields[i][j].getActivation())
 						return fields[i][j];
-		return null ;
+		return null;
 	}
 
 	private void createGameFields() {
@@ -559,7 +558,7 @@ public class Map {
 		state1[2] = -1;
 		state1[3] = -1;
 		fields[4][1] = new GameField(model1, 1, state1);
-		Robot.getRobot().setPos(new Position(500 , 300));
+		Robot.getRobot().setPos(new Position(500, 300));
 		fields[4][1].setActivation(true);
 		// Creates game field 2
 		GameFieldModel model2 = new GameFieldModel(createModel(2));
@@ -644,8 +643,8 @@ public class Map {
 		fields[0][4] = new GameField(model10, 6, state10);
 		fields[0][4].setActivation(false);
 	}
-	
-	public GameField[][] getFields(){
-		return fields ;
+
+	public GameField[][] getFields() {
+		return fields;
 	}
 }
