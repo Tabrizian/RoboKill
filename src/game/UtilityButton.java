@@ -61,7 +61,7 @@ public class UtilityButton {
 			}
 		}
 
-		s = new Animation(frames, 15);
+		s = new Animation(frames, 5);
 
 		s.setLooping(false);
 	}
@@ -84,7 +84,7 @@ public class UtilityButton {
 
 				if (s.getFrame() == 45) {
 					s = null;
-					s = new Animation(frames, 15);
+					s = new Animation(frames, 5);
 					isAnimationDrawe = false;
 					imageDraw = true ;
 					inventory.draw(g);
