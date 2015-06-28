@@ -30,7 +30,7 @@ public class Sagehar extends Enemy {
 	public Sagehar(Position pos, GameField field) {
 		health = 100;
 		this.field = field;
-		this.pos = pos;
+		this.pos =  new Position(pos);
 	}
 
 	public void init() {
@@ -71,6 +71,7 @@ public class Sagehar extends Enemy {
 				fixed.draw(pos.getX() - images[0].getWidth() / 2, pos.getY()
 						- images[0].getHeight() / 2);
 		}
+
 	}
 
 	public void update(GameContainer gc) {

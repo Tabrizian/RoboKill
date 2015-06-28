@@ -108,7 +108,8 @@ public abstract class Cell {
 
 	public void update() {
 		if (thing != null) {
-			MissilesDatabase.getMissilesDatabase().explodeForCells(pos, 25, 25);
+			MissilesDatabase.getMissilesDatabase().explodeForCells(
+					new Position(pos.getX() - 20, pos.getY() - 20), 45, 45);
 			if (MissilesDatabase.getMissilesDatabase()
 					.isEnemyMissileInsideArea(
 							new Position(pos.getX() - 20, pos.getY() - 20), 45,
@@ -123,8 +124,8 @@ public abstract class Cell {
 				if (thing.getHealth() > 0)
 					thing.decHealth();
 			}
-			if (thing.getHealth() == 0){
-				isBlocked = false ;
+			if (thing.getHealth() == 0) {
+				isBlocked = false;
 				thing = null;
 			}
 		}
