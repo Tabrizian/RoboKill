@@ -1,6 +1,7 @@
 package game.objects;
 
 import game.GameField;
+import game.Map;
 import game.Position;
 import game.inventory.Inventory;
 import game.inventory.Item;
@@ -88,6 +89,8 @@ public class Robot {
 	private GameField field;
 
 	private Animation fall;
+	
+	private boolean isDead = false ;
 
 	private Robot() {
 		super();
@@ -222,13 +225,7 @@ public class Robot {
 				fall = null;
 				fall = new Animation(createFallFrames(), 100);
 				health = 100;
-				Position pos;
-				Random r = new Random();
-				do {
-					pos = new Position(Math.abs(r.nextInt()) % 800, Math.abs(r
-							.nextInt()) % 600);
-				} while (!field.isValidPos(pos) || field.isNounCell(pos));
-				setPos(pos);
+				isDead = true ;				
 			}
 		} else {
 			imageOfBody.setRotation(imageAngleDeg);
@@ -460,6 +457,13 @@ public class Robot {
 		}
 	}
 
+	public boolean getIsDead(){
+		return isDead ;
+	}
+	
+	public void setIsDead( boolean s ){
+		isDead = s ;
+	}
 	/**
 	 * Add a gun to robot in specified place
 	 * 

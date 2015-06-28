@@ -125,6 +125,13 @@ public class Map {
 	 */
 	public void update(GameContainer gc) {
 		robot.update(gc);
+		if( Robot.getRobot().getIsDead() == true ){
+			Robot.getRobot().setIsDead(false);
+			getActiveGameField().setActivation(false);
+			fields[4][1].setActivation(true);
+			Robot.getRobot().setActiveField(fields[4][1]);
+			
+		}
 		for (int i = 0; i < 5; i++)
 			for (int j = 0; j < 5; j++) {
 				if (fields[i][j] != null) {
@@ -523,13 +530,18 @@ public class Map {
 	 * @return Active field
 	 */
 	public GameField getActiveGameField() {
-		return fields[4][1];
+		for( int i = 0 ; i < 5 ; i++ )
+			for( int j = 0 ; j < 5 ; j++ )
+				if( fields[i][j] != null )
+					if( fields[i][j].getActivation())
+						return fields[i][j];
+		return null ;
 	}
 
 	private void createGameFields() {
 		// Makes some of the fields null
-		for (int i = 0; i < 2; i++)
-			for (int j = 0; j < 3; j++)
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 2; j++)
 				fields[i][j] = null;
 		fields[0][2] = null;
 		fields[4][0] = null;
@@ -631,5 +643,9 @@ public class Map {
 		state10[3] = 0;
 		fields[0][4] = new GameField(model10, 6, state10);
 		fields[0][4].setActivation(false);
+	}
+	
+	public GameField[][] getFields(){
+		return fields ;
 	}
 }
