@@ -35,6 +35,8 @@ public class Vahshi extends Enemy {
 	private Animation toLeft;
 	private boolean isKeyLeftPressed = false;
 
+	private Image imageOfBody;
+
 	private Animation toUpRight;
 
 	private Animation toDownLeft;
@@ -77,6 +79,7 @@ public class Vahshi extends Enemy {
 	 * Loads image of robot
 	 */
 	public void init() {
+		imageOfBody = createFixStateFrame()[0];
 		toUp = new Animation(createToUpFrames(), 150);
 		fixState = new Animation(createFixStateFrame(), 150);
 		toDown = new Animation(createToDownFrames(), 150);
@@ -106,7 +109,8 @@ public class Vahshi extends Enemy {
 				toDownLeft.stop();
 				toDownRight.stop();
 				toUpLeft.stop();
-				toUpRight.draw(pos.getX(), pos.getY());
+				toUpRight.draw(pos.getX() - imageOfBody.getWidth() / 2,
+						pos.getY() - imageOfBody.getHeight() / 2);
 				toUpRight.start();
 			} else if (iskeyDownPressed == true && isKeyLeftPressed == true) {
 				fixState.stop();
@@ -117,7 +121,8 @@ public class Vahshi extends Enemy {
 				toUpRight.stop();
 				toDownRight.stop();
 				toUpLeft.stop();
-				toDownLeft.draw(pos.getX(), pos.getY());
+				toDownLeft.draw(pos.getX() - imageOfBody.getWidth() / 2,
+						pos.getY() - imageOfBody.getHeight() / 2);
 				toDownLeft.start();
 			} else if (iskeyUpPressed == true && isKeyLeftPressed == true) {
 				fixState.stop();
@@ -128,7 +133,8 @@ public class Vahshi extends Enemy {
 				toUpRight.stop();
 				toDownRight.stop();
 				toDownLeft.stop();
-				toUpLeft.draw(pos.getX(), pos.getY());
+				toUpLeft.draw(pos.getX() - imageOfBody.getWidth() / 2,
+						pos.getY() - imageOfBody.getHeight() / 2);
 				toUpLeft.start();
 
 			} else if (iskeyDownPressed == true && isKeyRightPressed == true) {
@@ -140,7 +146,8 @@ public class Vahshi extends Enemy {
 				toUpRight.stop();
 				toUpLeft.stop();
 				toDownLeft.stop();
-				toDownRight.draw(pos.getX(), pos.getY());
+				toDownRight.draw(pos.getX() - imageOfBody.getWidth() / 2,
+						pos.getY() - imageOfBody.getHeight() / 2);
 				toDownRight.start();
 			} else if (iskeyUpPressed == true) {
 				fixState.stop();
@@ -151,7 +158,8 @@ public class Vahshi extends Enemy {
 				toDownLeft.stop();
 				toDownRight.stop();
 				toUpLeft.stop();
-				toUp.draw(pos.getX(), pos.getY());
+				toUp.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
+						- imageOfBody.getHeight() / 2);
 				toUp.start();
 			}
 
@@ -164,7 +172,8 @@ public class Vahshi extends Enemy {
 				toDownLeft.stop();
 				toDownRight.stop();
 				toUpLeft.stop();
-				toDown.draw(pos.getX(), pos.getY());
+				toDown.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
+						- imageOfBody.getHeight() / 2);
 				toDown.start();
 
 			}
@@ -178,7 +187,8 @@ public class Vahshi extends Enemy {
 				toDownLeft.stop();
 				toDownRight.stop();
 				toUpLeft.stop();
-				toRight.draw(pos.getX(), pos.getY());
+				toRight.draw(pos.getX() - imageOfBody.getWidth() / 2,
+						pos.getY() - imageOfBody.getHeight() / 2);
 				toRight.start();
 			} else if (isKeyLeftPressed == true) {
 				fixState.stop();
@@ -189,7 +199,8 @@ public class Vahshi extends Enemy {
 				toDownLeft.stop();
 				toDownRight.stop();
 				toUpLeft.stop();
-				toLeft.draw(pos.getX(), pos.getY());
+				toLeft.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()
+						- imageOfBody.getHeight() / 2);
 				toLeft.start();
 			} else {
 				toUp.stop();
@@ -200,7 +211,8 @@ public class Vahshi extends Enemy {
 				toDownLeft.stop();
 				toDownRight.stop();
 				toUpLeft.stop();
-				fixState.draw(pos.getX(), pos.getY());
+				fixState.draw(pos.getX() - imageOfBody.getWidth() / 2,
+						pos.getY() - imageOfBody.getHeight() / 2);
 			}
 		}
 	}

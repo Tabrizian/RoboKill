@@ -65,9 +65,11 @@ public class Sagehar extends Enemy {
 		if (health > 0) {
 			if (isMoving) {
 
-				moving.draw(pos.getX(), pos.getY());
+				moving.draw(pos.getX() - images[0].getWidth() / 2, pos.getY()
+						- images[0].getHeight() / 2);
 			} else
-				fixed.draw(pos.getX(), pos.getY());
+				fixed.draw(pos.getX() - images[0].getWidth() / 2, pos.getY()
+						- images[0].getHeight() / 2);
 		}
 	}
 
@@ -113,7 +115,7 @@ public class Sagehar extends Enemy {
 		for (int i = 0; i < images.length; i++) {
 			images[i].setRotation(imageAngleDeg);
 		}
-		
+
 		MissilesDatabase.getMissilesDatabase().explodeAreaForEnemy(
 				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35);
 
