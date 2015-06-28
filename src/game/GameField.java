@@ -246,7 +246,7 @@ public class GameField {
 		if( isCleaned == true ){
 			for( int i = 0 ; i < 4 ; i ++ )
 				if( stateOfDoors[i] == 0 )
-					stateOfDoors[i] = 1 ;
+					stateOfDoors[i] = 1  ;				
 		}
 	}
 
@@ -301,6 +301,13 @@ public class GameField {
 		return isActivate;
 	}
 
+	/**
+	 * Getter for state of doors
+	 * @return
+	 */
+	public int[] getStateOfDoors(){
+		return stateOfDoors ;
+	}
 	// Creates frames for opening
 	private Image[] createFramesForOpeningUp() {
 		Image[] frames = new Image[10];
