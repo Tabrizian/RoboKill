@@ -33,19 +33,19 @@ public class Sagehar extends Enemy {
 	public Sagehar(Position pos, GameField field) {
 		health = 100;
 		this.field = field;
-		this.pos =  new Position(pos);
+		this.pos = new Position(pos);
 	}
 
-	public Sagehar(Position pos, GameField field , Plunder plunder) {
+	public Sagehar(Position pos, GameField field, Plunder plunder) {
 		health = 100;
 		this.field = field;
-		this.pos =  new Position(pos);
-		if( plunder instanceof Money )
-			this.plunder = new Money() ;
-		else if( plunder instanceof Shield )
-			this.plunder = new Shield() ;
+		this.pos = new Position(pos);
+		if (plunder instanceof Money)
+			this.plunder = new Money();
+		else if (plunder instanceof Shield)
+			this.plunder = new Shield();
 	}
-	
+
 	public void init() {
 		images = new Image[13];
 		fixes = new Image[1];
@@ -114,7 +114,7 @@ public class Sagehar extends Enemy {
 
 		if (field.isValidPos(new Position(xPos, yPos))
 				&& !field.isNounCell(xPos, yPos)) {
-			this.setPos(new Position(xPos , yPos ));
+			this.setPos(new Position(xPos, yPos));
 		}
 
 		double dx = Robot.getRobot().getPos().getX() - this.getPos().getX();
@@ -127,14 +127,14 @@ public class Sagehar extends Enemy {
 			images[i].setRotation(imageAngleDeg);
 		}
 
-		MissilesDatabase.getMissilesDatabase().explodeAreaForEnemy(
-				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35);
+		int healthReduction = MissilesDatabase.getMissilesDatabase()
+				.explodeAreaForEnemy(new Position(pos.getX(), pos.getY()), 48,
+						48);
 
-		if (MissilesDatabase.getMissilesDatabase().isRobotMissileInsideArea(
-				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35)) {
-			if (health > 0)
-				health--;
-		}
+		if (healthReduction > health)
+			health = 0;
+		else
+			health -= healthReduction;
 
 	}
 

@@ -19,7 +19,7 @@ public abstract class Cell {
 	protected boolean isBlocked;
 	protected boolean isNoun;
 	protected Image image;
-	protected Plunder plunder ;
+	protected Plunder plunder;
 
 	public Cell(int row, int column, Thing thing) {
 		isExploded = false;
@@ -40,11 +40,11 @@ public abstract class Cell {
 		init();
 	}
 
-	public Cell(int row, int column, Thing thing , Plunder plunder) {
+	public Cell(int row, int column, Thing thing, Plunder plunder) {
 		isExploded = false;
 		isNoun = false;
 		isBlocked = true;
-		this.plunder = plunder ;
+		this.plunder = plunder;
 		pos = new Position(calPos(row, column));
 		if (thing instanceof Box) {
 			this.thing = new Box();
@@ -59,7 +59,7 @@ public abstract class Cell {
 
 		init();
 	}
-	
+
 	public Cell(int row, int column) {
 		isExploded = false;
 		isNoun = false;
@@ -130,22 +130,12 @@ public abstract class Cell {
 
 	public void update() {
 		if (thing != null) {
-			MissilesDatabase.getMissilesDatabase().explodeForCells(
-					new Position(pos.getX() - 20, pos.getY() - 20), 45, 45);
-			if (MissilesDatabase.getMissilesDatabase()
-					.isEnemyMissileInsideArea(
-							new Position(pos.getX() - 20, pos.getY() - 20), 45,
-							45)) {
-				if (thing.getHealth() > 0)
-					thing.decHealth();
-			}
-			if (MissilesDatabase.getMissilesDatabase()
-					.isRobotMissileInsideArea(
-							new Position(pos.getX() - 20, pos.getY() - 20), 45,
-							45)) {
-				if (thing.getHealth() > 0)
-					thing.decHealth();
-			}
+			int healthReduction = MissilesDatabase.getMissilesDatabase().explodeForCells(
+					new Position(pos.getX(), pos.getY()), 52, 52);
+			if(healthReduction > thing.getHealth())
+				thing.setHealth(0);
+			else
+				thing.setHealth(thing.getHealth() - healthReduction);
 			if (thing.getHealth() == 0) {
 				isBlocked = false;
 				thing = null;

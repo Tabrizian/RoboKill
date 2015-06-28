@@ -55,7 +55,9 @@ public class Vahshi extends Enemy {
 
 		this.field = field;
 	}
-	public Vahshi(Position robotPos, Position pos, GameField field , Plunder plunder) {
+
+	public Vahshi(Position robotPos, Position pos, GameField field,
+			Plunder plunder) {
 		super();
 
 		this.pos = new Position(pos);
@@ -64,10 +66,10 @@ public class Vahshi extends Enemy {
 		robotPosition = pos;
 
 		this.field = field;
-		if( plunder instanceof Money )
-			this.plunder = new Money() ;
-		else if( plunder instanceof Shield )
-			this.plunder = new Shield() ;
+		if (plunder instanceof Money)
+			this.plunder = new Money();
+		else if (plunder instanceof Shield)
+			this.plunder = new Shield();
 	}
 
 	public void setRobotPos(Position pos) {
@@ -261,17 +263,17 @@ public class Vahshi extends Enemy {
 
 		if (field.isValidPos(new Position(xPos, yPos))
 				&& !field.isNounCell(xPos, yPos)) {
-			this.setPos(new Position(xPos , yPos ));
+			this.setPos(new Position(xPos, yPos));
 		}
 
-		MissilesDatabase.getMissilesDatabase().explodeAreaForEnemy(
-				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35);
+		int healthReduction = MissilesDatabase.getMissilesDatabase()
+				.explodeAreaForEnemy(new Position(pos.getX(), pos.getY()), 30,
+						30);
 
-		if (MissilesDatabase.getMissilesDatabase().isRobotMissileInsideArea(
-				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35)) {
-			if (health > 0)
-				health--;
-		}
+		if (healthReduction > health)
+			health = 0;
+		else
+			health -= healthReduction;
 
 	}
 

@@ -31,36 +31,34 @@ public class MissilesDatabase {
 		missilesRobot.add(missile);
 	}
 
-	public boolean isEnemyMissileInsideArea(Position pos, float width,
-			float height) {
-		for (Missile missile : missilesEnemy) {
-			if (isInsideArea(pos, width, height, missile.getPos()))
-				return true;
-		}
-		return false;
-	}
+	public int explodeAreaForRobot(Position pos, float width, float height) {
+		int num = 0;
+		for (int i = 0; i < missilesEnemy.size(); i++) {
+			Missile missile = missilesEnemy.get(i);
+			if (isInsideArea(pos, width, height, missile.getPos())) {
 
-	public boolean isRobotMissileInsideArea(Position pos, float width,
-			float height) {
-		for (Missile missile : missilesRobot) {
-			if (isInsideArea(pos, width, height, missile.getPos()))
-				return true;
-		}
-		return false;
-	}
-
-	public void explodeAreaForRobot(Position pos, float width, float height) {
-		for (Missile missile : missilesEnemy) {
-			if (isInsideArea(pos, width, height, missile.getPos()))
 				missile.setExploded(true);
+				removeMissile(missile);
+				num++;
+			}
+
 		}
+		return num;
 	}
 
-	public void explodeAreaForEnemy(Position pos, float width, float height) {
-		for (Missile missile : missilesRobot) {
-			if (isInsideArea(pos, width, height, missile.getPos()))
+	public int explodeAreaForEnemy(Position pos, float width, float height) {
+		int num = 0;
+		for (int i = 0; i < missilesRobot.size(); i++) {
+			Missile missile = missilesRobot.get(i);
+			if (isInsideArea(pos, width, height, missile.getPos())) {
+
 				missile.setExploded(true);
+				removeMissile(missile);
+				num++;
+			}
+
 		}
+		return num;
 	}
 
 	/**
@@ -95,15 +93,28 @@ public class MissilesDatabase {
 		}
 	}
 
-	public void explodeForCells(Position pos, float width, float height) {
-		for (Missile missile : missilesRobot) {
-			if (isInsideArea(pos, width, height, missile.getPos()))
+	public int explodeForCells(Position pos, float width, float height) {
+		int num = 0;
+		for (int i = 0; i < missilesRobot.size(); i++) {
+			Missile missile = missilesRobot.get(i);
+			if (isInsideArea(pos, width, height, missile.getPos())) {
+				num++;
 				missile.setExploded(true);
+				removeMissile(missile);
+			}
+
 		}
-		for (Missile missile : missilesEnemy) {
-			if (isInsideArea(pos, width, height, missile.getPos()))
+		for (int i = 0; i < missilesEnemy.size(); i++) {
+			Missile missile = missilesEnemy.get(i);
+			if (isInsideArea(pos, width, height, missile.getPos())) {
+
 				missile.setExploded(true);
+				removeMissile(missile);
+				num++;
+			}
+
 		}
+		return num;
 	}
-	
+
 }

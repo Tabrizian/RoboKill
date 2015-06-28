@@ -375,11 +375,7 @@ public class Robot {
 		float xPos = this.getPos().getX();
 		float yPos = this.getPos().getY();
 
-		if (MissilesDatabase.getMissilesDatabase().isEnemyMissileInsideArea(
-				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35)) {
-			if (health > 0)
-				health--;
-		}
+		
 		Input input = gc.getInput();
 		if (health != 0) {
 			if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(input.KEY_W)) {
@@ -447,8 +443,13 @@ public class Robot {
 
 		}
 
-		MissilesDatabase.getMissilesDatabase().explodeAreaForRobot(
-				new Position(pos.getX() - 15, pos.getY() - 15), 35, 35);
+		int healthReduction = MissilesDatabase.getMissilesDatabase().explodeAreaForRobot(
+				new Position(pos.getX(), pos.getY() ), 45, 45);
+		
+		if (healthReduction > health)
+			health = 0;
+		else 
+			health -= healthReduction;
 	}
 
 	/**

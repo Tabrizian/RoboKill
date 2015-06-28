@@ -19,7 +19,7 @@ public abstract class Thing {
 	 * Draw image
 	 */
 	public void draw(float xPos, float yPos) {
-		image.drawCentered(xPos + 29 , yPos + 29);
+		image.drawCentered(xPos + 29, yPos + 29);
 	}
 
 	/**
@@ -33,6 +33,10 @@ public abstract class Thing {
 
 	public void decHealth() {
 		health--;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
 	}
 
 }
