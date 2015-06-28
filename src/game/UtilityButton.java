@@ -25,7 +25,8 @@ public class UtilityButton {
 	private Animation s;
 
 	private boolean isAnimationDrawe = false;
-
+	private boolean imageDraw = false ;
+	
 	public UtilityButton(String name) {
 		this.name = name;
 		pos = new Position(665 + population * 45, 590);
@@ -64,26 +65,44 @@ public class UtilityButton {
 
 		s.setLooping(false);
 	}
+
 	/**
 	 * Draws button and draws focused button with Graphics g
+	 * 
 	 * @param g
 	 */
 	public void draw(Graphics g) {
 		img.draw(pos.getX(), pos.getY());
 		if (focused)
 			g.drawRect(pos.getX(), pos.getY(), 45, 13);
-		if (showInventory)
+		if (showInventory) {
+			
+			if (isAnimationDrawe) {
+				s.setLooping(false);
+				s.draw(50 , 50);
+				s.start();
 
-			inventory.draw(g);
-
+				if (s.getFrame() == 45) {
+					s = null;
+					s = new Animation(frames, 15);
+					isAnimationDrawe = false;
+					imageDraw = true ;
+					inventory.draw(g);
+				}
+			}else if( imageDraw == true )
+				inventory.draw(g);
+			
+		}
 
 	}
+
 	/**
 	 * Listener for the button
+	 * 
 	 * @param gc
 	 * @param sbg
 	 */
-	public void update(GameContainer gc,StateBasedGame sbg) {
+	public void update(GameContainer gc, StateBasedGame sbg) {
 		Input input = gc.getInput();
 
 		float mX = input.getMouseX();
@@ -97,6 +116,9 @@ public class UtilityButton {
 				switch (name) {
 				case "inv":
 					showInventory = !showInventory;
+					if( !showInventory )
+						imageDraw = false ;
+					isAnimationDrawe = true ;
 					break;
 				case "menu":
 					sbg.enterState(0);
@@ -107,8 +129,8 @@ public class UtilityButton {
 			focused = false;
 
 	}
-	
-	public static void setInventoryState(boolean show){
+
+	public static void setInventoryState(boolean show) {
 		showInventory = show;
 	}
 }
