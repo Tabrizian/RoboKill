@@ -5,7 +5,11 @@ import game.objects.enemies.Enemy;
 import game.objects.enemies.Sagehar;
 import game.objects.enemies.Vahshi;
 import game.objects.enemies.Zombie;
+import game.objects.prizes.Money;
+import game.objects.prizes.Plunder;
+import game.objects.prizes.Shield;
 
+import java.util.ArrayList;
 //github.com/tabrizian/robokill
 import java.util.Random;
 
@@ -46,9 +50,12 @@ public class GameField {
 	// turn 1 , 0 , -1 )
 	private int[] stateOfDoors;
 
+	private ArrayList<Plunder> plunders;
+
 	public GameField() {
 
 		image = ("pics/fields/image 187.png");
+		plunders = new ArrayList<Plunder>();
 
 	}
 
@@ -61,7 +68,7 @@ public class GameField {
 		this.stateOfDoors = new int[4];
 		this.stateOfDoors = stateOfDoors;
 		this.numOfEnemies = numOfEnemies;
-
+		plunders = new ArrayList<Plunder>();
 		// Create enemies for this field
 		Random r = new Random();
 		enemies = new Enemy[numOfEnemies];
@@ -73,12 +80,24 @@ public class GameField {
 			} while (!isValidPos(pos) || isNounCell(pos));
 
 			int x = Math.abs(r.nextInt()) % 3;
-			if (x == 0)
-				enemies[i] = new Vahshi(robot.getPos(), pos, this);
-			else if (x == 1)
-				enemies[i] = new Zombie(robot.getPos(), pos, this);
-			else
-				enemies[i] = new Sagehar(pos, this);
+			if (x == 0) {
+				if (Math.abs(r.nextInt()) % 2 == 0)
+					enemies[i] = new Vahshi(robot.getPos(), pos, this,
+							new Money());
+				else
+					enemies[i] = new Vahshi(robot.getPos(), pos, this);
+			} else if (x == 1) {
+				if (Math.abs(r.nextInt()) % 2 == 0)
+					enemies[i] = new Zombie(robot.getPos(), pos, this,
+							new Shield());
+				else
+					enemies[i] = new Zombie(robot.getPos(), pos, this);
+			} else {
+				if (Math.abs(r.nextInt()) % 2 == 0)
+					enemies[i] = new Sagehar(pos, this, new Money());
+				else
+					enemies[i] = new Sagehar(pos, this);
+			}
 		}
 	}
 
@@ -199,10 +218,13 @@ public class GameField {
 			this.getModel().getExitText().draw(347, 65);
 		// Draw all enemies
 		for (int i = 0; i < numOfEnemies; i++) {
-			if (enemies[i] != null){
+			if (enemies[i] != null) {
 				enemies[i].draw();
 			}
 		}
+
+		for (Plunder plunder : plunders)
+			plunder.draw();
 	}
 
 	/**
@@ -218,6 +240,17 @@ public class GameField {
 				enemies[i].update(gc);
 				enemies[i].setRobotPos(robot.getPos());
 				if (enemies[i].getHealth() == 0) {
+					if (enemies[i].getPlunder() != null) {
+						Position pos = new Position(enemies[i].getPos()) ;
+						if( enemies[i].getPlunder() instanceof Money ){
+							System.out.println("in Game field line 246");
+							plunders.add(new Money(pos));
+						}
+						else if( enemies[i].getPlunder() instanceof Shield ){
+							System.out.println("in Game field line 250");
+							plunders.add(new Shield(pos));
+						}
+					}
 					enemies[i] = null;
 				}
 			}
@@ -226,22 +259,21 @@ public class GameField {
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 11; j++) {
 				model.getCell(i, j).update();
-				;
 			}
 		}
-		
-		boolean isCleaned = true ;
-		for( int i = 0 ; i < numOfEnemies ; i++ ){
-			if( enemies[i] != null )
-				isCleaned = false ;
+
+		boolean isCleaned = true;
+		for (int i = 0; i < numOfEnemies; i++) {
+			if (enemies[i] != null)
+				isCleaned = false;
 		}
-		
-		this.isCleaned = isCleaned ;
-		
-		if( isCleaned == true ){
-			for( int i = 0 ; i < 4 ; i ++ )
-				if( stateOfDoors[i] == 0 )
-					stateOfDoors[i] = 1  ;				
+
+		this.isCleaned = isCleaned;
+
+		if (isCleaned == true) {
+			for (int i = 0; i < 4; i++)
+				if (stateOfDoors[i] == 0)
+					stateOfDoors[i] = 1;
 		}
 	}
 
@@ -298,11 +330,13 @@ public class GameField {
 
 	/**
 	 * Getter for state of doors
+	 * 
 	 * @return
 	 */
-	public int[] getStateOfDoors(){
-		return stateOfDoors ;
+	public int[] getStateOfDoors() {
+		return stateOfDoors;
 	}
+
 	// Creates frames for opening
 	private Image[] createFramesForOpeningUp() {
 		Image[] frames = new Image[10];

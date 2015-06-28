@@ -5,6 +5,7 @@ import game.objects.Barrel;
 import game.objects.Box;
 import game.objects.Thing;
 import game.objects.Wall;
+import game.objects.prizes.Plunder;
 import game.objects.weapons.MissilesDatabase;
 
 import org.newdawn.slick.Graphics;
@@ -18,6 +19,7 @@ public abstract class Cell {
 	protected boolean isBlocked;
 	protected boolean isNoun;
 	protected Image image;
+	protected Plunder plunder ;
 
 	public Cell(int row, int column, Thing thing) {
 		isExploded = false;
@@ -38,6 +40,26 @@ public abstract class Cell {
 		init();
 	}
 
+	public Cell(int row, int column, Thing thing , Plunder plunder) {
+		isExploded = false;
+		isNoun = false;
+		isBlocked = true;
+		this.plunder = plunder ;
+		pos = new Position(calPos(row, column));
+		if (thing instanceof Box) {
+			this.thing = new Box();
+			this.thing = thing;
+		} else if (thing instanceof Wall) {
+			this.thing = new Wall();
+			this.thing = thing;
+		} else if (thing instanceof Barrel) {
+			this.thing = new Barrel();
+			this.thing = thing;
+		}
+
+		init();
+	}
+	
 	public Cell(int row, int column) {
 		isExploded = false;
 		isNoun = false;

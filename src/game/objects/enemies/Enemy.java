@@ -1,6 +1,7 @@
 package game.objects.enemies;
 
 import game.Position;
+import game.objects.prizes.Plunder;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -10,7 +11,8 @@ public class Enemy {
 	protected Position pos;
 	protected int health;
 	protected Position robotPosition;
-
+	protected Plunder plunder ;
+	
 	public Enemy() {
 
 	}
@@ -42,5 +44,9 @@ public class Enemy {
 
 	public int getHealth() {
 		return health;
+	}
+	
+	public Plunder getPlunder(){
+		return plunder ;
 	}
 }

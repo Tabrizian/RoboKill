@@ -3,6 +3,9 @@ package game.objects.enemies;
 import game.GameField;
 import game.Position;
 import game.objects.Robot;
+import game.objects.prizes.Money;
+import game.objects.prizes.Plunder;
+import game.objects.prizes.Shield;
 import game.objects.weapons.MissilesDatabase;
 
 import org.newdawn.slick.Animation;
@@ -33,6 +36,16 @@ public class Sagehar extends Enemy {
 		this.pos =  new Position(pos);
 	}
 
+	public Sagehar(Position pos, GameField field , Plunder plunder) {
+		health = 100;
+		this.field = field;
+		this.pos =  new Position(pos);
+		if( plunder instanceof Money )
+			this.plunder = new Money() ;
+		else if( plunder instanceof Shield )
+			this.plunder = new Shield() ;
+	}
+	
 	public void init() {
 		images = new Image[13];
 		fixes = new Image[1];

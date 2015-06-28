@@ -2,6 +2,9 @@ package game.objects.enemies;
 
 import game.GameField;
 import game.Position;
+import game.objects.prizes.Money;
+import game.objects.prizes.Plunder;
+import game.objects.prizes.Shield;
 import game.objects.weapons.MissilesDatabase;
 import game.objects.weapons.Weapon;
 import game.objects.weapons.blasters.LightBlaster;
@@ -10,7 +13,6 @@ import java.util.Random;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -69,6 +71,26 @@ public class Zombie extends Enemy {
 		this.field = field;
 	}
 
+	public Zombie(Position robotPos, Position pos, GameField field , Plunder plunder) {
+		super();
+
+		this.pos = new Position(pos);
+		health = 100;
+
+		imageOfBodyAddress = ("pics/enemy/Zombie/image 98.png");
+
+		robotPosition = pos;
+
+		weapons = new Weapon[4];
+
+		this.field = field;
+		if( plunder instanceof Money )
+			this.plunder = new Money() ;
+		else if( plunder instanceof Shield )
+			this.plunder = new Shield() ;
+	}
+
+	
 	public void setRobotPos(Position pos) {
 		this.robotPosition = pos;
 	}
