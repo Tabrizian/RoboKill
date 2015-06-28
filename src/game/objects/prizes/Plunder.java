@@ -20,7 +20,9 @@ public abstract class Plunder extends AddOne{
 	public void setPos( Position pos ){
 		this.pos = new Position(pos) ;
 	}
-	
+	public Position getPos(){
+		return pos;
+	}
 	public abstract void draw() ;
 	
 	public abstract void init() ;

@@ -24,4 +24,8 @@ public class Player {
 	public int getCash(){
 		return cash ;
 	}
+	
+	public void setCash(int x ){
+		cash = x ;
+	}
 }
