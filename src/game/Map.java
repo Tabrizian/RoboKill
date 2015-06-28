@@ -17,6 +17,8 @@ import game.objects.Barrel;
 import game.objects.Box;
 import game.objects.Robot;
 import game.objects.Wall;
+import game.objects.prizes.Money;
+import game.objects.prizes.Shield;
 import game.objects.weapons.blasters.LightBlaster;
 import game.objects.weapons.blasters.MediumBlaster;
 import game.objects.weapons.shotguns.HeavyShotgun;
@@ -209,7 +211,7 @@ public class Map {
 							&& j == 4) {
 						Random rand = new Random();
 						cells[i][j] = new SimpleCell(i, j, new Box(
-								Math.abs(rand.nextInt() % 3) + 1));
+								Math.abs(rand.nextInt() % 3) + 1) , new Money());
 					} else
 						cells[i][j] = new SimpleCell(i, j);
 				}
@@ -248,7 +250,7 @@ public class Map {
 				for (int j = 0; j < 11; j++) {
 					if (i == 1 && j == 1 || i == 1 && j == 2 || i == 2
 							&& j == 1 || i == 2 && j == 2)
-						cells[i][j] = new SimpleCell(i, j, new Box());
+						cells[i][j] = new SimpleCell(i, j, new Box() , new Shield());
 					else if (i == 1 && j == 6 || i == 2 && j == 6)
 						cells[i][j] = new SimpleCell(i, j, new Barrel());
 					else if ((i == 11 || i == 12)
@@ -302,7 +304,7 @@ public class Map {
 					if ((i == 8 || i == 9) && (j == 5 || j == 6))
 						cells[i][j] = new SimpleCell(i, j, new Wall());
 					else if (j == 2 && (i == 2 || i == 3 || i == 4 || i == 5))
-						cells[i][j] = new SimpleCell(i, j, new Box((i % 3) + 1));
+						cells[i][j] = new SimpleCell(i, j, new Box((i % 3) + 1) , new Shield());
 					else
 						cells[i][j] = new SimpleCell(i, j);
 				}
@@ -355,7 +357,7 @@ public class Map {
 
 			for (int i = 4; i < 11; i++)
 				if (i == 7 || i == 8 || i == 9)
-					cells[9][i] = new RightCell(9, i, new Box((i % 3) + 1));
+					cells[9][i] = new RightCell(9, i, new Box((i % 3) + 1) , new Money());
 				else if (i == 10)
 					cells[9][i] = new RightCell(9, i);
 				else
@@ -377,7 +379,7 @@ public class Map {
 				for (int j = 0; j < 11; j++) {
 					if ((i == 1 || i == 2 || i == 3)
 							&& (j == 1 || j == 2 || j == 3))
-						cells[i][j] = new SimpleCell(i, j, new Box((j % 3) + 1));
+						cells[i][j] = new SimpleCell(i, j, new Box((j % 3) + 1) , new Shield());
 					else if ((i == 11 || i == 12 || i == 13)
 							&& (j == 1 || j == 2 || j == 3))
 						cells[i][j] = new SimpleCell(i, j, new Box((j % 3) + 1));
@@ -409,7 +411,7 @@ public class Map {
 			cells[12][5] = new SimpleCell(12, 5);
 			for (int i = 0; i < 4; i++) {
 				if (i != 0)
-					cells[i][4] = new UpCell(i, 4, new Box());
+					cells[i][4] = new UpCell(i, 4, new Box() , new Money());
 				else
 					cells[i][4] = new UpCell(i, 4);
 			}
@@ -430,7 +432,7 @@ public class Map {
 						((i) % 3) + 1));
 			for (int i = 9; i < 11; i++)
 				cells[i][i - 7] = new UpRightCell(i, i - 7, new Box(
-						((i) % 3) + 1));
+						((i) % 3) + 1) , new Shield());
 			for (int i = 0; i < 15; i++) {
 				if (i != 0 && i != 14)
 					cells[i][7] = new DownCell(i, 7, new Barrel(3));
@@ -453,11 +455,11 @@ public class Map {
 					else if (i == 4 && j >= 5 && j <= 7)
 						cells[i][j] = new SimpleCell(i, j, new Wall());
 					else if (j == 4 && i >= 6 && i <= 9)
-						cells[i][j] = new SimpleCell(i, j, new Box());
+						cells[i][j] = new SimpleCell(i, j, new Box() , new Money());
 					else if (i == 9 && j >= 5 && j <= 7)
 						cells[i][j] = new SimpleCell(i, j, new Box(2));
 					else if (j == 7 && i >= 6 && i < 9)
-						cells[i][j] = new SimpleCell(i, j, new Box(3));
+						cells[i][j] = new SimpleCell(i, j, new Box(3) , new Shield());
 					else if (i == 6 && j > 4 && j < 7)
 						cells[i][j] = new SimpleCell(i, j, new Box());
 					else if (j == 5 && i >= 7 && i <= 8)
@@ -500,7 +502,7 @@ public class Map {
 			for (int i = 6; i <= 8; i++)
 				for (int j = 6; j >= 8 - i + 1; j--) {
 					if (j == 8 - i + 1)
-						cells[i][j] = new UpLeftCell(i, j, new Box());
+						cells[i][j] = new UpLeftCell(i, j, new Box() , new Shield());
 					else
 						cells[i][j] = new SimpleCell(i, j);
 				}

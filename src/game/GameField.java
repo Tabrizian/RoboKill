@@ -244,10 +244,8 @@ public class GameField {
 					if (enemies[i].getPlunder() != null) {
 						Position pos = new Position(enemies[i].getPos());
 						if (enemies[i].getPlunder() instanceof Money) {
-							System.out.println("in Game field line 246");
 							plunders.add(new Money(pos));
 						} else if (enemies[i].getPlunder() instanceof Shield) {
-							System.out.println("in Game field line 250");
 							plunders.add(new Shield(pos));
 						}
 					}
@@ -259,6 +257,18 @@ public class GameField {
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 11; j++) {
 				model.getCell(i, j).update();
+				if (model.getCell(i, j).getPlunder() != null
+						&& model.getCell(i, j).getThing() == null && model.getCell(i, j).getIsPlunderShown() == false) {
+					model.getCell(i, j).setIsPlunderShown(true);
+					Position pos = new Position(model.getCell(i, j).getPos()
+							.getX() + 26,
+							model.getCell(i, j).getPos().getY() + 26);
+					if (model.getCell(i, j).getPlunder() instanceof Money) {
+						plunders.add(new Money(pos));
+					} else if (model.getCell(i, j).getPlunder() instanceof Shield) {
+						plunders.add(new Shield(pos));
+					}
+				}
 			}
 		}
 
@@ -276,7 +286,9 @@ public class GameField {
 					stateOfDoors[i] = 1;
 		}
 
-	/*	for (Plunder plunder : plunders) {
+		Iterator<Plunder> iter = plunders.iterator();
+		while (iter.hasNext()) {
+			Plunder plunder = iter.next();
 			if (plunder.getPos().getX() + 10 >= Robot.getRobot().getPos()
 					.getX()
 					&& plunder.getPos().getX() - 10 <= Robot.getRobot()
@@ -287,42 +299,11 @@ public class GameField {
 							.getPos().getY()
 					&& plunder.getPos().getY() - 10 <= Robot.getRobot()
 							.getPos().getY()) {
-				if (plunder instanceof Money){
-					plunders.remove(plunder) ;
-					Player.getPlayer().setCash(
-							Player.getPlayer().getCash() + 50);
-				}
-				else if (plunder instanceof Shield) {
-					plunders.remove(plunder) ;
-					if (Robot.getRobot().getHealth() <= 90)
-						Robot.getRobot().setHealth(
-								Robot.getRobot().getHealth() + 10);
-					else
-						Robot.getRobot().setHealth(100);
-				}
-
-			}
-		}*/
-		
-		Iterator<Plunder> iter = plunders.iterator() ;
-		while( iter.hasNext() ){
-			Plunder plunder = iter.next() ;
-			if (plunder.getPos().getX() + 10 >= Robot.getRobot().getPos()
-					.getX()
-					&& plunder.getPos().getX() - 10 <= Robot.getRobot()
-							.getPos().getX()
-					&& plunder.getPos().getY() + 10 >= Robot.getRobot()
-							.getPos().getY()
-					&& plunder.getPos().getY() + 10 >= Robot.getRobot()
-							.getPos().getY()
-					&& plunder.getPos().getY() - 10 <= Robot.getRobot()
-							.getPos().getY()) {
-				if (plunder instanceof Money){
+				if (plunder instanceof Money) {
 					iter.remove();
 					Player.getPlayer().setCash(
 							Player.getPlayer().getCash() + 50);
-				}
-				else if (plunder instanceof Shield) {
+				} else if (plunder instanceof Shield) {
 					iter.remove();
 					if (Robot.getRobot().getHealth() <= 90)
 						Robot.getRobot().setHealth(
@@ -333,7 +314,7 @@ public class GameField {
 
 			}
 		}
-		
+
 	}
 
 	/**
