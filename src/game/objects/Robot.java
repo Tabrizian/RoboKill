@@ -227,12 +227,7 @@ public class Robot {
 				do {
 					pos = new Position(Math.abs(r.nextInt()) % 800, Math.abs(r
 							.nextInt()) % 600);
-					// For error detecting
-					pos.setX(pos.getX() - 25);
-					pos.setY(pos.getY() - 20);
 				} while (!field.isValidPos(pos) || field.isNounCell(pos));
-				pos.setX(pos.getX() + 25);
-				pos.setY(pos.getY() + 20);
 				setPos(pos);
 			}
 		} else {
@@ -414,15 +409,14 @@ public class Robot {
 			} else
 				isKeyLeftPressed = false;
 
-			xPos -= 28;
-			yPos -= 25;
 			if (field.isNounCell(xPos, yPos)) {
+				System.out.println(field.getModel().getCellWithPos(xPos, yPos).getIsNoun()) ;
+				System.out.println("in Robot , line 420 " + this.getPos().getX() + " " + this.getPos().getY());
 				this.health = 0;
 			}
-			xPos += 3;
-			yPos += 5;
+
 			if (field.isValidPos(new Position(xPos, yPos))) {
-				this.setPos(new Position(xPos += 25, yPos += 20));
+				this.setPos(new Position(xPos , yPos ));
 			}
 
 			double dx = input.getMouseX() - this.getPos().getX();

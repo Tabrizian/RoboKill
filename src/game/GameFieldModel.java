@@ -150,12 +150,11 @@ public class GameFieldModel {
 	 * @return A cell in position (x,y)
 	 */
 	public Cell getCellWithPos(float x, float y) {
-		x -= 35;
+		x -= 5 ;
 		x /= 52;
-		y -= 38;
+		y -= 11;
 		y /= 52;
-		x += 1;
-		y += 1;
+		
 		try {
 			return cells[(int) x][(int) y];
 		} catch (Exception e) {

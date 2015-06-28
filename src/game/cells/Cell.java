@@ -99,7 +99,7 @@ public abstract class Cell {
 	 */
 	public void draw(Graphics g) {
 		if (isNoun == false)
-			image.drawCentered(pos.getX(), pos.getY());
+			image.draw(pos.getX(), pos.getY());
 		if (thing != null) {
 			thing.draw(pos.getX(), pos.getY());
 		}
@@ -144,8 +144,8 @@ public abstract class Cell {
 	 * @return
 	 */
 	private Position calPos(int row, int column) {
-		int xPos = row * 52 + 35;
-		int yPos = column * 52 + 38;
+		int xPos = row * 52 + 5;
+		int yPos = column * 52 + 11;
 
 		Position pos = new Position(xPos, yPos);
 

@@ -247,11 +247,9 @@ public class Vahshi extends Enemy {
 		} else
 			isKeyLeftPressed = false;
 
-		xPos -= 25;
-		yPos -= 20;
 		if (field.isValidPos(new Position(xPos, yPos))
 				&& !field.isNounCell(xPos, yPos)) {
-			this.setPos(new Position(xPos += 25, yPos += 20));
+			this.setPos(new Position(xPos , yPos ));
 		}
 
 		MissilesDatabase.getMissilesDatabase().explodeAreaForEnemy(

@@ -130,7 +130,6 @@ public class Map {
 				if (fields[i][j] != null) {
 					if (fields[i][j].getActivation()) {
 						fields[i][j].update(gc);
-						System.out.println("in map , line 133 " + robot.getPos().getX() + " " + robot.getPos().getY());
 						if (fields[i][j].getStateOfDoors()[0] == 1
 								&& robot.getPos().getX() >= 350
 								&& robot.getPos().getX() <= 430
@@ -145,7 +144,7 @@ public class Map {
 								&& robot.getPos().getX() >= 745
 								&& robot.getPos().getX() <= 775
 								&& robot.getPos().getY() >= 245
-								&& robot.getPos().getY() <= 300) {
+								&& robot.getPos().getY() <= 320) {
 							fields[i][j+1].setActivation(true);
 							robot.setActiveField(fields[i][j+1]);
 							fields[i][j].setActivation(false);
@@ -540,7 +539,7 @@ public class Map {
 				fields[i][j] = null;
 		// Creates game field 1
 		GameFieldModel model1 = new GameFieldModel(createModel(1));
-		model1.setPlane(new Position(50, 50));
+		model1.setPlane(new Position(80, 80));
 		model1.setExitText();
 		int[] state1 = new int[4];
 		state1[0] = 0;

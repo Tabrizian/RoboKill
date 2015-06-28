@@ -19,7 +19,7 @@ public abstract class Thing {
 	 * Draw image
 	 */
 	public void draw(float xPos, float yPos) {
-		image.drawCentered(xPos, yPos);
+		image.drawCentered(xPos + 29 , yPos + 29);
 	}
 
 	/**
