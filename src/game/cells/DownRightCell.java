@@ -1,6 +1,7 @@
 package game.cells;
 
 import game.objects.Thing;
+import game.objects.prizes.Plunder;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -11,9 +12,12 @@ public class DownRightCell extends Cell {
 		super(row, column);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public DownRightCell(int row, int column, Thing thing) {
+	public DownRightCell(int row, int column, Thing thing ) {
 		super( row , column , thing ) ;
+	}
+	
+	public DownRightCell(int row, int column, Thing thing , Plunder plunder) {
+		super( row , column , thing , plunder) ;
 	}
 	
 	public DownRightCell(int row, int column, boolean isNoun) {

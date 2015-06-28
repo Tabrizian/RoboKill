@@ -7,6 +7,7 @@ import game.Position;
 import game.objects.Box;
 import game.objects.Thing;
 import game.objects.Wall;
+import game.objects.prizes.Plunder;
 
 public class DownCell extends Cell {
 
@@ -17,6 +18,10 @@ public class DownCell extends Cell {
 	
 	public DownCell(int row, int column, Thing thing) {
 		super( row , column , thing ) ;
+	}
+	
+	public DownCell(int row, int column, Thing thing , Plunder plunder) {
+		super( row , column , thing , plunder) ;
 	}
 	
 	public DownCell(int row, int column, boolean isNoun) {
