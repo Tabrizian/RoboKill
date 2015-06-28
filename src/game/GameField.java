@@ -234,7 +234,20 @@ public class GameField {
 				;
 			}
 		}
-
+		
+		boolean isCleaned = true ;
+		for( int i = 0 ; i < numOfEnemies ; i++ ){
+			if( enemies[i] != null )
+				isCleaned = false ;
+		}
+		
+		this.isCleaned = isCleaned ;
+		
+		if( isCleaned == true ){
+			for( int i = 0 ; i < 4 ; i ++ )
+				if( stateOfDoors[i] == 0 )
+					stateOfDoors[i] = 1 ;
+		}
 	}
 
 	/**
