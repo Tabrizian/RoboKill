@@ -5,6 +5,7 @@ import game.UtilityButton;
 
 import java.awt.Font;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -39,12 +40,18 @@ public class OkButton {
 	 */
 	private TrueTypeFont font;
 
+	//For animation
+	private boolean isPlayBack = false ;
+	private Image[] frames1 ;
+	private Animation playBack ;
+	
 	public OkButton(String text,Position pos) {
 		addressOfImg = "pics/buttons/image 547.png";
 		addressOfImgFocused = "pics/buttons/image 5471.png";
 		this.text = text;
 		this.pos = pos;
 		population++;
+		frames1 = new Image[46] ;
 	}
 
 	public void init() {
@@ -59,6 +66,19 @@ public class OkButton {
 		// load a custom java font
 		Font awtFont = new Font("Verdana", Font.ITALIC, 20);
 		font = new TrueTypeFont(awtFont, true);
+		
+		for (int i = 1; i <= 46; i++) {
+			String s = Integer.toString(i);
+			try {
+				frames1[46 - i] = new Image("pics/inventory/" + s + ".png");
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		playBack = new Animation(frames1, 5);
+		playBack.setLooping(false);
 
 	}
 
@@ -82,8 +102,12 @@ public class OkButton {
 				&& mY < (pos.getY() + 41) && mY > pos.getY()) {
 			focused = true;
 			// Entering to game state.
-			if (input.isMousePressed(0))
-				UtilityButton.setInventoryState(false);
+			if (input.isMousePressed(0)){
+				//isPlayBack = true ;
+				UtilityButton.setInventoryState(true);
+				
+				
+			}
 		} else {
 			focused = false;
 		}

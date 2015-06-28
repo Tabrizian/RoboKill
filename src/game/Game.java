@@ -29,7 +29,7 @@ public class Game extends BasicGameState {
 	private UtilityButton mapButton;
 	private UtilityButton menu;
 	private UtilityButton inv;
-	//private DeferredResource nextResource;
+	private DeferredResource nextResource;
 	/** True if we've loaded all the resources and started rendering */
 	private boolean started;
 

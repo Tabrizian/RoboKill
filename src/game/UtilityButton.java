@@ -20,12 +20,16 @@ public class UtilityButton {
 	private boolean focused = false;
 	private Inventory inventory;
 	private static boolean showInventory = false;
-
+	private static boolean state = false ;
+	
 	private Image[] frames;
-	private Animation s;
+	private Animation play;
+	private Image[] frames1 ;
+	private Animation playBack ;
 
 	private boolean isAnimationDrawe = false;
 	private boolean imageDraw = false ;
+	private boolean isPlayBack ;
 	
 	public UtilityButton(String name) {
 		this.name = name;
@@ -35,7 +39,8 @@ public class UtilityButton {
 		population++;
 
 		frames = new Image[46];
-
+		frames1 = new Image[46] ;
+		
 		inventory = Inventory.getInventory();
 	}
 
@@ -61,9 +66,21 @@ public class UtilityButton {
 			}
 		}
 
-		s = new Animation(frames, 5);
-
-		s.setLooping(false);
+		for (int i = 1; i <= 46; i++) {
+			String s = Integer.toString(i);
+			try {
+				frames1[46 - i] = new Image("pics/inventory/" + s + ".png");
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		play = new Animation(frames, 5);
+		play.setLooping(false);
+		
+		playBack = new Animation(frames1, 5);
+		playBack.setLooping(false);
 	}
 
 	/**
@@ -75,16 +92,18 @@ public class UtilityButton {
 		img.draw(pos.getX(), pos.getY());
 		if (focused)
 			g.drawRect(pos.getX(), pos.getY(), 45, 13);
+	
+		
 		if (showInventory) {
 			
 			if (isAnimationDrawe) {
-				s.setLooping(false);
-				s.draw(50 , 50);
-				s.start();
+				play.setLooping(false);
+				play.draw(50 , 50);
+				play.start();
 
-				if (s.getFrame() == 45) {
-					s = null;
-					s = new Animation(frames, 5);
+				if (play.getFrame() == 45) {
+					play = null;
+					play = new Animation(frames, 5);
 					isAnimationDrawe = false;
 					imageDraw = true ;
 					inventory.draw(g);
@@ -93,6 +112,21 @@ public class UtilityButton {
 				inventory.draw(g);
 			
 		}
+		else{
+			if( isPlayBack ){
+				playBack.setLooping(false);
+				playBack.draw(50 , 50);
+				playBack.start();
+
+				if (playBack.getFrame() == 45) {
+					playBack = null;
+					playBack = new Animation(frames1, 5);
+					isPlayBack = false;
+				}
+			}
+		}
+		
+		
 
 	}
 
@@ -109,16 +143,20 @@ public class UtilityButton {
 		float mY = input.getMouseY();
 		inventory.update(gc);
 
-		if (mX > pos.getX() && mX < (pos.getX() + 45) && mY < (pos.getY() + 13)
-				&& mY > pos.getY()) {
+		if ((mX > pos.getX() && mX < (pos.getX() + 45) && mY < (pos.getY() + 13)
+				&& mY > pos.getY()) || state) {
 			focused = true;
-			if (input.isMousePressed(0)) {
+			if (input.isMousePressed(0) || state) {
 				switch (name) {
 				case "inv":
 					showInventory = !showInventory;
-					if( !showInventory )
+					if( !showInventory ){
+						if( imageDraw == true )
+							isPlayBack = true ;
 						imageDraw = false ;
+					}
 					isAnimationDrawe = true ;
+					state = false ;
 					break;
 				case "menu":
 					sbg.enterState(0);
@@ -130,7 +168,8 @@ public class UtilityButton {
 
 	}
 
-	public static void setInventoryState(boolean show) {
-		showInventory = show;
+	public static void setInventoryState(boolean show ) {
+		state = show;
+		
 	}
 }
