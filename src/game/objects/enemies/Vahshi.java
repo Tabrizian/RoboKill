@@ -52,7 +52,7 @@ public class Vahshi extends Enemy {
 		health = 100;
 
 		robotPosition = pos;
-
+		destroyedDamage = 20;
 		this.field = field;
 	}
 
@@ -62,7 +62,7 @@ public class Vahshi extends Enemy {
 
 		this.pos = new Position(pos);
 		health = 100;
-
+		destroyedDamage = 20;
 		robotPosition = pos;
 
 		this.field = field;

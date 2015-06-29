@@ -69,6 +69,7 @@ public class Zombie extends Enemy {
 		weapons = new Weapon[4];
 
 		this.field = field;
+		destroyedDamage = 40;
 	}
 
 	public Zombie(Position robotPos, Position pos, GameField field,
@@ -84,6 +85,7 @@ public class Zombie extends Enemy {
 
 		weapons = new Weapon[4];
 
+		destroyedDamage = 40;
 		this.field = field;
 		if (plunder instanceof Money)
 			this.plunder = new Money();

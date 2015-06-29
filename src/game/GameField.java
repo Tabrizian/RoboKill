@@ -82,22 +82,37 @@ public class GameField {
 
 			int x = Math.abs(r.nextInt()) % 3;
 			if (x == 0) {
-				if (Math.abs(r.nextInt()) % 2 == 0)
-					enemies[i] = new Vahshi(robot.getPos(), pos, this,
+				if (Math.abs(r.nextInt()) % 2 == 0) {
+					Vahshi vahshi = new Vahshi(robot.getPos(), pos, this,
 							new Money());
-				else
-					enemies[i] = new Vahshi(robot.getPos(), pos, this);
+					enemies[i] = vahshi;
+					EnemiesDatabase.getEnemiesDatabase().add(vahshi);
+				} else {
+					Vahshi vahshi = new Vahshi(robot.getPos(), pos, this);
+					enemies[i] = vahshi;
+					EnemiesDatabase.getEnemiesDatabase().add(vahshi);
+				}
 			} else if (x == 1) {
-				if (Math.abs(r.nextInt()) % 2 == 0)
-					enemies[i] = new Zombie(robot.getPos(), pos, this,
+				if (Math.abs(r.nextInt()) % 2 == 0) {
+					Zombie zombie = new Zombie(robot.getPos(), pos, this,
 							new Shield());
-				else
-					enemies[i] = new Zombie(robot.getPos(), pos, this);
+					enemies[i] = zombie;
+					EnemiesDatabase.getEnemiesDatabase().add(zombie);
+				} else {
+					Zombie zombie = new Zombie(robot.getPos(), pos, this);
+					enemies[i] = zombie;
+					EnemiesDatabase.getEnemiesDatabase().add(zombie);
+				}
 			} else {
-				if (Math.abs(r.nextInt()) % 2 == 0)
-					enemies[i] = new Sagehar(pos, this, new Money());
-				else
-					enemies[i] = new Sagehar(pos, this);
+				if (Math.abs(r.nextInt()) % 2 == 0) {
+					Sagehar sagehar = new Sagehar(pos, this, new Money());
+					enemies[i] = sagehar;
+					EnemiesDatabase.getEnemiesDatabase().add(sagehar);
+				} else {
+					Sagehar sagehar = new Sagehar(pos, this);
+					enemies[i] = sagehar;
+					EnemiesDatabase.getEnemiesDatabase().add(sagehar);
+				}
 			}
 		}
 	}
@@ -258,7 +273,8 @@ public class GameField {
 			for (int j = 0; j < 11; j++) {
 				model.getCell(i, j).update();
 				if (model.getCell(i, j).getPlunder() != null
-						&& model.getCell(i, j).getThing() == null && model.getCell(i, j).getIsPlunderShown() == false) {
+						&& model.getCell(i, j).getThing() == null
+						&& model.getCell(i, j).getIsPlunderShown() == false) {
 					model.getCell(i, j).setIsPlunderShown(true);
 					Position pos = new Position(model.getCell(i, j).getPos()
 							.getX() + 26,

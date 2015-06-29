@@ -12,6 +12,7 @@ public class Enemy {
 	protected int health;
 	protected Position robotPosition;
 	protected Plunder plunder ;
+	protected int destroyedDamage;
 	
 	public Enemy() {
 
@@ -48,5 +49,13 @@ public class Enemy {
 	
 	public Plunder getPlunder(){
 		return plunder ;
+	}
+	
+	public void setHealth(int health){
+		this.health = health;
+	}
+	
+	public int getDestroyDamage(){
+		return destroyedDamage;
 	}
 }

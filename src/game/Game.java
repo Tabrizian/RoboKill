@@ -19,6 +19,7 @@ public class Game extends BasicGameState {
 	private Label cash;
 	private Label shield;
 	private Map map;
+	private int time = 0;
 	/**
 	 * Player who controls robot
 	 */
@@ -53,7 +54,7 @@ public class Game extends BasicGameState {
 			throws SlickException {
 		LoadingList.setDeferredLoading(true);
 		map.init();
-		
+
 		mapButton.init();
 		menu.init();
 		inv.init();
@@ -65,26 +66,27 @@ public class Game extends BasicGameState {
 	public void render(GameContainer gc, StateBasedGame arg1, Graphics g)
 			throws SlickException {
 
-			map.draw(g);
-			mapButton.draw(g);
+		map.draw(g);
+		mapButton.draw(g);
 
-			menu.draw(g);
-			cash.draw(g, Robot.getRobot().getHealth(), player.getCash());
-			shield.draw(g, Robot.getRobot().getHealth(),
-					player.getCash());
-			inv.draw(g);
+		menu.draw(g);
+		cash.draw(g, Robot.getRobot().getHealth(), player.getCash());
+		shield.draw(g, Robot.getRobot().getHealth(), player.getCash());
+		inv.draw(g);
 
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int arg2)
 			throws SlickException {
-
+		time++;
 		map.update(gc);
-		
+
 		mapButton.update(gc, sbg);
 		inv.update(gc, sbg);
 		menu.update(gc, sbg);
+		if (time % 5 == 0)
+			EnemiesDatabase.getEnemiesDatabase().enemyCollidedWithRobot();
 
 	}
 

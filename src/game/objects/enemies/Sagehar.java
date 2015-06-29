@@ -34,6 +34,7 @@ public class Sagehar extends Enemy {
 		health = 100;
 		this.field = field;
 		this.pos = new Position(pos);
+		destroyedDamage = 50;
 	}
 
 	public Sagehar(Position pos, GameField field, Plunder plunder) {
@@ -44,6 +45,7 @@ public class Sagehar extends Enemy {
 			this.plunder = new Money();
 		else if (plunder instanceof Shield)
 			this.plunder = new Shield();
+		destroyedDamage = 50;
 	}
 
 	public void init() {
