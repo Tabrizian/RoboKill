@@ -79,16 +79,16 @@ public class PreGameButton {
 				&& mY < (pos.getY() + 30) && mY > pos.getY()) {
 			focused = true;
 			// Entering to game state.
-			if (input.isMousePressed(0) && text.equals("START")) {
+			if (input.isMousePressed(0) && text.equals("MULTI")) {
 				PreGame game = (PreGame) sbg.getCurrentState();
 				// if (Player.getPlayer().getName() == null) {
 				// } else {
-				sbg.enterState(1);
+				sbg.enterState(2);
 				game.stopMusic();
-			} else if (input.isMousePressed(0) && text.equals("MULTI")) {
+			} else if (input.isMousePressed(0) && text.equals("START")) {
 				PreGame game = (PreGame) sbg.getCurrentState();
 				System.out.println("WIIIN!!!j");
-				sbg.enterState(2);
+				sbg.enterState(1);
 				game.stopMusic();
 			}
 		} else {
