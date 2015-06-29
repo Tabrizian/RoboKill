@@ -3,6 +3,7 @@ package game.objects.weapons;
 import game.Position;
 
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 public class HeavyShotgunMissile extends ShotgunMissile {

@@ -42,5 +42,8 @@ public abstract class ShotgunMissile extends Missile {
 			pos.setX(pos.getX() + (float) Math.cos(angle + Math.PI / 24));
 			pos.setY(pos.getY() + (float) Math.sin(angle + Math.PI / 24));
 		}
+		if(!shooted){
+			shooted = true;
+		}
 	}
 }

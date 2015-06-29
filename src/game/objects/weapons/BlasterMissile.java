@@ -30,6 +30,10 @@ public abstract class BlasterMissile extends Missile {
 	public void update(GameContainer gc) {
 		pos.setX(pos.getX() + (float) Math.cos(angle));
 		pos.setY(pos.getY() + (float) Math.sin(angle));
+		if(!shooted){
+			shooted = true;
+		
+		}
 	}
 
 }

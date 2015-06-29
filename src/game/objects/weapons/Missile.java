@@ -4,6 +4,7 @@ import game.Position;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 public abstract class Missile {
@@ -16,6 +17,7 @@ public abstract class Missile {
 	 */
 	protected float angle;
 	protected boolean exploded;
+	protected boolean shooted = false;
 
 	public Missile(float angle, Position pos, String owner, int damage) {
 		this.angle = angle;
@@ -55,8 +57,8 @@ public abstract class Missile {
 	public String getOwner() {
 		return owner;
 	}
-	
-	public int getDamage(){
+
+	public int getDamage() {
 		return damage;
 	}
 }

@@ -1,6 +1,7 @@
 package game.objects.weapons;
 
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 import game.Position;
