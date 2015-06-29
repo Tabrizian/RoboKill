@@ -19,7 +19,9 @@ public class UtilityButton {
 	private Position pos;
 	private boolean focused = false;
 	private Inventory inventory;
+	private MapPanel mapPanel;
 	private static boolean showInventory = false;
+	private static boolean showMapPanel = false;
 	private static boolean state = false ;
 	
 	private Image[] frames;
@@ -42,6 +44,7 @@ public class UtilityButton {
 		frames1 = new Image[46] ;
 		
 		inventory = Inventory.getInventory();
+		mapPanel = MapPanel.getMapPanel();
 	}
 
 	/**
@@ -49,6 +52,7 @@ public class UtilityButton {
 	 */
 	public void init() {
 		inventory.init();
+		mapPanel.init();
 		try {
 			img = new Image(imgAddress);
 		} catch (SlickException e) {
@@ -111,6 +115,8 @@ public class UtilityButton {
 			}else if( imageDraw == true )
 				inventory.draw(g);
 			
+		}else if(showMapPanel){
+			mapPanel.draw();
 		}
 		else{
 			if( isPlayBack ){
@@ -160,6 +166,9 @@ public class UtilityButton {
 					break;
 				case "menu":
 					sbg.enterState(0);
+					break;
+				case "map":
+					showMapPanel = !showMapPanel;
 					break;
 				}
 			}
