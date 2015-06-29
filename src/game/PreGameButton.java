@@ -80,10 +80,12 @@ public class PreGameButton {
 			focused = true;
 			// Entering to game state.
 			if (input.isMousePressed(0) && text.equals("START")) {
-				sbg.enterState(1);
 				PreGame game = (PreGame) sbg.getCurrentState();
 				if (Player.getPlayer().getName() == null) {
 					game.setGetNameState(true);
+					System.out.println("Running");
+				} else {
+					sbg.enterState(1);
 				}
 				game.stopMusic();
 			}
@@ -92,7 +94,5 @@ public class PreGameButton {
 		}
 
 	}
-
-	
 
 }

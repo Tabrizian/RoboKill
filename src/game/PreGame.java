@@ -25,10 +25,12 @@ public class PreGame extends BasicGameState {
 	private PreGameButton start;
 	private PreGameButton options;
 	private PreGameButton credits;
+	private PreGameButton multiplier;
 	private String loadingBarAddress;
 	private Image loadingBar;
 	private DeferredResource nextResource;
 	private boolean getNameState = false;
+	private MyTextField textField;
 	/** True if we've loaded all the resources and started rendereing */
 	private boolean started;
 
@@ -42,11 +44,13 @@ public class PreGame extends BasicGameState {
 		start = new PreGameButton("START");
 		options = new PreGameButton("OPTIONS");
 		credits = new PreGameButton("CREDITS");
+		multiplier = new PreGameButton("MULTIPLIER");
 
 	}
 
 	@Override
-	public void init(GameContainer arg0, StateBasedGame arg1) {
+	public void init(GameContainer gc, StateBasedGame arg1) {
+		textField = new MyTextField(gc, 100, 50, 200, 20);
 		LoadingList.setDeferredLoading(true);
 
 		try {
@@ -62,20 +66,21 @@ public class PreGame extends BasicGameState {
 		start.init();
 		options.init();
 		credits.init();
+		multiplier.init();
 	}
 
 	@Override
-	public void render(GameContainer arg0, StateBasedGame arg1, Graphics g)
+	public void render(GameContainer gc, StateBasedGame arg1, Graphics g)
 			throws SlickException {
+		textField.render(gc, g);
 		if (started) {
 			backgroundImage.draw(0, 0);
-			if (!getNameState) {
-				start.draw(g);
-				options.draw(g);
-				credits.draw(g);
-			} else {
-				
-			}
+
+			start.draw(g);
+			options.draw(g);
+			credits.draw(g);
+			multiplier.draw(g);
+
 		} else {
 
 			int total = LoadingList.get().getTotalResources();
