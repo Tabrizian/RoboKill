@@ -78,7 +78,7 @@ public class Sagehar extends Enemy {
 	}
 	@Override
 	public void draw(Graphics g) {
-		g.drawRect(pos.getX(), pos.getY(), 52, 52);
+		g.drawRect(pos.getX() - 24, pos.getY() - 24, 48, 48);
 		if (health > 0) {
 			if (isMoving) {
 
@@ -92,8 +92,6 @@ public class Sagehar extends Enemy {
 	}
 
 	public void update(GameContainer gc) {
-		Input input = gc.getInput();
-
 		float xPos = this.getPos().getX();
 		float yPos = this.getPos().getY();
 
@@ -133,7 +131,7 @@ public class Sagehar extends Enemy {
 		}
 
 		int healthReduction = MissilesDatabase.getMissilesDatabase()
-				.explodeAreaForEnemy(new Position(pos.getX(), pos.getY()), 48,
+				.explodeAreaForEnemy(new Position(pos.getX() - 24, pos.getY() - 24), 48,
 						48);
 
 		if (healthReduction > health)

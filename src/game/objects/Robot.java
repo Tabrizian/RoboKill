@@ -351,7 +351,7 @@ public class Robot {
 		}
 
 		int healthReduction = MissilesDatabase.getMissilesDatabase()
-				.explodeAreaForRobot(new Position(pos.getX(), pos.getY()), 45,
+				.explodeAreaForRobot(new Position(pos.getX() - 22.5f, pos.getY() - 22.5f), 45,
 						45);
 
 		if (healthReduction > health)
