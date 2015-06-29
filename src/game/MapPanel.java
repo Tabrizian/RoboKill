@@ -52,7 +52,7 @@ public class MapPanel {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				if (fields[i][j] != null) {
-					Position cal = calcPos(i, j);
+					Position cal = calcPos(j,i);
 					if (Map.getMap().getActiveGameField() == fields[i][j]) {
 						currentTileImage.draw(cal.getX(), cal.getY());
 					} else if (!fields[i][j].getIsCleaned()) {
