@@ -7,6 +7,9 @@ import game.objects.Robot;
 import game.objects.prizes.Money;
 import game.objects.prizes.Plunder;
 import game.objects.prizes.Shield;
+import game.objects.prizes.guns.HeavyGun;
+import game.objects.prizes.guns.LightGun;
+import game.objects.prizes.guns.MediumGun;
 import game.objects.weapons.MissilesDatabase;
 
 import org.newdawn.slick.Animation;
@@ -47,6 +50,12 @@ public class Sagehar extends Enemy {
 			this.plunder = new Money();
 		else if (plunder instanceof Shield)
 			this.plunder = new Shield();
+		else if( plunder instanceof LightGun )
+			this.plunder = new LightGun() ;
+		else if( plunder instanceof HeavyGun )
+			this.plunder = new HeavyGun() ;
+		else if( plunder instanceof MediumGun )
+			this.plunder = new MediumGun() ;
 		destroyedDamage = 50;
 	}
 

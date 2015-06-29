@@ -1,5 +1,6 @@
 package game;
 
+import game.inventory.Inventory;
 import game.objects.Robot;
 import game.objects.enemies.Enemy;
 import game.objects.enemies.Sagehar;
@@ -9,6 +10,14 @@ import game.objects.prizes.Key;
 import game.objects.prizes.Money;
 import game.objects.prizes.Plunder;
 import game.objects.prizes.Shield;
+import game.objects.prizes.guns.Gun;
+import game.objects.prizes.guns.HeavyGun;
+import game.objects.prizes.guns.LightGun;
+import game.objects.prizes.guns.MediumGun;
+import game.objects.weapons.blasters.HeavyBlaster;
+import game.objects.weapons.blasters.LightBlaster;
+import game.objects.weapons.blasters.MediumBlaster;
+import game.objects.weapons.shotguns.LightShotgun;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -106,13 +115,22 @@ public class GameField {
 					enemies[i] = zombie;
 				}
 			} else {
-				if (Math.abs(r.nextInt()) % 2 == 0) {
-					Sagehar sagehar = new Sagehar(pos, this, new Money());
-					enemies[i] = sagehar;
-				} else {
-					Sagehar sagehar = new Sagehar(pos, this);
-					enemies[i] = sagehar;
-				}
+				//if (Math.abs(r.nextInt()) % 2 == 0) {
+					int y = Math.abs(r.nextInt()) % 3 ;
+					if (y == 0) {
+						Sagehar sagehar = new Sagehar(pos, this, new LightGun());
+						enemies[i] = sagehar;
+					} else if (y == 1) {
+						Sagehar sagehar = new Sagehar(pos, this, new MediumGun());
+						enemies[i] = sagehar;
+					} else {
+						Sagehar sagehar = new Sagehar(pos, this, new HeavyGun());
+						enemies[i] = sagehar;
+					}
+			//	} else {
+				//	Sagehar sagehar = new Sagehar(pos, this);
+				//	enemies[i] = sagehar;
+				//}
 			}
 		}
 	}
@@ -275,6 +293,14 @@ public class GameField {
 							plunders.add(new Money(pos));
 						} else if (enemies[i].getPlunder() instanceof Shield) {
 							plunders.add(new Shield(pos));
+						}else if( enemies[i].getPlunder() instanceof LightGun ){
+							plunders.add( new LightGun(pos) ) ;
+						}
+						else if( enemies[i].getPlunder() instanceof MediumGun ){
+							plunders.add( new MediumGun(pos) ) ;
+						}
+						else if( enemies[i].getPlunder() instanceof HeavyGun ){
+							plunders.add( new HeavyGun(pos) ) ;
 						}
 					}
 					enemies[i] = null;
@@ -324,18 +350,19 @@ public class GameField {
 			}
 		}
 
+		//Handles plunders
 		Iterator<Plunder> iter = plunders.iterator();
 		while (iter.hasNext()) {
 			Plunder plunder = iter.next();
 			if (plunder.getPos().getX() + 10 >= Robot.getRobot().getPos()
 					.getX()
-					&& plunder.getPos().getX() - 10 <= Robot.getRobot()
+					&& plunder.getPos().getX() - 17 <= Robot.getRobot()
 							.getPos().getX()
-					&& plunder.getPos().getY() + 10 >= Robot.getRobot()
+					&& plunder.getPos().getY() + 17 >= Robot.getRobot()
 							.getPos().getY()
-					&& plunder.getPos().getY() + 10 >= Robot.getRobot()
+					&& plunder.getPos().getY() + 17 >= Robot.getRobot()
 							.getPos().getY()
-					&& plunder.getPos().getY() - 10 <= Robot.getRobot()
+					&& plunder.getPos().getY() - 17 <= Robot.getRobot()
 							.getPos().getY()) {
 				if (plunder instanceof Money) {
 					iter.remove();
@@ -352,6 +379,32 @@ public class GameField {
 					iter.remove();
 					Robot.getRobot().setHasKey(true);
 
+				}else if( plunder instanceof LightGun ){
+					System.out.println("light");
+					iter.remove();
+					if( Math.abs(new Random().nextInt())%2 == 0){
+						Inventory.getInventory().addAddOneToTabular(new LightBlaster(-1, "robot"));
+					}else{
+						Inventory.getInventory().addAddOneToTabular(new LightShotgun(-1, "robot"));
+					}
+				}
+				else if( plunder instanceof MediumGun ){
+					System.out.println("medium");
+					iter.remove();
+					if( Math.abs(new Random().nextInt())%2 == 0){
+						Inventory.getInventory().addAddOneToTabular(new MediumBlaster(-1, "robot"));
+					}else{
+						Inventory.getInventory().addAddOneToTabular(new MediumBlaster(-1, "robot"));
+					}
+				}
+				else if( plunder instanceof HeavyGun ){
+					System.out.println("heavy");
+					iter.remove();
+					if( Math.abs(new Random().nextInt())%2 == 0){
+						Inventory.getInventory().addAddOneToTabular(new HeavyBlaster(-1, "robot"));
+					}else{
+						Inventory.getInventory().addAddOneToTabular(new HeavyBlaster(-1, "robot"));
+					}
 				}
 
 			}
