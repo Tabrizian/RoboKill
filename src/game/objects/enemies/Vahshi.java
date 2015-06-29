@@ -1,5 +1,6 @@
 package game.objects.enemies;
 
+import game.EnemiesDatabase;
 import game.GameField;
 import game.Position;
 import game.objects.prizes.Money;
@@ -276,6 +277,9 @@ public class Vahshi extends Enemy {
 			health = 0;
 		else
 			health -= healthReduction;
+		if (health == 0) {
+			EnemiesDatabase.getEnemiesDatabase().remove(this);
+		}
 
 	}
 

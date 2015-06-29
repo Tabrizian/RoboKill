@@ -1,5 +1,6 @@
 package game.objects.enemies;
 
+import game.EnemiesDatabase;
 import game.GameField;
 import game.Position;
 import game.objects.Robot;
@@ -139,6 +140,9 @@ public class Sagehar extends Enemy {
 			health = 0;
 		else
 			health -= healthReduction;
+		if(health == 0){
+			EnemiesDatabase.getEnemiesDatabase().remove(this);
+		}
 
 	}
 
