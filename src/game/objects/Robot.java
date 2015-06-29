@@ -195,8 +195,6 @@ public class Robot {
 		// Manage drawing animations
 		if (health == 0) {
 			if (falling == true) {
-
-				System.out.println("in Robot line 209 ");
 				imageOfBody.draw(-50, -50);
 				fall.setLooping(false);
 				fall.draw(pos.getX() - imageOfBody.getWidth() / 2, pos.getY()

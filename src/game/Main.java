@@ -31,7 +31,7 @@ public class Main extends StateBasedGame {
 		try {
 			appgc = new AppGameContainer(new Main());
 			appgc.setDisplayMode(800, 600, false);
-			appgc.setShowFPS(true);
+			appgc.setShowFPS(false);
 			//appgc.setIcon("pics/icon/icon2.ico");
 			appgc.start();
 			
