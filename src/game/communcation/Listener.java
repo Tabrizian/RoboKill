@@ -10,11 +10,9 @@ import java.util.Vector;
 public class Listener implements Runnable {
 
 	private Socket socket;
-	private Vector<Message> messages;
 
 	public Listener(Socket socket) {
 		this.socket = socket;
-		messages = new Vector<Message>();
 	}
 
 	@Override

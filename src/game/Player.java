@@ -7,6 +7,8 @@ public class Player {
 	private int cash = 0;
 	private String name;
 	private static Player instance;
+	private boolean isServer = false;
+	private boolean isClient = false;
 
 	private Player() {
 		cash = 100;
@@ -29,5 +31,12 @@ public class Player {
 
 	public String getName() {
 		return name;
+	}
+	
+	public boolean getIsServer(){
+		return isServer;
+	}
+	public boolean getIsClient(){
+		return isClient;
 	}
 }
