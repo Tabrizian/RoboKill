@@ -115,22 +115,23 @@ public class GameField {
 					enemies[i] = zombie;
 				}
 			} else {
-				//if (Math.abs(r.nextInt()) % 2 == 0) {
-					int y = Math.abs(r.nextInt()) % 3 ;
+				if (Math.abs(r.nextInt()) % 2 == 0) {
+					int y = Math.abs(r.nextInt()) % 3;
 					if (y == 0) {
 						Sagehar sagehar = new Sagehar(pos, this, new LightGun());
 						enemies[i] = sagehar;
 					} else if (y == 1) {
-						Sagehar sagehar = new Sagehar(pos, this, new MediumGun());
+						Sagehar sagehar = new Sagehar(pos, this,
+								new MediumGun());
 						enemies[i] = sagehar;
 					} else {
 						Sagehar sagehar = new Sagehar(pos, this, new HeavyGun());
 						enemies[i] = sagehar;
 					}
-			//	} else {
-				//	Sagehar sagehar = new Sagehar(pos, this);
-				//	enemies[i] = sagehar;
-				//}
+				} else {
+					Sagehar sagehar = new Sagehar(pos, this);
+					enemies[i] = sagehar;
+				}
 			}
 		}
 	}
@@ -293,14 +294,12 @@ public class GameField {
 							plunders.add(new Money(pos));
 						} else if (enemies[i].getPlunder() instanceof Shield) {
 							plunders.add(new Shield(pos));
-						}else if( enemies[i].getPlunder() instanceof LightGun ){
-							plunders.add( new LightGun(pos) ) ;
-						}
-						else if( enemies[i].getPlunder() instanceof MediumGun ){
-							plunders.add( new MediumGun(pos) ) ;
-						}
-						else if( enemies[i].getPlunder() instanceof HeavyGun ){
-							plunders.add( new HeavyGun(pos) ) ;
+						} else if (enemies[i].getPlunder() instanceof LightGun) {
+							plunders.add(new LightGun(pos));
+						} else if (enemies[i].getPlunder() instanceof MediumGun) {
+							plunders.add(new MediumGun(pos));
+						} else if (enemies[i].getPlunder() instanceof HeavyGun) {
+							plunders.add(new HeavyGun(pos));
 						}
 					}
 					enemies[i] = null;
@@ -350,7 +349,7 @@ public class GameField {
 			}
 		}
 
-		//Handles plunders
+		// Handles plunders
 		Iterator<Plunder> iter = plunders.iterator();
 		while (iter.hasNext()) {
 			Plunder plunder = iter.next();
@@ -379,31 +378,35 @@ public class GameField {
 					iter.remove();
 					Robot.getRobot().setHasKey(true);
 
-				}else if( plunder instanceof LightGun ){
+				} else if (plunder instanceof LightGun) {
 					System.out.println("light");
 					iter.remove();
-					if( Math.abs(new Random().nextInt())%2 == 0){
-						Inventory.getInventory().addAddOneToTabular(new LightBlaster(-1, "robot"));
-					}else{
-						Inventory.getInventory().addAddOneToTabular(new LightShotgun(-1, "robot"));
+					if (Math.abs(new Random().nextInt()) % 2 == 0) {
+						Inventory.getInventory().addAddOneToTabular(
+								new LightBlaster(-1, "robot"));
+					} else {
+						Inventory.getInventory().addAddOneToTabular(
+								new LightShotgun(-1, "robot"));
 					}
-				}
-				else if( plunder instanceof MediumGun ){
+				} else if (plunder instanceof MediumGun) {
 					System.out.println("medium");
 					iter.remove();
-					if( Math.abs(new Random().nextInt())%2 == 0){
-						Inventory.getInventory().addAddOneToTabular(new MediumBlaster(-1, "robot"));
-					}else{
-						Inventory.getInventory().addAddOneToTabular(new MediumBlaster(-1, "robot"));
+					if (Math.abs(new Random().nextInt()) % 2 == 0) {
+						Inventory.getInventory().addAddOneToTabular(
+								new MediumBlaster(-1, "robot"));
+					} else {
+						Inventory.getInventory().addAddOneToTabular(
+								new MediumBlaster(-1, "robot"));
 					}
-				}
-				else if( plunder instanceof HeavyGun ){
+				} else if (plunder instanceof HeavyGun) {
 					System.out.println("heavy");
 					iter.remove();
-					if( Math.abs(new Random().nextInt())%2 == 0){
-						Inventory.getInventory().addAddOneToTabular(new HeavyBlaster(-1, "robot"));
-					}else{
-						Inventory.getInventory().addAddOneToTabular(new HeavyBlaster(-1, "robot"));
+					if (Math.abs(new Random().nextInt()) % 2 == 0) {
+						Inventory.getInventory().addAddOneToTabular(
+								new HeavyBlaster(-1, "robot"));
+					} else {
+						Inventory.getInventory().addAddOneToTabular(
+								new HeavyBlaster(-1, "robot"));
 					}
 				}
 
