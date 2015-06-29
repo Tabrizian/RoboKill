@@ -22,6 +22,7 @@ public abstract class Cell {
 	protected boolean isBlocked;
 	protected boolean isNoun;
 	protected Image image;
+	protected Image exploded ;
 	protected Plunder plunder;
 	protected boolean isPlunderShown = false ;
 
@@ -134,8 +135,10 @@ public abstract class Cell {
 	 * Draw the cell behind its thing if exists
 	 */
 	public void draw(Graphics g) {
-		if (isNoun == false)
+		if (isNoun == false && isExploded == false)
 			image.draw(pos.getX(), pos.getY());
+		else if(isNoun == false && isExploded == true)
+			exploded.draw(pos.getX(), pos.getY());
 		if (thing != null) {
 			thing.draw(pos.getX(), pos.getY());
 		}
@@ -151,6 +154,7 @@ public abstract class Cell {
 			else
 				thing.setHealth(thing.getHealth() - healthReduction);
 			if (thing.getHealth() == 0) {
+				isExploded = true ;
 				isBlocked = false;
 				thing = null;
 			}

@@ -37,5 +37,11 @@ public class SimpleCell extends Cell {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+			exploded = new Image("pics/cells/image 1test.png");
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
