@@ -123,7 +123,6 @@ public class Vahshi extends Enemy {
 	 */
 	@Override
 	public void draw(Graphics g) {
-		g.drawRect(pos.getX() - 15, pos.getY() - 15, 30, 30);
 		if (health > 0) {
 			// Manage drawing animations
 			if (iskeyUpPressed == true && isKeyRightPressed == true) {

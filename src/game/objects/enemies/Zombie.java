@@ -159,7 +159,6 @@ public class Zombie extends Enemy {
 	 */
 	@Override
 	public void draw(Graphics g) {
-		g.drawRect(pos.getX() - 24, pos.getY() - 24, 48, 48);
 		if (health > 0) {
 			imageOfBody.setRotation(imageAngleDeg);
 			imageOfBody.drawCentered(pos.getX(), pos.getY());
