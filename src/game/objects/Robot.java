@@ -351,8 +351,9 @@ public class Robot {
 		}
 
 		int healthReduction = MissilesDatabase.getMissilesDatabase()
-				.explodeAreaForRobot(new Position(pos.getX() - 22.5f, pos.getY() - 22.5f), 45,
-						45);
+				.explodeAreaForRobot(
+						new Position(pos.getX() - 22.5f, pos.getY() - 22.5f),
+						45, 45);
 
 		if (healthReduction > health)
 			health = 0;
@@ -440,39 +441,18 @@ public class Robot {
 		try {
 			Image image1 = new Image("pics/robot/image 123.png");
 			frames[0] = image1;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image2 = new Image("pics/robot/image 231.png");
 			frames[1] = image2;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image3 = new Image("pics/robot/image 485.png");
 			frames[2] = image3;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image4 = new Image("pics/robot/image 653.png");
 			frames[3] = image4;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image5 = new Image("pics/robot/image 589.png");
 			frames[4] = image5;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return frames;
 	}
 
