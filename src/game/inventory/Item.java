@@ -37,6 +37,14 @@ public class Item {
 		this.name = name;
 	}
 
+	public Item(String name, int row, int col) {
+		itemAddress = "pics/inventory/item.png";
+		int num = row * 7 + col;
+		pos = new Position(400 + (num % 7) * 40, 310 + num / 7 * 40);
+		this.name = name;
+		defaultPos = new Position(pos);
+	}
+
 	public void init() {
 		try {
 			itemImage = new Image(itemAddress);

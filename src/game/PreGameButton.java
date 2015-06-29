@@ -82,6 +82,9 @@ public class PreGameButton {
 			if (input.isMousePressed(0) && text.equals("START")) {
 				sbg.enterState(1);
 				PreGame game = (PreGame) sbg.getCurrentState();
+				if (Player.getPlayer().getName() == null) {
+					game.setGetNameState(true);
+				}
 				game.stopMusic();
 			}
 		} else {
@@ -89,5 +92,7 @@ public class PreGameButton {
 		}
 
 	}
+
+	
 
 }

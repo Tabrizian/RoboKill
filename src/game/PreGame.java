@@ -28,6 +28,7 @@ public class PreGame extends BasicGameState {
 	private String loadingBarAddress;
 	private Image loadingBar;
 	private DeferredResource nextResource;
+	private boolean getNameState = false;
 	/** True if we've loaded all the resources and started rendereing */
 	private boolean started;
 
@@ -68,9 +69,13 @@ public class PreGame extends BasicGameState {
 			throws SlickException {
 		if (started) {
 			backgroundImage.draw(0, 0);
-			start.draw(g);
-			options.draw(g);
-			credits.draw(g);
+			if (!getNameState) {
+				start.draw(g);
+				options.draw(g);
+				credits.draw(g);
+			} else {
+				
+			}
 		} else {
 
 			int total = LoadingList.get().getTotalResources();
@@ -115,8 +120,12 @@ public class PreGame extends BasicGameState {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	public void stopMusic(){
+
+	public void stopMusic() {
 		music.stop();
+	}
+
+	public void setGetNameState(boolean state) {
+		getNameState = state;
 	}
 }

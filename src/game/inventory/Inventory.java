@@ -170,17 +170,21 @@ public class Inventory {
 	public Item[] getWeaponsItems() {
 		return weapons;
 	}
-	
-	public void addAddOneToTabular(AddOne addOne){
-		for(int i= 0 ;i <7;i++){
+
+	public void addAddOneToTabular(AddOne addOne) {
+		boolean run = true;
+		for (int i = 0; i < 7 && run; i++) {
 			for (int j = 0; j < 4; j++) {
-				if(itemsTabular[i][j] == null){
-					Item item = new Item("tabular");
+				if (itemsTabular[i][j].getAddOne() == null) {
+					Item item = new Item("tabular", i, j);
 					item.add(addOne);
 					ItemsDatabase.getItemsDatabase().addToTabular(i, j, item);
 					itemsTabular[i][j] = item;
+					item.init();
+					run = false;
+					break;
 				}
-				
+
 			}
 		}
 	}
