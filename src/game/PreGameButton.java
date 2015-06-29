@@ -85,7 +85,7 @@ public class PreGameButton {
 				// } else {
 				sbg.enterState(2);
 				game.stopMusic();
-			} else if (input.isMousePressed(0) && text.equals("START")) {
+			}  if (input.isMousePressed(0) && text.equals("START")) {
 				PreGame game = (PreGame) sbg.getCurrentState();
 				System.out.println("WIIIN!!!j");
 				sbg.enterState(1);
