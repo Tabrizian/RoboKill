@@ -5,6 +5,7 @@ import game.objects.Barrel;
 import game.objects.Box;
 import game.objects.Thing;
 import game.objects.Wall;
+import game.objects.prizes.Key;
 import game.objects.prizes.Money;
 import game.objects.prizes.Plunder;
 import game.objects.prizes.Shield;
@@ -73,6 +74,13 @@ public abstract class Cell {
 		pos = new Position(calPos(row, column));
 	}
 
+	public Cell(int row, int column , Plunder plunder) {
+		isExploded = false;
+		isNoun = false;
+		isBlocked = false;
+		pos = new Position(calPos(row, column));
+		this.plunder = new Key() ;
+	}
 	public Cell(int row, int column, boolean isNoun) {
 		isExploded = false;
 		isBlocked = false;

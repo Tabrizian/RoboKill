@@ -5,6 +5,7 @@ import game.objects.enemies.Enemy;
 import game.objects.enemies.Sagehar;
 import game.objects.enemies.Vahshi;
 import game.objects.enemies.Zombie;
+import game.objects.prizes.Key;
 import game.objects.prizes.Money;
 import game.objects.prizes.Plunder;
 import game.objects.prizes.Shield;
@@ -52,6 +53,10 @@ public class GameField {
 	private int[] stateOfDoors;
 
 	private ArrayList<Plunder> plunders;
+
+	private boolean keyRequired = false;
+
+	private Image keyImage;
 
 	public GameField() {
 
@@ -117,6 +122,10 @@ public class GameField {
 		}
 	}
 
+	public void setKeyRequired(boolean x) {
+		keyRequired = x;
+	}
+
 	/**
 	 * Getter for background of the field
 	 * 
@@ -146,6 +155,12 @@ public class GameField {
 			e.printStackTrace();
 		}
 
+		try {
+			keyImage = new Image("pics/plunder/image 178.png");
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		model.initAll();
 
 		// Initialize all enemies
@@ -239,6 +254,9 @@ public class GameField {
 			}
 		}
 
+		if (keyRequired) {
+			keyImage.drawCentered(390, 40);
+		}
 		for (Plunder plunder : plunders)
 			plunder.draw();
 	}
@@ -279,16 +297,18 @@ public class GameField {
 					Position pos = new Position(model.getCell(i, j).getPos()
 							.getX() + 26,
 							model.getCell(i, j).getPos().getY() + 26);
-					if (model.getCell(i, j).getPlunder() instanceof Money) {
+					if (model.getCell(i, j).getPlunder() instanceof Money)
 						plunders.add(new Money(pos));
-					} else if (model.getCell(i, j).getPlunder() instanceof Shield) {
+					else if (model.getCell(i, j).getPlunder() instanceof Shield)
 						plunders.add(new Shield(pos));
-					}
+
+					else if (model.getCell(i, j).getPlunder() instanceof Key)
+						plunders.add(new Key(pos));
+
 				}
 			}
 		}
 
-		
 		boolean isCleaned = true;
 		for (int i = 0; i < numOfEnemies; i++) {
 			if (enemies[i] != null)
@@ -298,9 +318,15 @@ public class GameField {
 		this.isCleaned = isCleaned;
 
 		if (isCleaned == true) {
-			for (int i = 0; i < 4; i++)
-				if (stateOfDoors[i] == 0)
-					stateOfDoors[i] = 1;
+			for (int i = 0; i < 4; i++) {
+				if (keyRequired == false) {
+					if (stateOfDoors[i] == 0)
+						stateOfDoors[i] = 1;
+				} else {
+					if (stateOfDoors[i] == 0 && i != 0)
+						stateOfDoors[i] = 1;
+				}
+			}
 		}
 
 		Iterator<Plunder> iter = plunders.iterator();
@@ -327,6 +353,10 @@ public class GameField {
 								Robot.getRobot().getHealth() + 10);
 					else
 						Robot.getRobot().setHealth(100);
+				} else if (plunder instanceof Key) {
+					iter.remove();
+					Robot.getRobot().setHasKey(true);
+
 				}
 
 			}
@@ -1018,8 +1048,8 @@ public class GameField {
 	public boolean getIsCleaned() {
 		return isCleaned;
 	}
-	 
-	public void updateCleanStatus(){
+
+	public void updateCleanStatus() {
 		boolean isCleaned = true;
 		for (int i = 0; i < numOfEnemies; i++) {
 			if (enemies[i] != null)

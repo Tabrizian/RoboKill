@@ -93,6 +93,8 @@ public class Robot {
 	private boolean isDead = false;
 
 	private boolean falling = false;
+	
+	private boolean hasKey = false ;
 
 	private Robot() {
 		super();
@@ -157,6 +159,13 @@ public class Robot {
 		this.pos = pos;
 	}
 
+	public void setHasKey( boolean hasKey ){
+		this.hasKey = hasKey ;
+	}
+	
+	public boolean getKey(){
+		return hasKey ;
+	}
 	/**
 	 * Loads image of robot
 	 */

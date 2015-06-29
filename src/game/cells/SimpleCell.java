@@ -12,7 +12,10 @@ public class SimpleCell extends Cell {
 		super(row, column);
 		// TODO Auto-generated constructor stub
 	}
-	
+	public SimpleCell(int row, int column , Plunder plunder) {
+		super(row, column , plunder);
+		// TODO Auto-generated constructor stub
+	}
 	public SimpleCell(int row, int column, Thing thing , Plunder plunder) {
 		super( row , column , thing , plunder) ;
 	}
