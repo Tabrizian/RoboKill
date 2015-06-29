@@ -25,16 +25,13 @@ public class Listener implements Runnable {
 			while (true) {
 				String header = br.readLine();
 				String text = br.readLine();
-				messages.add(new Message(text, header));
+				Inbox inbox = Inbox.getInbox() ;
+				inbox.addMessage(new Message(text, header));
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	public Vector<Message> getMessages() {
-		return messages;
 	}
 
 }
