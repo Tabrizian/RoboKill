@@ -87,6 +87,7 @@ public class PreGameButton {
 				game.stopMusic();
 			} else if (input.isMousePressed(0) && text.equals("MULTI")) {
 				PreGame game = (PreGame) sbg.getCurrentState();
+				System.out.println("WIIIN!!!j");
 				sbg.enterState(2);
 				game.stopMusic();
 			}
