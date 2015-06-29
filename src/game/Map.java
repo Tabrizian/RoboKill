@@ -82,13 +82,13 @@ public class Map {
 		LightShotgun lightShotgun = new LightShotgun(2, "robot");
 
 		// Adding light shotgun to inventory for test.
-		Inventory.getInventory().add(heavyShotgun, 0);
-		Inventory.getInventory().add(MediumBlaster, 3);
+	//	Inventory.getInventory().add(heavyShotgun, 0);
+	//	Inventory.getInventory().add(MediumBlaster, 3);
 		Inventory.getInventory().add(lightBlaster, 1);
 		Inventory.getInventory().add(lightShotgun, 2);
-		robot.addGun(heavyShotgun, 0);
+	//	robot.addGun(heavyShotgun, 0);
 		robot.addGun(lightBlaster, 1);
-		robot.addGun(MediumBlaster, 3);
+	//	robot.addGun(MediumBlaster, 3);
 		robot.addGun(lightShotgun, 2);
 	}
 
