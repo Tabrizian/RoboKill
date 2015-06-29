@@ -29,6 +29,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.omg.PortableServer.POA;
 
 public class GameField {
 
@@ -67,6 +68,9 @@ public class GameField {
 
 	private Image keyImage;
 
+	private Image deadEnemy ;
+	
+	private ArrayList<Position> deadEnemyPosition ;
 	public GameField() {
 
 		image = ("pics/fields/image 187.png");
@@ -83,6 +87,7 @@ public class GameField {
 		this.stateOfDoors = new int[4];
 		this.stateOfDoors = stateOfDoors;
 		this.numOfEnemies = numOfEnemies;
+		deadEnemyPosition = new ArrayList<Position>() ;
 		plunders = new ArrayList<Plunder>();
 		// Create enemies for this field
 		Random r = new Random();
@@ -175,6 +180,14 @@ public class GameField {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		try {
+			deadEnemy = new Image("pics/explosion/image 726.png") ;
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		model.initAll();
 
 		// Initialize all enemies
@@ -271,6 +284,9 @@ public class GameField {
 		if (keyRequired) {
 			keyImage.drawCentered(390, 40);
 		}
+		for( Position pos : deadEnemyPosition )
+			deadEnemy.drawCentered(pos.getX(), pos.getY());
+		
 		for (Plunder plunder : plunders)
 			plunder.draw();
 	}
@@ -302,6 +318,7 @@ public class GameField {
 							plunders.add(new HeavyGun(pos));
 						}
 					}
+					deadEnemyPosition.add(enemies[i].getPos()) ;
 					enemies[i] = null;
 				}
 			}
