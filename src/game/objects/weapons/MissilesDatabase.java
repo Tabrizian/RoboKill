@@ -39,7 +39,7 @@ public class MissilesDatabase {
 
 				missile.setExploded(true);
 				removeMissile(missile);
-				num++;
+				num += missile.getDamage();
 			}
 
 		}
@@ -54,7 +54,7 @@ public class MissilesDatabase {
 
 				missile.setExploded(true);
 				removeMissile(missile);
-				num++;
+				num += missile.getDamage();
 			}
 
 		}
@@ -98,7 +98,7 @@ public class MissilesDatabase {
 		for (int i = 0; i < missilesRobot.size(); i++) {
 			Missile missile = missilesRobot.get(i);
 			if (isInsideArea(pos, width, height, missile.getPos())) {
-				num++;
+				num += missile.getDamage();
 				missile.setExploded(true);
 				removeMissile(missile);
 			}
@@ -110,7 +110,7 @@ public class MissilesDatabase {
 
 				missile.setExploded(true);
 				removeMissile(missile);
-				num++;
+				num += missile.getDamage();
 			}
 
 		}

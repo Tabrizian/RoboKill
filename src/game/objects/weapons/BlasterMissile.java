@@ -6,8 +6,8 @@ import org.newdawn.slick.GameContainer;
 
 public abstract class BlasterMissile extends Missile {
 
-	public BlasterMissile(float angle, Position pos, String owner) {
-		super(angle, pos, owner);
+	public BlasterMissile(float angle, Position pos, String owner, int damage) {
+		super(angle, pos, owner, damage);
 		// TODO Auto-generated constructor stub
 	}
 

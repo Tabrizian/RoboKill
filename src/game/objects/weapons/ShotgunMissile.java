@@ -9,8 +9,8 @@ public abstract class ShotgunMissile extends Missile {
 	// place of missile in a one shot(ordered from left to right)
 	private int num;
 
-	public ShotgunMissile(float angle, Position pos, int num, String owner) {
-		super(angle, pos, owner);
+	public ShotgunMissile(float angle, Position pos, int num, String owner,int damage) {
+		super(angle, pos, owner,damage);
 		// TODO Auto-generated constructor stub
 		this.num = num;
 	}

@@ -79,8 +79,11 @@ public class PreGameButton {
 				&& mY < (pos.getY() + 30) && mY > pos.getY()) {
 			focused = true;
 			// Entering to game state.
-			if (input.isMousePressed(0) && text.equals("START"))
+			if (input.isMousePressed(0) && text.equals("START")) {
 				sbg.enterState(1);
+				PreGame game = (PreGame) sbg.getCurrentState();
+				game.stopMusic();
+			}
 		} else {
 			focused = false;
 		}

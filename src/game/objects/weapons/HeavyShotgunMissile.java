@@ -7,8 +7,8 @@ import org.newdawn.slick.SlickException;
 
 public class HeavyShotgunMissile extends ShotgunMissile {
 
-	public HeavyShotgunMissile(float angle, Position pos, int num, String owner) {
-		super(angle, pos, num, owner);
+	public HeavyShotgunMissile(float angle, Position pos, int num, String owner,int damage) {
+		super(angle, pos, num, owner, damage);
 		// TODO Auto-generated constructor stub
 	}
 

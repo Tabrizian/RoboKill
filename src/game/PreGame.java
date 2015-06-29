@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.loading.DeferredResource;
 import org.newdawn.slick.loading.LoadingList;
@@ -17,8 +18,10 @@ public class PreGame extends BasicGameState {
 
 	private JPanel profile;
 	private Image backgroundImage;
+	private Music music;
 	private String backgroundImageAddress;
 	private String loadingImageAddress;
+	private String musicAddress;
 	private PreGameButton start;
 	private PreGameButton options;
 	private PreGameButton credits;
@@ -34,6 +37,7 @@ public class PreGame extends BasicGameState {
 		backgroundImageAddress = "pics/backgrounds/image 700.jpg";
 		loadingImageAddress = "pics/backgrounds/image 3.jpg";
 		loadingBarAddress = "pics/loading/image 1.png";
+		musicAddress = "musics/pregame.ogg";
 		start = new PreGameButton("START");
 		options = new PreGameButton("OPTIONS");
 		credits = new PreGameButton("CREDITS");
@@ -41,12 +45,13 @@ public class PreGame extends BasicGameState {
 	}
 
 	@Override
-	public void init(GameContainer arg0, StateBasedGame arg1)
-			throws SlickException {
+	public void init(GameContainer arg0, StateBasedGame arg1) {
 		LoadingList.setDeferredLoading(true);
-		backgroundLoadingImage = new Image(loadingImageAddress);
-		loadingBar = new Image(loadingBarAddress);
+
 		try {
+			backgroundLoadingImage = new Image(loadingImageAddress);
+			loadingBar = new Image(loadingBarAddress);
+			music = new Music(musicAddress, true);
 			backgroundImage = new Image(backgroundImageAddress);
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
@@ -100,7 +105,7 @@ public class PreGame extends BasicGameState {
 		} else {
 			if (!started) {
 				started = true;
-
+				music.play();
 			}
 		}
 	}
@@ -109,5 +114,9 @@ public class PreGame extends BasicGameState {
 	public int getID() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public void stopMusic(){
+		music.stop();
 	}
 }

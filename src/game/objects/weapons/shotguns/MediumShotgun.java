@@ -56,13 +56,13 @@ public class MediumShotgun extends Shotgun {
 		if (renderControler == speedRate * 40) {
 			renderControler = 0;
 			missiles.add(new MediumShotgunMissile(
-					(float) (angleRad + Math.PI / 2), pos1, 0, owner));
+					(float) (angleRad + Math.PI / 2), pos1, 0, owner, power));
 			missiles.add(new MediumShotgunMissile(
-					(float) (angleRad + Math.PI / 2), pos1, 1, owner));
+					(float) (angleRad + Math.PI / 2), pos1, 1, owner, power));
 			missiles.add(new MediumShotgunMissile(
-					(float) (angleRad + Math.PI / 2), pos1, 2, owner));
+					(float) (angleRad + Math.PI / 2), pos1, 2, owner, power));
 			missiles.add(new MediumShotgunMissile(
-					(float) (angleRad + Math.PI / 2), pos1, 3, owner));
+					(float) (angleRad + Math.PI / 2), pos1, 3, owner, power));
 		}
 
 	}

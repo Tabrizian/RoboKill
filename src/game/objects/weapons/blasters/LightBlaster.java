@@ -56,7 +56,7 @@ public class LightBlaster extends Blaster {
 		if (renderControler == speedRate * 40) {
 			renderControler = 0;
 			missiles.add(new LightBlasterMissile(
-					(float) (angleRad + Math.PI / 2), pos1, owner));
+					(float) (angleRad + Math.PI / 2), pos1, owner,power));
 		}
 
 	}
