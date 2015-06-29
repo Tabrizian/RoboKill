@@ -10,11 +10,13 @@ public class Main extends StateBasedGame {
 	public static final String gameName = "Robo Kill!";
 	public static final int pregame = 0;
 	public static final int play = 1;
+	public static final int multi = 2;
 
 	public Main() {
 		super(gameName);
 		addState(new PreGame());
 		addState(new Game());
+		addState(new Multiplier("g"));
 	}
 
 	@Override
@@ -23,6 +25,7 @@ public class Main extends StateBasedGame {
 		gc.setIcons(icons);
 		getState(play).init(gc, this);
 		getState(pregame).init(gc, this);
+		getState(multi).init(gc, this);
 	}
 
 	public static void main(String[] args) {

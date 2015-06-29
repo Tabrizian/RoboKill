@@ -44,7 +44,7 @@ public class PreGame extends BasicGameState {
 		start = new PreGameButton("START");
 		options = new PreGameButton("OPTIONS");
 		credits = new PreGameButton("CREDITS");
-		multiplier = new PreGameButton("MULTIPLIER");
+		multiplier = new PreGameButton("MULTI");
 
 	}
 
@@ -99,6 +99,7 @@ public class PreGame extends BasicGameState {
 		start.update(gc, sbg);
 		options.update(gc, sbg);
 		credits.update(gc, sbg);
+		multiplier.update(gc, sbg);
 		if (nextResource != null) {
 			try {
 				nextResource.load();

@@ -81,18 +81,22 @@ public class PreGameButton {
 			// Entering to game state.
 			if (input.isMousePressed(0) && text.equals("START")) {
 				PreGame game = (PreGame) sbg.getCurrentState();
-				if (Player.getPlayer().getName() == null) {
-					game.setGetNameState(true);
-					System.out.println("Running");
-				} else {
-					sbg.enterState(1);
-				}
+				// if (Player.getPlayer().getName() == null) {
+				// } else {
+				sbg.enterState(1);
+				game.stopMusic();
+			} else if (input.isMousePressed(0) && text.equals("MULTI")) {
+				PreGame game = (PreGame) sbg.getCurrentState();
+				sbg.enterState(2);
 				game.stopMusic();
 			}
 		} else {
 			focused = false;
 		}
+	}
 
+	public static void resetCounter() {
+		population = 0;
 	}
 
 }
