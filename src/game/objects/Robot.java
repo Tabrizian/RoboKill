@@ -629,7 +629,8 @@ public class Robot {
 		Image[] frames = new Image[16];
 		try {
 			for (int i = 0; i < frames.length; i++) {
-				frames[i] = new Image("pics/robot/fall " + i + ".png");
+				int x = i+1 ;
+				frames[i] = new Image("pics/robot/fall " + x + ".png");
 			}
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
