@@ -45,8 +45,10 @@ public class EnemiesDatabase {
 		for (int i = 0; i < enemies.size(); i++) {
 			Enemy enemy = enemies.get(i);
 			if (enemy instanceof Sagehar) {
-				if (twoAreasCollided(enemy.getPos(), 48, 48, Robot.getRobot()
-						.getPos(), 45, 45)) {
+				if (twoAreasCollided(new Position(enemy.getPos().getX() - 24,
+						enemy.getPos().getY() - 24), 48, 48, new Position(Robot
+						.getRobot().getPos().getX() - 22.5f, Robot.getRobot()
+						.getPos().getY() - 22.5f), 45, 45)) {
 					enemy.setHealth(0);
 					if (enemy.getDestroyDamage() > Robot.getRobot().getHealth()) {
 						Robot.getRobot().setHealth(0);
@@ -60,8 +62,10 @@ public class EnemiesDatabase {
 					return true;
 				}
 			} else if (enemy instanceof Zombie) {
-				if (twoAreasCollided(enemy.getPos(), 45, 45, Robot.getRobot()
-						.getPos(), 45, 45)) {
+				if (twoAreasCollided(new Position(enemy.getPos().getX() - 22.5f,
+						enemy.getPos().getY() - 22.5f), 45, 45, new Position(Robot
+						.getRobot().getPos().getX() - 22.5f, Robot.getRobot()
+						.getPos().getY() - 22.5f), 45, 45)) {
 					enemy.setHealth(0);
 					if (enemy.getDestroyDamage() > Robot.getRobot().getHealth()) {
 						Robot.getRobot().setHealth(0);
@@ -76,8 +80,10 @@ public class EnemiesDatabase {
 				}
 
 			} else if (enemy instanceof Vahshi) {
-				if (twoAreasCollided(enemy.getPos(), 30, 30, Robot.getRobot()
-						.getPos(), 45, 45)) {
+				if (twoAreasCollided(new Position(enemy.getPos().getX() - 15,
+						enemy.getPos().getY() - 15), 30, 30, new Position(Robot
+						.getRobot().getPos().getX() - 22.5f, Robot.getRobot()
+						.getPos().getY() - 22.5f), 45, 45)) {
 					enemy.setHealth(0);
 					if (enemy.getDestroyDamage() > Robot.getRobot().getHealth()) {
 						Robot.getRobot().setHealth(0);
