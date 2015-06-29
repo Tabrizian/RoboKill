@@ -148,7 +148,7 @@ public class UtilityButton {
 		float mX = input.getMouseX();
 		float mY = input.getMouseY();
 		inventory.update(gc);
-
+		mapPanel.update(gc);
 		if ((mX > pos.getX() && mX < (pos.getX() + 45) && mY < (pos.getY() + 13)
 				&& mY > pos.getY()) || state) {
 			focused = true;
