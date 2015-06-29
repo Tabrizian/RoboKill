@@ -19,7 +19,13 @@ public class Wall extends Thing {
 		}
 	}
 	
+	@Override
 	public void decHealth(){
+		
+	}
+	
+	@Override
+	public void setHealth(int health) {
 		
 	}
 }
