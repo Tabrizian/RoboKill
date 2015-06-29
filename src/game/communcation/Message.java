@@ -29,6 +29,7 @@ public class Message {
 		pw.println(text);
 		pw.println(header);
 		pw.flush();
+
 	}
 	
 	

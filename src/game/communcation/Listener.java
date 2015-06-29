@@ -1,5 +1,5 @@
 package game.communcation;
 
-public class Listener {
+public class Listener implements Runnable{
 
 }
