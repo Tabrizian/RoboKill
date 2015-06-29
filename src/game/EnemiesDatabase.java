@@ -12,6 +12,7 @@ public class EnemiesDatabase {
 
 	private ArrayList<Enemy> enemies;
 	private static EnemiesDatabase instance = null;
+	private GameField current = null;
 
 	private EnemiesDatabase() {
 		enemies = new ArrayList<Enemy>();
@@ -34,7 +35,15 @@ public class EnemiesDatabase {
 	}
 
 	public boolean enemyCollidedWithRobot() {
-		for (Enemy enemy : enemies) {
+		if (Map.getMap().getActiveGameField() != current) {
+			current = Map.getMap().getActiveGameField();
+			enemies.clear();
+			for (int i = 0; i < current.getEnemies().length; i++) {
+				enemies.add(current.getEnemies()[i]);
+			}
+		}
+		for (int i = 0; i < enemies.size(); i++) {
+			Enemy enemy = enemies.get(i);
 			if (enemy instanceof Sagehar) {
 				if (twoAreasCollided(enemy.getPos(), 48, 48, Robot.getRobot()
 						.getPos(), 45, 45)) {
@@ -46,6 +55,8 @@ public class EnemiesDatabase {
 								Robot.getRobot().getHealth()
 										- enemy.getDestroyDamage());
 					}
+					enemies.remove(enemy);
+					System.out.println("Collided!!");
 					return true;
 				}
 			} else if (enemy instanceof Zombie) {
@@ -59,6 +70,8 @@ public class EnemiesDatabase {
 								Robot.getRobot().getHealth()
 										- enemy.getDestroyDamage());
 					}
+					enemies.remove(enemy);
+					System.out.println("Collided!!");
 					return true;
 				}
 
@@ -73,6 +86,8 @@ public class EnemiesDatabase {
 								Robot.getRobot().getHealth()
 										- enemy.getDestroyDamage());
 					}
+					enemies.remove(enemy);
+					System.out.println("Collided!!");
 					return true;
 				}
 			}

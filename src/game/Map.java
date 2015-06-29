@@ -114,6 +114,7 @@ public class Map {
 
 						if (robot.getHealth() == 0)
 							robot.getText().drawCentered(400, 300);
+						break;
 					}
 				}
 			}

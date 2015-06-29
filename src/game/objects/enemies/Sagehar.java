@@ -10,6 +10,7 @@ import game.objects.weapons.MissilesDatabase;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
@@ -74,8 +75,9 @@ public class Sagehar extends Enemy {
 		fixed = new Animation(fixes, 100);
 		robotPosition = Robot.getRobot().getPos();
 	}
-
-	public void draw() {
+	@Override
+	public void draw(Graphics g) {
+		g.drawRect(pos.getX(), pos.getY(), 52, 52);
 		if (health > 0) {
 			if (isMoving) {
 

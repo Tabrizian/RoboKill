@@ -86,32 +86,32 @@ public class GameField {
 					Vahshi vahshi = new Vahshi(robot.getPos(), pos, this,
 							new Money());
 					enemies[i] = vahshi;
-					EnemiesDatabase.getEnemiesDatabase().add(vahshi);
+//					EnemiesDatabase.getEnemiesDatabase().add(vahshi);
 				} else {
 					Vahshi vahshi = new Vahshi(robot.getPos(), pos, this);
 					enemies[i] = vahshi;
-					EnemiesDatabase.getEnemiesDatabase().add(vahshi);
+//					EnemiesDatabase.getEnemiesDatabase().add(vahshi);
 				}
 			} else if (x == 1) {
 				if (Math.abs(r.nextInt()) % 2 == 0) {
 					Zombie zombie = new Zombie(robot.getPos(), pos, this,
 							new Shield());
 					enemies[i] = zombie;
-					EnemiesDatabase.getEnemiesDatabase().add(zombie);
+//					EnemiesDatabase.getEnemiesDatabase().add(zombie);
 				} else {
 					Zombie zombie = new Zombie(robot.getPos(), pos, this);
 					enemies[i] = zombie;
-					EnemiesDatabase.getEnemiesDatabase().add(zombie);
+//					EnemiesDatabase.getEnemiesDatabase().add(zombie);
 				}
 			} else {
 				if (Math.abs(r.nextInt()) % 2 == 0) {
 					Sagehar sagehar = new Sagehar(pos, this, new Money());
 					enemies[i] = sagehar;
-					EnemiesDatabase.getEnemiesDatabase().add(sagehar);
+//					EnemiesDatabase.getEnemiesDatabase().add(sagehar);
 				} else {
 					Sagehar sagehar = new Sagehar(pos, this);
 					enemies[i] = sagehar;
-					EnemiesDatabase.getEnemiesDatabase().add(sagehar);
+//					EnemiesDatabase.getEnemiesDatabase().add(sagehar);
 				}
 			}
 		}
@@ -235,7 +235,7 @@ public class GameField {
 		// Draw all enemies
 		for (int i = 0; i < numOfEnemies; i++) {
 			if (enemies[i] != null) {
-				enemies[i].draw();
+				enemies[i].draw(g);
 			}
 		}
 
@@ -1008,5 +1008,9 @@ public class GameField {
 		}
 
 		return frames;
+	}
+	
+	public Enemy[] getEnemies(){
+		return enemies;
 	}
 }

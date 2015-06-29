@@ -13,6 +13,7 @@ import java.util.Random;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -146,8 +147,9 @@ public class Zombie extends Enemy {
 	 * 
 	 * @param angle
 	 */
-	public void draw() {
-
+	@Override
+	public void draw(Graphics g) {
+		g.drawRect(pos.getX(), pos.getY(), 48, 48);
 		if (health > 0) {
 			imageOfBody.setRotation(imageAngleDeg);
 			imageOfBody.drawCentered(pos.getX(), pos.getY());

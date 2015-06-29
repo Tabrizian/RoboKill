@@ -11,9 +11,9 @@ public class Enemy {
 	protected Position pos;
 	protected int health;
 	protected Position robotPosition;
-	protected Plunder plunder ;
+	protected Plunder plunder;
 	protected int destroyedDamage;
-	
+
 	public Enemy() {
 
 	}
@@ -31,7 +31,7 @@ public class Enemy {
 
 	}
 
-	public void draw() {
+	public void draw(Graphics g) {
 
 	}
 
@@ -46,16 +46,16 @@ public class Enemy {
 	public int getHealth() {
 		return health;
 	}
-	
-	public Plunder getPlunder(){
-		return plunder ;
+
+	public Plunder getPlunder() {
+		return plunder;
 	}
-	
-	public void setHealth(int health){
+
+	public void setHealth(int health) {
 		this.health = health;
 	}
-	
-	public int getDestroyDamage(){
+
+	public int getDestroyDamage() {
 		return destroyedDamage;
 	}
 }

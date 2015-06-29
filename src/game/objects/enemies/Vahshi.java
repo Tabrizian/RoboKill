@@ -9,6 +9,7 @@ import game.objects.weapons.MissilesDatabase;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -110,8 +111,9 @@ public class Vahshi extends Enemy {
 	 * 
 	 * @param angle
 	 */
-	public void draw() {
-
+	@Override
+	public void draw(Graphics g) {
+		g.drawRect(pos.getX(), pos.getY(), 48, 48);
 		if (health > 0) {
 			// Manage drawing animations
 			if (iskeyUpPressed == true && isKeyRightPressed == true) {
