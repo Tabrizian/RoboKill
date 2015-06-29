@@ -171,10 +171,12 @@ public class Inventory {
 		return weapons;
 	}
 	
-	public void addItemToTabular(Item item){
+	public void addAddOneToTabular(AddOne addOne){
 		for(int i= 0 ;i <7;i++){
 			for (int j = 0; j < 4; j++) {
 				if(itemsTabular[i][j] == null){
+					Item item = new Item("tabular");
+					item.add(addOne);
 					ItemsDatabase.getItemsDatabase().addToTabular(i, j, item);
 					itemsTabular[i][j] = item;
 				}
