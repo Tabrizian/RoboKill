@@ -185,4 +185,8 @@ public class UtilityButton {
 	public static boolean getInventoryState(){
 		return showInventory ;
 	}
+	
+	public static void setShowMap( boolean x ){
+		showMapPanel = x ;
+	}
 }

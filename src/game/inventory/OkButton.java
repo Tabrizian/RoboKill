@@ -104,8 +104,10 @@ public class OkButton {
 			// Entering to game state.
 			if (input.isMousePressed(0)){
 				//isPlayBack = true ;
-				if( UtilityButton.getInventoryState())
+				if( UtilityButton.getInventoryState()){
+					UtilityButton.setShowMap(true);
 					UtilityButton.setInventoryState(true);
+				}
 				
 				
 			}
