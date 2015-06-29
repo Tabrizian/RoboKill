@@ -1,10 +1,10 @@
 package game.communcation;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 public class Inbox {
 
-	private ArrayList<Message> messages ;
+	private Vector<Message> messages ;
 	private static Inbox instance ;
 	
 	private Inbox(){
@@ -29,7 +29,7 @@ public class Inbox {
 		messages.remove(index) ;
 	}
 	
-	public ArrayList<Message> getMessages(){
+	public Vector<Message> getMessages(){
 		return messages ;
 	}
 }
