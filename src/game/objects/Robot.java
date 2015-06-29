@@ -619,38 +619,9 @@ public class Robot {
 	private Image[] createFallFrames() {
 		Image[] frames = new Image[16];
 		try {
-			Image image1 = new Image("pics/robot/fall 1.png");
-			frames[0] = image1;
-			Image image2 = new Image("pics/robot/fall 2.png");
-			frames[1] = image2;
-			Image image3 = new Image("pics/robot/fall 3.png");
-			frames[2] = image3;
-			Image image4 = new Image("pics/robot/fall 4.png");
-			frames[3] = image4;
-			Image image5 = new Image("pics/robot/fall 5.png");
-			frames[4] = image5;
-			Image image6 = new Image("pics/robot/fall 6.png");
-			frames[5] = image6;
-			Image image7 = new Image("pics/robot/fall 7.png");
-			frames[6] = image7;
-			Image image8 = new Image("pics/robot/fall 8.png");
-			frames[7] = image8;
-			Image image9 = new Image("pics/robot/fall 9.png");
-			frames[8] = image9;
-			Image image10 = new Image("pics/robot/fall 10.png");
-			frames[9] = image10;
-			Image image11 = new Image("pics/robot/fall 11.png");
-			frames[10] = image11;
-			Image image12 = new Image("pics/robot/fall 12.png");
-			frames[11] = image12;
-			Image image13 = new Image("pics/robot/fall 13.png");
-			frames[12] = image13;
-			Image image14 = new Image("pics/robot/fall 14.png");
-			frames[13] = image14;
-			Image image15 = new Image("pics/robot/fall 15.png");
-			frames[14] = image15;
-			Image image16 = new Image("pics/robot/fall 16.png");
-			frames[15] = image16;
+			for (int i = 0; i < frames.length; i++) {
+				frames[i] = new Image("pics/robot/fall " + i + ".png");
+			}
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
