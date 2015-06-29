@@ -1,15 +1,11 @@
 package game.objects;
 
 import game.GameField;
-import game.Map;
 import game.Position;
 import game.inventory.Inventory;
 import game.inventory.Item;
 import game.objects.weapons.MissilesDatabase;
 import game.objects.weapons.Weapon;
-
-import java.awt.Point;
-import java.util.Random;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
@@ -43,13 +39,6 @@ public class Robot {
 	 */
 	private float imageAngleRad = 0;
 	private float imageAngleDeg = 0;
-	/**
-	 * mouse point
-	 */
-	private Point mousePoint;
-	/**
-	 * ArrayList of current missiles.
-	 */
 	private String imageOfBodyAddress;
 
 	private Image imageOfBody;
@@ -122,15 +111,6 @@ public class Robot {
 	 */
 	public void setActiveField(GameField field) {
 		this.field = field;
-	}
-
-	/**
-	 * set mouse point
-	 * 
-	 * @param p
-	 */
-	public void setMousePoint(Point p) {
-		mousePoint = p;
 	}
 
 	/**
@@ -294,26 +274,26 @@ public class Robot {
 
 		Input input = gc.getInput();
 		if (health != 0) {
-			if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(input.KEY_W)) {
+			if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(Input.KEY_W)) {
 				if (yPos > 25)
 					yPos -= 0.25;
 				iskeyUpPressed = true;
 			} else
 				iskeyUpPressed = false;
-			if (input.isKeyDown(Input.KEY_DOWN) || input.isKeyDown(input.KEY_S)) {
+			if (input.isKeyDown(Input.KEY_DOWN) || input.isKeyDown(Input.KEY_S)) {
 				if (yPos < 575)
 					yPos += 0.25;
 				iskeyDownPressed = true;
 			} else
 				iskeyDownPressed = false;
 			if (input.isKeyDown(Input.KEY_RIGHT)
-					|| input.isKeyDown(input.KEY_D)) {
+					|| input.isKeyDown(Input.KEY_D)) {
 				if (xPos < 775)
 					xPos += 0.25;
 				isKeyRightPressed = true;
 			} else
 				isKeyRightPressed = false;
-			if (input.isKeyDown(Input.KEY_LEFT) || input.isKeyDown(input.KEY_A)) {
+			if (input.isKeyDown(Input.KEY_LEFT) || input.isKeyDown(Input.KEY_A)) {
 				if (xPos > 25)
 					xPos -= 0.25;
 				isKeyLeftPressed = true;
@@ -360,8 +340,9 @@ public class Robot {
 		}
 
 		int healthReduction = MissilesDatabase.getMissilesDatabase()
-				.explodeAreaForRobot(new Position(pos.getX(), pos.getY()), 45,
-						45);
+				.explodeAreaForRobot(
+						new Position(pos.getX() - 22.5f, pos.getY() - 22.5f),
+						45, 45);
 
 		if (healthReduction > health)
 			health = 0;
@@ -449,39 +430,18 @@ public class Robot {
 		try {
 			Image image1 = new Image("pics/robot/image 123.png");
 			frames[0] = image1;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image2 = new Image("pics/robot/image 231.png");
 			frames[1] = image2;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image3 = new Image("pics/robot/image 485.png");
 			frames[2] = image3;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image4 = new Image("pics/robot/image 653.png");
 			frames[3] = image4;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image5 = new Image("pics/robot/image 589.png");
 			frames[4] = image5;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return frames;
 	}
 
@@ -508,32 +468,12 @@ public class Robot {
 		try {
 			Image image1 = new Image("pics/robot/image 123.png");
 			frames[4] = image1;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image2 = new Image("pics/robot/image 231.png");
 			frames[3] = image2;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image3 = new Image("pics/robot/image 485.png");
 			frames[2] = image3;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image4 = new Image("pics/robot/image 653.png");
 			frames[1] = image4;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image5 = new Image("pics/robot/image 589.png");
 			frames[0] = image5;
 		} catch (SlickException e) {
@@ -553,39 +493,18 @@ public class Robot {
 		try {
 			Image image1 = new Image("pics/robot/image 1231.png");
 			frames[4] = image1;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image2 = new Image("pics/robot/image 2311.png");
 			frames[3] = image2;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image3 = new Image("pics/robot/image 4851.png");
 			frames[2] = image3;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image4 = new Image("pics/robot/image 6531.png");
 			frames[1] = image4;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image5 = new Image("pics/robot/image 5891.png");
 			frames[0] = image5;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return frames;
 
 	}
@@ -598,39 +517,18 @@ public class Robot {
 		try {
 			Image image1 = new Image("pics/robot/image 1231.png");
 			frames[0] = image1;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image2 = new Image("pics/robot/image 2311.png");
 			frames[1] = image2;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image3 = new Image("pics/robot/image 4851.png");
 			frames[2] = image3;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image4 = new Image("pics/robot/image 6531.png");
 			frames[3] = image4;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image5 = new Image("pics/robot/image 5891.png");
 			frames[4] = image5;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return frames;
 
 	}
@@ -642,39 +540,18 @@ public class Robot {
 		try {
 			Image image1 = new Image("pics/robot/image 1232.png");
 			frames[0] = image1;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image2 = new Image("pics/robot/image 2312.png");
 			frames[1] = image2;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image3 = new Image("pics/robot/image 4852.png");
 			frames[2] = image3;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image4 = new Image("pics/robot/image 6532.png");
 			frames[3] = image4;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image5 = new Image("pics/robot/image 5892.png");
 			frames[4] = image5;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return frames;
 
 	}
@@ -686,39 +563,18 @@ public class Robot {
 		try {
 			Image image1 = new Image("pics/robot/image 1232.png");
 			frames[4] = image1;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image2 = new Image("pics/robot/image 2312.png");
 			frames[3] = image2;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image3 = new Image("pics/robot/image 4852.png");
 			frames[2] = image3;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image4 = new Image("pics/robot/image 6532.png");
 			frames[1] = image4;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image5 = new Image("pics/robot/image 5892.png");
 			frames[0] = image5;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return frames;
 
 	}
@@ -730,39 +586,18 @@ public class Robot {
 		try {
 			Image image1 = new Image("pics/robot/image 1233.png");
 			frames[4] = image1;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image2 = new Image("pics/robot/image 2313.png");
 			frames[3] = image2;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image3 = new Image("pics/robot/image 4853.png");
 			frames[2] = image3;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image4 = new Image("pics/robot/image 6533.png");
 			frames[1] = image4;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image5 = new Image("pics/robot/image 5893.png");
 			frames[0] = image5;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return frames;
 
 	}
@@ -774,154 +609,28 @@ public class Robot {
 		try {
 			Image image1 = new Image("pics/robot/image 1233.png");
 			frames[0] = image1;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image2 = new Image("pics/robot/image 2313.png");
 			frames[1] = image2;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image3 = new Image("pics/robot/image 4853.png");
 			frames[2] = image3;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image4 = new Image("pics/robot/image 6533.png");
 			frames[3] = image4;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			Image image5 = new Image("pics/robot/image 5893.png");
 			frames[4] = image5;
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return frames;
-
 	}
 
 	// Creates fall animation frames
 	private Image[] createFallFrames() {
 		Image[] frames = new Image[16];
 		try {
-			Image image1 = new Image("pics/robot/fall 1.png");
-			frames[0] = image1;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image2 = new Image("pics/robot/fall 2.png");
-			frames[1] = image2;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image3 = new Image("pics/robot/fall 3.png");
-			frames[2] = image3;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image4 = new Image("pics/robot/fall 4.png");
-			frames[3] = image4;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image5 = new Image("pics/robot/fall 5.png");
-			frames[4] = image5;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image6 = new Image("pics/robot/fall 6.png");
-			frames[5] = image6;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image7 = new Image("pics/robot/fall 7.png");
-			frames[6] = image7;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image8 = new Image("pics/robot/fall 8.png");
-			frames[7] = image8;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image9 = new Image("pics/robot/fall 9.png");
-			frames[8] = image9;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image10 = new Image("pics/robot/fall 10.png");
-			frames[9] = image10;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image11 = new Image("pics/robot/fall 11.png");
-			frames[10] = image11;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image12 = new Image("pics/robot/fall 12.png");
-			frames[11] = image12;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image13 = new Image("pics/robot/fall 13.png");
-			frames[12] = image13;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image14 = new Image("pics/robot/fall 14.png");
-			frames[13] = image14;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image15 = new Image("pics/robot/fall 15.png");
-			frames[14] = image15;
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Image image16 = new Image("pics/robot/fall 16.png");
-			frames[15] = image16;
+			for (int i = 0; i < frames.length; i++) {
+				frames[i] = new Image("pics/robot/fall " + i + ".png");
+			}
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

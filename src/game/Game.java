@@ -5,7 +5,6 @@ import game.objects.Robot;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.loading.DeferredResource;
 import org.newdawn.slick.loading.LoadingList;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -30,10 +29,6 @@ public class Game extends BasicGameState {
 	private UtilityButton mapButton;
 	private UtilityButton menu;
 	private UtilityButton inv;
-	private DeferredResource nextResource;
-	/** True if we've loaded all the resources and started rendering */
-	private boolean started;
-
 	/**
 	 * Creates new Game with sample game field.
 	 */

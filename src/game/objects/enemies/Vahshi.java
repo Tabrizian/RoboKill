@@ -114,7 +114,7 @@ public class Vahshi extends Enemy {
 	 */
 	@Override
 	public void draw(Graphics g) {
-		g.drawRect(pos.getX(), pos.getY(), 48, 48);
+		g.drawRect(pos.getX() - 15, pos.getY() - 15, 30, 30);
 		if (health > 0) {
 			// Manage drawing animations
 			if (iskeyUpPressed == true && isKeyRightPressed == true) {
@@ -270,8 +270,8 @@ public class Vahshi extends Enemy {
 		}
 
 		int healthReduction = MissilesDatabase.getMissilesDatabase()
-				.explodeAreaForEnemy(new Position(pos.getX(), pos.getY()), 30,
-						30);
+				.explodeAreaForEnemy(
+						new Position(pos.getX() - 15, pos.getY() - 15), 30, 30);
 
 		if (healthReduction > health)
 			health = 0;
