@@ -1,8 +1,10 @@
 package game.inventory;
 
+import game.Player;
 import game.Position;
 import game.objects.AddOne;
 import game.objects.prizes.Plunder;
+import game.objects.weapons.Weapon;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
@@ -95,7 +97,19 @@ public class Item {
 					new Position(input.getMouseX(), input.getMouseY()));
 			if (item != null) {
 				if (addOne != null) {
-					if (item.getName().equals("upgrade")) {
+					if(ItemsDatabase.getItemsDatabase().isInsideShop(this)){
+						
+						if (addOne instanceof Weapon) {
+							Weapon weapon = (Weapon) addOne;
+							if (Player.getPlayer().getCash() >= weapon.getPrice()){
+								Player.getPlayer().setCash(Player.getPlayer().getCash() - weapon.getPrice());
+								
+								item.add(addOne);
+								addOne = null;
+							}
+						}
+					}
+					else if (item.getName().equals("upgrade")) {
 						if (addOne instanceof Plunder) {
 							item.add(addOne);
 							addOne = null;

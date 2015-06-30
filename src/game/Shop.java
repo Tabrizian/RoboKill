@@ -1,14 +1,11 @@
 package game;
 
-import game.inventory.Inventory;
 import game.inventory.Item;
 import game.inventory.ItemDiscription;
 import game.inventory.ItemsDatabase;
 import game.inventory.OkButton;
 import game.objects.AddOne;
-import game.objects.weapons.Weapon;
 import game.objects.weapons.blasters.LightBlaster;
-import game.objects.weapons.shotguns.HeavyShotgun;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;

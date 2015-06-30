@@ -248,6 +248,7 @@ public class ItemsDatabase {
 						Weapon weapon = (Weapon) item.getAddOne();
 						if (Player.getPlayer().getCash() > weapon.getPrice()){
 							Player.getPlayer().setCash(Player.getPlayer().getCash() - weapon.getPrice());
+							System.out.println("uoewiurqoi!!");
 							return item;
 						}
 					}
@@ -297,6 +298,17 @@ public class ItemsDatabase {
 
 	public Item[] getUpgrades() {
 		return upgradeItems;
+	}
+	
+	public boolean isInsideShop(Item good){
+		for (Item[] items : itemsTabularShop) {
+			for (Item item : items) {
+				if (item == good) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 }
