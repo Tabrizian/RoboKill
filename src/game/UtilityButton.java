@@ -22,17 +22,17 @@ public class UtilityButton {
 	private MapPanel mapPanel;
 	private static boolean showInventory = false;
 	private static boolean showMapPanel = false;
-	private static boolean state = false ;
-	
+	private static boolean state = false;
+
 	private Image[] frames;
 	private Animation play;
-	private Image[] frames1 ;
-	private Animation playBack ;
+	private Image[] frames1;
+	private Animation playBack;
 
 	private boolean isAnimationDrawe = false;
-	private boolean imageDraw = false ;
-	private boolean isPlayBack ;
-	
+	private boolean imageDraw = false;
+	private boolean isPlayBack;
+
 	public UtilityButton(String name) {
 		this.name = name;
 		pos = new Position(665 + population * 45, 590);
@@ -41,8 +41,8 @@ public class UtilityButton {
 		population++;
 
 		frames = new Image[46];
-		frames1 = new Image[46] ;
-		
+		frames1 = new Image[46];
+
 		inventory = Inventory.getInventory();
 		mapPanel = MapPanel.getMapPanel();
 	}
@@ -79,10 +79,10 @@ public class UtilityButton {
 				e.printStackTrace();
 			}
 		}
-		
+
 		play = new Animation(frames, 5);
 		play.setLooping(false);
-		
+
 		playBack = new Animation(frames1, 5);
 		playBack.setLooping(false);
 	}
@@ -96,32 +96,30 @@ public class UtilityButton {
 		img.draw(pos.getX(), pos.getY());
 		if (focused)
 			g.drawRect(pos.getX(), pos.getY(), 45, 13);
-	
-		
-		if (showInventory) {
-			
+
+		if (showInventory && !showMapPanel) {
+
 			if (isAnimationDrawe) {
 				play.setLooping(false);
-				play.draw(50 , 50);
+				play.draw(50, 50);
 				play.start();
 
 				if (play.getFrame() == 45) {
 					play = null;
 					play = new Animation(frames, 5);
 					isAnimationDrawe = false;
-					imageDraw = true ;
+					imageDraw = true;
 					inventory.draw(g);
 				}
-			}else if( imageDraw == true )
+			} else if (imageDraw == true)
 				inventory.draw(g);
-			
-		}else if(showMapPanel){
-			mapPanel.draw();
-		}
-		else{
-			if( isPlayBack ){
+
+		} else if (showMapPanel && !showInventory) {
+			mapPanel.draw(g);
+		} else {
+			if (isPlayBack) {
 				playBack.setLooping(false);
-				playBack.draw(50 , 50);
+				playBack.draw(50, 50);
 				playBack.start();
 
 				if (playBack.getFrame() == 45) {
@@ -131,8 +129,6 @@ public class UtilityButton {
 				}
 			}
 		}
-		
-		
 
 	}
 
@@ -149,20 +145,21 @@ public class UtilityButton {
 		float mY = input.getMouseY();
 		inventory.update(gc);
 		mapPanel.update(gc);
-		if ((mX > pos.getX() && mX < (pos.getX() + 45) && mY < (pos.getY() + 13)
-				&& mY > pos.getY()) || state) {
+		if ((mX > pos.getX() && mX < (pos.getX() + 45)
+				&& mY < (pos.getY() + 13) && mY > pos.getY())
+				|| state) {
 			focused = true;
 			if (input.isMousePressed(0) || state) {
 				switch (name) {
 				case "inv":
 					showInventory = !showInventory;
-					if( !showInventory ){
-						if( imageDraw == true )
-							isPlayBack = true ;
-						imageDraw = false ;
+					if (!showInventory) {
+						if (imageDraw == true)
+							isPlayBack = true;
+						imageDraw = false;
 					}
-					isAnimationDrawe = true ;
-					state = false ;
+					isAnimationDrawe = true;
+					state = false;
 					break;
 				case "menu":
 					sbg.enterState(0);
@@ -177,16 +174,24 @@ public class UtilityButton {
 
 	}
 
-	public static void setInventoryState(boolean show ) {
+	public static void setInventoryState(boolean show) {
 		state = show;
-		
+
 	}
-	
-	public static boolean getInventoryState(){
-		return showInventory ;
+
+	public static boolean getInventoryState() {
+		return showInventory;
 	}
-	
-	public static void setShowMap( boolean x ){
-		showMapPanel = x ;
+
+	public static void setShowMap(boolean x) {
+		showMapPanel = x;
+	}
+
+	public static boolean isShowMapPanel() {
+		return showMapPanel;
+	}
+
+	public static void setShowMapPanel(boolean showMapPanel) {
+		UtilityButton.showMapPanel = showMapPanel;
 	}
 }

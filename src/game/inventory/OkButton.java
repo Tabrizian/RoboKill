@@ -1,5 +1,6 @@
 package game.inventory;
 
+import game.MapPanel;
 import game.Position;
 import game.UtilityButton;
 
@@ -107,8 +108,10 @@ public class OkButton {
 				if( UtilityButton.getInventoryState()){
 					UtilityButton.setShowMap(true);
 					UtilityButton.setInventoryState(true);
+					
 				}
 				
+				UtilityButton.setShowMapPanel(false);
 				
 			}
 		} else {

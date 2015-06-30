@@ -18,6 +18,7 @@ public class Item {
 	private Position defaultPos;
 	private AddOne addOne = null;
 	private static int population = 0;
+	private static int population2 = 0;
 	private boolean lifted = false;
 
 	public Item(String name) {
@@ -28,6 +29,15 @@ public class Item {
 		this.name = name;
 		population++;
 
+	}
+
+	public Item(String name, boolean isShop) {
+		itemAddress = "pics/inventory/item.png";
+		pos = new Position(393 + (population2 % 7) * 40,
+				90 + population2 / 7 * 40);
+		defaultPos = new Position(pos);
+		this.name = name;
+		population2++;
 	}
 
 	public Item(Position pos, String name) {

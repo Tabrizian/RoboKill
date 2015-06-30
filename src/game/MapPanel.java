@@ -1,6 +1,9 @@
 package game;
 
+import game.inventory.OkButton;
+
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -16,6 +19,7 @@ public class MapPanel {
 	private Image visitedTileImage;
 	private Position pos;
 	private Position pos2;
+	private OkButton ok;
 	private static MapPanel instance = null;
 
 	private MapPanel() {
@@ -24,8 +28,10 @@ public class MapPanel {
 		currentTile = "pics/map/image 722.png";
 		visitedTile = "pics/map/image 442.png";
 		pos = new Position(50, 50);
+		ok = new OkButton("OK", new Position(pos.getX() + 265, pos.getY() + 440));
 		pos2 = new Position(250 + pos.getX(), 100 + pos.getY());
 		instance = this;
+		
 	}
 
 	public static MapPanel getMapPanel() {
@@ -40,13 +46,14 @@ public class MapPanel {
 			simpleTileImage = new Image(simpleTile);
 			currentTileImage = new Image(currentTile);
 			visitedTileImage = new Image(visitedTile);
+			ok.init();
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public void draw() {
+	public void draw(Graphics g) {
 		backPanelImage.draw(pos.getX(), pos.getY());
 		GameField[][] fields = Map.getMap().getFields();
 		for (int i = 0; i < 5; i++) {
@@ -63,9 +70,11 @@ public class MapPanel {
 				}
 			}
 		}
+		ok.draw(g);
 	}
 
 	public void update(GameContainer gc) {
+		ok.update(gc);
 		GameField[][] fields = Map.getMap().getFields();
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {

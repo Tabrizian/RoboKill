@@ -138,7 +138,7 @@ public class Inventory {
 		robot.draw(pos.getX() + 50, pos.getY() + 200);
 		inventoryText.draw(pos.getX() + 343, pos.getY() + 250);
 		ok.draw(g);
-		ItemsDatabase.getItemsDatabase().drawAll();
+		ItemsDatabase.getItemsDatabase().drawForInventor();
 		discription.draw(g);
 	}
 
