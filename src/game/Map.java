@@ -578,6 +578,7 @@ public class Map {
 				fields[i][j] = null;
 		// Creates game field 1
 		GameFieldModel model1 = new GameFieldModel(createModel(1));
+		model1.setShop(true);
 		model1.setPlane(new Position(80, 80));
 		model1.setExitText();
 		int[] state1 = new int[4];

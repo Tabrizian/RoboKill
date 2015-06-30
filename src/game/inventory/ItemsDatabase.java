@@ -7,10 +7,12 @@ public class ItemsDatabase {
 	private Item[][] itemsTabular;
 	private Item[] weaponItems;
 	private Item[] upgradeItems;
+	private Item[][] itemsTabularShop;
 	private static ItemsDatabase instance = null;
 
 	private ItemsDatabase() {
 		itemsTabular = new Item[7][4];
+		itemsTabularShop = new Item[7][4];
 		weaponItems = new Item[4];
 		upgradeItems = new Item[4];
 		instance = this;
@@ -32,6 +34,10 @@ public class ItemsDatabase {
 
 	public void addToUpgrades(int place, Item item) {
 		upgradeItems[place] = item;
+	}
+
+	public void addToShop(int row, int col, Item item) {
+		itemsTabularShop[row][col] = item;
 	}
 
 	/**
@@ -116,18 +122,21 @@ public class ItemsDatabase {
 	public Item thePointed(Position pos) {
 		for (Item[] items : itemsTabular) {
 			for (Item item : items) {
-				if (item.isInside(pos) && !item.isLifted()) {
+				if (item.isInside(pos) && !item.isLifted()
+						&& item.getAddOne() == null) {
 					return item;
 				}
 			}
 		}
 		for (Item item : weaponItems) {
-			if (item.isInside(pos) && !item.isLifted()) {
+			if (item.isInside(pos) && !item.isLifted()
+					&& item.getAddOne() == null) {
 				return item;
 			}
 		}
 		for (Item item : upgradeItems) {
-			if (item.isInside(pos) && !item.isLifted()) {
+			if (item.isInside(pos) && !item.isLifted()
+					&& item.getAddOne() == null) {
 				return item;
 			}
 		}
@@ -159,4 +168,13 @@ public class ItemsDatabase {
 	public Item[] getWeapons() {
 		return weaponItems;
 	}
+
+	public Item[][] getItemsTabular() {
+		return itemsTabular;
+	}
+
+	public Item[] getUpgrades() {
+		return upgradeItems;
+	}
+
 }

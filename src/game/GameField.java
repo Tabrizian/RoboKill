@@ -14,6 +14,7 @@ import game.objects.prizes.guns.Gun;
 import game.objects.prizes.guns.HeavyGun;
 import game.objects.prizes.guns.LightGun;
 import game.objects.prizes.guns.MediumGun;
+import game.objects.weapons.MissilesDatabase;
 import game.objects.weapons.blasters.HeavyBlaster;
 import game.objects.weapons.blasters.LightBlaster;
 import game.objects.weapons.blasters.MediumBlaster;
@@ -38,6 +39,8 @@ public class GameField {
 
 	private String image;
 	private Image fieldImage;
+	private Image shopImage;
+	private String shopAddress;
 
 	private Image suroundImage;
 	private String suround;
@@ -68,9 +71,10 @@ public class GameField {
 
 	private Image keyImage;
 
-	private Image deadEnemy ;
-	
-	private ArrayList<Position> deadEnemyPosition ;
+	private Image deadEnemy;
+
+	private ArrayList<Position> deadEnemyPosition;
+
 	public GameField() {
 
 		image = ("pics/fields/image 187.png");
@@ -79,6 +83,7 @@ public class GameField {
 	}
 
 	public GameField(GameFieldModel model, int numOfEnemies, int[] stateOfDoors) {
+		shopAddress = "pics/cells/image 343.png";
 		// Preparing environment
 		image = ("pics/fields/image 593.jpg");
 		suround = ("pics/fields/image 743.png");
@@ -87,7 +92,7 @@ public class GameField {
 		this.stateOfDoors = new int[4];
 		this.stateOfDoors = stateOfDoors;
 		this.numOfEnemies = numOfEnemies;
-		deadEnemyPosition = new ArrayList<Position>() ;
+		deadEnemyPosition = new ArrayList<Position>();
 		plunders = new ArrayList<Plunder>();
 		// Create enemies for this field
 		Random r = new Random();
@@ -160,6 +165,7 @@ public class GameField {
 	public void init() {
 		try {
 			fieldImage = new Image(this.getImage());
+			shopImage = new Image(shopAddress);
 
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
@@ -180,14 +186,14 @@ public class GameField {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
-			deadEnemy = new Image("pics/explosion/image 726.png") ;
+			deadEnemy = new Image("pics/explosion/image 726.png");
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		model.initAll();
 
 		// Initialize all enemies
@@ -216,7 +222,6 @@ public class GameField {
 		fieldImage.draw(0, 0);
 
 		model.drawAll(g);
-
 		suroundImage.draw(0, 0);
 
 		// Draw doors
@@ -284,11 +289,16 @@ public class GameField {
 		if (keyRequired) {
 			keyImage.drawCentered(390, 40);
 		}
-		for( Position pos : deadEnemyPosition )
+		for (Position pos : deadEnemyPosition)
 			deadEnemy.drawCentered(pos.getX(), pos.getY());
-		
+
 		for (Plunder plunder : plunders)
 			plunder.draw();
+
+		if (model.isShop()) {
+			shopImage.draw(600, 105);
+			System.out.println("SUCCESS!!");
+		}
 	}
 
 	/**
@@ -318,7 +328,7 @@ public class GameField {
 							plunders.add(new HeavyGun(pos));
 						}
 					}
-					deadEnemyPosition.add(enemies[i].getPos()) ;
+					deadEnemyPosition.add(enemies[i].getPos());
 					enemies[i] = null;
 				}
 			}
@@ -428,6 +438,13 @@ public class GameField {
 				}
 
 			}
+		}
+
+		if (MissilesDatabase.getMissilesDatabase().isInsideArea(
+				new Position(600, 125), 60, 60, Robot.getRobot().getPos())) {
+			Shop.getShop().setVisible(true);
+		} else {
+			Shop.getShop().setVisible(false);
 		}
 
 	}

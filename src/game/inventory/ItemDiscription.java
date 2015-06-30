@@ -15,21 +15,33 @@ import org.newdawn.slick.TrueTypeFont;
 
 public class ItemDiscription {
 	private String imageAddress;
+	private String secondImageAddress;
 	private Image image;
+	private Image image2;
 	private Item currentItem;
 	private TrueTypeFont font;
 	private Position pos;
 	private static Color blue = new Color(0, 253, 253);
 	private static Color yellow = new Color(255, 170, 0);
+	private boolean isShop = false;
 
 	public ItemDiscription(Position pos) {
 		imageAddress = "pics/inventory/itemDiscr.png";
 		this.pos = pos;
+		secondImageAddress = "pics/inventory/itemDiscr2.png";
+	}
+
+	public ItemDiscription(Position pos, boolean isShop) {
+		imageAddress = "pics/inventory/itemDiscr.png";
+		this.pos = pos;
+		this.isShop = isShop;
+		secondImageAddress = "pics/inventory/itemDiscr2.png";
 	}
 
 	public void init() {
 		try {
 			image = new Image(imageAddress);
+			image2 = new Image(secondImageAddress);
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,7 +51,11 @@ public class ItemDiscription {
 	}
 
 	public void draw(Graphics g) {
-		image.draw(pos.getX(), pos.getY());
+		if (!isShop) {
+			image.draw(pos.getX(), pos.getY());
+		} else {
+			image2.draw(pos.getX(), pos.getY());
+		}
 		if (currentItem != null) {
 			if (currentItem.getAddOne() instanceof Weapon) {
 				Weapon weapon = (Weapon) currentItem.getAddOne();

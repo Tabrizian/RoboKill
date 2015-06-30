@@ -171,6 +171,14 @@ public class Inventory {
 		return weapons;
 	}
 
+	public Item[][] getItemsTabular() {
+		return itemsTabular;
+	}
+
+	public Item[] getUpgrades() {
+		return upgrades;
+	}
+
 	public void addAddOneToTabular(AddOne addOne) {
 		boolean run = true;
 		for (int i = 0; i < 7 && run; i++) {

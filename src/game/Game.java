@@ -49,7 +49,7 @@ public class Game extends BasicGameState {
 			throws SlickException {
 		LoadingList.setDeferredLoading(true);
 		map.init();
-
+		Shop.getShop().init();
 		mapButton.init();
 		menu.init();
 		inv.init();
@@ -68,6 +68,9 @@ public class Game extends BasicGameState {
 		cash.draw(g, Robot.getRobot().getHealth(), player.getCash());
 		shield.draw(g, Robot.getRobot().getHealth(), player.getCash());
 		inv.draw(g);
+		if(Shop.getShop().isVisible()){
+			Shop.getShop().draw(g);
+		}
 
 	}
 
@@ -82,6 +85,7 @@ public class Game extends BasicGameState {
 		menu.update(gc, sbg);
 		if (time % 5 == 0)
 			EnemiesDatabase.getEnemiesDatabase().enemyCollidedWithRobot();
+		Shop.getShop().update(gc);
 
 	}
 

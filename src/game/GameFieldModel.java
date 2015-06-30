@@ -16,6 +16,7 @@ public class GameFieldModel {
 
 	private boolean hasExitText = false;
 	private Image exitText;
+	private boolean shop = false;
 
 	/**
 	 * @param cells
@@ -161,5 +162,13 @@ public class GameFieldModel {
 			return cells[0][0];
 		}
 
+	}
+
+	public boolean isShop() {
+		return shop;
+	}
+
+	public void setShop(boolean shop) {
+		this.shop = shop;
 	}
 }
